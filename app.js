@@ -2,27 +2,22 @@ var express = require("express");
 var app = express();
 var mongo = require('./server/mongo');
 var insert = require('./server/insert');
+var cookie = require("cookie-parser");
+var session = require("express-session");
+/** 请求 **/
 import server from './server/server'
 
 server(app);
+/**数据库写入操作
 
-/** mongoDB连接数据库 
-var
-var mongo = require("mongodb");
-var server = new mongo.Server('127.0.0.1',27000);
-new mongo.Db('my-website',server).open(function (err,client){
-	//发生错误不执行
-	if(err) throw err;
-	console.log('connected to mongodb');
-	app.users = new mongodb.Collection(client,'users');
+*insert(mongo.Kitten,{name:'name',password:'hello'});
 
-})
 **/
-insert(mongo.Kitten,{name:'name',password:'hello'});
+
 //中间件 
 // app.use(express.bodyParser());
-// app.use(express.cookieParser());
-// app.use(express.session({secret:'my secret'}));
+app.use(cookieparser()); //使用cookie
+app.use(session({secret:'my secret'})); //使用session
 
 // 指定视图
 app.set('view engine','jade');
