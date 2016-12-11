@@ -2,6 +2,9 @@ var express = require("express");
 var app = express();
 var mongo = require('./server/mongo');
 var insert = require('./server/insert');
+import server from './server/server'
+
+server(app);
 
 /** mongoDB连接数据库 
 var

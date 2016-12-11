@@ -1,9 +1,11 @@
+'use strict';
+
 module.exports = function (db,data){
 	if(typeof data !== 'object') return false;
 	console.log(data);
 	var slience = new db(data);
 	db.find({},function(err,docs){
-		for(i in docs){
+		for(var i in docs){
 			if(docs[i].name == slience.name){
 				console.log("the data saved");
 				return false;
