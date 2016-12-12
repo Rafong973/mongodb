@@ -3,14 +3,11 @@
 module.exports = function router(app){
 	/** 路由 **/
 	app.get('/',function (req,res){
-		res.render('index',{authenticated:false});
+		res.render('index');
 	})
 
-	app.get('/login',function(req,res){
-		res.render('login');
+	app.get('/system',function(req,res){
+		res.render('system');
 	})
 
-	app.get('/signup',function(req,res){
-		res.render('signup');
-	})
 }
