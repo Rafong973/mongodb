@@ -1,3 +1,4 @@
+fontsize()
 var $ = function(name){
 	var n = name.substring(1,name.length),
 		t = name.substring(0,1);
@@ -48,3 +49,13 @@ var touch = (function(){
 $(".nav-ul")[0].addEventListener("touchstart",touch.start,false);
 $(".nav-ul")[0].addEventListener("touchmove",touch.move,false);
 $(".nav-ul")[0].addEventListener("touchend",touch.end,false);
+
+
+window.onresize = function (){
+	fontsize()
+}
+function fontsize(){
+	var deviceWidth = document.documentElement.clientWidth;
+	if(deviceWidth > 640) deviceWidth = 640;
+	document.documentElement.style.fontSize = deviceWidth / 6.4 + 'px';
+}
