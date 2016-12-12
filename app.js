@@ -39,6 +39,6 @@ app.set('view engine','html');
 
 
 
-app.listen(8074,function (){
+app.listen(3000,function (){
 	console.log('app listen on *:3000');
 })

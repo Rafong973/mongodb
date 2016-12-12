@@ -11,15 +11,9 @@ var $ = function(name){
 		break;
 	}
 };
-
 $(".menu-icon")[0].onclick = function (){
 	var d = $(".nav-ul")[0];
-	console.log(d.style);
-	if(d.style.marginLeft == "-100%"){
-		d.style.marginLeft = "0";
-	}else{
-		d.style.marginLeft = "-100%";
-	}
+	d.style.marginLeft = "0";
 }
 
 var touch = (function(){
