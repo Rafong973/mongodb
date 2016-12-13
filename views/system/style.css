@@ -65,7 +65,14 @@ input[type="text"]:focus,input[type="number"]:focus,input[type="password"]:focus
 
 
 
-.login-body[_v-5bb720a8] {
+.nav-view {
+  position: fixed;
+  top: 0;
+  left: 0; }
+
+.nav-view li {
+  float: left; }
+.login-body[_v-92cf3c54] {
   position: fixed;
   top: 0;
   left: 0;
@@ -73,7 +80,7 @@ input[type="text"]:focus,input[type="number"]:focus,input[type="password"]:focus
   width: 100%;
   background-color: #fafafa; }
 
-.login-data[_v-5bb720a8] {
+.login-data[_v-92cf3c54] {
   position: absolute;
   top: 10%;
   left: 50%;
@@ -83,5 +90,24 @@ input[type="text"]:focus,input[type="number"]:focus,input[type="password"]:focus
   height: 400px;
   border-radius: 5px;
   padding: 10px;
+  background-color: #fff;
+  box-shadow: 3px 3px 3px 3px #dad5d5; }
+.login-body {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #fafafa; }
+
+.login-data {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%);
+  -webkit-transform: translate(-50%);
+  width: 300px;
+  border-radius: 5px;
+  padding: 10px 10px 20px 10px;
   background-color: #fff;
   box-shadow: 3px 3px 3px 3px #dad5d5; }

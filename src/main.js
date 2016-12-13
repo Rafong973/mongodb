@@ -11,6 +11,7 @@ var home  = require('./vue/home.vue');
 var about = require('./vue/about.vue');
 var app = require('./vue/app.vue');
 var login = require('./vue/login.vue');
+var reg = require('./vue/register.vue')
 vue.use(router);
 vue.use(resource);
 
@@ -32,6 +33,9 @@ route.map({
 	},
 	'/login':{
 		component: login
+	},
+	'/reg':{
+		component: reg
 	}
 });
 

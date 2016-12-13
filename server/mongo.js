@@ -1,3 +1,5 @@
+'use strict';
+
 /** mongoose 连接数据库**/
 var mongo = require("mongoose");
 mongo.connect('mongodb://localhost/my-website');
@@ -8,8 +10,9 @@ db.once('open',function (){
 })
 var kittySchema = mongo.Schema({
 	name:String,
-	password:String
+	password:String,
+	nickname: String
 })
 var Kitten = mongo.model('Kitten',kittySchema);
 
-module.exports = {Kitten : Kitten};
+module.exports = {Admin : Kitten};

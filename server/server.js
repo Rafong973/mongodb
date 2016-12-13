@@ -1,25 +1,32 @@
 'use strict';
 
 var user = require('./mongo');
+var insert = require('./insert');
+/**数据库写入操作
+
+*insert(mongo.Kitten,{name:'name',password:'hello'});
+
+**/
 
 module.exports = function server(app,body){
+	const db = user.Admin;
 	app.post('/login',body.urlencoded(),function(req,res){
 		const data = req.body;
-		const db = user.Kitten;
 		var msg = "";
 		if (!data) return res.sendStatus(400);
-		db.find({},function(err,docs){
-			for(var i=0;i<docs.length;i++){
-				console.log(docs[i]);
-				if(docs[i].name == data.u){
-					msg = {status:0,msg:"no this user"};
-					break;
-				}else{
-					msg = {status:1,msg:"u r welcome"};
-				}
+		db.find({name:data.u},function(err,docs){
+			if(!docs){
+				msg = {status:0,msg:"no this user"};
+			}else{
+				msg = {status:1,msg:"u r welcome"};
 			}
 			res.send(msg);
 		});
-		console.log(msg);
+	})
+	app.post('/sign',body.urlencoded(),function(req,res){
+		const data = req.body;
+		var msg = "";
+		if (!data) return res.sendStatus(400);
+	
 	})
 }

@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
 var mongo = require('./server/mongo');
-var insert = require('./server/insert');
 var cookie = require('cookie-parser');
 var session = require('express-session');
 var sta = require('express-static');
@@ -16,11 +15,7 @@ var path = require('path');
 import router from './server/router'
 router(app);
 
-/**数据库写入操作
-
-*insert(mongo.Kitten,{name:'name',password:'hello'});
-
-**/
+/** 请求 */
 import server from './server/server'
 server(app,bodyParser)
 

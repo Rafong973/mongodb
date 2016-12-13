@@ -1,0 +1,1 @@
+import { vaildateMobile } from './utils.js'

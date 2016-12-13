@@ -51,6 +51,11 @@ module.exports = {
 				loader: 'json-loader'
 			},
 			{
+	            test: /\.js$/,
+	            exclude: /node_modules|vue\/src|vue-router\/|vue-loader\/|vue-hot-reload-api\//,
+	            loader: 'babel'
+	        },
+			{
 				test: /\.css$/,
 				loader: ExtractTextPlugin.extract("style-loader",'css-loader','sass-loader') 
 			},
@@ -73,14 +78,14 @@ module.exports = {
 		presets:['es2015','stage-3'],
 		plugins: ['transform-runtime']
 	},
-	plugins: plugins,
+	plugins: plugins
 
-	devServer:{
-		proxy:{
-			'*':{
-				traget:'http://localhost:8080',
-				secure:false
-			}
-		}
-	}
+	// devServer:{
+	// 	proxy:{
+	// 		'*':{
+	// 			traget:'http://localhost:8080',
+	// 			secure:false
+	// 		}
+	// 	}
+	// }
 }
