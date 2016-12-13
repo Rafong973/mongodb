@@ -31,7 +31,7 @@ module.exports = {
 		//打包的js命名
 		filename: 'build.js',
 		//指向异步加载的路径
-		publicPath : '/system/',
+		publicPath : 'views/system/',
 		//非主文件的命名规则，加缓存用到md5
 		chunkFilename : '[id].build.js?[chunkhash]'
 
@@ -73,5 +73,14 @@ module.exports = {
 		presets:['es2015','stage-3'],
 		plugins: ['transform-runtime']
 	},
-	plugins: plugins
+	plugins: plugins,
+
+	devServer:{
+		proxy:{
+			'*':{
+				traget:'http://localhost:8080',
+				secure:false
+			}
+		}
+	}
 }

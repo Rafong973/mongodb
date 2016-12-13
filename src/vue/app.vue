@@ -1,8 +1,6 @@
 <template>
-	<div>
-		<Navbar></Navbar>
+	<div class="app">
 		<router-view
-		transition="route"
 		transition-mode="out-in">	
 		</router-view>
 	</div>
@@ -29,9 +27,3 @@ export default{
 
 }
 </script>
-
-<style>
-ul{
-	list-style-type: none;
-}
-</style>

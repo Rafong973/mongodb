@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "babel-node app.js",
-    "dev": "webpack-dev-server --hot  --inline --port 8074 --no-info --colors",
+    "dev": "webpack-dev-server --hot  --inline --port 3000 --no-info --config webpack.config.js",
     "build": "webpack"
   },
   "keywords": [],

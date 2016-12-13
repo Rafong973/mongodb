@@ -1,7 +1,9 @@
 'use strict';
 
-module.exports = function server(app){
-	app.post('/login',function(res,req){
-		console.log(res,req);
+module.exports = function server(app,body){
+	app.post('/login',body.urlencoded(),function(req,res){
+		console.log(body)
+		console.log(req.body);
+		res.send('welcome')
 	})
 }

@@ -1,11 +1,16 @@
 var vue = require("vue");
 var router = require("vue-router");
 var resource = require("vue-resource");
+
+/**css**/
+require('./views/common.css');
 require('./views/style.css');
 
+/**component**/
 var home  = require('./vue/home.vue');
 var about = require('./vue/about.vue');
-var app = require('./vue/app.vue')
+var app = require('./vue/app.vue');
+var login = require('./vue/login.vue');
 vue.use(router);
 vue.use(resource);
 
@@ -24,6 +29,9 @@ route.map({
 	},
 	'/about':{
 		component: about
+	},
+	'/login':{
+		component: login
 	}
 });
 

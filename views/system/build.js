@@ -9,44 +9,54 @@ webpackJsonp([0,1],[
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
+	"use strict";
+
 	var vue = __webpack_require__(2);
 	var router = __webpack_require__(4);
 	var resource = __webpack_require__(5);
-	__webpack_require__(6);
 
-	var home  = __webpack_require__(7);
-	var about = __webpack_require__(11);
-	var app = __webpack_require__(15)
+	/**css**/
+	__webpack_require__(6);
+	__webpack_require__(7);
+
+	/**component**/
+	var home = __webpack_require__(8);
+	var about = __webpack_require__(12);
+	var app = __webpack_require__(16);
+	var login = __webpack_require__(26);
 	vue.use(router);
 	vue.use(resource);
 
 	var route = new router({
-		hashbang : false,
-		history : false,
+		hashbang: false,
+		history: false,
 		saveScrollPosition: true,
-		transitionOnLoad : true,
-		transition:true,
+		transitionOnLoad: true,
+		transition: true,
 		transitionMode: 'out-in'
 	});
 
 	route.map({
-		'/home':{
+		'/home': {
 			component: home
 		},
-		'/about':{
+		'/about': {
 			component: about
+		},
+		'/login': {
+			component: login
 		}
 	});
 
 	route.redirect({
-	    '*': '/home'
-	})
+		'*': '/home'
+	});
 
-	route.afterEach(function(transition){
-		console.log("成功浏览到：" + transition.to.path)
-	})
+	route.afterEach(function (transition) {
+		console.log("成功浏览到：" + transition.to.path);
+	});
 
-	route.start(app,"#app");
+	route.start(app, "#app");
 
 /***/ },
 /* 2 */
@@ -14723,17 +14733,23 @@ webpackJsonp([0,1],[
 
 /***/ },
 /* 7 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__webpack_require__(8)
-	__vue_script__ = __webpack_require__(9)
+	__webpack_require__(9)
+	__vue_script__ = __webpack_require__(10)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\vue\\home.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(10)
+	__vue_template__ = __webpack_require__(11)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -14749,7 +14765,7 @@ webpackJsonp([0,1],[
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "_v-c3865cd0/home.vue"
+	  var id = "_v-47e1046c/home.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -14758,13 +14774,13 @@ webpackJsonp([0,1],[
 	})()}
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -14801,24 +14817,24 @@ webpackJsonp([0,1],[
 	// </style>
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div>\n\t<div>I am {{ name }}</div>\n</div>\n";
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__webpack_require__(12)
-	__vue_script__ = __webpack_require__(13)
+	__webpack_require__(13)
+	__vue_script__ = __webpack_require__(14)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\vue\\about.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(14)
+	__vue_template__ = __webpack_require__(15)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -14834,7 +14850,7 @@ webpackJsonp([0,1],[
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "_v-5de2ca24/about.vue"
+	  var id = "_v-2e761c60/about.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -14843,13 +14859,13 @@ webpackJsonp([0,1],[
 	})()}
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -14881,24 +14897,23 @@ webpackJsonp([0,1],[
 	// </style>
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div>I am {{ name }}</div>\n";
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__webpack_require__(16)
 	__vue_script__ = __webpack_require__(17)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\vue\\app.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(22)
+	__vue_template__ = __webpack_require__(25)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -14914,19 +14929,13 @@ webpackJsonp([0,1],[
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "_v-d6d36b10/app.vue"
+	  var id = "_v-36f66d24/app.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
 	    hotAPI.update(id, module.exports, __vue_template__)
 	  }
 	})()}
-
-/***/ },
-/* 16 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
 
 /***/ },
 /* 17 */
@@ -14961,17 +14970,9 @@ webpackJsonp([0,1],[
 		}
 	};
 	// </script>
-	//
-	// <style>
-	// ul{
-	// 	list-style-type: none;
-	// }
-	// </style>
 	// <template>
-	// 	<div>
-	// 		<Navbar></Navbar>
+	// 	<div class="app">
 	// 		<router-view
-	// 		transition="route"
 	// 		transition-mode="out-in">	
 	// 		</router-view>
 	// 	</div>
@@ -14987,12 +14988,12 @@ webpackJsonp([0,1],[
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
 	__webpack_require__(19)
-	__vue_script__ = __webpack_require__(20)
+	__vue_script__ = __webpack_require__(23)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\vue\\nav.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(21)
+	__vue_template__ = __webpack_require__(24)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -15008,7 +15009,7 @@ webpackJsonp([0,1],[
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "_v-2b03287a/nav.vue"
+	  var id = "_v-653969b4/nav.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -15018,12 +15019,324 @@ webpackJsonp([0,1],[
 
 /***/ },
 /* 19 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	// removed by extract-text-webpack-plugin
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(20);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(22)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/.npminstall/css-loader/0.25.0/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/8.5.4/vue-loader/lib/style-rewriter.js!./../../node_modules/.npminstall/sass-loader/4.0.2/sass-loader/index.js!./../../node_modules/.npminstall/vue-loader/8.5.4/vue-loader/lib/selector.js?type=style&index=0!./nav.vue", function() {
+				var newContent = require("!!./../../node_modules/.npminstall/css-loader/0.25.0/css-loader/index.js!./../../node_modules/.npminstall/vue-loader/8.5.4/vue-loader/lib/style-rewriter.js!./../../node_modules/.npminstall/sass-loader/4.0.2/sass-loader/index.js!./../../node_modules/.npminstall/vue-loader/8.5.4/vue-loader/lib/selector.js?type=style&index=0!./nav.vue");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
 
 /***/ },
 /* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(21)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".nav-view {\n  position: fixed;\n  top: 0;\n  left: 0; }\n\n.nav-view li {\n  float: left; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 21 */
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+
+	module.exports = function(list, options) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+
+		update(obj);
+
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+
+	var replaceText = (function () {
+		var textStore = [];
+
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+		var sourceMap = obj.sourceMap;
+
+		if (media) {
+			styleElement.setAttribute("media", media);
+		}
+
+		if (sourceMap) {
+			// https://developer.chrome.com/devtools/docs/javascript-debugging
+			// this makes source maps inside style tags work properly in Chrome
+			css += '\n/*# sourceURL=' + sourceMap.sources[0] + ' */';
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+
+
+/***/ },
+/* 23 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15064,16 +15377,203 @@ webpackJsonp([0,1],[
 	// </style>
 
 /***/ },
-/* 21 */
+/* 24 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"nav-view\">\n\t<ul>\t\n\t\t<li v-link=\"{path:'/home'}\">\n\t\t\t<a href=\"\">首页</a>\n\t\t</li>\n\t\t<li v-link=\"{path:'/about'}\">\n\t\t\t<a href=\"\">关于</a>\n\t\t</li>\n\t</ul>\n</div>\n";
 
 /***/ },
-/* 22 */
+/* 25 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div>\n\t<Navbar></Navbar>\n\t<router-view\n\ttransition=\"route\"\n\ttransition-mode=\"out-in\">\t\n\t</router-view>\n</div>\n";
+	module.exports = "\n<div class=\"app\">\n\t<router-view\n\ttransition-mode=\"out-in\">\t\n\t</router-view>\n</div>\n";
+
+/***/ },
+/* 26 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__webpack_require__(27)
+	__vue_script__ = __webpack_require__(28)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\vue\\login.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(30)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-5bb720a8/login.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 27 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 28 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _server = __webpack_require__(29);
+
+	exports.default = {
+		name: 'login',
+
+		data: function data() {
+			return {
+				title: '登陆',
+				name: 'login',
+				admin: '',
+				password: '',
+				remeber: false
+			};
+		},
+
+
+		methods: {
+			login: function login() {
+				if (!this.admin || !this.password) {
+					this.title = '你当前无法登陆，检查登陆信息';
+				} else {
+					this.title = '登陆';
+					(0, _server.login)(this.admin, this.password).then(function (res) {
+						console.log(res);
+					});
+					// this.http.post('/login',
+					// 	{
+					// 		name: this.admin,
+					// 		password: this.password
+					// 	}
+					// 	,
+					// 	{
+					// 		headers:{
+					// 			'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+					// 		}
+					// 	})
+					// }
+				}
+			}
+		}
+	};
+	// </script>
+	//
+	//
+	// <style scoped>
+	// .login-body{
+	// 	position: fixed;
+	// 	top: 0;
+	// 	left: 0;
+	// 	height: 100%;
+	// 	width: 100%;
+	// 	background-color: #fafafa;
+	// }
+	// .login-data{
+	// 	position: absolute;
+	// 	top: 10%;
+	// 	left: 50%;
+	// 	transform: translate(-50%);
+	// 	-webkit-transform: translate(-50%);
+	// 	width: 300px;
+	// 	height: 400px;
+	// 	border-radius: 5px;
+	// 	padding: 10px;
+	// 	background-color: #fff;
+	// 	box-shadow: 3px 3px 3px 3px #dad5d5;
+	// }
+	//
+	// </style>
+	// <template>
+	// 	<div class="login-body">
+	// 		<div class="login-data">
+	// 			<div class="login-title txc">
+	// 				<h3>{{ title }}</h3>
+	// 			</div>
+	// 			<form action="">
+	// 				<div class="input-group vertical-input">
+	// 					<label class="input-label">Admin：</label>
+	// 					<input type="text" class="input-input" v-model="admin">
+	// 				</div>
+	// 				<div class="input-group vertical-input">
+	// 					<label class="input-label">Password：</label>
+	// 					<input type="password" class="input-input" v-model="password">
+	// 				</div>
+	// 				<div class="input-group vertical-input">
+	// 					<input type="checkbox" id="remeber" class="input-checkbox" v-model="remeber">
+	// 					<label class="check-label" for="remeber">Remeber Me</label>
+	// 				</div>
+	// 				<div class="input-group vertical-input"></div>
+	// 				<div class="input-group row">
+	// 					<a href="javascript:void(0)" class="txc btn btn-primary col-12" @click="login">Sign In</a>
+	// 				</div>
+	// 				<div class="input-group row">
+	// 					<a href="javascript:void(0)" class="txc btn btn-danger col-12">Go Back</a>
+	// 				</div>
+	// 			</form>
+	// 		</div>
+	// 	</div>
+	// </template>
+	//
+	//
+	// <script>
+	//js
+
+/***/ },
+/* 29 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.login = login;
+
+	var _vue = __webpack_require__(2);
+
+	var _vue2 = _interopRequireDefault(_vue);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function login(accout, password) {
+
+		return _vue2.default.http.post('/login', 'u=' + accout + '&p=' + password, {
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+			}
+		});
+	}
+
+/***/ },
+/* 30 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"login-body\" _v-5bb720a8=\"\">\n\t<div class=\"login-data\" _v-5bb720a8=\"\">\n\t\t<div class=\"login-title txc\" _v-5bb720a8=\"\">\n\t\t\t<h3 _v-5bb720a8=\"\">{{ title }}</h3>\n\t\t</div>\n\t\t<form action=\"\" _v-5bb720a8=\"\">\n\t\t\t<div class=\"input-group vertical-input\" _v-5bb720a8=\"\">\n\t\t\t\t<label class=\"input-label\" _v-5bb720a8=\"\">Admin：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input\" v-model=\"admin\" _v-5bb720a8=\"\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\" _v-5bb720a8=\"\">\n\t\t\t\t<label class=\"input-label\" _v-5bb720a8=\"\">Password：</label>\n\t\t\t\t<input type=\"password\" class=\"input-input\" v-model=\"password\" _v-5bb720a8=\"\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\" _v-5bb720a8=\"\">\n\t\t\t\t<input type=\"checkbox\" id=\"remeber\" class=\"input-checkbox\" v-model=\"remeber\" _v-5bb720a8=\"\">\n\t\t\t\t<label class=\"check-label\" for=\"remeber\" _v-5bb720a8=\"\">Remeber Me</label>\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\" _v-5bb720a8=\"\"></div>\n\t\t\t<div class=\"input-group row\" _v-5bb720a8=\"\">\n\t\t\t\t<a href=\"javascript:void(0)\" class=\"txc btn btn-primary col-12\" @click=\"login\" _v-5bb720a8=\"\">Sign In</a>\n\t\t\t</div>\n\t\t\t<div class=\"input-group row\" _v-5bb720a8=\"\">\n\t\t\t\t<a href=\"javascript:void(0)\" class=\"txc btn btn-danger col-12\" _v-5bb720a8=\"\">Go Back</a>\n\t\t\t</div>\n\t\t</form>\n\t</div>\n</div>\n";
 
 /***/ }
 ]);
