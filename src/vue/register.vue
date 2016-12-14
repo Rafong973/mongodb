@@ -34,7 +34,7 @@
 					<a href="javascript:void(0)" class="txc btn btn-primary col-12" @click='submit'>Submit</a>
 				</div>
 				<div class="input-group row">
-					<a href="javascript:void(0)" class="txc btn btn-danger col-12">Go Back</a>
+					<a href="javascript:void(0)" class="txc btn btn-danger col-12"  v-link="{path:'/login'}">Sign in</a>
 				</div>
 			</form>
 		</div>

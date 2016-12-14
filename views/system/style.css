@@ -58,7 +58,14 @@
   -webkit-transform: translateX(10px);
           transform: translateX(10px);
   opacity: 0; }
-.login-body[_v-5bb720a8] {
+.nav-view {
+  position: fixed;
+  top: 0;
+  left: 0; }
+
+.nav-view li {
+  float: left; }
+.login-body[_v-019bdc6a] {
   position: fixed;
   top: 0;
   left: 0;
@@ -66,7 +73,7 @@
   width: 100%;
   background-color: #fafafa; }
 
-.login-data[_v-5bb720a8] {
+.login-data[_v-019bdc6a] {
   position: absolute;
   top: 10%;
   left: 50%;

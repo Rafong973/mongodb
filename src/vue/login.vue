@@ -22,7 +22,7 @@
 					<a href="javascript:void(0)" class="txc btn btn-primary col-12" @click="login">Sign In</a>
 				</div>
 				<div class="input-group row">
-					<a href="javascript:void(0)" class="txc btn btn-danger col-12">Go Back</a>
+					<a href="javascript:void(0)" class="txc btn btn-danger col-12" v-link="{path:'/reg'}">Sign up</a>
 				</div>
 			</form>
 		</div>
@@ -64,7 +64,7 @@ export default{
 						if(res.body.status == 1){
 							this.title = '正在登陆...';
 							window.sessionStorage.setItem('user',res.body);
-							router.redirect('/home');
+							this.$router.go({path:'/home'})
 						}else{
 							this.title = '登陆信息可能存在错误...';
 							return false;
