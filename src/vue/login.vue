@@ -2,7 +2,7 @@
 	<div class="login-body">
 		<div class="login-data">
 			<div class="login-title txc">
-				<h3>{{ title }}</h3>
+				<h3 v-bind:class="{ warm:warm }">{{ title }}</h3>
 			</div>
 			<form>
 				<div class="input-group vertical-input">
@@ -32,7 +32,8 @@
 
 <script>
 //js
-import {login} from '../script/server'
+import { login } from '../script/server'
+import vaildate from '../script/vaildate'
 
 export default{
 	name: 'login',
@@ -43,19 +44,33 @@ export default{
 			name : 'login',
 			admin: '',
 			password: '',
-			remeber: false
+			remeber: false,
+			warm: false
 		}
 	},
-
+	directives:{
+		phones: vaildate
+	},
 	methods:{
 		login(){
+			this.warm = true;
 			if(!this.admin || !this.password){
 				this.title ='你当前无法登陆，检查登陆信息';
 			}else{
 				this.title ='登陆';
 				login(this.admin,this.password)
 				.then((res) => {
-					console.log(res);
+					if(res.status == 200){
+						if(res.body.status == 1){
+							this.title = '正在登陆...';
+						}else{
+							this.title = '登陆信息可能存在错误...';
+							return false;
+						}
+					}else{
+						this.title = '登陆失败';
+						return false;
+					}
 				})
 				// this.http.post('/login',
 				// 	{

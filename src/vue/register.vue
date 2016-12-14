@@ -2,7 +2,7 @@
 	<div class="login-body">
 		<div class="login-data">
 			<div class="login-title txc">
-				<h3>{{ title }}</h3>
+				<h3 v-bind:class="{ warm:warm }">{{ title }}</h3>
 			</div>
 			<form>
 				<div class="input-group vertical-input">
@@ -31,7 +31,7 @@
 				</div>
 				<div class="input-group vertical-input"></div>
 				<div class="input-group row">
-					<a href="javascript:void(0)" class="txc btn btn-primary col-12">Submit</a>
+					<a href="javascript:void(0)" class="txc btn btn-primary col-12" @click='submit'>Submit</a>
 				</div>
 				<div class="input-group row">
 					<a href="javascript:void(0)" class="txc btn btn-danger col-12">Go Back</a>
@@ -44,7 +44,7 @@
 
 <script>
 //js
-import {login} from '../script/server'
+import { reg } from '../script/server'
 
 export default{
 	name: 'register',
@@ -56,14 +56,73 @@ export default{
 			admin: '',
 			nickname: '',
 			passagain: '',
+			validation: '',
 			password: '',
-			super: false
+			super: false,
+			warm:false
 		}
 	},
 
 	methods:{
-		
+		submit(){
+			let a = vail(this.passagain);
+			let s = this.super ? 0 : 1;
+			let arr = {
+				admin: this.admin,
+				password: this.password,
+				nickname: this.nickname,
+				validation: this.validation,
+				grade: s
+			}
+			let z = vail(arr);
+			this.warm = true;
+			if(a && z){	
+				reg(z)
+				.then((res) => {
+					let data = res.body;
+					switch(data.status){
+						case 0:
+							this.title = '注册成功';
+						break;
+						case 1:
+							this.title = '此用户已经存在了';
+						break;
+						case 4:
+							this.title = '管理员验证不通过，检查验证码';
+						break;
+						case 3:
+							this.title = '注册失败，请重试';
+						break;
+						return false;
+					}
+				})
+			}else{
+				this.title = "注册信息不全，无法完成注册"
+				return false;
+			}
+		}
 	}
+}
+
+function vail(val){
+	let v ='';
+	if(typeof val === 'object'){
+		for(var i in val){
+			if(!val[i]) {
+				v = false;
+				break;
+			}else{
+				v += i +'='+ val[i] + '&';
+			}
+		}
+	}else{
+		if(!val){
+			v = false;
+		}else{
+			v = true;
+		}
+	}
+	return v;
 }
 </script>
 
@@ -89,5 +148,7 @@ export default{
 	background-color: #fff;
 	box-shadow: 3px 3px 3px 3px #dad5d5;
 }
-
+.warm{
+	color:#d70941;
+}
 </style>
