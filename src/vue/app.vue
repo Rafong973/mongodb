@@ -22,7 +22,6 @@ export default{
 	},
 	created(){
 		this.$loadingRouteData = false;
-		console.log(this.name);
 	},
 
 }

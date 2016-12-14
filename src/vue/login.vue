@@ -63,6 +63,8 @@ export default{
 					if(res.status == 200){
 						if(res.body.status == 1){
 							this.title = '正在登陆...';
+							window.sessionStorage.setItem('user',res.body);
+							router.redirect('/home');
 						}else{
 							this.title = '登陆信息可能存在错误...';
 							return false;
@@ -72,18 +74,6 @@ export default{
 						return false;
 					}
 				})
-				// this.http.post('/login',
-				// 	{
-				// 		name: this.admin,
-				// 		password: this.password
-				// 	}
-				// 	,
-				// 	{
-				// 		headers:{
-				// 			'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-				// 		}
-				// 	})
-				// }
 			}
 		}
 	}

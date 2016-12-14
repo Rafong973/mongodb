@@ -17,10 +17,23 @@ module.exports = function server(app,body){
 		let msg = '';
 		if (!data) return res.sendStatus(400);
 		db.find({admin:data.u},function(err,docs){
-			if(docs.length <= 1){
+			if(docs.length == 0){
 				msg = {status:0,msg:'no this user'};
 			}else{
-				msg = {status:1,msg:'u r welcome'};
+				let pass = cry.createHmac('sha512',data.p)
+							  .update('I am bydqjx')
+							  .digest('hex');
+				if(pass == docs[0].password){
+					msg = {
+						   status:1,msg:'u r welcome',
+					       admin:docs[0].admin,
+					       user:docs[0].nickname,
+					       grade:docs[0].grade
+					      };
+				}else{
+					msg = {status:2,msg:'password is error'};
+				}
+				
 			}
 			res.send(msg);
 		});

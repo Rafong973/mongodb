@@ -82,9 +82,9 @@ webpackJsonp([0,1],[
 		'*': '/home'
 	});
 
-	route.afterEach(function (transition) {
-		console.log("成功浏览到：" + transition.to.path);
-	});
+	// route.afterEach(function(transition){
+	// 	console.log("成功浏览到：" + transition.to.path)
+	// })
 	route.beforeEach(function (_ref) {
 		var to = _ref.to,
 		    next = _ref.next,
@@ -15012,7 +15012,6 @@ webpackJsonp([0,1],[
 		},
 		created: function created() {
 			this.$loadingRouteData = false;
-			console.log(this.name);
 		}
 	};
 	// </script>
@@ -15571,6 +15570,8 @@ webpackJsonp([0,1],[
 						if (res.status == 200) {
 							if (res.body.status == 1) {
 								_this.title = '正在登陆...';
+								window.sessionStorage.setItem('user', res.body);
+								router.redirect('/home');
 							} else {
 								_this.title = '登陆信息可能存在错误...';
 								return false;
@@ -15580,18 +15581,6 @@ webpackJsonp([0,1],[
 							return false;
 						}
 					});
-					// this.http.post('/login',
-					// 	{
-					// 		name: this.admin,
-					// 		password: this.password
-					// 	}
-					// 	,
-					// 	{
-					// 		headers:{
-					// 			'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-					// 		}
-					// 	})
-					// }
 				}
 			}
 		}
