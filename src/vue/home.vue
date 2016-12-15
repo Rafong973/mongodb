@@ -18,7 +18,7 @@
 							<th>操作</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody v-if="list">
 						<tr v-for="l in list">
 							<td>1</td>
 							<td>{{ l.no }}</td>
@@ -28,7 +28,7 @@
 							<td>{{ l.room }}</td>
 							<td>{{ l.date }}</td>
 							<td class="td-spe"> {{ l.exp }}</td>
-							<td>{{ l.status }}</td>
+							<td>{{ l.status | returnStatus }}</td>
 							<td>
 								<a href="javascript:void(0)">指派</a>
 								<a href="javascript:void(0)">删除</a>
@@ -47,24 +47,24 @@
 <script>
 //js
 import { data } from '../script/server'
+
 export default{
 	name: 'home',
 	
 	data(){
 		return{
 			name : 'home',
-			// list:[{date:"2016-12-18T04:00:00.000Z",exp:"sdfsdf",name:"324234",no:"werewer",room:"23423",tel:234234,type:1,status:1}]
-			list:''
+			list:[{date:"2016-12-18T04:00:00.000Z",exp:"sdfsdf",name:"324234",no:"werewer",room:"23423",tel:234234,type:1,status:1}]
+			// list:''
 		}
 	},
 	created(){
 		this.$loadingRouteData = false;
-		data()
-		.then((res) => {
-			this.list = res.body.msg;
-		})
+		// data()
+		// .then((res) => {
+		// 	this.list = res.body.msg;
+		// })
 	}
-
 }
 </script>
 

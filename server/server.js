@@ -7,7 +7,6 @@ const re = user.Data;
 const vail = 'adminpd123';
 
 
-console.log(re);
 module.exports = function server(app,body){
 	app.post('/login',body.urlencoded(),function(req,res){
 		const data = req.body;

@@ -15,12 +15,16 @@ import reg from './vue/register.vue'
 
 import vaildate from './script/vaildate'
 
+import retrunStatus from './script/filter'
+
 vue.use(router);
 vue.use(resource);
 
 /**directive**/
 vue.directive('vaildate',vaildate)
 
+/**filter**/
+vue.filter('retrunStatus',retrunStatus)
 
 var route = new router({
 	hashbang : false,
