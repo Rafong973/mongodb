@@ -20,3 +20,15 @@ export function reg(value){
 			}
 		})
 }
+
+export function data(value){
+	return vue.http.post(
+			'/data',
+			value,{
+				headers:{
+					'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+				}
+			}
+
+		)
+}

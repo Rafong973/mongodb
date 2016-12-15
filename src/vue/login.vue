@@ -11,7 +11,7 @@
 				</div>
 				<div class="input-group vertical-input">
 					<label class="input-label">Password：</label>
-					<input type="password" class="input-input" v-model="password">
+					<input type="password" class="input-input password" v-model="password">
 				</div>
 				<div class="input-group vertical-input">
 					<input type="checkbox" id="remeber" class="input-checkbox" v-model="remeber">
@@ -33,7 +33,6 @@
 <script>
 //js
 import { login } from '../script/server'
-import vaildate from '../script/vaildate'
 
 export default{
 	name: 'login',
@@ -47,9 +46,6 @@ export default{
 			remeber: false,
 			warm: false
 		}
-	},
-	directives:{
-		phones: vaildate
 	},
 	methods:{
 		login(){
@@ -81,7 +77,7 @@ export default{
 </script>
 
 
-<style scoped>
+<style>
 .login-body{
 	position: fixed;
 	top: 0;
@@ -96,12 +92,13 @@ export default{
 	left: 50%;
 	transform: translate(-50%);
 	-webkit-transform: translate(-50%);
-	width: 300px;
-	height: 400px;
-	border-radius: 5px;
-	padding: 10px;
+	width: 18.75rem;
+	border-radius: .3125rem;
+	padding: .625rem .625rem 1.25rem .625rem;
 	background-color: #fff;
-	box-shadow: 3px 3px 3px 3px #dad5d5;
+	box-shadow: .1875rem .1875rem .1875rem .1875rem #dad5d5;
 }
-
+.warm{
+	color:#d70941;
+}
 </style>

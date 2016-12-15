@@ -3,14 +3,11 @@
 const user = require('./mongo');
 const cry = require('crypto');
 const db = user.Admin;
+const re = user.Data;
 const vail = 'adminpd123';
 
-/**数据库写入操作
 
-*insert(mongo.Kitten,{name:'name',password:'hello'});
-
-**/
-
+console.log(re);
 module.exports = function server(app,body){
 	app.post('/login',body.urlencoded(),function(req,res){
 		const data = req.body;
@@ -41,7 +38,7 @@ module.exports = function server(app,body){
 	app.post('/sign',body.urlencoded(),function(req,res){
 		const data = req.body;
 		let msg = '';
-		if (!data) return res.sendStatus(400);
+		if (!data) return xres.sendStatus(400);
 		if(data.validation != vail) return res.send({status:4,msg:'the admin is error'})
 		db.find({admin:data.admin},function(err,docs){
 			if(err) res.send({status:3,msg:'sever is error'});
@@ -58,5 +55,27 @@ module.exports = function server(app,body){
 			}
 			res.send(msg);
 		})
+	})
+
+	app.post('/data',body.urlencoded(),function(req,res){
+		const data = req.body;
+		if(!data[0]){
+			re.find({},function(err,docs){
+				if(!err){
+					res.send({status:0,msg:docs});
+				}else{
+					res.send({status:3,msg:'mongo is error'})
+				}
+			})
+		}else{
+			res.send({status:3,msg:'nothing'});
+		}
+	})
+
+	app.post('/save',body.urlencoded(),function(req,res){
+		const data = req.body;
+		let m = new re(data);
+		m.save();
+		res.send({status:0,msg:'susccess'});
 	})
 }

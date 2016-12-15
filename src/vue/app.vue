@@ -1,8 +1,6 @@
 <template>
 	<div class="app">
-		<!-- <transition> -->
-			<router-view></router-view>
-		<!-- </transition> -->
+		<router-view></router-view>
 	</div>
 </template>
 
@@ -28,6 +26,7 @@ export default{
 </script>
 
 <style>
+body{font-size:16px;}
 .slide-fade-enter-active {
   transition: all .3s ease;
 }
@@ -35,7 +34,7 @@ export default{
   transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 }
 .slide-fade-enter, .slide-fade-leave-active {
-  transform: translateX(10px);
+  transform: translateX(0.625rem);
   opacity: 0;
 }
 </style>

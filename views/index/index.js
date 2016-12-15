@@ -44,4 +44,46 @@ $(".nav-ul")[0].addEventListener("touchstart",touch.start,false);
 $(".nav-ul")[0].addEventListener("touchmove",touch.move,false);
 $(".nav-ul")[0].addEventListener("touchend",touch.end,false);
 
+$("#data-choose").flatpickr({
+	minDate: new Date(),
+	enableTime: true,
+	"locale": "zh",
+	time_24hr:true
+})
+function ajax(type,u,data){
+	var xml = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP"),
+		d;
 
+	xml.open(type,u,data);
+	if(type == 'POST') xml.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+	xml.send(data);
+	xml.onreadystatechange = function (){
+		if(xml.readyState==4 && xml.status==200){
+			d = xmlhttp.responseText;
+		}else{
+			d = false;
+		}
+	}
+	return d;
+}
+
+function vaildata(value){
+	var f ='';
+	if(value.length > 1){
+		for(var i = 0;i < value.length;i++){
+			var id = value[i].getAttribute("name"),
+				va = value[i].value;
+			if(!va){
+				f = false;
+				break;
+			}else{
+				f += id + '= ' + va + '&';
+			}
+		}
+		return f;
+	}
+}
+$("#save").onclick = function(){
+	var d = vaildata($('.input-input'));
+	var status = ajax('POST','/save',d);
+}
