@@ -43,7 +43,7 @@ webpackJsonp([0,1],[
 
 	var _vaildate2 = _interopRequireDefault(_vaildate);
 
-	var _filter = __webpack_require__(96);
+	var _filter = __webpack_require__(95);
 
 	var _filter2 = _interopRequireDefault(_filter);
 
@@ -52,8 +52,8 @@ webpackJsonp([0,1],[
 	// import transition from 'vue-transition';
 
 	/**css**/
+	__webpack_require__(96);
 	__webpack_require__(97);
-	__webpack_require__(98);
 
 	/**component**/
 
@@ -65,7 +65,8 @@ webpackJsonp([0,1],[
 	_vue2.default.directive('vaildate', _vaildate2.default);
 
 	/**filter**/
-	_vue2.default.filter('retrunStatus', _filter2.default);
+	_vue2.default.filter('numstatus', _filter2.default.numstatus);
+	_vue2.default.filter('problem', _filter2.default.problem);
 
 	var route = new _vueRouter2.default({
 		hashbang: false,
@@ -14713,15 +14714,15 @@ webpackJsonp([0,1],[
 	// 					</thead>
 	// 					<tbody v-if="list">
 	// 						<tr v-for="l in list">
-	// 							<td>1</td>
+	// 							<td>{{ $index + 1 }}</td>
 	// 							<td>{{ l.no }}</td>
 	// 							<td>{{ l.name }}</td>
 	// 							<td>{{ l.tel }}</td>
-	// 							<td>{{ l.type }}</td>
+	// 							<td>{{ l.type | problem }}</td>
 	// 							<td>{{ l.room }}</td>
 	// 							<td>{{ l.date }}</td>
 	// 							<td class="td-spe"> {{ l.exp }}</td>
-	// 							<td>{{ l.status | returnStatus }}</td>
+	// 							<td>{{ l.status | numstatus }}</td>
 	// 							<td>
 	// 								<a href="javascript:void(0)">指派</a>
 	// 								<a href="javascript:void(0)">删除</a>
@@ -14787,7 +14788,7 @@ webpackJsonp([0,1],[
 /* 10 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"data-body\">\n\t<div class=\"data-row\">\n\t\t<div class=\"search\"></div>\n\t\t<div class=\"data\">\n\t\t\t<table class=\"table\">\n\t\t\t\t<thead>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>序号</th>\n\t\t\t\t\t\t<th>学号</th>\n\t\t\t\t\t\t<th>姓名</th>\n\t\t\t\t\t\t<th>手机号码</th>\n\t\t\t\t\t\t<th>问题类型</th>\n\t\t\t\t\t\t<th>宿舍</th>\n\t\t\t\t\t\t<th>预约时间</th>\n\t\t\t\t\t\t<th>问题详情</th>\n\t\t\t\t\t\t<th>状态</th>\n\t\t\t\t\t\t<th>操作</th>\n\t\t\t\t\t</tr>\n\t\t\t\t</thead>\n\t\t\t\t<tbody v-if=\"list\">\n\t\t\t\t\t<tr v-for=\"l in list\">\n\t\t\t\t\t\t<td>1</td>\n\t\t\t\t\t\t<td>{{ l.no }}</td>\n\t\t\t\t\t\t<td>{{ l.name }}</td>\n\t\t\t\t\t\t<td>{{ l.tel }}</td>\n\t\t\t\t\t\t<td>{{ l.type }}</td>\n\t\t\t\t\t\t<td>{{ l.room }}</td>\n\t\t\t\t\t\t<td>{{ l.date }}</td>\n\t\t\t\t\t\t<td class=\"td-spe\"> {{ l.exp }}</td>\n\t\t\t\t\t\t<td>{{ l.status | returnStatus }}</td>\n\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t<a href=\"javascript:void(0)\">指派</a>\n\t\t\t\t\t\t\t<a href=\"javascript:void(0)\">删除</a>\n\t\t\t\t\t\t\t<a href=\"javascript:void(0)\">我来处理</a>\n\t\t\t\t\t\t\t<a href=\"javascript:void(0)\">完成处理</a>\n\t\t\t\t\t\t</td>\n\t\t\t\t\t</tr>\n\t\t\t\t</tbody>\n\t\t\t</table>\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"data-body\">\n\t<div class=\"data-row\">\n\t\t<div class=\"search\"></div>\n\t\t<div class=\"data\">\n\t\t\t<table class=\"table\">\n\t\t\t\t<thead>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<th>序号</th>\n\t\t\t\t\t\t<th>学号</th>\n\t\t\t\t\t\t<th>姓名</th>\n\t\t\t\t\t\t<th>手机号码</th>\n\t\t\t\t\t\t<th>问题类型</th>\n\t\t\t\t\t\t<th>宿舍</th>\n\t\t\t\t\t\t<th>预约时间</th>\n\t\t\t\t\t\t<th>问题详情</th>\n\t\t\t\t\t\t<th>状态</th>\n\t\t\t\t\t\t<th>操作</th>\n\t\t\t\t\t</tr>\n\t\t\t\t</thead>\n\t\t\t\t<tbody v-if=\"list\">\n\t\t\t\t\t<tr v-for=\"l in list\">\n\t\t\t\t\t\t<td>{{ $index + 1 }}</td>\n\t\t\t\t\t\t<td>{{ l.no }}</td>\n\t\t\t\t\t\t<td>{{ l.name }}</td>\n\t\t\t\t\t\t<td>{{ l.tel }}</td>\n\t\t\t\t\t\t<td>{{ l.type | problem }}</td>\n\t\t\t\t\t\t<td>{{ l.room }}</td>\n\t\t\t\t\t\t<td>{{ l.date }}</td>\n\t\t\t\t\t\t<td class=\"td-spe\"> {{ l.exp }}</td>\n\t\t\t\t\t\t<td>{{ l.status | numstatus }}</td>\n\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t<a href=\"javascript:void(0)\">指派</a>\n\t\t\t\t\t\t\t<a href=\"javascript:void(0)\">删除</a>\n\t\t\t\t\t\t\t<a href=\"javascript:void(0)\">我来处理</a>\n\t\t\t\t\t\t\t<a href=\"javascript:void(0)\">完成处理</a>\n\t\t\t\t\t\t</td>\n\t\t\t\t\t</tr>\n\t\t\t\t</tbody>\n\t\t\t</table>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 11 */
@@ -16617,16 +16618,13 @@ webpackJsonp([0,1],[
 
 /***/ },
 /* 94 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-
-	var _utils = __webpack_require__(95);
-
 	exports.default = {
 		bind: function bind() {
 			console.log(this);
@@ -16641,59 +16639,59 @@ webpackJsonp([0,1],[
 /* 95 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+		value: true
 	});
-	exports.vaildateMoblie = vaildateMoblie;
-	exports.validateName = validateName;
-	exports.validateEmail = validateEmail;
-	function vaildateMoblie(value) {
-	    var reg = /(^[0-9]{3,4}\-[0-9]{7,8}$)|(^[0-9]{7,8}$)|(^\([0-9]{3,4}\)[0-9]{3,8}$)|(^0{0,1}1[3-9][0-9]{9}$)/;
-	    if (!reg.test(vale)) {
-	        return false;
-	    } else {
-	        return true;
-	    }
-	}
-	function validateName(value) {
-	    var reg = /^[0-9a-zA-Z\u4e00-\u9fa5_-]*$/;
-	    if (!reg.test(value) || !checkLen(value, 4, 30)) {
-	        return false;
-	    } else {
-	        return true;
-	    }
-	}
-	function validateEmail(value) {
-	    var reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-	    if (!reg.test(value)) {
-	        return false;
-	    } else {
-	        return true;
-	    }
-	}
+	exports.default = {
+		numstatus: function numstatus(value) {
+			var t = void 0;
+			switch (value) {
+				case 0:
+					t = '未处理';
+					break;
+				case 1:
+					t = '处理中';
+					break;
+				case 2:
+					t = '已完成';
+					break;
+				default:
+					t = '未知';
+					break;
+			}
+			return t;
+		},
+		problem: function problem(value) {
+			var t = void 0;
+			switch (value) {
+				case 0:
+					t = '锐捷问题';
+					break;
+				case 1:
+					t = '硬件问题';
+					break;
+				case 2:
+					t = '软件问题';
+					break;
+				case 3:
+				default:
+					t = '未知问题';
+					break;
+			}
+			return t;
+		}
+	};
 
 /***/ },
 /* 96 */
 /***/ function(module, exports) {
 
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.readStatus = readStatus;
-	function readStatus(value) {}
-
-/***/ },
-/* 97 */
-/***/ function(module, exports) {
-
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 98 */
+/* 97 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

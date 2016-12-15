@@ -5,8 +5,8 @@ var mongo = require('mongoose');
 mongo.connect('mongodb://localhost/my-website',{config: { autoIndex:true }});
 var Schema = mongo.Schema;
 var db = mongo.connection;
-db.on('error',function(){
-	return res.send({status:4,msg:'no mongoose'})
+db.on('error',function(err){
+	console.log(err);
 });
 db.once('open',function (){
 	console.log('mongodb is connected');

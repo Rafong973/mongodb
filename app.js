@@ -1,6 +1,5 @@
 var express = require('express');
 var app = express();
-var mongo = require('./server/mongo');
 var cookie = require('cookie-parser');
 var session = require('express-session');
 var sta = require('express-static');
@@ -35,6 +34,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 
 
-app.listen(80,function (){
-	console.log('app listen on *:80');
+app.listen(8080,function (){
+	console.log('app listen on *:8080');
 })

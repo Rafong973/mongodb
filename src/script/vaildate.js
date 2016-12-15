@@ -1,4 +1,4 @@
-import { vaildateMobile } from './utils.js'
+
 
 export default {
 	bind(){

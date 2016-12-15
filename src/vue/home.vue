@@ -20,15 +20,15 @@
 					</thead>
 					<tbody v-if="list">
 						<tr v-for="l in list">
-							<td>1</td>
+							<td>{{ $index + 1 }}</td>
 							<td>{{ l.no }}</td>
 							<td>{{ l.name }}</td>
 							<td>{{ l.tel }}</td>
-							<td>{{ l.type }}</td>
+							<td>{{ l.type | problem }}</td>
 							<td>{{ l.room }}</td>
 							<td>{{ l.date }}</td>
 							<td class="td-spe"> {{ l.exp }}</td>
-							<td>{{ l.status | returnStatus }}</td>
+							<td>{{ l.status | numstatus }}</td>
 							<td>
 								<a href="javascript:void(0)">指派</a>
 								<a href="javascript:void(0)">删除</a>
