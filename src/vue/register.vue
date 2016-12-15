@@ -15,7 +15,7 @@
 				</div>
 				<div class="input-group vertical-input">
 					<label class="input-label">Password：</label>
-					<input type="password" class="input-input" v-model="password">
+					<input type="password" class="input-input password" v-model="password" >
 				</div>
 				<div class="input-group vertical-input">
 					<label class="input-label">PassAgain：</label>

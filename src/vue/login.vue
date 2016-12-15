@@ -11,7 +11,7 @@
 				</div>
 				<div class="input-group vertical-input">
 					<label class="input-label">Password：</label>
-					<input type="password" class="input-input" v-model="password">
+					<input type="password" class="input-input password" v-model="password">
 				</div>
 				<div class="input-group vertical-input">
 					<input type="checkbox" id="remeber" class="input-checkbox" v-model="remeber">
@@ -33,7 +33,6 @@
 <script>
 //js
 import { login } from '../script/server'
-import vaildate from '../script/vaildate'
 
 export default{
 	name: 'login',
@@ -47,9 +46,6 @@ export default{
 			remeber: false,
 			warm: false
 		}
-	},
-	directives:{
-		phones: vaildate
 	},
 	methods:{
 		login(){

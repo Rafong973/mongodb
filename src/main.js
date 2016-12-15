@@ -14,8 +14,14 @@ import app from './vue/app.vue'
 import login from './vue/login.vue'
 import reg from './vue/register.vue'
 
+import vaildate from './script/vaildate'
+
 vue.use(router);
 vue.use(resource);
+
+/**directive**/
+vue.directive('vaildate',vaildate)
+
 
 var route = new router({
 	hashbang : false,
