@@ -38,6 +38,8 @@
 		<!-- 适应移动端end -->
 	<title>Hi,I am CPA</title>
 	<link rel="stylesheet" href="../views/index/style.css">
+	<link rel="stylesheet" href="../views/system/style.css">
+	<link rel="stylesheet" href="https://cdn.staticfile.org/flatpickr/2.2.3/flatpickr.min.css">
 </head>
 <body>
 	<header>
@@ -61,7 +63,53 @@
 			</ul>
 		</nav>
 	</header>
-
+	<div class="repair-row">
+		<div class="login-body">
+			<div class="login-data">
+				<div class="login-title txc">
+					<h3 v-bind:class="{ warm:warm }">{{ title }}</h3>
+				</div>
+				<form>
+					<div class="input-group vertical-input">
+						<label class="input-label">学号：</label>
+						<input type="text" class="input-input" name="no">
+					</div>
+					<div class="input-group vertical-input">
+						<label class="input-label">名字：</label>
+						<input type="text" class="input-input name" name="name">
+					</div>
+					<div class="input-group vertical-input">
+						<label class="input-label">手机号码：</label>
+						<input type="text" class="input-input" name="tel">
+					</div>
+					<div class="input-group vertical-input">
+						<label class="input-label">问题类型：</label>
+						<input type="text" class="input-input" name="type">
+					</div>
+					<div class="input-group vertical-input">
+						<label class="input-label">宿舍：</label>
+						<input type="text" class="input-input" name="room">
+					</div>
+					<div class="input-group vertical-input">
+						<label class="input-label">预约时间：</label>
+						<input type="text" class="input-input" id="data-choose" name="date">
+					</div>
+					<div class="input-group vertical-input">
+						<label class="input-label">描述下问题：</label>
+						<textarea class="input-input" name="exp"></textarea>
+					</div>
+					<div class="input-group vertical-input">
+						<input type="hidden" class="input-input" value="0" name="status">
+					</div>
+					<div class="input-group row">
+						<a href="javascript:void(0)" class="txc btn btn-primary col-12" id="save">提交</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="https://cdn.staticfile.org/flatpickr/2.2.3/flatpickr.min.js"></script>
+	<script src="https://cdn.staticfile.org/flatpickr/2.2.3/l10n/zh.js"></script>
 	<script src="../views/index/index.js"></script>
 </body>
 </html>

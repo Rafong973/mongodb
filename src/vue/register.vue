@@ -125,30 +125,3 @@ function vail(val){
 	return v;
 }
 </script>
-
-
-<style>
-.login-body{
-	position: fixed;
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: 100%;
-	background-color: #fafafa;
-}
-.login-data{
-	position: absolute;
-	top: 10%;
-	left: 50%;
-	transform: translate(-50%);
-	-webkit-transform: translate(-50%);
-	width: 300px;
-	border-radius: 5px;
-	padding: 10px 10px 20px 10px;
-	background-color: #fff;
-	box-shadow: 3px 3px 3px 3px #dad5d5;
-}
-.warm{
-	color:#d70941;
-}
-</style>

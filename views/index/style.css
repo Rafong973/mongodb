@@ -2,6 +2,7 @@ html,ul,p{margin:0;padding:0;}
 ul{list-style: none;width: 100%;}
 a{text-decoration: none;}
 body{margin:0 auto;overflow: hidden;}
+textarea{resize: none;}
 header{
 	height: 2.8125rem;
 	width: 100%;
