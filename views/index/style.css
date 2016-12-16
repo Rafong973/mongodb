@@ -1,7 +1,7 @@
 html,ul,p{margin:0;padding:0;}
 ul{list-style: none;width: 100%;}
 a{text-decoration: none;}
-body{margin:0 auto;overflow: hidden;}
+body{margin:0 auto;}
 textarea{resize: none;}
 /**select**/
 .select-ul{height:0;transition:all .3s ease;-webkit-transition:all .3s ease;overflow:hidden;position: absolute;left:50%;transform: translateX(-50%);-webkit-transform: translateX(-50%);text-align: center;background-color: #fff;font-size: .8125rem;border-radius: .25rem;z-index: 999;}
@@ -38,6 +38,15 @@ header{
 	color: #fff;
 	font-size: .875rem;
 }
+.repair-data{
+	width:28.125rem;
+	margin-left:auto;
+	margin-right: auto;
+	border:.0625rem solid #ccc;
+	border-radius: .5rem;
+	color: #4d6076;
+	padding-bottom: .625rem;
+}
 .menu-icon{
 	position: relative;
 	width: 1.5625rem;
@@ -60,5 +69,15 @@ header{
 @media only screen and (max-width: 768px) {
 	header{
 		box-shadow: 0 .1875rem .1875rem #ccc;
+	}
+}
+@media only screen and (min-width: 360px) {
+	.repair-data,.login-data{
+		width: 20rem;
+	}
+}
+@media only screen and (max-width: 320px) {
+	.repair-data,.login-data{
+		width: 18.75rem;
 	}
 }

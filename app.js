@@ -34,6 +34,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 
 
-app.listen(8080,function (){
-	console.log('app listen on *:8080');
+app.listen(80,function (){
+	console.log('app listen on *:80');
 })

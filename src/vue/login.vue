@@ -7,14 +7,14 @@
 			<form>
 				<div class="input-group vertical-input">
 					<label class="input-label">Admin：</label>
-					<input type="text" class="input-input" v-model="admin">
+					<input type="text" class="input-input" v-model="admin" placeholder="输入你的用户名">
 				</div>
 				<div class="input-group vertical-input">
 					<label class="input-label">Password：</label>
-					<input type="password" class="input-input password" v-model="password">
+					<input type="password" class="input-input password" v-model="password" placeholder="这里写的是密码">
 				</div>
 				<div class="input-group vertical-input">
-					<input type="checkbox" id="remeber" class="input-checkbox" v-model="remeber">
+					<input type="checkbox" id="remeber" class="input-checkbox" v-model="remeber" pla>
 					<label class="check-label" for="remeber">Remeber Me</label>
 				</div>
 				<div class="input-group vertical-input"></div>
@@ -90,6 +90,7 @@ export default{
 	position: absolute;
 	top: 10%;
 	left: 50%;
+	color: #4d6076;
 	transform: translate(-50%);
 	-webkit-transform: translate(-50%);
 	width: 18.75rem;

@@ -7,23 +7,23 @@
 			<form>
 				<div class="input-group vertical-input">
 					<label class="input-label">Admin：</label>
-					<input type="text" class="input-input" v-model="admin">
+					<input type="text" class="input-input" v-model="admin" placeholder="用户名，仅用于登陆">
 				</div>
 				<div class="input-group vertical-input">
 					<label class="input-label">NickName：</label>
-					<input type="text" class="input-input" v-model="nickname">
+					<input type="text" class="input-input" v-model="nickname" placeholder="给自己取个好听的名字">
 				</div>
 				<div class="input-group vertical-input">
 					<label class="input-label">Password：</label>
-					<input type="password" class="input-input password" v-model="password" >
+					<input type="password" class="input-input password" v-model="password" placeholder="你的登陆密码，至关重要">
 				</div>
 				<div class="input-group vertical-input">
 					<label class="input-label">PassAgain：</label>
-					<input type="password" class="input-input" v-model="passagain">
+					<input type="password" class="input-input" v-model="passagain" placeholder="确认一下你写的密码对不对">
 				</div>
 				<div class="input-group vertical-input">
 					<label class="input-label">Validation：</label>
-					<input type="password" class="input-input" v-model="validation">
+					<input type="password" class="input-input" v-model="validation" placeholder="只有够帅的人才能够完成注册">
 				</div>
 				<div class="input-group vertical-input">
 					<input type="checkbox" id="super" class="input-checkbox" v-model="super">

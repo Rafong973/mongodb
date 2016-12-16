@@ -67,7 +67,7 @@ function ajax(type,u,data){
 			return false;
 		}
 	}
-	xml.open(type,u,data);
+	xml.open(type,u,true);
 	if(type == 'POST') xml.setRequestHeader('Content-type','application/x-www-form-urlencoded');
 	xml.send(data);
 }
