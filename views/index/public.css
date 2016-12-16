@@ -1,0 +1,37 @@
+.mask{clear:both;width:100%;height:100%;background-color:rgba(0,0,0,.5);position:fixed;top:0;left:0;z-index:9999;overflow:hidden;}
+.imgMask{display: block;}
+.mask-content{width:12.5rem;margin:0 auto;background-color:#FFF;border-radius:.5rem;border:.0625rem solid #7a7a7a;z-index:99999;position:fixed;
+	left:50%;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);}
+.mask-head{padding:.3125rem 0;border-bottom:.0625rem solid #d8d8d8;font-size: .9375rem;}
+.mask-head-tip{margin-left:.625rem;}
+.mask-head-close{text-decoration:none;height:.9375rem;width:.9375rem;position:relative;float:right;margin-right:.625rem;}
+.mask-head-close:before{content:"";position:absolute;height:.1875rem;width:100%;-webkit-transform:rotate(40deg);transform:rotate(40deg);background-color:#999;top:.5rem;}
+.mask-head-close:after{content:"";position:absolute;height:.1875rem;width:100%;-webkit-transform:rotate(-40deg);transform:rotate(-40deg);background-color:#999;top:.5rem;}
+.mask-con-p{width:80%;margin:0 auto;line-height:1.25rem;text-align: center;padding:.9375rem 0;background-color:#FFF;position:relative;}
+.mask-btn{width:80%;margin:0 auto;display: block;}
+.mask-btn-a{padding:.375rem .625rem;font-size:.75rem;color:#000;display:block;text-align:center;float:right;border:.0625rem solid #ccc;margin-bottom:.9375rem;border-radius: .1875rem;}
+.mask-btn-b{float:left;background-color:#337ab7;border:.0625rem solid #2e6da4; color:#FFF;}
+.load-content{position: absolute;top:50%;left:50%;width:3.125rem;height:3.125rem;margin-left: -1rem;margin-top: -1rem;animation:mymove 1s infinite;-webkit-animation:mymove 1s infinite; }
+.mask-img{height: auto;width: auto;max-height: 31.25rem;max-width: 50rem;position: absolute;top: 50%;left:50%;}
+.center{text-align: center;}
+.hid{overflow: hidden;}
+.blo{display: block;}
+.time-input{border: .0625rem solid #ddd;height:2.125rem;text-indent: .3125rem;}
+.middle{vertical-align: middle;}
+@keyframes mymove {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes mymove {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+.btn-gray{background-color: #b9b9b9;}

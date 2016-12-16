@@ -30,10 +30,10 @@
 							<td class="td-spe"> {{ l.exp }}</td>
 							<td>{{ l.status | numstatus }}</td>
 							<td>
-								<a href="javascript:void(0)">指派</a>
+								<a href="javascript:void(0)" v-if="l.status == 0 && l.admin == 0">指派</a>
 								<a href="javascript:void(0)">删除</a>
-								<a href="javascript:void(0)">我来处理</a>
-								<a href="javascript:void(0)">完成处理</a>
+								<a href="javascript:void(0)" v-if="l.status == 0">我来处理</a>
+								<a href="javascript:void(0)" v-if="l.status == 1 ">完成处理</a>
 							</td>
 						</tr>
 					</tbody>
@@ -54,7 +54,7 @@ export default{
 	data(){
 		return{
 			name : 'home',
-			list:[{date:"2016-12-18T04:00:00.000Z",exp:"sdfsdf",name:"324234",no:"werewer",room:"23423",tel:234234,type:1,status:1}]
+			list:[{date:"2016-12-18 04:00:00.000",exp:"sdfsdf",name:"324234",no:"werewer",room:"23423",tel:234234,type:1,status:1,admin:0}]
 			// list:''
 		}
 	},

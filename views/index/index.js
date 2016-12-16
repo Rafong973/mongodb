@@ -1,16 +1,17 @@
-
-var $ = function(name){
+var $ = window.$;
+$ = function(name){
 	var n = name.substring(1,name.length),
 		t = name.substring(0,1);
 	switch(t){
 		case ".":
-			return document.getElementsByClassName(n);
+			v = document.getElementsByClassName(n);
 		break;
 		case "#":
-			return document.getElementById(n);
+			v = document.getElementById(n);
 		break;
 	}
-};
+	return v;
+}
 $(".menu-icon")[0].onclick = function (){
 	var d = $(".nav-ul")[0];
 	d.style.marginLeft = "0";
@@ -59,7 +60,11 @@ function ajax(type,u,data){
 	xml.send(data);
 	xml.onreadystatechange = function (){
 		if(xml.readyState==4 && xml.status==200){
-			d = xmlhttp.responseText;
+			d = JSON.parse(xml.responseText);
+			if(d.status == 0){
+				app.alert("提交成功");
+				window.sessionStorage.setItem("repair",data);
+			}
 		}else{
 			d = false;
 		}
@@ -72,18 +77,75 @@ function vaildata(value){
 	if(value.length > 1){
 		for(var i = 0;i < value.length;i++){
 			var id = value[i].getAttribute("name"),
-				va = value[i].value;
+				va = value[i].value,
+				da = value[i].getAttribute("data");
 			if(!va){
 				f = false;
 				break;
 			}else{
-				f += id + '= ' + va + '&';
+				if(da !== null){
+					f += id + '= ' + da + '&';
+				}else{
+					f += id + '= ' + va + '&';
+				}
+				
 			}
 		}
 		return f;
 	}
 }
 $("#save").onclick = function(){
-	var d = vaildata($('.input-input'));
+ 	var d = vaildata($('.input-input'));
+ 	if(d){
+ 		if(window.sessionStorage.getItem("repair")){
+			app.alert("请勿重复提交");
+			return false;
+		}
+ 	}else{
+ 		app.alert("不填写完整无法报修喔");
+ 	}
 	var status = ajax('POST','/save',d);
+}
+
+function select(dom,value){
+	if(!dom) return false;
+	var w = dom[0].clientWidth,
+		f = dom[0].parentElement,
+	   ul = document.createElement('ul');
+	console.log(dom)
+	f.style.position = 'relative';
+	f.style.overflow = 'inherit';
+	ul.className = 'select-ul';
+	ul.style.width = w +'px';
+	for(var i = 0;i < value.length;i++){
+		var li = document.createElement('li');
+		li.innerText = value[i].name;
+		li.setAttribute('value',value[i].type);
+		ul.appendChild(li);
+	}
+	ul.addEventListener('click',function(e){
+		var a,b;
+		if(e.target){
+			a = e.target;
+			b = f.getElementsByClassName('input-input')[0];
+			b.value = a.innerText;
+			b.setAttribute('data',a.getAttribute('value'));
+			ul.style.height = '0';
+			ul.style.border = '0';
+		}
+	})
+	f.insertBefore(ul,f.getElementsByClassName('warm-label')[0]);
+}
+var data = [
+	{type:0,name:'锐捷问题'},
+	{type:1,name:'硬件问题'},
+	{type:2,name:'软件问题'}
+]
+select($('.select'),data);
+
+$('.select')[0].onclick = function(){
+	var i = this.nextElementSibling;   
+	i.style.border = '.0625rem solid #ccc'
+	i.style.height = (35+4+2)*3 + 2 + 'px';
+
 }
