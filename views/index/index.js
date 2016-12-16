@@ -40,7 +40,6 @@ var touch = (function(){
 		}
 	}
 })();
-
 $(".nav-ul")[0].addEventListener("touchstart",touch.start,false);
 $(".nav-ul")[0].addEventListener("touchmove",touch.move,false);
 $(".nav-ul")[0].addEventListener("touchend",touch.end,false);
@@ -51,25 +50,26 @@ $("#data-choose").flatpickr({
 	"locale": "zh",
 	time_24hr:true
 })
+
 function ajax(type,u,data){
 	var xml = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP"),
 		d;
-
-	xml.open(type,u,data);
-	if(type == 'POST') xml.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-	xml.send(data);
-	xml.onreadystatechange = function (){
-		if(xml.readyState==4 && xml.status==200){
-			d = JSON.parse(xml.responseText);
+	xml.onload = function (e){
+		if(xml.status == 200 && xml.readyState === XMLHttpRequest.DONE){
+			d = JSON.parse(xml.response);
 			if(d.status == 0){
 				app.alert("提交成功");
 				window.sessionStorage.setItem("repair",data);
+				return;
 			}
 		}else{
-			d = false;
+			app.alert("提交失败，请检查网络");
+			return false;
 		}
 	}
-	return d;
+	xml.open(type,u,data);
+	if(type == 'POST') xml.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+	xml.send(data);
 }
 
 function vaildata(value){
@@ -91,28 +91,30 @@ function vaildata(value){
 				
 			}
 		}
-		return f;
 	}
+	if(f) return f.substring(0,f.length-1).replace(/\s+/g,"");
+	else return f;
 }
 $("#save").onclick = function(){
  	var d = vaildata($('.input-input'));
  	if(d){
- 		if(window.sessionStorage.getItem("repair")){
-			app.alert("请勿重复提交");
-			return false;
+ 		var session = window.sessionStorage.getItem("repair");
+ 		if(session){
+				app.alert("请勿重复提交");
+				return false;
 		}
  	}else{
  		app.alert("不填写完整无法报修喔");
+ 		return false;
  	}
-	var status = ajax('POST','/save',d);
-}
+	ajax('POST','/save',d);
+};
 
 function select(dom,value){
 	if(!dom) return false;
 	var w = dom[0].clientWidth,
 		f = dom[0].parentElement,
 	   ul = document.createElement('ul');
-	console.log(dom)
 	f.style.position = 'relative';
 	f.style.overflow = 'inherit';
 	ul.className = 'select-ul';
@@ -135,17 +137,18 @@ function select(dom,value){
 		}
 	})
 	f.insertBefore(ul,f.getElementsByClassName('warm-label')[0]);
-}
+};
+
 var data = [
 	{type:0,name:'锐捷问题'},
 	{type:1,name:'硬件问题'},
 	{type:2,name:'软件问题'}
-]
+];
+
 select($('.select'),data);
 
 $('.select')[0].onclick = function(){
 	var i = this.nextElementSibling;   
 	i.style.border = '.0625rem solid #ccc'
 	i.style.height = (35+4+2)*3 + 2 + 'px';
-
 }
