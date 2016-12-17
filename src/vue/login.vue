@@ -17,7 +17,6 @@
 					<input type="checkbox" id="remeber" class="input-checkbox" v-model="remeber" pla>
 					<label class="check-label" for="remeber">Remeber Me</label>
 				</div>
-				<div class="input-group vertical-input"></div>
 				<div class="input-group row">
 					<a href="javascript:void(0)" class="txc btn btn-primary col-12" @click="login">Sign In</a>
 				</div>

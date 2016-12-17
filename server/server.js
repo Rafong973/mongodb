@@ -1,7 +1,7 @@
 'use strict';
 
 import user from './mongo';
-import crypot from 'crypto';
+import cry from 'crypto';
 
 // 数据库表
 const db = user.Admin;

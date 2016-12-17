@@ -29,7 +29,6 @@
 					<input type="checkbox" id="super" class="input-checkbox" v-model="super">
 					<label class="check-label" for="super">Super Admin?</label>
 				</div>
-				<div class="input-group vertical-input"></div>
 				<div class="input-group row">
 					<a href="javascript:void(0)" class="txc btn btn-primary col-12" @click='submit'>Submit</a>
 				</div>

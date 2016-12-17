@@ -54,16 +54,16 @@ export default{
 	data(){
 		return{
 			name : 'home',
-			list:[{date:"2016-12-18 04:00:00.000",exp:"sdfsdf",name:"324234",no:"werewer",room:"23423",tel:234234,type:1,status:1,admin:0}]
-			// list:''
+			// list:[{date:"2016-12-18 04:00:00.000",exp:"sdfsdf",name:"324234",no:"werewer",room:"23423",tel:234234,type:1,status:1,admin:0}]
+			list:''
 		}
 	},
 	created(){
 		this.$loadingRouteData = false;
-		// data()
-		// .then((res) => {
-		// 	this.list = res.body.msg;
-		// })
+		data()
+		.then((res) => {
+			this.list = res.body.msg;
+		})
 	}
 }
 </script>
