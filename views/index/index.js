@@ -96,8 +96,8 @@ function vaildata(value){
 			}
 		}
 	}
-	if(f) return f.substring(0,f.length-1).replace(/\s+/g,"");
-	else return f;
+	if(f) return f.substring(0,f.length-1).replace(/\s+/g,"")
+	else return f
 }
 
 /** 提交数据 **/
@@ -142,6 +142,7 @@ function select(dom,value){
 			b.setAttribute('data',a.getAttribute('value'));
 			ul.style.height = '0';
 			ul.style.border = '0';
+			switchDom(dom[0])
 		}
 	})
 	f.insertBefore(ul,f.getElementsByClassName('warm-label')[0]);
@@ -160,7 +161,6 @@ $('.select')[0].onclick = function(){
 (function(){
 	var t = $('.input-input');
 	for(var i = 0;i < t.length;i++){
-		// t[i].addEventListener('blur',vail(t[i]),false);
 		t[i].onblur = function(){
 			vail(switchDom(this))
 		}
@@ -171,7 +171,8 @@ function vail(dom){
 	if(dom.length > 1){
 		for(var i = 0;i < dom.length;i++){
 			var v = dom[i].value;
-			if(!v){
+			if(v){
+				console.log(dom[i]);
 				if(!switchDom(dom[i])){
 					k = false;
 					break;
@@ -188,10 +189,12 @@ function switchDom(dom){
 		v = dom.value,
 		j = false,
 		p = dom.parentElement.lastElementChild,
-		s = dom.previousElementSibling.innerText;
+		s = dom.previousElementSibling.innerText || " ";
 	switch(a){
 		case 'admin':
 		case 'status':
+		case 'date':
+			j = true;	
 		break;
 		case 'tel':
 			var reg = /(^[0-9]{3,4}\-[0-9]{7,8}$)|(^[0-9]{7,8}$)|(^\([0-9]{3,4}\)[0-9]{3,8}$)|(^0{0,1}1[3-9][0-9]{9}$)/;
@@ -207,7 +210,6 @@ function switchDom(dom){
 		case 'name':
 		case 'type':
 		case 'room':
-		case 'date':
 		case 'exp':
 			if(v){
 				p.innerText = '';

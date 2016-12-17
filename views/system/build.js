@@ -15088,20 +15088,13 @@ webpackJsonp([0,1],[
 	//
 	// <style>
 	// .login-body{
-	// 	position: fixed;
-	// 	top: 0;
-	// 	left: 0;
+	// 	width: 100%;
 	// 	height: 100%;
-	// 	width: 100%;	
-	// 	background-color: #fafafa;
+	// 	padding-top: 5%;
 	// }
 	// .login-data{
-	// 	position: absolute;
-	// 	top: 10%;
-	// 	left: 50%;
+	// 	margin: 0 auto;
 	// 	color: #4d6076;
-	// 	transform: translate(-50%);
-	// 	-webkit-transform: translate(-50%);
 	// 	width: 18.75rem;
 	// 	border-radius: .3125rem;
 	// 	padding: .625rem .625rem 1.25rem .625rem;
@@ -15113,7 +15106,7 @@ webpackJsonp([0,1],[
 	// }
 	// </style>
 	// <template>
-	// 	<div class="login-body">
+	// 	<div class="login-body fix">
 	// 		<div class="login-data">
 	// 			<div class="login-title txc">
 	// 				<h3 v-bind:class="{ warm:warm }">{{ title }}</h3>
@@ -15150,7 +15143,7 @@ webpackJsonp([0,1],[
 /* 22 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"login-body\">\n\t<div class=\"login-data\">\n\t\t<div class=\"login-title txc\">\n\t\t\t<h3 v-bind:class=\"{ warm:warm }\">{{ title }}</h3>\n\t\t</div>\n\t\t<form>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">Admin：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input\" v-model=\"admin\" placeholder=\"输入你的用户名\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">Password：</label>\n\t\t\t\t<input type=\"password\" class=\"input-input password\" v-model=\"password\" placeholder=\"这里写的是密码\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<input type=\"checkbox\" id=\"remeber\" class=\"input-checkbox\" v-model=\"remeber\" pla>\n\t\t\t\t<label class=\"check-label\" for=\"remeber\">Remeber Me</label>\n\t\t\t</div>\n\t\t\t<div class=\"input-group row\">\n\t\t\t\t<a href=\"javascript:void(0)\" class=\"txc btn btn-primary col-12\" @click=\"login\">Sign In</a>\n\t\t\t</div>\n\t\t\t<div class=\"input-group row\">\n\t\t\t\t<a href=\"javascript:void(0)\" class=\"txc btn btn-danger col-12\" v-link=\"{path:'/reg'}\">Sign up</a>\n\t\t\t</div>\n\t\t</form>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"login-body fix\">\n\t<div class=\"login-data\">\n\t\t<div class=\"login-title txc\">\n\t\t\t<h3 v-bind:class=\"{ warm:warm }\">{{ title }}</h3>\n\t\t</div>\n\t\t<form>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">Admin：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input\" v-model=\"admin\" placeholder=\"输入你的用户名\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">Password：</label>\n\t\t\t\t<input type=\"password\" class=\"input-input password\" v-model=\"password\" placeholder=\"这里写的是密码\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<input type=\"checkbox\" id=\"remeber\" class=\"input-checkbox\" v-model=\"remeber\" pla>\n\t\t\t\t<label class=\"check-label\" for=\"remeber\">Remeber Me</label>\n\t\t\t</div>\n\t\t\t<div class=\"input-group row\">\n\t\t\t\t<a href=\"javascript:void(0)\" class=\"txc btn btn-primary col-12\" @click=\"login\">Sign In</a>\n\t\t\t</div>\n\t\t\t<div class=\"input-group row\">\n\t\t\t\t<a href=\"javascript:void(0)\" class=\"txc btn btn-danger col-12\" v-link=\"{path:'/reg'}\">Sign up</a>\n\t\t\t</div>\n\t\t</form>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 23 */

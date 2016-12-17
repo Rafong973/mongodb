@@ -1,5 +1,5 @@
 <template>
-	<div class="login-body">
+	<div class="login-body fix">
 		<div class="login-data">
 			<div class="login-title txc">
 				<h3 v-bind:class="{ warm:warm }">{{ title }}</h3>
@@ -78,20 +78,13 @@ export default{
 
 <style>
 .login-body{
-	position: fixed;
-	top: 0;
-	left: 0;
+	width: 100%;
 	height: 100%;
-	width: 100%;	
-	background-color: #fafafa;
+	padding-top: 5%;
 }
 .login-data{
-	position: absolute;
-	top: 10%;
-	left: 50%;
+	margin: 0 auto;
 	color: #4d6076;
-	transform: translate(-50%);
-	-webkit-transform: translate(-50%);
 	width: 18.75rem;
 	border-radius: .3125rem;
 	padding: .625rem .625rem 1.25rem .625rem;

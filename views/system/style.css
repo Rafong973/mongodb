@@ -62,20 +62,13 @@ body {
 .nav-view li {
   float: left; }
 .login-body {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
   width: 100%;
-  background-color: #fafafa; }
+  height: 100%;
+  padding-top: 5%; }
 
 .login-data {
-  position: absolute;
-  top: 10%;
-  left: 50%;
+  margin: 0 auto;
   color: #4d6076;
-  transform: translate(-50%);
-  -webkit-transform: translate(-50%);
   width: 18.75rem;
   border-radius: .3125rem;
   padding: .625rem .625rem 1.25rem .625rem;
@@ -84,9 +77,10 @@ body {
 
 .warm {
   color: #d70941; }
+body{background-color: #fafafa;}
 ul{list-style-type: none;}
 a{text-decoration: none;}
-.app{width: 100%;}
+.app{width: 100%;min-height: 100%;}
 .txc{text-align: center;}
 .none{display: none;}
 html{font-family: "Microsoft Yahei,Heiti TC";}
