@@ -66,6 +66,17 @@ header{
 	transform: translateY(-50%);
 	-webkit-transform: translateY(-50%)
 }
+.warm-label{
+	display: block;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	width: 90%;
+	font-size: 0.75rem;
+	bottom: -1.25rem;
+	color: #ff0000;
+}
 @media only screen and (max-width: 768px) {
 	header{
 		box-shadow: 0 .1875rem .1875rem #ccc;

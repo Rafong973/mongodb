@@ -1,13 +1,16 @@
 'use strict';
 
-const user = require('./mongo');
-const cry = require('crypto');
+import user from './mongo';
+import crypot from 'crypto';
+
+// 数据库表
 const db = user.Admin;
 const re = user.Data;
+
+// 管理员验证
 const vail = 'adminpd123';
 
-
-module.exports = function server(app,body){
+export default function server(app,body){
 	app.post('/login',body.urlencoded(),function(req,res){
 		const data = req.body;
 		let msg = '';
@@ -74,7 +77,9 @@ module.exports = function server(app,body){
 	app.post('/save',body.urlencoded(),function(req,res){
 		const data = req.body;
 		let m = new re(data);
-		m.save();
+		m.save(function(err){
+			console.error(err);
+		});
 		res.send({status:0,msg:'susccess'});
 	})
 }

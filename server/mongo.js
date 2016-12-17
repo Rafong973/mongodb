@@ -1,14 +1,15 @@
 'use strict';
 
+import mongo from 'mongoose'
+
 /** mongoose 连接数据库**/
-var mongo = require('mongoose');
 mongo.connect('mongodb://localhost/my-website',{config: { autoIndex:true }});
 var Schema = mongo.Schema;
 var db = mongo.connection;
-db.on('error',function(err){
+db.on('error',(err) => {
 	console.log(err);
 });
-db.once('open',function (){
+db.once('open',() => {
 	console.log('mongodb is connected');
 })
 var kittySchema = new Schema({
@@ -23,7 +24,7 @@ var KittyData = new Schema({
 	tel:Number,
 	type:Number,
 	room:String,
-	date:Date,
+	date:String,
 	exp:String,
 	status:Number,
 	admin:String
@@ -31,4 +32,4 @@ var KittyData = new Schema({
 var Kitten = mongo.model('Kitten',kittySchema);
 var Data = mongo.model('Data',KittyData);
 
-module.exports = {Admin : Kitten,Data: Data};
+export default {Admin : Kitten,Data: Data};

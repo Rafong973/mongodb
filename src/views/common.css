@@ -2,8 +2,9 @@ ul{list-style-type: none;}
 a{text-decoration: none;}
 .app{width: 100%;}
 .txc{text-align: center;}
+.none{display: none;}
 html{font-family: "Microsoft Yahei,Heiti TC";}
-.input-group{width: 100%;line-height: 2.1875rem;margin-bottom: .625rem;overflow: hidden;}
+.input-group{position:relative;width: 100%;line-height: 2.1875rem;margin-bottom: .625rem;padding-bottom: .625rem;}
 .vertical-input .input-label,.vertical-input .input-input,.flatpickr-mobile{width: 90%;margin:0 auto;text-align: left;display:block;height: 2.1875rem;}
 .input-label{vertical-align: middle;font-size: .875rem;}
 .input-input{border:.0625rem solid #ccc;padding: 0;margin:0;height: 70%;border-radius: .3125rem;text-indent: .625rem;background-color: #FFF;}
