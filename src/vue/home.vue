@@ -1,7 +1,7 @@
 <template>
 	<div class="data-body">
 		<div class="data-row">
-			<div class="search"></div>
+			<search></search>
 			<div class="data">
 				<table class="table">
 					<thead>
@@ -47,23 +47,26 @@
 <script>
 //js
 import { data } from '../script/server'
+import search from './search.vue'
 
 export default{
 	name: 'home',
+
+	components:[search],
 	
 	data(){
 		return{
 			name : 'home',
-			// list:[{date:"2016-12-18 04:00:00.000",exp:"sdfsdf",name:"324234",no:"werewer",room:"23423",tel:234234,type:1,status:1,admin:0}]
-			list:''
+			list:[{date:"2016-12-18 04:00:00.000",exp:"sdfsdf",name:"324234",no:"werewer",room:"23423",tel:234234,type:1,status:1,admin:0}]
+			// list:''
 		}
 	},
 	created(){
-		this.$loadingRouteData = false;
-		data()
-		.then((res) => {
-			this.list = res.body.msg;
-		})
+		// this.$loadingRouteData = false;
+		// data()
+		// .then((res) => {
+		// 	this.list = res.body.msg;
+		// })
 	}
 }
 </script>
@@ -75,13 +78,13 @@ export default{
 	left: 50%;
 	transform: translateX(-50%);
 	-webkit-transform: translateX(-50%);
+	color: #4d6076;
 }
 table{
 	font-size: 0.8125rem;
 	width: 1100px;
 	text-align: center;
 	border-collapse: collapse;
-	color: #4d6076;
 }
 th{
 	font-style: normal;

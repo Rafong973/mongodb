@@ -3,14 +3,14 @@
   top: 10%;
   left: 50%;
   transform: translateX(-50%);
-  -webkit-transform: translateX(-50%); }
+  -webkit-transform: translateX(-50%);
+  color: #4d6076; }
 
 table {
   font-size: 0.8125rem;
   width: 1100px;
   text-align: center;
-  border-collapse: collapse;
-  color: #4d6076; }
+  border-collapse: collapse; }
 
 th {
   font-style: normal;
@@ -39,6 +39,35 @@ td a {
 table .td-spe {
   width: 15.0rem;
   overflow: hidden; }
+.search-body {
+  width: 100%;
+  margin: 0.9375rem auto;
+  overflow: hidden; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 body {
   font-size: 16px; }
 
@@ -83,9 +112,14 @@ a{text-decoration: none;}
 .app{width: 100%;min-height: 100%;}
 .txc{text-align: center;}
 .none{display: none;}
+.line{overflow:hidden;margin-bottom: 0.625rem;width: 100%;}
 html{font-family: "Microsoft Yahei,Heiti TC";}
 .input-group{position:relative;width: 100%;line-height: 2.1875rem;margin-bottom: .625rem;padding-bottom: .625rem;}
 .vertical-input .input-label,.vertical-input .input-input,.flatpickr-mobile{width: 90%;margin:0 auto;text-align: left;display:block;height: 2.1875rem;}
+.hoz-input{height: 2.1875rem;float:left;line-height: 2.1875rem;margin-right: 0.3125rem;}
+.large-input{width: 12.5rem;}
+.medium-input{width: 9.375rem;}
+.small-input{width: 7.5rem;}
 .input-label{vertical-align: middle;font-size: .875rem;}
 .input-input{border:.0625rem solid #ccc;padding: 0;margin:0;height: 70%;border-radius: .3125rem;text-indent: .625rem;background-color: #FFF;}
 input[type="text"]:focus,input[type="number"]:focus,input[type="password"]:focus,input[type="mail"]:focus,textarea:focus{outline: .0625rem solid #6a99b7;border:.0625rem solid #6a99b7;}
@@ -99,4 +133,6 @@ input[type="text"]:focus,input[type="number"]:focus,input[type="password"]:focus
 .btn-primary{background-color: #428bca;border: .0625rem solid #357ebd;}
 .btn-danger{background-color: #d70941;border: .0625rem solid #d70941;}
 .col-12{width: 100%;display: block;position: relative;}
-.fr{float: right}.fl{float: left;}
+.fr{float: right;}
+.fl{float: left;} 
+.mr{margin-right: 0.625rem;overflow: hidden;float: left;}

@@ -45,14 +45,6 @@ $(".nav-ul")[0].addEventListener("touchstart",touch.start,false);
 $(".nav-ul")[0].addEventListener("touchmove",touch.move,false);
 $(".nav-ul")[0].addEventListener("touchend",touch.end,false);
 
-/** 日期插件 **/
-$("#data-choose").flatpickr({
-	minDate: new Date(),
-	enableTime: true,
-	"locale": "zh",
-	time_24hr:true
-})
-
 /** Ajax请求 **/
 function ajax(type,u,data){
 	var xml = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP"),
@@ -222,3 +214,12 @@ function switchDom(dom){
 	}
 	return j;
 }
+
+
+/** 日期插件 **/
+$("#data-choose").flatpickr({
+	minDate: new Date(),
+	enableTime: true,
+	"locale": "zh",
+	time_24hr:true
+});
