@@ -6,21 +6,15 @@
 
 
 <script>
-import Navbar from './nav.vue'
 //js
 export default{
 	name: 'app',
-
-	components: [Navbar],
 
 	data(){
 		return{
 			name : 'app',
 		}
-	},
-	created(){
-		this.$loadingRouteData = false;
-	},
+	}
 
 }
 </script>
