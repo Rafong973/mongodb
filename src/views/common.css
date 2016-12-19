@@ -4,11 +4,11 @@ a{text-decoration: none;}
 .app{width: 100%;min-height: 100%;}
 .txc{text-align: center;}
 .none{display: none;}
-.line{overflow:hidden;margin-bottom: 0.625rem;width: 100%;}
+.line{height:2.1875rem;margin-bottom: .625rem;width: 100%;}
 html{font-family: "Microsoft Yahei,Heiti TC";}
-.input-group{position:relative;width: 100%;line-height: 2.1875rem;margin-bottom: .625rem;padding-bottom: .625rem;}
+.input-group{position:relative;width: 100%;line-height:2.1875;margin-bottom: .625rem;padding-bottom: .625rem;}
 .vertical-input .input-label,.vertical-input .input-input,.flatpickr-mobile{width: 90%;margin:0 auto;text-align: left;display:block;height: 2.1875rem;}
-.hoz-input{height: 2.1875rem;float:left;line-height: 2.1875rem;margin-right: 0.3125rem;}
+.hoz-input{position:relative;height: 2.1875rem;float:left;line-height: 2.1875rem;margin-right: 0.3125rem;}
 .large-input{width: 12.5rem;}
 .medium-input{width: 9.375rem;}
 .small-input{width: 7.5rem;}
@@ -24,7 +24,8 @@ input[type="text"]:focus,input[type="number"]:focus,input[type="password"]:focus
 .btn{padding:.3125rem 0;color: #FFF;font-size: .8125rem;}
 .btn-primary{background-color: #428bca;border: .0625rem solid #357ebd;}
 .btn-danger{background-color: #d70941;border: .0625rem solid #d70941;}
+.pdtr{padding-left:.625rem;padding-right: .625rem;}
 .col-12{width: 100%;display: block;position: relative;}
 .fr{float: right;}
-.fl{float: left;} 
-.mr{margin-right: 0.625rem;overflow: hidden;float: left;}
+.fl{float: left;}
+.mr{margin-right: 0.625rem;float: left;}

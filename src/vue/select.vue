@@ -1,26 +1,56 @@
 <template>
-	<div class="self-select" v-model="selelctData">
-		
-	</div>
+	<input type="text" class="input-input large-input" placeholder="{{ pla }}" readonly="readonly" v-model="currentValue" @click="display">
+	<ul class="select-ul txc large-input" v-show='show' :class="{ scroll : selectdata.length > 20}">
+		<li v-for="s in selectdata" @click="getData($index)">
+			{{ s.name }}
+		</li>
+	</ul>
+
+	<mask :show.sync="show"></mask>
 </template>
 
 <script>
 
+import mask from './mask.vue'
+
 export default{
-	name:'self-select',
+	name:'',
 
-	data(){
-		name:'self-select'
-	},
+	props:['selectdata','pla','currentData','currentValue','ulClass','show'],
 
-	props:selectData,
+	components: {
+        mask
+    },
 
-	created(){
-		console.log(this.name);
+	methods:{
+		getData(index){
+			let i = index;
+			this.currentValue = this.selectdata[i].name
+			this.currentData = this.selectdata[i].no;
+			this.show = false;
+		},
+		display(){
+			this.show = !this.show;
+		}
 	}
 }
 </script>
 
 <style>
-	
+.select-ul{
+	position: absolute;
+	margin:0;
+	padding:0;
+	right: 0;
+	background-color: #fff;top:2rem;
+	border:1px solid #dfdfdf;
+	border-radius: 0.25rem;
+	font-size: 0.8125rem;
+	z-index: 100;
+	li{
+		&:not(:last-child){
+			border-bottom: 1px solid #dfdfdf;
+		}
+	}
+}
 </style>

@@ -40,34 +40,33 @@ table .td-spe {
   width: 15.0rem;
   overflow: hidden; }
 .search-body {
-  width: 100%;
   margin: 0.9375rem auto;
-  overflow: hidden; }
+  border-radius: 0.625rem; }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.scroll {
+  overflow-y: scroll;
+  max-height: 400px; }
+.select-ul {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  right: 0;
+  background-color: #fff;
+  top: 2rem;
+  border: 1px solid #dfdfdf;
+  border-radius: 0.25rem;
+  font-size: 0.8125rem;
+  z-index: 100; }
+  .select-ul li:not(:last-child) {
+    border-bottom: 1px solid #dfdfdf; }
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: 99; }
 body {
   font-size: 16px; }
 
@@ -83,13 +82,6 @@ body {
   -webkit-transform: translateX(0.625rem);
           transform: translateX(0.625rem);
   opacity: 0; }
-.nav-view {
-  position: fixed;
-  top: 0;
-  left: 0; }
-
-.nav-view li {
-  float: left; }
 .login-body {
   width: 100%;
   height: 100%;
@@ -112,11 +104,11 @@ a{text-decoration: none;}
 .app{width: 100%;min-height: 100%;}
 .txc{text-align: center;}
 .none{display: none;}
-.line{overflow:hidden;margin-bottom: 0.625rem;width: 100%;}
+.line{height:2.1875rem;margin-bottom: .625rem;width: 100%;}
 html{font-family: "Microsoft Yahei,Heiti TC";}
-.input-group{position:relative;width: 100%;line-height: 2.1875rem;margin-bottom: .625rem;padding-bottom: .625rem;}
+.input-group{position:relative;width: 100%;line-height:2.1875;margin-bottom: .625rem;padding-bottom: .625rem;}
 .vertical-input .input-label,.vertical-input .input-input,.flatpickr-mobile{width: 90%;margin:0 auto;text-align: left;display:block;height: 2.1875rem;}
-.hoz-input{height: 2.1875rem;float:left;line-height: 2.1875rem;margin-right: 0.3125rem;}
+.hoz-input{position:relative;height: 2.1875rem;float:left;line-height: 2.1875rem;margin-right: 0.3125rem;}
 .large-input{width: 12.5rem;}
 .medium-input{width: 9.375rem;}
 .small-input{width: 7.5rem;}
@@ -132,7 +124,8 @@ input[type="text"]:focus,input[type="number"]:focus,input[type="password"]:focus
 .btn{padding:.3125rem 0;color: #FFF;font-size: .8125rem;}
 .btn-primary{background-color: #428bca;border: .0625rem solid #357ebd;}
 .btn-danger{background-color: #d70941;border: .0625rem solid #d70941;}
+.pdtr{padding-left:.625rem;padding-right: .625rem;}
 .col-12{width: 100%;display: block;position: relative;}
 .fr{float: right;}
-.fl{float: left;} 
-.mr{margin-right: 0.625rem;overflow: hidden;float: left;}
+.fl{float: left;}
+.mr{margin-right: 0.625rem;float: left;}
