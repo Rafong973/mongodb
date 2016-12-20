@@ -1,3 +1,5 @@
+import fecha from 'fecha';
+
 export default{
 	numstatus(value){
 		let t;
@@ -35,5 +37,9 @@ export default{
 			break;
 		}
 		return t;
+	},
+	timeReturn(value){
+		// return fecha.format(parseInt(value),'YYYY-MM-DD hh:mm dddd');
+		return fecha.format(parseInt(value),'YYYY-MM-DD hh:mm');
 	}
 }

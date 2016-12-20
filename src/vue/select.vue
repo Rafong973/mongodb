@@ -1,6 +1,6 @@
 <template>
 	<input type="text" class="input-input large-input" placeholder="{{ pla }}" readonly="readonly" v-model="currentValue" @click="display">
-	<ul class="select-ul txc large-input" v-show='show' :class="{ scroll : selectdata.length > 20}">
+	<ul class="select-list txc large-input" v-show='show' :class="{ scroll : selectdata.length > 20}">
 		<li v-for="s in selectdata" @click="getData($index)">
 			{{ s.name }}
 		</li>
@@ -37,7 +37,7 @@ export default{
 </script>
 
 <style>
-.select-ul{
+.select-list{
 	position: absolute;
 	margin:0;
 	padding:0;

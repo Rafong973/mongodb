@@ -1,7 +1,8 @@
 .mask{clear:both;width:100%;height:100%;background-color:rgba(0,0,0,.5);position:fixed;top:0;left:0;z-index:9999;overflow:hidden;}
 .imgMask{display: block;}
-.mask-content{width:12.5rem;margin:0 auto;background-color:#FFF;border-radius:.5rem;border:.0625rem solid #7a7a7a;z-index:99999;position:fixed;
-	left:50%;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);}
+.mask-content{width:12.5rem;background-color:#FFF;border-radius:.5rem;border:.0625rem solid #7a7a7a;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);}
+.mask-content,.alert-loading{z-index:99999;position:fixed;left:50%;top:50%;}
+.alert-loading{background-color: transparent;width: 3.125rem;height: 3.125rem;border:5px dashed #999;border-radius: 50%;animation:rotate .3s infinite;-webkit-animation:rotate .3s infinite;}
 .mask-head{padding:.3125rem 0;border-bottom:.0625rem solid #d8d8d8;font-size: .9375rem;}
 .mask-head-tip{margin-left:.625rem;}
 .mask-head-close{text-decoration:none;height:.9375rem;width:.9375rem;position:relative;float:right;margin-right:.625rem;}
@@ -33,5 +34,18 @@
     to {
         -webkit-transform: rotate(360deg);
     }
+}
+@-webkit-keyframes rotate {
+    from { transform: translate(-50%,-50%) rotate(0deg)
+          -webkit-transform: translate(-50%,-50%) rotate(0deg);
+         }
+    to { transform: translate(-50%,-50%) rotate(360deg);
+        -webkit-transform: translate(-50%,-50%) rotate(360deg);
+     }
+}
+
+@keyframes rotate {
+    from { transform: translate(-50%,-50%) rotate(0deg)  }
+    to { transform: translate(-50%,-50%) rotate(360deg) }
 }
 .btn-gray{background-color: #b9b9b9;}

@@ -16,11 +16,12 @@
 			<div class="mr">
 				<div class="hoz-input">
 					<label class="input-label">报修时间：</label>
-					<input type="text" class="input-input medium-input" v-model="startTime" placeholder="起始时间">
+					<!-- <input type="text" class="input-input medium-input" v-model="startTime" placeholder="起始时间"> -->
+					<flatpickr v-model="startTime"  placeholder="开始时间" :option="option"></flatpickr>
 				</div>
 				<div class="hoz-input">
 					<label for="input-label">-</label>
-					<input type="text" class="input-input" v-model="endTime" placeholder="结束时间">
+					<flatpickr v-model="endTime"  placeholder="结束时间"></flatpickr>
 				</div>
 			</div>
 		</div>
@@ -56,6 +57,7 @@
 
 import sel from './select.vue'
 import roomData from '../data/room.json'
+import flatpickr from './flatpickr.vue'
 
 export default{
 	name:'search',
@@ -78,17 +80,27 @@ export default{
 					{no:1,name:'硬件问题'},
 					{no:2,name:'软件问题'}
 				],
-			selRoom: roomData
+			selRoom: roomData,
+			msg:[],
 		}
 	},
 
 	components: {
         sel,
+        flatpickr
     },
 
     methods:{
     	searchData(){
-    		console.log(this.room,this.type)
+    // 		this.msg = [
+				// {name:'no',value:this.no},
+				// {name:'tel',value:this.tel},
+				// {name:'date',value:this.startTime},
+				// {name:'name',value:this.user},
+				// {name:'type',value:this.type},
+				// {name:'room',value:this.room},
+    // 		]
+    		console.log(this.msg)
     	}
     }
 }
@@ -96,6 +108,9 @@ export default{
 </script>
 
 <style>
+
+@import './assets/flatpickr.min.css';
+
 .search-body{
 	margin: 0.9375rem auto;
 	border-radius: 0.625rem;

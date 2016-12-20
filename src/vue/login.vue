@@ -55,6 +55,7 @@ export default{
 				this.title ='登陆';
 				login(this.admin,this.password)
 				.then((res) => {
+					console.log(res);
 					if(res.status == 200){
 						if(res.body.status == 1){
 							this.title = '正在登陆...';

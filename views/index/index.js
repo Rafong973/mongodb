@@ -2,7 +2,8 @@
 var $ = window.$;
 $ = function(name){
 	var n = name.substring(1,name.length),
-		t = name.substring(0,1);
+		t = name.substring(0,1),
+		v;
 	switch(t){
 		case ".":
 			v = document.getElementsByClassName(n);
@@ -56,11 +57,19 @@ function ajax(type,u,data){
 		if(xml.status == 200 && xml.readyState === XMLHttpRequest.DONE){
 			d = JSON.parse(xml.response);
 			if(d.status == 0){
-				app.alert("提交成功");
+				setTimeout(function(){
+					app.close();
+				},800)
+				setTimeout(function(){
+					app.alert("提交成功");
+				},800)
 				window.sessionStorage.setItem("repair",data);
 				return;
 			}
 		}else{
+			setTimeout(function(){
+				app.close();
+			},800)
 			app.alert("提交失败，请检查网络");
 			return false;
 		}
@@ -74,11 +83,16 @@ function vaildata(value){
 		for(var i = 0;i < value.length;i++){
 			var id = value[i].getAttribute("name"),
 				va = value[i].value,
-				da = value[i].getAttribute("data");
+				da = '';
 			if(!va){
 				f = false;
 				break;
 			}else{
+				if(id == "date"){
+					var k = new Date(va).getTime();
+					value[i].setAttribute("data",k);
+				}
+				da = value[i].getAttribute("data");
 				if(da !== null){
 					f += id + '= ' + da + '&';
 				}else{
@@ -99,13 +113,14 @@ $("#save").onclick = function(){
  	if(v && d){
  		var session = window.sessionStorage.getItem("repair");
  		if(session){
-				app.alert("请勿重复提交");
-				return false;
+			app.alert("请勿重复提交");
+			return false;
 		}
  	}else{
  		app.alert("不填写完整无法报修喔");
  		return false;
  	}
+ 	app.mask();
 	ajax('POST','/save',d);
 };
 
@@ -147,8 +162,9 @@ var selectList = [
 select($('.select'),selectList);
 $('.select')[0].onclick = function(){
 	var i = this.nextElementSibling;   
-	i.style.border = '.0625rem solid #ccc'
-	i.style.height = (35+4+2)*3 + 2 + 'px';
+	i.style.border = '.0625rem solid #ccc';
+	// i.style.height = (35+4+2)*3 + 2 + 'px';
+	i.style.height = '110px';
 };
 (function(){
 	var t = $('.input-input');
@@ -164,7 +180,6 @@ function vail(dom){
 		for(var i = 0;i < dom.length;i++){
 			var v = dom[i].value;
 			if(v){
-				console.log(dom[i]);
 				if(!switchDom(dom[i])){
 					k = false;
 					break;

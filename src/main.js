@@ -26,6 +26,7 @@ vue.directive('vaildate',vaildate)
 /**filter**/
 vue.filter('numstatus',filters.numstatus)
 vue.filter('problem',filters.problem)
+vue.filter('timeReturn',filters.timeReturn)
 
 
 var route = new router({

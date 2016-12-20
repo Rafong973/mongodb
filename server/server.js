@@ -11,6 +11,7 @@ const re = user.Data;
 const vail = 'adminpd123';
 
 export default function server(app,body){
+	
 	app.post('/login',body.urlencoded(),function(req,res){
 		const data = req.body;
 		let msg = '';

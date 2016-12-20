@@ -1,5 +1,5 @@
 <template>
-	<div class="mask" @click="this.show = !this.show" v-show="show"></div>
+	<div class="mask-child" @click="this.show = !this.show" v-show="show"></div>
 </template>
 
 <script>
@@ -16,7 +16,7 @@ export default{
 </script>
 
 <style>
-.mask{
+.mask-child{
 	position: fixed;
 	top: 0;
 	left: 0;
