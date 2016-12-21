@@ -1,19 +1,4 @@
-/**获取元素**/
-var $ = window.$;
-$ = function(name){
-	var n = name.substring(1,name.length),
-		t = name.substring(0,1),
-		v;
-	switch(t){
-		case ".":
-			v = document.getElementsByClassName(n);
-		break;
-		case "#":
-			v = document.getElementById(n);
-		break;
-	}
-	return v;
-};
+
 
 (function(){
 	var b = $('.banner')[0];
