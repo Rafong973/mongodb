@@ -39,7 +39,10 @@ export default{
 		return t;
 	},
 	timeReturn(value){
+		if(typeof value != 'number') value = parseInt(value);
 		// return fecha.format(parseInt(value),'YYYY-MM-DD hh:mm dddd');
-		return fecha.format(parseInt(value),'YYYY-MM-DD hh:mm');
+		if(value && typeof value != 'Nan'){
+			return fecha.format(value,'YYYY-MM-DD hh:mm');
+		}
 	}
 }

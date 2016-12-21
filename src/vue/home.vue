@@ -1,47 +1,50 @@
 <template>
 	<div class="data-body">
 		<div class="data-row">
-			<search></search>
-			<div class="data">
-				<table class="table">
-					<thead>
-						<tr>
-							<th>序号</th>
-							<th>学号</th>
-							<th>姓名</th>
-							<th>手机号码</th>
-							<th>问题类型</th>
-							<th>宿舍</th>
-							<th>预约时间</th>
-							<th>问题详情</th>
-							<th>状态</th>
-							<th>操作</th>
-						</tr>
-					</thead>
-					<tbody v-if="list">
-						<tr v-for="l in list">
-							<td>{{ $index + 1 }}</td>
-							<td>{{ l.no }}</td>
-							<td>{{ l.name }}</td>
-							<td>{{ l.tel }}</td>
-							<td>{{ l.type | problem }}</td>
-							<td>{{ l.room }}</td>
-							<td>{{ l.date | timeReturn }}</td>
-							<td class="td-spe"> {{ l.exp }}</td>
-							<td>{{ l.status | numstatus }}</td>
-							<td>
-								<a href="javascript:void(0)" v-if="l.status == 0 && l.admin == 0">指派</a>
-								<a href="javascript:void(0)">删除</a>
-								<a href="javascript:void(0)" v-if="l.status == 0">我来处理</a>
-								<a href="javascript:void(0)" v-if="l.status == 1 ">完成处理</a>
-								<a href="javascript:void(0)">
-									详情
-								</a>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+			<div class="data-list" v-show="detail == true">
+				<search></search>
+				<div class="data">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>序号</th>
+								<th>学号</th>
+								<th>姓名</th>
+								<th>手机号码</th>
+								<th>问题类型</th>
+								<th>宿舍</th>
+								<th>预约时间</th>
+								<th>问题详情</th>
+								<th>状态</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody v-if="list" class="data-tbody">
+							<tr v-for="l in list">
+								<td>{{ $index + 1 }}</td>
+								<td>{{ l.no }}</td>
+								<td>{{ l.name }}</td>
+								<td>{{ l.tel }}</td>
+								<td>{{ l.type | problem }}</td>
+								<td>{{ l.room }}</td>
+								<td>{{ l.date | timeReturn }}</td>
+								<td class="td-spe"> {{ l.exp }}</td>
+								<td>{{ l.status | numstatus }}</td>
+								<td>
+									<a href="javascript:void(0)" v-if="l.status == 0 && l.admin == 0">指派</a>
+									<a href="javascript:void(0)">删除</a>
+									<a href="javascript:void(0)" v-if="l.status == 0">我来处理</a>
+									<a href="javascript:void(0)" v-if="l.status == 1 ">完成处理</a>
+									<a href="javascript:void(0)" @click="disDetail(l)">
+										详情
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
+			<detail :show.sync="detail" :msg.sync="detailData"></detail>
 		</div>
 	</div>
 </template>
@@ -51,17 +54,19 @@
 //js
 import { data } from '../script/server'
 import search from './search.vue'
+import detail from './detail.vue'
 
 export default{
 	name: 'home',
 
-	components:[search],
+	components:[search,detail],
 	
 	data(){
 		return{
 			name : 'home',
-			// list:[{date:"2016-12-18 04:00:00.000",exp:"sdfsdf",name:"324234",no:"werewer",room:"23423",tel:234234,type:1,status:1,admin:0}]
-			list:''
+			list:'',
+			detail:true,
+			detailData:'',
 		}
 	},
 	created(){
@@ -69,6 +74,12 @@ export default{
 		.then((res) => {
 			this.list = res.body.msg;
 		})
+	},
+	methods:{
+		disDetail(data){
+			this.detailData = data;
+			this.detail = false
+		}
 	}
 }
 </script>
@@ -81,41 +92,39 @@ export default{
 	transform: translateX(-50%);
 	-webkit-transform: translateX(-50%);
 	color: #4d6076;
-}
-table{
 	font-size: 0.8125rem;
+}
+.table{
 	width: 1150px;
 	text-align: center;
 	border-collapse: collapse;
 }
-th{
+.table th{
 	font-style: normal;
 	font-weight: 400;
 	border: 0.0625rem solid #f0f0f1;
-}
-thead th{
 	padding: 0.625rem 0;
 	background-color: #f0f0f1;
 }
-tbody{
+.data-tbody{
 	border: 0.0625rem solid #f0f0f1;
 }
-tbody tr{
+.data-tbody tr{
 	&:not(:last-child){
 		border: 1px solid #f0f0f1;
 	}
 }
-td{
+.data-tbody td{
 	padding: 0.625rem 0.3125rem;
 	line-height: 1.25rem;
 	&:not(:last-child){
 		border-right: 1px solid #f0f0f1
 	}
 }
-td a{
+.table a,.btn-ng{
 	color: #4f88c9;
 }
-table .td-spe{
+.table .td-spe{
 	width: 15.0rem;
 	overflow: hidden;
 }
