@@ -12,10 +12,12 @@ header{
 	height: 2.8125rem;
 	width: 100%;
 	background-color: #0099CC;
+	/* background-color: #eee; */
 	line-height: 2.8125rem;
 	position: relative;
 	z-index: 9999;
 }
+/* 导航栏 */
 .nav-ul{
 	position: absolute;
 	top: 0;
@@ -23,11 +25,10 @@ header{
 	margin-left: -100%;
 	height: 100%;
 	transition: all .3s ease;
-	-webkit-transition: all .3s ease;
+	-webkit-transition: all .3s .5s ease;
 	transform: translate3d(0, 0, 0);
 	-webkit-transform: translate3d(0, 0, 0);
 	z-index: 1;
-	background-color: #0099CC;
 }
 .nav-ul li{
 	float: left;
@@ -68,6 +69,36 @@ header{
 	transform: translateY(-50%);
 	-webkit-transform: translateY(-50%)
 }
+/* banner */
+.banner{
+	width: 100%;
+	height: 800px;
+	background: url('./img/8.jpg') no-repeat center center;
+	position: relative;
+	background-size: cover;
+}
+.banner-exp{
+	color: #fff;
+	width: 28.4375rem;
+	margin-left: auto;
+	margin-right: auto;
+	line-height: 3.125rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+}
+.banner-title{
+	font-size: 2.5rem;
+	animation: titleIn 1s .2s ease;
+	-webkit-animation: titleIn 1s .2s ease;
+}
+.banner-span{
+	text-align: right;
+	font-size: 1.25rem;
+}
+/* 报修 */
 .warm-label{
 	display: block;
 	position: absolute;
@@ -82,6 +113,30 @@ header{
 body .flatpickr-calendar{
 	top: 0;
 	left: 0;
+}
+/* 动画效果 */
+@-webkit-keyframes titleIn {
+	from { -webkit-transform: scale(1,.1) rotateX(0) }
+	to {  -webkit-transform: scale(1,1) rotateX(360deg)}
+}
+@-moz-keyframes titleIn {
+	from { -moz-transform: scale(1,.1) rotateX(0) }
+	to {  -moz-transform: scale(1,1) rotateX(360deg)}
+}
+@keyframes titleIn {
+	from { transform: scale(1,.1) rotateX(0deg) }
+	to {  transform: scale(1,1) rotateX(360deg) }
+}
+@media only screen and (max-width: 414px){
+	.banner-exp{
+		width: 20.0rem;
+	}
+	.banner-title{
+		font-size: 1.75rem;
+	}
+	.banner-span{
+		font-size: 0.875rem;
+	}
 }
 @media only screen and (max-width: 768px) {
 	header{
@@ -104,5 +159,14 @@ body .flatpickr-calendar{
 @media only screen and (max-width: 320px) {
 	.repair-data,.login-data{
 		width: 18.75rem;
+	}
+	.banner-exp{
+		width: 18rem;
+	}
+	.banner-title{
+		font-size: 1.55rem;
+	}
+	.banner-span{
+		font-size: 0.875rem;
 	}
 }
