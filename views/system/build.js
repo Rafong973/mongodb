@@ -18410,7 +18410,8 @@ webpackJsonp([0,1],[
 	// 	<div class="detail-body" v-show='!show'>
 	// 		<div class="line" style="line-height:2.8175rem;">
 	// 			<a href="javascript:void" class="fl btn-ng" @click="back">返回</a>
-	// 			<a href="javascript:void" class="fr btn-ng">编辑</a>
+	// 			<a href="javascript:void" class="fr btn-ng" @click="editData" v-show="edit">编辑</a>
+	// 			<a href="javascript:void" class="fr btn-ng" @click="finish" v-show="!edit">完成</a>
 	// 		</div>
 	// 		<table class="detail">
 	// 			<tbody>
@@ -18473,6 +18474,12 @@ webpackJsonp([0,1],[
 		methods: {
 			back: function back() {
 				this.show = true;
+			},
+			editData: function editData() {
+				this.edit = false;
+			},
+			finish: function finish() {
+				this.edit = true;
 			}
 		},
 		created: function created() {}
@@ -18520,7 +18527,7 @@ webpackJsonp([0,1],[
 /* 105 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"detail-body\" v-show='!show'>\n\t<div class=\"line\" style=\"line-height:2.8175rem;\">\n\t\t<a href=\"javascript:void\" class=\"fl btn-ng\" @click=\"back\">返回</a>\n\t\t<a href=\"javascript:void\" class=\"fr btn-ng\">编辑</a>\n\t</div>\n\t<table class=\"detail\">\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td>学号</td>\n\t\t\t\t<td>{{ msg.no }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>手机号码</td>\n\t\t\t\t<td>\n\t\t\t\t\t<input type=\"text\" class=\"large-input\" v-model=\"msg.tel\" :readonly=\"edit\">\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>问题类型</td>\n\t\t\t\t<td>{{ msg.type | problem }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>宿舍</td>\n\t\t\t\t<td>{{ msg.room }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>预约时间</td>\n\t\t\t\t<td>{{ msg.date | timeReturn }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>报修时间</td>\n\t\t\t\t<td>2016-20-21 08：00</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>接单人</td>\n\t\t\t\t<td>飞机</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>状态</td>\n\t\t\t\t<td>{{ msg.status | numstatus }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>问题详情</td>\n\t\t\t\t<td>{{ msg.exp }}</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>\n";
+	module.exports = "\n<div class=\"detail-body\" v-show='!show'>\n\t<div class=\"line\" style=\"line-height:2.8175rem;\">\n\t\t<a href=\"javascript:void\" class=\"fl btn-ng\" @click=\"back\">返回</a>\n\t\t<a href=\"javascript:void\" class=\"fr btn-ng\" @click=\"editData\" v-show=\"edit\">编辑</a>\n\t\t<a href=\"javascript:void\" class=\"fr btn-ng\" @click=\"finish\" v-show=\"!edit\">完成</a>\n\t</div>\n\t<table class=\"detail\">\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td>学号</td>\n\t\t\t\t<td>{{ msg.no }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>手机号码</td>\n\t\t\t\t<td>\n\t\t\t\t\t<input type=\"text\" class=\"large-input\" v-model=\"msg.tel\" :readonly=\"edit\">\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>问题类型</td>\n\t\t\t\t<td>{{ msg.type | problem }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>宿舍</td>\n\t\t\t\t<td>{{ msg.room }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>预约时间</td>\n\t\t\t\t<td>{{ msg.date | timeReturn }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>报修时间</td>\n\t\t\t\t<td>2016-20-21 08：00</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>接单人</td>\n\t\t\t\t<td>飞机</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>状态</td>\n\t\t\t\t<td>{{ msg.status | numstatus }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>问题详情</td>\n\t\t\t\t<td>{{ msg.exp }}</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>\n";
 
 /***/ },
 /* 106 */

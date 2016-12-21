@@ -2,7 +2,8 @@
 	<div class="detail-body" v-show='!show'>
 		<div class="line" style="line-height:2.8175rem;">
 			<a href="javascript:void" class="fl btn-ng" @click="back">返回</a>
-			<a href="javascript:void" class="fr btn-ng">编辑</a>
+			<a href="javascript:void" class="fr btn-ng" @click="editData" v-show="edit">编辑</a>
+			<a href="javascript:void" class="fr btn-ng" @click="finish" v-show="!edit">完成</a>
 		</div>
 		<table class="detail">
 			<tbody>
@@ -64,6 +65,12 @@ export default{
 	methods:{
 		back(){
 			this.show = true;
+		},
+		editData(){
+			this.edit = false;
+		},
+		finish(){
+			this.edit = true;
 		}
 	},
 	created(){

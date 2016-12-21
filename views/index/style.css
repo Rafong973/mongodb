@@ -40,12 +40,14 @@ header{
 }
 .repair-data{
 	width:28.125rem;
+	margin-top: 4%;
 	margin-left:auto;
 	margin-right: auto;
 	border:.0625rem solid #ccc;
 	border-radius: .5rem;
 	color: #4d6076;
-	padding-bottom: .625rem;
+	padding-bottom: .625rem ;
+	padding-top: .625rem;
 }
 .menu-icon{
 	position: relative;
@@ -77,9 +79,21 @@ header{
 	bottom: -.9375rem;
 	color: #ff0000;
 }
+body .flatpickr-calendar{
+	top: 0;
+	left: 0;
+}
 @media only screen and (max-width: 768px) {
 	header{
 		box-shadow: 0 .1875rem .1875rem #ccc;
+	}
+}
+@media only screen and (min-width:768px){
+	.head-guide{
+		margin-left: -100%;
+	}
+	.nav-ul{
+		margin-left: 0;
 	}
 }
 @media only screen and (min-width: 360px) {
