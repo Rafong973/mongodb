@@ -3,6 +3,7 @@ import cookie from 'cookie-parser'
 import sta from 'express-static'
 import bodyParser from 'body-parser'
 import session from 'cookie-session'
+import cookieParser from 'cookie-parser'
 
 // new app
 const app = express()
@@ -18,10 +19,13 @@ app.all('*', function(req, res,next) {
 });
 
 //session and cookie
+app.use(cookieParser());
 app.use(session({
+    secret:'12345',
 	name:'session',
-	keys:['key1'],
-	maxAge:24 * 60 * 60 * 1000
+	cookie:{maxAge:6000},
+    resave:false,
+    saveUninitialized: true,
 }));
 
 // view engines
