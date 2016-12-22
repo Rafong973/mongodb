@@ -1,7 +1,7 @@
 <template>
 	<div class="nav">
-		<a href="javascript:void(0)" class="admin-set" alt="用户设置"></a>
-		<a href="javascript:void(0)" class="logout" alt="退出"></a>
+		<a href="javascript:void(0)" class="admin-set" alt="用户设置" ></a>
+		<a href="javascript:void(0)" class="logout" alt="退出" @click="logout"></a>
 	</div>
 </template>
 
@@ -12,6 +12,12 @@ export default{
 	data(){
 		return{
 			
+		}
+	},
+	methods:{
+		logout(){
+			sessionStorage.removeItem('user');
+			this.$router.go({path:'/login'});
 		}
 	},
 	created(){

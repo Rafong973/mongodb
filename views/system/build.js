@@ -18608,12 +18608,7 @@ webpackJsonp([0,1],[
 
 		components: { navBar: _nav2.default },
 
-		events: {
-			logout: function logout() {
-				sessionStorage.removeItem('user');
-				this.$router.go({ path: '/home' });
-			}
-		}
+		events: {}
 
 	};
 	// </script>
@@ -18696,8 +18691,8 @@ webpackJsonp([0,1],[
 	});
 	// <template>
 	// 	<div class="nav">
-	// 		<a href="javascript:void(0)" class="admin-set" alt="用户设置"></a>
-	// 		<a href="javascript:void(0)" class="logout" alt="退出"></a>
+	// 		<a href="javascript:void(0)" class="admin-set" alt="用户设置" ></a>
+	// 		<a href="javascript:void(0)" class="logout" alt="退出" @click="logout"></a>
 	// 	</div>
 	// </template>
 	//
@@ -18707,6 +18702,13 @@ webpackJsonp([0,1],[
 
 		data: function data() {
 			return {};
+		},
+
+		methods: {
+			logout: function logout() {
+				sessionStorage.removeItem('user');
+				this.$router.go({ path: '/login' });
+			}
 		},
 		created: function created() {}
 	};
@@ -18760,7 +18762,7 @@ webpackJsonp([0,1],[
 /* 113 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"nav\">\n\t<a href=\"javascript:void(0)\" class=\"admin-set\" alt=\"用户设置\"></a>\n\t<a href=\"javascript:void(0)\" class=\"logout\" alt=\"退出\"></a>\n</div>\n";
+	module.exports = "\n<div class=\"nav\">\n\t<a href=\"javascript:void(0)\" class=\"admin-set\" alt=\"用户设置\" ></a>\n\t<a href=\"javascript:void(0)\" class=\"logout\" alt=\"退出\" @click=\"logout\"></a>\n</div>\n";
 
 /***/ },
 /* 114 */
@@ -18846,7 +18848,6 @@ webpackJsonp([0,1],[
 				} else {
 					this.title = '登陆';
 					(0, _server.login)(this.admin, this.password).then(function (res) {
-						console.log(res);
 						if (res.status == 200) {
 							if (res.body.status == 1) {
 								_this.title = '正在登陆...';

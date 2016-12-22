@@ -20,7 +20,7 @@ input[type="text"]:focus,input[type="number"]:focus,input[type="password"]:focus
 .input-checkbox{display: none;opacity: 0;margin-left: 1000%;}
 .check-label{margin-left:calc(5% + 1.5625rem);font-size: .75rem;position: relative;vertical-align: middle;cursor: pointer;}
 .check-label:before{content:"";position: absolute;height: .9375rem;width: .9375rem;border:.0625rem solid #ccc;top: -.0625rem;left:-1.5625rem;}
-.check-label:after{content:"\221A";position: absolute;top: -.625rem;left:-1.25rem;display: none;}
+.check-label:after{content:"\221A";position: absolute;top: -.375rem;left:-1.25rem;display: none;}
 .input-checkbox:checked + .check-label:after{display: block;}
 .row{width: 90%;margin-left: auto;margin-right: auto;}
 .btn{padding:.3125rem 0;color: #FFF;font-size: .8125rem;}

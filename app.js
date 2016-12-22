@@ -1,8 +1,8 @@
 import express from 'express'
 import cookie from 'cookie-parser'
-import session from 'express-session'
 import sta from 'express-static'
 import bodyParser from 'body-parser'
+import session from 'cookie-session'
 
 // new app
 const app = express()
@@ -17,6 +17,12 @@ app.all('*', function(req, res,next) {
     next();
 });
 
+//session and cookie
+app.use(session({
+	name:'session',
+	keys:['key1'],
+	maxAge:24 * 60 * 60 * 1000
+}));
 
 // view engines
 import cons from 'consolidate'

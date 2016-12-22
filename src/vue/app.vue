@@ -27,10 +27,6 @@ export default{
 	components:{ navBar, },
 
 	events:{
-		logout(){
-			sessionStorage.removeItem('user');
-			this.$router.go({path:'/home'});
-		}
 
 	}
 
