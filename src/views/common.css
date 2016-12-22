@@ -9,9 +9,9 @@ html{font-family: "Microsoft Yahei";}
 .input-group{position:relative;width: 100%;line-height:2.1875;margin-bottom: .625rem;padding-bottom: .625rem;}
 .vertical-input .input-label,.vertical-input .input-input,.flatpickr-mobile{width: 90%;margin:0 auto;text-align: left;display:block;height: 2.1875rem;}
 .hoz-input{position:relative;height: 2.1875rem;float:left;line-height: 2.1875rem;margin-right: .3125rem;}
-.flatpickr-input{height: 80%;border-radius: .25rem;border:.0625rem solid #ccc;text-indent: .5rem;}
+.flatpickr-input{border-radius: .25rem;border:.0625rem solid #ccc;text-indent: .5rem;}
 .large-input{width: 12.5rem;}
-.hoz-input .input-input{height: 80%;}
+.hoz-input .input-input,.hoz-input .flatpickr-input{height: 80%;}
 .medium-input{width: 9.375rem;}
 .small-input{width: 7.5rem;}
 .input-label{vertical-align: middle;font-size: .875rem;}

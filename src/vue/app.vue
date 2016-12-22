@@ -1,19 +1,37 @@
 <template>
 	<div class="app">
-		<router-view></router-view>
+		<router-view
+		transition="route"
+		transition-mode="out-in"
+		:user.sync="curUser"
+		>
+		</router-view>
+		<nav-bar></nav-bar>
 	</div>
 </template>
 
 
 <script>
 //js
+import navBar from './nav.vue'
+
 export default{
 	name: 'app',
 
 	data(){
 		return{
 			name : 'app',
+			curUser:{}
 		}
+	},
+	components:{ navBar, },
+
+	events:{
+		logout(){
+			sessionStorage.removeItem('user');
+			this.$router.go({path:'/home'});
+		}
+
 	}
 
 }
@@ -21,14 +39,10 @@ export default{
 
 <style>
 body{font-size:16px;}
-.slide-fade-enter-active {
-  transition: all .3s ease;
+.route-transition {
+    transition: opacity .5s ease;
 }
-.slide-fade-leave-active {
-  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
-.slide-fade-enter, .slide-fade-leave-active {
-  transform: translateX(0.625rem);
-  opacity: 0;
+.route-enter, .route-leave {
+    opacity: 0;
 }
 </style>

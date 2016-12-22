@@ -1,7 +1,6 @@
 import vue from 'vue';
 import router from 'vue-router';
 import resource from 'vue-resource';
-// import transition from 'vue-transition';
 
 /**css**/
 require('./views/common.css');
@@ -12,8 +11,10 @@ import app from './vue/app.vue'
 import login from './vue/login.vue'
 import reg from './vue/register.vue'
 
+/**directive**/
 import vaildate from './script/vaildate'
 
+/**filter**/
 import filters from './script/filter'
 
 

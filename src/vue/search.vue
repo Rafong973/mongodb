@@ -16,7 +16,6 @@
 			<div class="mr">
 				<div class="hoz-input">
 					<label class="input-label">报修时间：</label>
-					<!-- <input type="text" class="input-input medium-input" v-model="startTime" placeholder="起始时间"> -->
 					<flatpickr v-model="startTime"  placeholder="开始时间" :option="option"></flatpickr>
 				</div>
 				<div class="hoz-input">
@@ -46,7 +45,7 @@
 			</div>
 			<div class="mr">
 				<div class="input-group">
-					<a href="javascript:void(0)" class="col-8 btn txc btn-primary pdtr" @click="searchData">搜索</a>
+					<a href="javascript:void(0)" class="col-8 btn txc btn-primary pdtr" @click="searchData" style="max-height:80%;line-height:2.1875rem;">搜索</a>
 				</div>
 			</div>
 		</div>

@@ -21,4 +21,17 @@ window.onload = function(){
 		$('.body-mask-gray')[0].style.display = 'none';
 		$('.banner-title')[0].className += ' title-in';
 	},900);
+	banner();
+}
+
+window.onresize = function(){
+	banner();
+}
+
+
+function banner(){
+	var b = $('.banner')[0];
+	if(window.innerHeight < 800){
+		b.style.height = window.innerHeight + 'px';
+	}
 }

@@ -95,18 +95,46 @@
 body {
   font-size: 16px; }
 
-.slide-fade-enter-active {
-  -webkit-transition: all .3s ease;
-  transition: all .3s ease; }
+.route-transition {
+  -webkit-transition: opacity .5s ease;
+  transition: opacity .5s ease; }
 
-.slide-fade-leave-active {
-  -webkit-transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
-  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1); }
-
-.slide-fade-enter, .slide-fade-leave-active {
-  -webkit-transform: translateX(0.625rem);
-          transform: translateX(0.625rem);
+.route-enter, .route-leave {
   opacity: 0; }
+.nav {
+  width: 1.5625rem;
+  position: fixed;
+  top: 50%;
+  right: 1%;
+  z-index: 99999999999999;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  text-align: center; }
+  .nav a {
+    display: block;
+    width: 100%;
+    height: 1.5625rem;
+    margin-bottom: .625rem;
+    position: relative; }
+  .nav .logout {
+    border-radius: 50%;
+    border: .1875rem solid #4d6076; }
+    .nav .logout:before, .nav .logout:after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+              transform: translateX(-50%); }
+    .nav .logout:before {
+      height: .3125rem;
+      width: .625rem;
+      top: -.1875rem;
+      background-color: #fafafa; }
+    .nav .logout:after {
+      height: 0.625rem;
+      width: 0.1875rem;
+      top: -0.3125rem;
+      background-color: #4d6076; }
 .login-body {
   width: 100%;
   height: 100%;
@@ -134,9 +162,9 @@ html{font-family: "Microsoft Yahei";}
 .input-group{position:relative;width: 100%;line-height:2.1875;margin-bottom: .625rem;padding-bottom: .625rem;}
 .vertical-input .input-label,.vertical-input .input-input,.flatpickr-mobile{width: 90%;margin:0 auto;text-align: left;display:block;height: 2.1875rem;}
 .hoz-input{position:relative;height: 2.1875rem;float:left;line-height: 2.1875rem;margin-right: .3125rem;}
-.flatpickr-input{height: 80%;border-radius: .25rem;border:.0625rem solid #ccc;text-indent: .5rem;}
+.flatpickr-input{border-radius: .25rem;border:.0625rem solid #ccc;text-indent: .5rem;}
 .large-input{width: 12.5rem;}
-.hoz-input .input-input{height: 80%;}
+.hoz-input .input-input,.hoz-input .flatpickr-input{height: 80%;}
 .medium-input{width: 9.375rem;}
 .small-input{width: 7.5rem;}
 .input-label{vertical-align: middle;font-size: .875rem;}

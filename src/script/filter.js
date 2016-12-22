@@ -1,5 +1,3 @@
-import fecha from 'fecha';
-
 export default{
 	numstatus(value){
 		let t;
@@ -40,9 +38,16 @@ export default{
 	},
 	timeReturn(value){
 		if(typeof value != 'number') value = parseInt(value);
-		// return fecha.format(parseInt(value),'YYYY-MM-DD hh:mm dddd');
-		if(value && typeof value != 'Nan'){
-			return fecha.format(value,'YYYY-MM-DD hh:mm');
-		}
+		let d = new Date(value);
+		let	y = d.getFullYear();
+		let m = d.getMonth() + 1;
+		let t = d.getDate();
+		let h = d.getHours();
+		let f = d.getMinutes();
+		if(f < 10) f += '0';
+		if(h < 10) h = '0' + h;
+		if(t !== 31) t -= 1;
+		d = y + '-' + m + '-' + t + '  ' + h + ':' + f; 
+		return d;
 	}
 }

@@ -1,16 +1,14 @@
 
 
 (function(){
-	var b = $('.banner')[0];
-	if(window.innerHeight < 800){
-		b.style.height = window.innerHeight + 'px';
-	}
+	
 })();
 
 /** 菜单弹出 **/
 $(".menu-icon")[0].onclick = function (){
 	var d = $(".nav-ul")[0];
 	d.style.marginLeft = "0";
+	this.style.marginLeft = '-10%';
 }
 var touch = (function(){
 	var x,y;
@@ -31,7 +29,9 @@ var touch = (function(){
 			}
 		},
 		end:function(e){
-			
+			setTimeout(function(){
+				$(".menu-icon")[0].style.marginLeft = '2%';
+			},500)
 		}
 	}
 })();
