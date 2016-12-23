@@ -7,8 +7,12 @@ export default function router(app){
 	})
 
 	app.get('/system',(req,res) => {
-		console.log(req.session);
 		res.render('system');
+		if(req.session.i){
+			req.session.i++
+		}else{
+			req.session.i = 1;
+		}
 	})
 
 }

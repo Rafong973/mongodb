@@ -14,9 +14,7 @@ export default function server(app,body){
 	
 	app.post('/login',body.urlencoded(),function(req,res){
 		const data = req.body;
-		const sess = req.session;
 		let msg = '';
-		console.log(req.session);
 		if (!data) return res.sendStatus(400);
 		db.find({admin:data.u},function(err,docs){
 			if(docs.length == 0){
@@ -75,7 +73,7 @@ export default function server(app,body){
 		}else{
 			res.send({status:3,msg:'nothing'});
 		}
-	})
+	});
 
 	app.post('/save',body.urlencoded(),function(req,res){
 		const data = req.body;
@@ -84,5 +82,5 @@ export default function server(app,body){
 			console.error(err);
 		});
 		res.send({status:0,msg:'susccess'});
-	})
+	});
 }

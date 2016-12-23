@@ -4,6 +4,7 @@ import sta from 'express-static'
 import bodyParser from 'body-parser'
 import session from 'cookie-session'
 import cookieParser from 'cookie-parser'
+import request from './server/request'
 
 // new app
 const app = express()
@@ -18,14 +19,16 @@ app.all('*', function(req, res,next) {
     next();
 });
 
+/** 请求 */
+import server from './server/server'
+server(app,bodyParser)
+
 //session and cookie
 app.use(cookieParser());
 app.use(session({
-    secret:'12345',
-	name:'session',
-	cookie:{maxAge:6000},
-    resave:false,
-    saveUninitialized: true,
+    name : 'session',
+    keys:['keys'],
+    maxAge: 3000
 }));
 
 // view engines
@@ -35,10 +38,6 @@ import path from 'path'
 /**路由**/
 import router from './server/router'
 router(app)
-
-/** 请求 */
-import server from './server/server'
-server(app,bodyParser)
 
 // 指定视图
 app.engine('html',cons.swig)
