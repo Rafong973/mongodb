@@ -135,6 +135,29 @@ body {
       width: 0.1875rem;
       top: -0.3125rem;
       background-color: #4d6076; }
+.alert[_v-10eb44dd], .alert-mask[_v-10eb44dd] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
+.alert[_v-10eb44dd] {
+  background-color: rgba(0, 0, 0, 0.2);
+  font-size: .8125rem;
+  z-index: 99999; }
+
+.alert-content[_v-10eb44dd] {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 0.25rem;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: .625rem; }
+  .alert-content a[_v-10eb44dd] {
+    display: inline-block; }
 .login-body {
   width: 100%;
   height: 100%;

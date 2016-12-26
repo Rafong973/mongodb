@@ -24,7 +24,7 @@ app.use(cookieParser());
 app.use(session({
     name : 'session',
     keys:['keys'],
-    maxAge: 3000 * 60
+    maxAge: 3000
 }));
 
 /**路由**/

@@ -16,9 +16,9 @@ export default{
 	},
 	methods:{
 		logout(){
-			sessionStorage.removeItem('user');
-			this.$router.go({path:'/login'});
+			this.$root.$emit("logout");
 		}
+		
 	},
 	created(){
 

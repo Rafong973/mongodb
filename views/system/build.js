@@ -31,26 +31,26 @@ webpackJsonp([0,1],[
 
 	var _app2 = _interopRequireDefault(_app);
 
-	var _login = __webpack_require__(115);
+	var _login = __webpack_require__(119);
 
 	var _login2 = _interopRequireDefault(_login);
 
-	var _register = __webpack_require__(119);
+	var _register = __webpack_require__(123);
 
 	var _register2 = _interopRequireDefault(_register);
 
-	var _vaildate = __webpack_require__(122);
+	var _vaildate = __webpack_require__(126);
 
 	var _vaildate2 = _interopRequireDefault(_vaildate);
 
-	var _filter = __webpack_require__(123);
+	var _filter = __webpack_require__(127);
 
 	var _filter2 = _interopRequireDefault(_filter);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/**css**/
-	__webpack_require__(124);
+	__webpack_require__(128);
 
 	/**component**/
 
@@ -14661,7 +14661,12 @@ webpackJsonp([0,1],[
 			var _this = this;
 
 			(0, _server.data)().then(function (res) {
-				_this.list = res.body.msg;
+				if (res.body.status == 0) {
+					_this.list = res.body.msg;
+				} else {
+					_this.$root.$emit('backLogin(res.body)');
+					_this.list = [];
+				}
 			});
 		},
 
@@ -14725,7 +14730,7 @@ webpackJsonp([0,1],[
 	// 			<div class="data-list" v-show="detail == true">
 	// 				<search></search>
 	// 				<div class="data">
-	// 					<table class="table">
+	// 					<table class="table"> 
 	// 						<thead>
 	// 							<tr>
 	// 								<th>序号</th>
@@ -14763,6 +14768,9 @@ webpackJsonp([0,1],[
 	// 							</tr>
 	// 						</tbody>
 	// 					</table>
+	// 					<div class="txc" v-show="list.length == 0">
+	// 						无数据
+	// 					</div>
 	// 				</div>
 	// 			</div>
 	// 			<detail :show.sync="detail" :msg.sync="detailData"></detail>
@@ -18328,7 +18336,7 @@ webpackJsonp([0,1],[
 /* 106 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"data-body\">\n\t<div class=\"data-row\">\n\t\t<div class=\"data-list\" v-show=\"detail == true\">\n\t\t\t<search></search>\n\t\t\t<div class=\"data\">\n\t\t\t\t<table class=\"table\">\n\t\t\t\t\t<thead>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>序号</th>\n\t\t\t\t\t\t\t<th>学号</th>\n\t\t\t\t\t\t\t<th>姓名</th>\n\t\t\t\t\t\t\t<th>手机号码</th>\n\t\t\t\t\t\t\t<th>问题类型</th>\n\t\t\t\t\t\t\t<th>宿舍</th>\n\t\t\t\t\t\t\t<th>预约时间</th>\n\t\t\t\t\t\t\t<th>问题详情</th>\n\t\t\t\t\t\t\t<th>状态</th>\n\t\t\t\t\t\t\t<th>操作</th>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</thead>\n\t\t\t\t\t<tbody v-if=\"list\" class=\"data-tbody\">\n\t\t\t\t\t\t<tr v-for=\"l in list\">\n\t\t\t\t\t\t\t<td>{{ $index + 1 }}</td>\n\t\t\t\t\t\t\t<td>{{ l.no }}</td>\n\t\t\t\t\t\t\t<td>{{ l.name }}</td>\n\t\t\t\t\t\t\t<td>{{ l.tel }}</td>\n\t\t\t\t\t\t\t<td>{{ l.type | problem }}</td>\n\t\t\t\t\t\t\t<td>{{ l.room }}</td>\n\t\t\t\t\t\t\t<td>{{ l.date | timeReturn }}</td>\n\t\t\t\t\t\t\t<td class=\"td-spe\"> {{ l.exp }}</td>\n\t\t\t\t\t\t\t<td>{{ l.status | numstatus }}</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 0 && l.admin == 0\">指派</a>\n\t\t\t\t\t\t\t\t<a href=\"javascript:void(0)\">删除</a>\n\t\t\t\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 0\">我来处理</a>\n\t\t\t\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 1 \">完成处理</a>\n\t\t\t\t\t\t\t\t<a href=\"javascript:void(0)\" @click=\"disDetail(l)\">\n\t\t\t\t\t\t\t\t\t详情\n\t\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</tbody>\n\t\t\t\t</table>\n\t\t\t</div>\n\t\t</div>\n\t\t<detail :show.sync=\"detail\" :msg.sync=\"detailData\"></detail>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"data-body\">\n\t<div class=\"data-row\">\n\t\t<div class=\"data-list\" v-show=\"detail == true\">\n\t\t\t<search></search>\n\t\t\t<div class=\"data\">\n\t\t\t\t<table class=\"table\"> \n\t\t\t\t\t<thead>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>序号</th>\n\t\t\t\t\t\t\t<th>学号</th>\n\t\t\t\t\t\t\t<th>姓名</th>\n\t\t\t\t\t\t\t<th>手机号码</th>\n\t\t\t\t\t\t\t<th>问题类型</th>\n\t\t\t\t\t\t\t<th>宿舍</th>\n\t\t\t\t\t\t\t<th>预约时间</th>\n\t\t\t\t\t\t\t<th>问题详情</th>\n\t\t\t\t\t\t\t<th>状态</th>\n\t\t\t\t\t\t\t<th>操作</th>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</thead>\n\t\t\t\t\t<tbody v-if=\"list\" class=\"data-tbody\">\n\t\t\t\t\t\t<tr v-for=\"l in list\">\n\t\t\t\t\t\t\t<td>{{ $index + 1 }}</td>\n\t\t\t\t\t\t\t<td>{{ l.no }}</td>\n\t\t\t\t\t\t\t<td>{{ l.name }}</td>\n\t\t\t\t\t\t\t<td>{{ l.tel }}</td>\n\t\t\t\t\t\t\t<td>{{ l.type | problem }}</td>\n\t\t\t\t\t\t\t<td>{{ l.room }}</td>\n\t\t\t\t\t\t\t<td>{{ l.date | timeReturn }}</td>\n\t\t\t\t\t\t\t<td class=\"td-spe\"> {{ l.exp }}</td>\n\t\t\t\t\t\t\t<td>{{ l.status | numstatus }}</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 0 && l.admin == 0\">指派</a>\n\t\t\t\t\t\t\t\t<a href=\"javascript:void(0)\">删除</a>\n\t\t\t\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 0\">我来处理</a>\n\t\t\t\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 1 \">完成处理</a>\n\t\t\t\t\t\t\t\t<a href=\"javascript:void(0)\" @click=\"disDetail(l)\">\n\t\t\t\t\t\t\t\t\t详情\n\t\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</tbody>\n\t\t\t\t</table>\n\t\t\t\t<div class=\"txc\" v-show=\"list.length == 0\">\n\t\t\t\t\t无数据\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<detail :show.sync=\"detail\" :msg.sync=\"detailData\"></detail>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 107 */
@@ -18342,7 +18350,7 @@ webpackJsonp([0,1],[
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\vue\\app.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(114)
+	__vue_template__ = __webpack_require__(118)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -18386,21 +18394,53 @@ webpackJsonp([0,1],[
 
 	var _nav2 = _interopRequireDefault(_nav);
 
+	var _alert = __webpack_require__(114);
+
+	var _alert2 = _interopRequireDefault(_alert);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	// <template>
+	// 	<div class="app">
+	// 		<router-view
+	// 		transition="route"
+	// 		transition-mode="out-in"
+	// 		:user.sync="curUser"
+	// 		>
+	// 		</router-view>
+	// 		<nav-bar></nav-bar>
+	// 		<tip :show.sync="ale" :text="'你可能需要重新登陆，才能继续操作'" ></tip>
+	// 	</div>
+	// </template>
+	//
+	//
+	// <script>
+	//js
 	exports.default = {
 		name: 'app',
 
 		data: function data() {
 			return {
 				name: 'app',
-				curUser: {}
+				curUser: {},
+				ale: false
 			};
 		},
 
-		components: { navBar: _nav2.default },
 
-		events: {}
+		components: { navBar: _nav2.default, tip: _alert2.default },
+
+		events: {
+			backLogin: function backLogin(res) {
+				if (res.status == 5) {
+					this.ale = false;
+				}
+			},
+			logout: function logout() {
+				sessionStorage.removeItem('user');
+				this.$router.go({ path: '/login' });
+			}
+		}
 
 	};
 	// </script>
@@ -18414,21 +18454,6 @@ webpackJsonp([0,1],[
 	//     opacity: 0;
 	// }
 	// </style>
-	// <template>
-	// 	<div class="app">
-	// 		<router-view
-	// 		transition="route"
-	// 		transition-mode="out-in"
-	// 		:user.sync="curUser"
-	// 		>
-	// 		</router-view>
-	// 		<nav-bar></nav-bar>
-	// 	</div>
-	// </template>
-	//
-	//
-	// <script>
-	//js
 
 /***/ },
 /* 110 */
@@ -18476,7 +18501,7 @@ webpackJsonp([0,1],[
 /* 112 */
 /***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -18498,8 +18523,7 @@ webpackJsonp([0,1],[
 
 		methods: {
 			logout: function logout() {
-				sessionStorage.removeItem('user');
-				this.$router.go({ path: '/login' });
+				this.$root.$emit("logout");
 			}
 		},
 		created: function created() {}
@@ -18558,23 +18582,145 @@ webpackJsonp([0,1],[
 
 /***/ },
 /* 114 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"app\">\n\t<router-view\n\ttransition=\"route\"\n\ttransition-mode=\"out-in\"\n\t:user.sync=\"curUser\"\n\t>\n\t</router-view>\n\t<nav-bar></nav-bar>\n</div>\n";
-
-/***/ },
-/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__webpack_require__(116)
-	__vue_script__ = __webpack_require__(117)
+	__webpack_require__(115)
+	__vue_script__ = __webpack_require__(116)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\vue\\alert.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(117)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-10eb44dd/alert.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 115 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 116 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	// <template>	
+	// 	<div class="alert" v-show="show">
+	// 		<div class="alert-mask" @click="close"></div>
+	// 		<div class="alert-content txc">
+	// 			<p>{{ text }}</p>
+	// 			<a href="javascript:void(0)" class="btn btn-primary pdtr" @click="comeBack">继续操作</a>
+	// 		</div>
+	// 	</div>
+	// </template>
+	//
+	// <script>
+
+	exports.default = {
+		name: 'alert',
+
+		data: function data() {
+			return {
+				name: 'alert'
+			};
+		},
+
+
+		props: ['text', 'show'],
+
+		methods: {
+			close: function close() {
+				this.show = false;
+			},
+			comeBack: function comeBack() {
+				this.$root.$emit("logout");
+				this.show = false;
+			}
+		}
+	};
+
+	// </script>
+	//
+	// <style scoped>
+	// .alert,.alert-mask{
+	// 	position: fixed;
+	// 	top: 0;
+	// 	left: 0;
+	// 	width: 100%;
+	// 	height: 100%;
+	// }
+	// .alert{
+	// 	background-color: rgba(0, 0, 0, .2);
+	// 	font-size: .8125rem;
+	// 	z-index: 99999;
+	// }
+	// .alert-content{
+	// 	position: absolute;
+	// 	top: 50%;
+	// 	left: 50%;
+	// 	border-radius: 0.25rem;	
+	// 	transform: translate(-50%, -50%);
+	// 	background-color: #fff;
+	// 	padding: .625rem;
+	// 	a{
+	// 		display: inline-block;
+	// 	}
+	// }
+	//
+	// </style>
+
+/***/ },
+/* 117 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"alert\" v-show=\"show\" _v-10eb44dd=\"\">\n\t<div class=\"alert-mask\" @click=\"close\" _v-10eb44dd=\"\"></div>\n\t<div class=\"alert-content txc\" _v-10eb44dd=\"\">\n\t\t<p _v-10eb44dd=\"\">{{ text }}</p>\n\t\t<a href=\"javascript:void(0)\" class=\"btn btn-primary pdtr\" @click=\"comeBack\" _v-10eb44dd=\"\">继续操作</a>\n\t</div>\n</div>\n";
+
+/***/ },
+/* 118 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"app\">\n\t<router-view\n\ttransition=\"route\"\n\ttransition-mode=\"out-in\"\n\t:user.sync=\"curUser\"\n\t>\n\t</router-view>\n\t<nav-bar></nav-bar>\n\t<tip :show.sync=\"ale\" :text=\"'你可能需要重新登陆，才能继续操作'\" ></tip>\n</div>\n";
+
+/***/ },
+/* 119 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__webpack_require__(120)
+	__vue_script__ = __webpack_require__(121)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\vue\\login.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(118)
+	__vue_template__ = __webpack_require__(122)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -18599,13 +18745,13 @@ webpackJsonp([0,1],[
 	})()}
 
 /***/ },
-/* 116 */
+/* 120 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 117 */
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18715,23 +18861,23 @@ webpackJsonp([0,1],[
 	//js
 
 /***/ },
-/* 118 */
+/* 122 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"login-body fix\">\n\t<div class=\"login-data\">\n\t\t<div class=\"login-title txc\">\n\t\t\t<h3 v-bind:class=\"{ warm:warm }\">{{ title }}</h3>\n\t\t</div>\n\t\t<form>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">Admin：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input\" v-model=\"admin\" placeholder=\"输入你的用户名\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">Password：</label>\n\t\t\t\t<input type=\"password\" class=\"input-input password\" v-model=\"password\" placeholder=\"这里写的是密码\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<input type=\"checkbox\" id=\"remeber\" class=\"input-checkbox\" v-model=\"remeber\" pla>\n\t\t\t\t<label class=\"check-label\" for=\"remeber\">Remeber Me</label>\n\t\t\t</div>\n\t\t\t<div class=\"input-group row\">\n\t\t\t\t<a href=\"javascript:void(0)\" class=\"txc btn btn-primary col-12\" @click=\"login\">Sign In</a>\n\t\t\t</div>\n\t\t\t<div class=\"input-group row\">\n\t\t\t\t<a href=\"javascript:void(0)\" class=\"txc btn btn-danger col-12\" v-link=\"{path:'/reg'}\">Sign up</a>\n\t\t\t</div>\n\t\t</form>\n\t</div>\n</div>\n";
 
 /***/ },
-/* 119 */
+/* 123 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(120)
+	__vue_script__ = __webpack_require__(124)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\vue\\register.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(121)
+	__vue_template__ = __webpack_require__(125)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -18756,7 +18902,7 @@ webpackJsonp([0,1],[
 	})()}
 
 /***/ },
-/* 120 */
+/* 124 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18900,13 +19046,13 @@ webpackJsonp([0,1],[
 	// </script>
 
 /***/ },
-/* 121 */
+/* 125 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"login-body\">\n\t<div class=\"login-data\">\n\t\t<div class=\"login-title txc\">\n\t\t\t<h3 v-bind:class=\"{ warm:warm }\">{{ title }}</h3>\n\t\t</div>\n\t\t<form>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">Admin：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input\" v-model=\"admin\" placeholder=\"用户名，仅用于登陆\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">NickName：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input\" v-model=\"nickname\" placeholder=\"给自己取个好听的名字\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">Password：</label>\n\t\t\t\t<input type=\"password\" class=\"input-input password\" v-model=\"password\" placeholder=\"你的登陆密码，至关重要\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">PassAgain：</label>\n\t\t\t\t<input type=\"password\" class=\"input-input\" v-model=\"passagain\" placeholder=\"确认一下你写的密码对不对\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">Validation：</label>\n\t\t\t\t<input type=\"password\" class=\"input-input\" v-model=\"validation\" placeholder=\"只有够帅的人才能够完成注册\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<input type=\"checkbox\" id=\"super\" class=\"input-checkbox\" v-model=\"super\">\n\t\t\t\t<label class=\"check-label\" for=\"super\">Super Admin?</label>\n\t\t\t</div>\n\t\t\t<div class=\"input-group row\">\n\t\t\t\t<a href=\"javascript:void(0)\" class=\"txc btn btn-primary col-12\" @click='submit'>Submit</a>\n\t\t\t</div>\n\t\t\t<div class=\"input-group row\">\n\t\t\t\t<a href=\"javascript:void(0)\" class=\"txc btn btn-danger col-12\"  v-link=\"{path:'/login'}\">Sign in</a>\n\t\t\t</div>\n\t\t</form>\n\t</div>\n</div>\n";
 
 /***/ },
-/* 122 */
+/* 126 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -18925,7 +19071,7 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 123 */
+/* 127 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -18972,7 +19118,6 @@ webpackJsonp([0,1],[
 			return t;
 		},
 		timeReturn: function timeReturn(value) {
-			console.log(value);
 			if (typeof value != 'number') value = parseInt(value);
 			var d = new Date(value);
 			var y = d.getFullYear();
@@ -18989,7 +19134,7 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 124 */
+/* 128 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

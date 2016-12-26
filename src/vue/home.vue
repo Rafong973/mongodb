@@ -4,7 +4,7 @@
 			<div class="data-list" v-show="detail == true">
 				<search></search>
 				<div class="data">
-					<table class="table">
+					<table class="table"> 
 						<thead>
 							<tr>
 								<th>序号</th>
@@ -42,6 +42,9 @@
 							</tr>
 						</tbody>
 					</table>
+					<div class="txc" v-show="list.length == 0">
+						无数据
+					</div>
 				</div>
 			</div>
 			<detail :show.sync="detail" :msg.sync="detailData"></detail>
@@ -72,7 +75,13 @@ export default{
 	created(){
 		data()
 		.then((res) => {
-			this.list = res.body.msg;
+			if(res.body.status == 0){
+				this.list = res.body.msg;
+			}else{
+				this.$root.$emit('backLogin(res.body)')
+				this.list = [];
+			}
+			
 		})
 	},
 	methods:{

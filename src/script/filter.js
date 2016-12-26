@@ -37,7 +37,6 @@ export default{
 		return t;
 	},
 	timeReturn(value){
-		console.log(value)
 		if(typeof value != 'number') value = parseInt(value);
 		let d = new Date(value);
 		let	y = d.getFullYear();
