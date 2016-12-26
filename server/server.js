@@ -7,15 +7,15 @@ import cry from 'crypto';
 const db = user.Admin;
 const re = user.Data;
 
-// 管理员验证
+// 管理员验证	
 const vail = 'adminpd123';
 
 export default function server(app,body){
 	
+
 	app.post('/login',body.urlencoded(),function(req,res){
 		const data = req.body;
 		let msg = '';
-		
 		if (!data) return res.sendStatus(400);
 		db.find({admin:data.u},function(err,docs){
 			if(docs.length == 0){
@@ -31,6 +31,7 @@ export default function server(app,body){
 					       user:docs[0].nickname,
 					       grade:docs[0].grade
 					      };
+					req.session.i = 1;
 				}else{
 					msg = {status:2,msg:'password is error'};
 				}
@@ -39,7 +40,7 @@ export default function server(app,body){
 			res.send(msg);
 		});
 	})
-	app.post('/sign',body.urlencoded(),function(req,res){
+	app.post('/sign',body.urlencoded(),function(req,res,next){
 		const data = req.body;
 		let msg = '';
 		if (!data) return xres.sendStatus(400);
@@ -61,7 +62,7 @@ export default function server(app,body){
 		})
 	})
 
-	app.post('/data',body.urlencoded(),function(req,res){
+	app.post('/data',body.urlencoded(),function(req,res,next){
 		const data = req.body;
 		if(!data[0]){
 			re.find({},function(err,docs){
@@ -76,7 +77,7 @@ export default function server(app,body){
 		}
 	});
 
-	app.post('/save',body.urlencoded(),function(req,res){
+	app.post('/save',body.urlencoded(),function(req,res,next){
 		const data = req.body;
 		let m = new re(data);
 		m.save(function(err){

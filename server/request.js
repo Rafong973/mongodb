@@ -1,11 +1,15 @@
-export default function(){
-	return function (req,res,next){
-		let t = req.method;
+export default function(){ 
+	return function (req,res,next){ 
+		let t = req.method; 
 		let p = req.path;
-		if(t !== 'POST' && p !== '/login'){
-			
+		if(req.session.i < 1){
+			if(t == 'POST' && p !== '/login'){ 
+				res.send({msg:'you must login',status:5})
+			}else{ 
+				next(); 
+			} 
 		}else{
 			next();
 		}
-	}
-}
+	} 
+} 

@@ -19,28 +19,29 @@ app.all('*', function(req, res,next) {
     next();
 });
 
+//session and cookie
+app.use(cookieParser());
+app.use(session({
+    name : 'session',
+    keys:['keys'],
+    maxAge: 3000 * 60
+}));
+
+/**路由**/
+import router from './server/router'
+router(app)
+
 app.use(request())
 
 /** 请求 */
 import server from './server/server'
 server(app,bodyParser)
 
-//session and cookie
-app.use(cookieParser());
-app.use(session({
-    name : 'session',
-    keys:['keys'],
-    maxAge: 3000
-}));
-
 
 // view engines
 import cons from 'consolidate'
 import path from 'path'
 
-/**路由**/
-import router from './server/router'
-router(app)
 
 // 指定视图
 app.engine('html',cons.swig)
