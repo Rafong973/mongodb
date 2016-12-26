@@ -19,6 +19,8 @@ app.all('*', function(req, res,next) {
     next();
 });
 
+app.use(request())
+
 /** 请求 */
 import server from './server/server'
 server(app,bodyParser)
@@ -30,6 +32,7 @@ app.use(session({
     keys:['keys'],
     maxAge: 3000
 }));
+
 
 // view engines
 import cons from 'consolidate'

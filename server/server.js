@@ -15,6 +15,7 @@ export default function server(app,body){
 	app.post('/login',body.urlencoded(),function(req,res){
 		const data = req.body;
 		let msg = '';
+		
 		if (!data) return res.sendStatus(400);
 		db.find({admin:data.u},function(err,docs){
 			if(docs.length == 0){
