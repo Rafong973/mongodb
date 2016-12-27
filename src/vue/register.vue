@@ -43,7 +43,7 @@
 
 <script>
 //js
-import { reg } from '../script/server'
+import { post } from '../script/server'
 
 export default{
 	name: 'register',
@@ -76,7 +76,7 @@ export default{
 			let z = vail(arr);
 			this.warm = true;
 			if(a && z){	
-				reg(z)
+				post('/sign',z)
 				.then((res) => {
 					let data = res.body;
 					switch(data.status){

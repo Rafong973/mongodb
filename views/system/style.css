@@ -135,19 +135,19 @@ body {
       width: 0.1875rem;
       top: -0.3125rem;
       background-color: #4d6076; }
-.alert[_v-3d184fc2], .alert-mask[_v-3d184fc2] {
+.alert, .drop {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%; }
-
-.alert[_v-3d184fc2] {
-  background-color: rgba(0, 0, 0, 0.2);
+  height: 100%;
   font-size: .8125rem;
   z-index: 99999; }
 
-.alert-content[_v-3d184fc2] {
+.alert {
+  background-color: rgba(0, 0, 0, 0.2); }
+
+.alert-content {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -156,8 +156,27 @@ body {
           transform: translate(-50%, -50%);
   background-color: #fff;
   padding: .625rem; }
-  .alert-content a[_v-3d184fc2] {
+  .alert-content a {
     display: inline-block; }
+.drop {
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%); }
+
+.drop-tip {
+  background-color: #fff;
+  padding: .9375rem 1.25rem;
+  border-radius: .3125rem;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
+  box-shadow: 0.125rem 0.125rem 0.125rem 0.125rem #dad5d5; }
+
+.dropout {
+  -webkit-transform: translateY(0);
+          transform: translateY(0); }
 .login-body {
   width: 100%;
   height: 100%;

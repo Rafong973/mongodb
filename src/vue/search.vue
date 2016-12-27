@@ -54,9 +54,10 @@
 
 <script>
 
-import sel from './select.vue'
+import sel from './components/select.vue'
 import roomData from '../data/room.json'
 import flatpickr from './flatpickr.vue'
+import { post } from '../script/server'
 
 export default{
 	name:'search',
@@ -91,15 +92,35 @@ export default{
 
     methods:{
     	searchData(){
-    // 		this.msg = [
-				// {name:'no',value:this.no},
-				// {name:'tel',value:this.tel},
-				// {name:'date',value:this.startTime},
-				// {name:'name',value:this.user},
-				// {name:'type',value:this.type},
-				// {name:'room',value:this.room},
-    // 		]
-    		console.log(this.msg)
+    		if(this.endTime){
+    			if(this.endTime < this.startTime){
+    				this.$root.$emit('dropFn','你的时间搞错了！！');
+    			}else{
+    				this.startTime = this.endTime - this.startTime;
+    			}
+    		}
+    		this.msg = [
+				{name:'no',value:this.no},
+				{name:'tel',value:this.tel},
+				{name:'date',value:this.startTime},
+				{name:'name',value:this.user},
+				{name:'type',value:this.type},
+				{name:'room',value:this.room},
+    		]
+    		let data = Array.of();
+    		Array.from(this.msg,(x,i) =>{
+    			if(x.value){
+    				data[i] = x;	
+    			}
+    		})
+    		if(data.length < 1){
+    			this.$root.$emit('dropFn','来点东西搜索好吗？');
+    			return;
+    		}
+    		post('/data',data)
+    		.then((res)=>{
+    			console.log(res);
+    		})
     	}
     }
 }

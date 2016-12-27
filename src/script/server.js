@@ -12,24 +12,12 @@ export function login(accout,password){
 		})
 }
 
-export function reg(value){
+export function post(u,value){
 	return vue.http.post(
-			t + '/sign',
+			t + u,
 			value,{
 			headers:{
 				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 			}
 		})
-}
-
-export function data(value){
-	return vue.http.post(
-			t + '/data',
-			value,{
-				headers:{
-					'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-				}
-			}
-
-		)
 }

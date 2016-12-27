@@ -8,14 +8,16 @@
 		</router-view>
 		<nav-bar></nav-bar>
 		<tip :show.sync="ale" :text="tipText" :count.sync="opera"></tip>
+		<drop :show.sync="dropTip"></drop>
 	</div>
 </template>
 
 
 <script>
 //js
-import navBar from './nav.vue'
-import tip from './alert.vue'
+import navBar from './components/nav.vue'
+import tip from './components/alert.vue'
+import drop from './components/drop.vue'
 
 export default{
 	name: 'app',
@@ -26,11 +28,12 @@ export default{
 			curUser:{},
 			ale:false,
 			tipText:'',
-			opera:true
+			opera:true,
+			dropTip:''
 		}
 	},
 
-	components:{ navBar,tip },
+	components:{ navBar,tip,drop },
 
 	events:{
 		backLogin(res){
@@ -45,6 +48,13 @@ export default{
 		logout(){
 			sessionStorage.removeItem('user');
 			this.$router.go({path:'/login'});
+		},
+		dropFn(text){
+			let self = this;
+			this.dropTip = text;
+			setTimeout(function(){
+				self.dropTip = '';
+			},2500)
 		}
 	}
 

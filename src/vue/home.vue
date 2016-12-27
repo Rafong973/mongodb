@@ -55,7 +55,7 @@
 
 <script>
 //js
-import { data } from '../script/server'
+import { post } from '../script/server'
 import search from './search.vue'
 import detail from './detail.vue'
 
@@ -73,7 +73,7 @@ export default{
 		}
 	},
 	created(){
-		data()
+		post('/data')
 		.then((res) => {
 			if(res.body.status == 0){
 				this.list = res.body.msg;
