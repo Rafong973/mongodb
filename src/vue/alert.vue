@@ -1,9 +1,8 @@
 <template>	
 	<div class="alert" v-show="show">
-		<div class="alert-mask" @click="close"></div>
 		<div class="alert-content txc">
 			<p>{{ text }}</p>
-			<a href="javascript:void(0)" class="btn btn-primary pdtr" @click="comeBack">继续操作</a>
+			<a href="javascript:void(0)" class="btn btn-primary pdtr" @click="comeBack" v-show="count">继续操作</a>
 		</div>
 	</div>
 </template>
@@ -19,12 +18,9 @@ export default{
 		}
 	},
 
-	props:['text','show'],
+	props:['text','show','count'],
 
 	methods:{
-		close(){
-			this.show = false;
-		},
 		comeBack(){
 			this.$root.$emit("logout");
 			this.show = false;

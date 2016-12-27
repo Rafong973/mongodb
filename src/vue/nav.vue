@@ -32,7 +32,7 @@ export default{
 	position: fixed;
 	top: 50%;
 	right: 1%;
-	z-index: 99999999999999;
+	z-index: 99999;
 	transform: translateY(-50%);
 	text-align: center;
 	a{

@@ -77,8 +77,8 @@ export default{
 		.then((res) => {
 			if(res.body.status == 0){
 				this.list = res.body.msg;
-			}else{
-				this.$root.$emit('backLogin(res.body)')
+			}else{  
+				this.$root.$emit(`backLogin`,res.body);
 				this.list = [];
 			}
 			
