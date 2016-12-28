@@ -5,41 +5,32 @@
 })();
 
 /** 菜单弹出 **/
-// $(".head-guide")[0].onclick = function (){
-// 	var d = $(".nav-ul")[0];
-// 	d.style.marginLeft = "0";
-// 	this.style.marginLeft = '-10%';
-// }
-var touch = (function(){
-	var x,y;
-	return{
-		start:function(e){
-			var touches = event.targetTouches;
-			if(touches.length == 1){
-				x = touches[0].pageX;
-			}
-		},
-		move:function(e){
-			var touches = event.targetTouches;
-			if(touches.length == 1){
-				y = touches[0].pageX;
-			}
-			if((x-y) > 50){
-				$(".nav-ul")[0].style.marginLeft = "-100%";
-				setTimeout(function(){
-					$(".head-guide")[0].style.marginLeft = '2%';
-				},500)
-			}
-		},
-		end:function(e){
-
+$(".menu-icon")[0].onclick = function (){
+	$(".menu-mask")[0].style.transform = "scale(1,1) translate(0,0)";
+	$(".menu-mask")[0].style.WebkitTransform = "scale(1,1) translate(0,0)";
+	$(".menu-mask")[0].style.opacity = "1";
+}
+function closeMenu(){
+	$(".menu-mask")[0].style.transform = "scale(0,0) translate(100%,-100%)";
+	$(".menu-mask")[0].style.WebkitTransform = "scale(0,0) translate(100%,-100%)";
+	$(".menu-mask")[0].style.opacity = "0";
+};
+(function (){
+	var dom = $(".menu-li");
+	var time = '';
+	for(var i = 0;i < dom.length;i++){
+		clearTimeout(time);
+		dom[i].index = i;
+		dom[i].onclick = function(){
+			closeMenu();
+			clearTimeout(time);
+			var self = this;
+			time = setTimeout(function(){
+				rotate($(".banner"),self.index);
+			},1000);
 		}
 	}
 })();
-$(".nav-ul")[0].addEventListener("touchstart",touch.start,false);
-$(".nav-ul")[0].addEventListener("touchmove",touch.move,false);
-$(".nav-ul")[0].addEventListener("touchend",touch.end,false);
-
 /** Ajax请求 **/
 function ajax(type,u,data){
 	var xml = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP"),

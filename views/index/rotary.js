@@ -1,22 +1,29 @@
-var clean;
 function rotary(){
 	var banner = $(".banner");
-	console.log(banner);
 	rotate(banner,0);
 	for(var i = 0; i < banner.length;i++){
-		banner[i].setAttribute("index",i);
+		banner[i].index = i;
 	}	
 }
 
-function rotate(dom,current,direction){
+function rotate(dom,current){
+	var static = 'rotate(90deg)',
+		active = 'rotate(0deg)';
+
+	console.log(current);
+	current = parseInt(current);
 	for(var k = 0;k < dom.length;k++){
-		dom[k].className += ' static';
+		dom[k].style.webkitTransform = static;
+		dom[k].style.transform = static;
 		dom[k].removeAttribute("id");
+		dom[k].style.zIndex = '0';
 	};
 	if(current == dom.length || current == NaN || !current){
 		current = 0;
 	}
-	dom[current].className = 'banner'
+	dom[current].style.webkitTransform = active;
+	dom[current].style.transform = active;
+	dom[current].style.zIndex = '1';
 	dom[current].setAttribute("id","current");
 	$(".body")[0].style.height = dom[current].clientHeight + 'px';
 };

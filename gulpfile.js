@@ -3,6 +3,7 @@ const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const cssgrace = require('cssgrace');
 const cssnext =require('cssnext');
+const sass = require('gulp-sass');
 
 const gulp = require('gulp');
 const minifycss = require('gulp-minify-css');//压缩
@@ -31,6 +32,7 @@ const processors = [
 
 gulp.task('indexCss', function() {                                //- 创建一个名为 concat 的 task
     gulp.src(['./css/*.css'])    //- 需要处理的css文件，放到一个字符串数组里                          //- 合并后的文件名
+        .pipe(sass())
         .pipe(postcss(processors))
         .pipe(minifycss())                                      //- 压缩处理成一行
         .pipe(gulp.dest('./views/index/'))                               //- 输出文件本地                                //- 生成一个rev-manifest.json
