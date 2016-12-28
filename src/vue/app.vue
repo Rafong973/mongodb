@@ -29,7 +29,8 @@ export default{
 			ale:false,
 			tipText:'',
 			opera:true,
-			dropTip:''
+			dropTip:'',
+			timeOut:''
 		}
 	},
 
@@ -52,7 +53,8 @@ export default{
 		dropFn(text){
 			let self = this;
 			this.dropTip = text;
-			setTimeout(function(){
+			clearTimeout(this.timeOut);
+			this.timeOut = setTimeout(function(){
 				self.dropTip = '';
 			},2500)
 		}

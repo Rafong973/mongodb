@@ -135,7 +135,7 @@ body {
       width: 0.1875rem;
       top: -0.3125rem;
       background-color: #4d6076; }
-.alert, .drop {
+.alert {
   position: fixed;
   top: 0;
   left: 0;
@@ -144,7 +144,7 @@ body {
   font-size: .8125rem;
   z-index: 99999; }
 
-.alert {
+.gray-op {
   background-color: rgba(0, 0, 0, 0.2); }
 
 .alert-content {

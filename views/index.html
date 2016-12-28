@@ -43,7 +43,8 @@
 	<link rel="stylesheet" href="../views/system/style.css">
 	<script src="../views/index/load.js"></script>
 </head>
-<body>
+<body class="index">
+	<div class="alert none"></div>
 	<header>
 		<div class="head-guide">
 			<a href="#" class="menu-icon"></a>
@@ -65,104 +66,122 @@
 			</ul>
 		</nav>
 	</header>
-	<div class="loading"></div>
+	<div class="mask index-mask">
+		<div class="loading"></div>
+	</div>
 	<div class="body">
-		<div class="body-mask-gray"></div>
 		<div class="banner">
-			<div class="banner-exp">
-				<p class="banner-title txc">你 可 能 需 要 什 么 帮 助</p>
-				<p class="banner-span">还&nbsp;&nbsp;是&nbsp;&nbsp;你&nbsp;&nbsp;只&nbsp;&nbsp;想&nbsp;&nbsp;了&nbsp;&nbsp;解&nbsp;&nbsp;我&nbsp;&nbsp;们&nbsp;&nbsp;？</p>
+			<div class="first">
+				<div class="banner-exp">
+					<p class="banner-title txc">你 可 能 需 要 什 么 帮 助</p>
+					<p class="banner-span">还&nbsp;&nbsp;是&nbsp;&nbsp;你&nbsp;&nbsp;只&nbsp;&nbsp;想&nbsp;&nbsp;了&nbsp;&nbsp;解&nbsp;&nbsp;我&nbsp;&nbsp;们&nbsp;&nbsp;？</p>
+				</div>
 			</div>
 		</div>
-		<div class="repair-row">
-			<div class="repair-data">
-				<form>
-					<div class="input-group vertical-input">
-						<label class="input-label">学号：</label>
-						<input type="text" class="input-input" name="no" placeholder="可能11位数字，或者其它">
-						<label class="warm-label"></label>
-					</div>
-					<div class="input-group vertical-input">
-						<label class="input-label">名字：</label>
-						<input type="text" class="input-input name" name="name" placeholder="写外号写真名都可以">
-						<label class="warm-label"></label>
-					</div>
-					<div class="input-group vertical-input">
-						<label class="input-label">手机号码：</label>
-						<input type="text" class="input-input" name="tel" placeholder="你的手机号码，是11位">
-						<label class="warm-label"></label>
-					</div>
-					<div class="input-group vertical-input">
-						<label class="input-label">问题类型：</label>
-						<input type="text" class="input-input select" name="type" readonly="readonly" placeholder="你的电脑怎么了？">
-						<label class="warm-label"></label>
-					</div>
-					<div class="input-group vertical-input">
-						<label class="input-label">宿舍：</label>
-						<input type="text" class="input-input" name="room" list="floor" placeholder="你宿舍在哪，写清楚">
-						<datalist id="floor">
-							<option value="珠江公寓A区"></option>
-							<option value="珠江公寓B区"></option>
-							<option value="珠江公寓C区"></option>
-							<option value="珠江公寓D区"></option>
-							<option value="饭堂"></option>
-							<option value="饭堂(珠江公寓)"></option>
-							<option value="足球场"></option>
-							<option value="篮球场"></option>
-							<option value="网球场"></option>
-							<option value="公共区域"></option>
-							<option value="行政楼(原行政办公楼)"></option>
-							<option value="学术交流中心(原3号楼)"></option>
-							<option value="图书錧(原6号宿舍楼)"></option>
-							<option value="1号教学楼(原一号教学楼)"></option>
-							<option value="2号教学楼(原培训楼)"></option>
-							<option value="3号教学楼(原二号教学楼)"></option>
-							<option value="2号实训楼"></option>
-							<option value="3号实训楼(原综合楼)"></option>
-							<option value="4号实训楼(原2号实训楼)"></option>
-							<option value="5号实训楼(原1号实训楼)"></option>
-							<option value="6号实训楼(原3号实训楼)"></option>
-							<option value="7号实训楼(原4号实训楼)"></option>
-							<option value="8号实训楼(原5号实训楼)1"></option>
-							<option value="9号实训楼(原14号楼)"></option>
-							<option value="1号宿舍楼(原7号楼)"></option>
-							<option value="2号宿舍楼(原8号楼)"></option>
-							<option value="3号宿舍楼(原9号楼)"></option>
-							<option value="4号宿舍楼(原10号楼)"></option>
-							<option value="5号宿舍楼"></option>
-							<option value="6号宿舍楼(原11号楼"></option>
-							<option value="7号宿舍楼(12号楼)"></option>
-							<option value="8号宿舍楼(原13号楼)"></option>
-							<option value="1号实训楼"></option>
-						</datalist>
-						<label class="warm-label"></label>
-					</div>
-					<div class="input-group vertical-input">
-						<label class="input-label">预约时间：</label>
-						<input type="text" class="input-input" id="data-choose" name="date" placeholder="比如你什么时候有空">
-						<label class="warm-label"></label>
-					</div>
-					<div class="input-group vertical-input">
-						<label class="input-label">描述下问题：</label>
-						<textarea class="input-input" name="exp" placeholder="如果你知道你电脑怎么了，简单说下"></textarea>
-						<label class="warm-label"></label>
-					</div>
-					<div class="input-group vertical-input none" hidden="hidden">
-						<label class="warm-label"></label>
-						<input type="hidden" class="input-input" value="0" name="status">
-					</div>
-					<div class="input-group vertical-input none">
-						<label class="warm-label"></label>
-						<input type="hidden" class="input-input" value="1" name="admin">
-					</div>
-					<div class="input-group row">
-						<a href="javascript:void(0)" class="txc btn btn-primary col-12" id="save">提交</a>
-					</div>
-				</form>
+		<div class="banner">
+			<div class="repair-row">
+				<div class="repair-data">
+					<form>
+						<div class="input-group vertical-input">
+							<label class="input-label">学号：</label>
+							<input type="text" class="input-input" name="no" placeholder="可能11位数字，或者其它">
+							<label class="warm-label"></label>
+						</div>
+						<div class="input-group vertical-input">
+							<label class="input-label">名字：</label>
+							<input type="text" class="input-input name" name="name" placeholder="写外号写真名都可以">
+							<label class="warm-label"></label>
+						</div>
+						<div class="input-group vertical-input">
+							<label class="input-label">手机号码：</label>
+							<input type="text" class="input-input" name="tel" placeholder="你的手机号码，是11位">
+							<label class="warm-label"></label>
+						</div>
+						<div class="input-group vertical-input">
+							<label class="input-label">问题类型：</label>
+							<input type="text" class="input-input select" name="type" readonly="readonly" placeholder="你的电脑怎么了？">
+							<label class="warm-label"></label>
+						</div>
+						<div class="input-group vertical-input">
+							<label class="input-label">宿舍：</label>
+							<input type="text" class="input-input" name="room" list="floor" placeholder="你宿舍在哪，写清楚">
+							<datalist id="floor">
+								<option value="珠江公寓A区"></option>
+								<option value="珠江公寓B区"></option>
+								<option value="珠江公寓C区"></option>
+								<option value="珠江公寓D区"></option>
+								<option value="饭堂"></option>
+								<option value="饭堂(珠江公寓)"></option>
+								<option value="足球场"></option>
+								<option value="篮球场"></option>
+								<option value="网球场"></option>
+								<option value="公共区域"></option>
+								<option value="行政楼(原行政办公楼)"></option>
+								<option value="学术交流中心(原3号楼)"></option>
+								<option value="图书錧(原6号宿舍楼)"></option>
+								<option value="1号教学楼(原一号教学楼)"></option>
+								<option value="2号教学楼(原培训楼)"></option>
+								<option value="3号教学楼(原二号教学楼)"></option>
+								<option value="2号实训楼"></option>
+								<option value="3号实训楼(原综合楼)"></option>
+								<option value="4号实训楼(原2号实训楼)"></option>
+								<option value="5号实训楼(原1号实训楼)"></option>
+								<option value="6号实训楼(原3号实训楼)"></option>
+								<option value="7号实训楼(原4号实训楼)"></option>
+								<option value="8号实训楼(原5号实训楼)1"></option>
+								<option value="9号实训楼(原14号楼)"></option>
+								<option value="1号宿舍楼(原7号楼)"></option>
+								<option value="2号宿舍楼(原8号楼)"></option>
+								<option value="3号宿舍楼(原9号楼)"></option>
+								<option value="4号宿舍楼(原10号楼)"></option>
+								<option value="5号宿舍楼"></option>
+								<option value="6号宿舍楼(原11号楼"></option>
+								<option value="7号宿舍楼(12号楼)"></option>
+								<option value="8号宿舍楼(原13号楼)"></option>
+								<option value="1号实训楼"></option>
+							</datalist>
+							<label class="warm-label"></label>
+						</div>
+						<div class="input-group vertical-input">
+							<label class="input-label">预约时间：</label>
+							<input type="text" class="input-input" id="data-choose" name="date" placeholder="比如你什么时候有空">
+							<label class="warm-label"></label>
+						</div>
+						<div class="input-group vertical-input">
+							<label class="input-label">描述下问题：</label>
+							<textarea class="input-input" name="exp" placeholder="如果你知道你电脑怎么了，简单说下"></textarea>
+							<label class="warm-label"></label>
+						</div>
+						<div class="input-group vertical-input none" hidden="hidden">
+							<label class="warm-label"></label>
+							<input type="hidden" class="input-input" value="0" name="status">
+						</div>
+						<div class="input-group vertical-input none">
+							<label class="warm-label"></label>
+							<input type="hidden" class="input-input" value="1" name="admin">
+						</div>
+						<div class="input-group row">
+							<a href="javascript:void(0)" class="txc btn btn-primary col-12" id="save">提交</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="banner">
+			<div class="banner-exp first">
+				<p class="banner-title txc">我是第三个</p>
+				<p class="banner-span">
+			</div>
+		</div>
+		<div class="banner">
+			<div class="banner-exp first">
+				<p class="banner-title txc">我是第四个</p>
+				<p class="banner-span">
 			</div>
 		</div>
 	</div>
 
+	<script src="../views/index/rotary.js"></script>
 	<script src="https://cdn.staticfile.org/flatpickr/2.2.3/flatpickr.min.js"></script>
 	<script src="https://cdn.staticfile.org/flatpickr/2.2.3/l10n/zh.js"></script>
 	<script src="../views/index/index.js"></script>

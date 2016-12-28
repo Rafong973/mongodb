@@ -30,10 +30,10 @@ const processors = [
 ];
 
 gulp.task('indexCss', function() {                                //- 创建一个名为 concat 的 task
-    gulp.src(['./css/style.css'])    //- 需要处理的css文件，放到一个字符串数组里                          //- 合并后的文件名
+    gulp.src(['./css/*.css'])    //- 需要处理的css文件，放到一个字符串数组里                          //- 合并后的文件名
         .pipe(postcss(processors))
         .pipe(minifycss())                                      //- 压缩处理成一行
-        .pipe(gulp.dest('./views/index'))                               //- 输出文件本地                                //- 生成一个rev-manifest.json
+        .pipe(gulp.dest('./views/index/'))                               //- 输出文件本地                                //- 生成一个rev-manifest.json
 });
 
 gulp.task('getCss', () => {

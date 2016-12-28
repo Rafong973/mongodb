@@ -5,7 +5,7 @@
 })();
 
 /** 菜单弹出 **/
-$(".menu-icon")[0].onclick = function (){
+$(".head-guide")[0].onclick = function (){
 	var d = $(".nav-ul")[0];
 	d.style.marginLeft = "0";
 	this.style.marginLeft = '-10%';
@@ -26,12 +26,13 @@ var touch = (function(){
 			}
 			if((x-y) > 50){
 				$(".nav-ul")[0].style.marginLeft = "-100%";
+				setTimeout(function(){
+					$(".head-guide")[0].style.marginLeft = '2%';
+				},500)
 			}
 		},
 		end:function(e){
-			setTimeout(function(){
-				$(".menu-icon")[0].style.marginLeft = '2%';
-			},500)
+
 		}
 	}
 })();

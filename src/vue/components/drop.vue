@@ -1,5 +1,5 @@
 <template>
-	<div class="drop" :class="{dropout:show}" @click="this.show = ''">
+	<div class="alert drop" :class="{dropout:show}" @click="this.show = ''">
 		<div class="drop-tip">
 			{{ show }}
 		</div>

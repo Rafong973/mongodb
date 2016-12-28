@@ -17,21 +17,34 @@ $ = function(name){
 
 window.onload = function(){
 	setTimeout(function(){
-		$('.loading')[0].style.display = 'none';
-		$('.body-mask-gray')[0].style.display = 'none';
+		$('.index-mask')[0].style.display = 'none';
 		$('.banner-title')[0].className += ' title-in';
-	},900);
+	},1200);
 	banner();
+	if(window.innerWidth <= 480){
+		document.getElementsByTagName("body")[0].style.width = window.innerWidth;
+		rotary();
+	}
 }
 
 window.onresize = function(){
 	banner();
+	if(window.innerWidth <= 480){
+		rotary();
+	}else{
+		cleanRotary();
+	}
 }
 
 
 function banner(){
-	var b = $('.banner')[0];
-	if(window.innerHeight < 800){
-		b.style.height = window.innerHeight + 'px';
+	var b = $('.banner');
+	for(var i = 0;i<b.length;i++){
+		var p = b[i].firstElementChild.clientHeight;
+		if(window.innerHeight < 800){
+			b[i].style.height = window.innerHeight + 'px';
+		}else{
+			b[i].style.height = '800px';
+		}
 	}
 }

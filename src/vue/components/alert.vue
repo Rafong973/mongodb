@@ -1,5 +1,5 @@
 <template>	
-	<div class="alert" v-show="show">
+	<div class="alert gray-op" v-show="show">
 		<div class="alert-content txc">
 			<p>{{ text }}</p>
 			<a href="javascript:void(0)" class="btn btn-primary pdtr" @click="comeBack" v-show="count">继续操作</a>
@@ -31,7 +31,7 @@ export default{
 </script>
 
 <style>
-.alert,.drop{
+.alert{
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -40,7 +40,7 @@ export default{
 	font-size: .8125rem;
 	z-index: 99999;
 }
-.alert{
+.gray-op{
 	background-color: rgba(0, 0, 0, .2);
 }
 .alert-content{
