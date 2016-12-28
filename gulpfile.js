@@ -1,12 +1,12 @@
+const gulp = require('gulp');
+const minifycss = require('gulp-minify-css');//压缩
+
 // CSS3编译
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const cssgrace = require('cssgrace');
 const cssnext =require('cssnext');
 const sass = require('gulp-sass');
-
-const gulp = require('gulp');
-const minifycss = require('gulp-minify-css');//压缩
 
 const processors = [
 	autoprefixer(

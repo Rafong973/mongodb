@@ -1,9 +1,4 @@
 
-
-(function(){
-	
-})();
-
 /** 菜单弹出 **/
 $(".menu-icon")[0].onclick = function (){
 	$(".menu-mask")[0].style.transform = "scale(1,1) translate(0,0)";
@@ -41,6 +36,9 @@ function ajax(type,u,data){
 	xml.onload = function (e){
 		if(xml.status == 200 && xml.readyState === XMLHttpRequest.DONE){
 			d = JSON.parse(xml.response);
+			if(type == 'GET'){
+				select($('.room'),d);
+			}
 			if(d.status == 0){
 				setTimeout(function(){
 					app.close();
@@ -60,6 +58,7 @@ function ajax(type,u,data){
 		}
 	}
 }
+ajax('GET','./views/data/room.json',null);
 
 /** 获取表单数据 **/
 function vaildata(value){
@@ -146,6 +145,12 @@ var selectList = [
 ];
 select($('.select'),selectList);
 $('.select')[0].onclick = function(){
+	var i = this.nextElementSibling;   
+	i.style.border = '.0625rem solid #ccc';
+	// i.style.height = (35+4+2)*3 + 2 + 'px';
+	i.style.height = '110px';
+};
+$('.room')[0].onclick = function(){
 	var i = this.nextElementSibling;   
 	i.style.border = '.0625rem solid #ccc';
 	// i.style.height = (35+4+2)*3 + 2 + 'px';

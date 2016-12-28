@@ -1,7 +1,7 @@
 header,ul {
 	width:100%
 }
-html,p,ul {
+html,p,ul,h3,h1,h2,h4{
 	margin:0;
 	padding:0;
 }
@@ -26,6 +26,7 @@ textarea {
 	overflow:hidden;
 	position:absolute;
 	left:50%;
+	overflow-y: scroll;
 	transform:translateX(-50%);
 	-webkit-transform:translateX(-50%);
 	text-align:center;
@@ -82,6 +83,12 @@ header {
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
+.repair-title{
+	margin-bottom: .9375rem;
+	h3{
+		margin-bottom: .9375rem;
+	}
+}
 .menu-li{
 	float: left;
 	width: 50%;
@@ -95,7 +102,7 @@ header {
 		width: 4.0rem;
 	}
 	p{
-		margin-bottom: 0.3125rem;
+		margin-bottom: .3125rem;
 	}
 	span{
 		color: #999;
@@ -132,10 +139,12 @@ header {
 	font-size:14px;
 	font-size:.875rem
 }
+.repair-row{
+	padding: .9375rem 0;
+}
 .repair-data {
 	width:450px;
 	width:28.125rem;
-	margin-top:4%;
 	margin-left:auto;
 	margin-right:auto;
 	border:1px solid #ccc;
