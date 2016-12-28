@@ -109,32 +109,36 @@ header {
 	padding-bottom:.625rem;
 	padding-top:.625rem
 }
-.head-guide{
-	transition:all .3s ease-in-out;
-	margin-left:2%;
-}
 .menu-icon {
-	position:relative;
-	width:25px;
-	width:1.5625rem;
-	height:15px;
-	height:.9375rem;
-	display:inline-block;
-	border-bottom:1px solid #fff;
-	border-bottom:.0625rem solid #fff;
-	border-top:1px solid #fff;
-	border-top:.0625rem solid #fff;
+	position: fixed;
+	right: 5%;
+	top: 3%;
+	height: 2.1875rem;
+	width: 2.1875rem;
+	border-radius: 50%;
+	background-color:rgba(0,0,0,.8);
+	animation:wobble 1s .2s ease infinite;
 }
-.menu-icon:before {
-	content:"";
-	position:absolute;
-	height:1px;
-	height:.0625rem;
-	width:100%;
-	background-color:#FFF;
-	top:50%;
-	transform:translateY(-50%);
-	-webkit-transform:translateY(-50%)
+.icon-line-row{
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	transform: translateY(-50%);
+}
+.icon-line{	
+	display: block;
+	height: 0.1875rem;
+	width: 1.125rem;
+	background: #fff;
+	margin-left:auto;
+	margin-right: auto;
+	border-top-right-radius: 0.3125rem;
+	border-bottom-right-radius: 0.3125rem;
+	border-top-left-radius: 0.3125rem;
+	border-bottom-left-radius: 0.3125rem;
+}
+.menu-icon .icon-line:not(:last-child){
+	margin-bottom: 3px;
 }
 .body {
 	position:relative;
@@ -199,6 +203,16 @@ body .index-mask{
 body .flatpickr-calendar {
 	top:0;
 	left:0
+}
+
+@keyframes wobble{
+0%{transform:translateX(0%)}
+15%{transform:translateX(-25%) rotate(-5deg)}
+30%{transform:translateX(20%) rotate(3deg)}
+45%{transform:translateX(-15%) rotate(-3deg)}
+60%{transform:translateX(10%) rotate(2deg)}
+75%{transform:translateX(-5%) rotate(-1deg)}
+100%{transform:translateX(0%)}
 }
 @-webkit-keyframes titleIn {
 	from {

@@ -5,11 +5,11 @@
 })();
 
 /** 菜单弹出 **/
-$(".head-guide")[0].onclick = function (){
-	var d = $(".nav-ul")[0];
-	d.style.marginLeft = "0";
-	this.style.marginLeft = '-10%';
-}
+// $(".head-guide")[0].onclick = function (){
+// 	var d = $(".nav-ul")[0];
+// 	d.style.marginLeft = "0";
+// 	this.style.marginLeft = '-10%';
+// }
 var touch = (function(){
 	var x,y;
 	return{
