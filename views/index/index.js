@@ -1,13 +1,13 @@
 
 /** 菜单弹出 **/
 $(".menu-icon")[0].onclick = function (){
-	$(".menu-mask")[0].style.transform = "scale(1,1) translate(0,0)";
-	$(".menu-mask")[0].style.WebkitTransform = "scale(1,1) translate(0,0)";
+	$(".menu-mask")[0].style.transform = "scale(1,1) translate3d(0,0,0)";
+	$(".menu-mask")[0].style.WebkitTransform = "scale(1,1) translate3d(0,0,0)";
 	$(".menu-mask")[0].style.opacity = "1";
 }
 function closeMenu(){
-	$(".menu-mask")[0].style.transform = "scale(0,0) translate(100%,-100%)";
-	$(".menu-mask")[0].style.WebkitTransform = "scale(0,0) translate(100%,-100%)";
+	$(".menu-mask")[0].style.transform = "scale(0,0) translate3d(100%,-100%,0)";
+	$(".menu-mask")[0].style.WebkitTransform = "scale(0,0) translate3d(100%,-100%,0)";
 	$(".menu-mask")[0].style.opacity = "0";
 };
 (function (){

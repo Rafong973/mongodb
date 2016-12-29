@@ -7,10 +7,9 @@ function rotary(){
 }
 
 function rotate(dom,current){
-	var static = 'rotate(90deg)',
-		active = 'rotate(0deg)';
+	var static = 'rotate(90deg) translateZ(0)',
+		active = 'rotate(0deg) translateZ(0)';
 
-	console.log(current);
 	current = parseInt(current);
 	for(var k = 0;k < dom.length;k++){
 		dom[k].style.webkitTransform = static;
@@ -31,11 +30,12 @@ function rotate(dom,current){
 
 function cleanRotary(){
 	var banner = $(".banner");
+	var arg = 'rotate(0deg) translateZ(0)'
 	for(var i=0;i<banner.length;i++){
-		banner[i].style.webkitTransform = 'rotate(0deg)';
-		banner[i].style.MozTransform = 'rotate(0deg)';
-		banner[i].style.msTransform = 'rotate(0deg)';
-		banner[i].style.OTransform = 'rotate(0deg)';
-		banner[i].style.transform = 'rotate(0deg)';
+		banner[i].style.webkitTransform = arg;
+		banner[i].style.MozTransform = arg;
+		banner[i].style.msTransform = arg;
+		banner[i].style.OTransform = arg;
+		banner[i].style.transform = arg;
 	}
 }

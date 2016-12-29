@@ -15,13 +15,7 @@ const processors = [
 			[
 				'ie >= 6',
 				'ie_mob >= 7',
-				'ff >= 30',
-				'chrome >= 34',
-				'safari >= 7',
-				'opera >= 23',
-				'ios >= 7',
-				'android >= 4.4',
-				'bb >= 10'
+				'last 2 versions'
 			],
 		cascade: true,
 		remove: true

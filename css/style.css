@@ -28,7 +28,6 @@ textarea {
 	left:50%;
 	overflow-y: scroll;
 	transform:translateX(-50%);
-	-webkit-transform:translateX(-50%);
 	text-align:center;
 	background-color:#fff;
 	font-size:13px;
@@ -72,7 +71,7 @@ header {
 	position: relative;
 	transition: all .7s cubic-bezier(.125, .805, .82, 1.275);
 	opacity: 0;
-	transform: scale(0,0) translate(100%, -100%);
+	transform: scale(0,0) translate3d(100%, -100%,0);
 }
 .menu-row{
 	width: 80%;
@@ -124,9 +123,7 @@ header {
 	margin-left:-100%;
 	height:100%;
 	transition:all .3s ease;
-	-webkit-transition:all .3s .5s ease;
 	transform:translate3d(0,0,0);
-	-webkit-transform:translate3d(0,0,0);
 	z-index:1
 }
 .nav-ul li {
@@ -251,22 +248,15 @@ body .flatpickr-calendar {
 }
 
 @keyframes wobble{
-0%{transform:translateX(0%)}
-15%{transform:translateX(-25%) rotate(-5deg)}
-30%{transform:translateX(20%) rotate(3deg)}
-45%{transform:translateX(-15%) rotate(-3deg)}
-60%{transform:translateX(10%) rotate(2deg)}
-75%{transform:translateX(-5%) rotate(-1deg)}
-100%{transform:translateX(0%)}
+0%{transform:translate3d(0%,0,0)}
+15%{transform:translate3d(-25%,0,0) rotate(-5deg)}
+30%{transform:translate3d(20%,0,0) rotate(3deg)}
+45%{transform:translate3d(-15%,0,0) rotate(-3deg)}
+60%{transform:translate3d(10%,0,0) rotate(2deg)}
+75%{transform:translate3d(-5%,0,0) rotate(-1deg)}
+100%{transform:translate3d(0%,0,0)}
 }
-@-webkit-keyframes titleIn {
-	from {
-	-webkit-transform:scale(1,.1) rotateX(0)
-}
-to {
-	-webkit-transform:scale(1,1) rotateX(360deg)
-}
-}@keyframes titleIn {
+@keyframes titleIn {
 	from {
 	-webkit-transform:scale(1,.1) rotateX(0);
 	transform:scale(1,.1) rotateX(0)
@@ -278,12 +268,12 @@ to {
 }
 @keyframes load {
 	from {
-	-webkit-transform:rotate(0);
-	transform:rotate(0);
+	-webkit-transform:rotate(0) translateZ(0);
+	transform:rotate(0) translateZ(0);
 }
 to {
-	-webkit-transform:rotate(360deg);
-	transform:rotate(360deg);
+	-webkit-transform:rotate(360deg) translateZ(0);
+	transform:rotate(360deg) translateZ(0);
 }
 }
 @media only screen and (max-width:447px) {
@@ -329,7 +319,7 @@ to {
 	.banner{
 		position: absolute;
 		transform-origin:bottom right;
-		transform: rotate(0deg);
+		transform: rotate(0deg) translateZ(0);
 		z-index: 1;
 		transition: all 1s cubic-bezier(.175, .885, .32, 1.275);
 	}
