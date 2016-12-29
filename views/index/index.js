@@ -139,9 +139,9 @@ function select(dom,value){
 	f.insertBefore(ul,f.getElementsByClassName('warm-label')[0]);
 };
 var selectList = [
-	{type:0,name:'锐捷问题'},
-	{type:1,name:'硬件问题'},
-	{type:2,name:'软件问题'}
+	{type:1,name:'锐捷问题'},
+	{type:2,name:'硬件问题'},
+	{type:3,name:'软件问题'}
 ];
 select($('.select'),selectList);
 $('.select')[0].onclick = function(){

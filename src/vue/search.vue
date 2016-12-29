@@ -76,9 +76,9 @@ export default{
 			startTime:'',
 			endTime:'',
 			selType:[
-					{no:0,name:'锐捷问题'},
-					{no:1,name:'硬件问题'},
-					{no:2,name:'软件问题'}
+					{no:1,name:'锐捷问题'},
+					{no:2,name:'硬件问题'},
+					{no:3,name:'软件问题'}
 				],
 			selRoom: roomData,
 			msg:[],
@@ -99,21 +99,21 @@ export default{
     				this.startTime = this.endTime - this.startTime;
     			}
     		}
-    		this.msg = [
-				{name:'no',value:this.no},
-				{name:'tel',value:this.tel},
-				{name:'date',value:this.startTime},
-				{name:'name',value:this.user},
-				{name:'type',value:this.type},
-				{name:'room',value:this.room},
-    		]
-    		let data = Array.of();
-    		Array.from(this.msg,(x,i) =>{
-    			if(x.value){
-    				data[i] = x;	
+    		this.msg = {
+				no:this.no,
+				tel:this.tel,
+				date:this.startTime,
+				name:this.user,
+				type:this.type,
+				room:this.room
+			}
+    		let data = "";
+    		for(var x in this.msg){
+    			if(this.msg[x]){
+    				data += x + '=' + this.msg[x] + "&";
     			}
-    		})
-    		if(data.length < 1){
+    		}	
+    		if(!data){
     			this.$root.$emit('dropFn','来点东西搜索好吗？');
     			return;
     		}

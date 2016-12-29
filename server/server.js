@@ -63,8 +63,8 @@ export default function server(app,body){
 	})
 
 	app.post('/data',body.urlencoded(),function(req,res,next){
-		const data = req.body;
-		if(!data[0]){
+		let data = req.body;
+		if(Object.keys(data).length == 0){
 			re.find({},function(err,docs){
 				if(!err){
 					res.send({status:0,msg:docs});
@@ -73,8 +73,19 @@ export default function server(app,body){
 				}
 			})
 		}else{
-			res.send({status:3,msg:'nothing'});
+			re.find(data,function(err,docs){
+				console.log(data);
+				if(!err){
+					res.send({status:0,msg:docs});
+				}else{
+					res.send({status:3,msg:'mongo is error'})
+				}
+			});
+			re.find({},function(err,docs){
+				console.log(docs);
+			});
 		}
+		
 	});
 
 	app.post('/save',body.urlencoded(),function(req,res,next){
