@@ -94,4 +94,39 @@ export default{
 .warm{
 	color:#d70941;
 }
+@media only screen and (max-width:320px) {
+	.login-data{
+		width: 17.5rem;
+	}
+}
+@media only screen and (max-width:768px) {
+	.data-row{
+		max-width: 31.25rem;
+		overflow: scroll;
+	}
+}
+@media only screen and (max-width:414px) {
+	.data-row{
+		max-width: 21.875rem;
+		overflow: scroll;
+	}
+}
+@media only screen and (max-width:414px) {
+	.data-row{
+		max-width: 21.875rem;
+		overflow: scroll;
+	}
+}
+@media only screen and (max-width:360px) {
+	.data-row{
+		max-width: 21.875rem;
+		overflow: scroll;
+	}
+}
+@media only screen and (max-width:320px) {
+	.data-row{
+		max-width: 18.75rem;
+		overflow: scroll;
+	}
+}
 </style>

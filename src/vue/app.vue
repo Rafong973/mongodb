@@ -3,7 +3,6 @@
 		<router-view
 		transition="route"
 		transition-mode="out-in"
-		:user.sync="curUser"
 		>
 		</router-view>
 		<nav-bar></nav-bar>

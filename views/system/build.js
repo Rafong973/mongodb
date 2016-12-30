@@ -15011,6 +15011,7 @@ webpackJsonp([0,1],[
 	// @import './assets/flatpickr.min.css';
 	//
 	// .search-body{
+	// 	width: 68.75rem;
 	// 	margin: 0.9375rem auto;
 	// 	border-radius: 0.625rem;
 	// }
@@ -18476,7 +18477,6 @@ webpackJsonp([0,1],[
 	// 		<router-view
 	// 		transition="route"
 	// 		transition-mode="out-in"
-	// 		:user.sync="curUser"
 	// 		>
 	// 		</router-view>
 	// 		<nav-bar></nav-bar>
@@ -18829,7 +18829,7 @@ webpackJsonp([0,1],[
 /* 122 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"app\">\n\t<router-view\n\ttransition=\"route\"\n\ttransition-mode=\"out-in\"\n\t:user.sync=\"curUser\"\n\t>\n\t</router-view>\n\t<nav-bar></nav-bar>\n\t<tip :show.sync=\"ale\" :text=\"tipText\" :count.sync=\"opera\"></tip>\n\t<drop :show.sync=\"dropTip\"></drop>\n</div>\n";
+	module.exports = "\n<div class=\"app\">\n\t<router-view\n\ttransition=\"route\"\n\ttransition-mode=\"out-in\"\n\t>\n\t</router-view>\n\t<nav-bar></nav-bar>\n\t<tip :show.sync=\"ale\" :text=\"tipText\" :count.sync=\"opera\"></tip>\n\t<drop :show.sync=\"dropTip\"></drop>\n</div>\n";
 
 /***/ },
 /* 123 */
@@ -18947,6 +18947,41 @@ webpackJsonp([0,1],[
 	// }
 	// .warm{
 	// 	color:#d70941;
+	// }
+	// @media only screen and (max-width:320px) {
+	// 	.login-data{
+	// 		width: 17.5rem;
+	// 	}
+	// }
+	// @media only screen and (max-width:768px) {
+	// 	.data-row{
+	// 		max-width: 31.25rem;
+	// 		overflow: scroll;
+	// 	}
+	// }
+	// @media only screen and (max-width:414px) {
+	// 	.data-row{
+	// 		max-width: 21.875rem;
+	// 		overflow: scroll;
+	// 	}
+	// }
+	// @media only screen and (max-width:414px) {
+	// 	.data-row{
+	// 		max-width: 21.875rem;
+	// 		overflow: scroll;
+	// 	}
+	// }
+	// @media only screen and (max-width:360px) {
+	// 	.data-row{
+	// 		max-width: 21.875rem;
+	// 		overflow: scroll;
+	// 	}
+	// }
+	// @media only screen and (max-width:320px) {
+	// 	.data-row{
+	// 		max-width: 18.75rem;
+	// 		overflow: scroll;
+	// 	}
 	// }
 	// </style>
 	// <template>

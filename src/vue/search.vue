@@ -132,6 +132,7 @@ export default{
 @import './assets/flatpickr.min.css';
 
 .search-body{
+	width: 68.75rem;
 	margin: 0.9375rem auto;
 	border-radius: 0.625rem;
 }
