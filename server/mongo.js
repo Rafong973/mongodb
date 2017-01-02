@@ -24,7 +24,7 @@ var KittyData = new Schema({
 	tel:Number,
 	type:Number,
 	room:String,
-	date:String,
+	date:Number,
 	exp:String,
 	status:Number,
 	admin:String

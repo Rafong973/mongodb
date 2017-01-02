@@ -74,15 +74,13 @@ export default function server(app,body){
 			})
 		}else{
 			re.find(data,function(err,docs){
+				console.log(docs);
 				console.log(data);
 				if(!err){
 					res.send({status:0,msg:docs});
 				}else{
 					res.send({status:3,msg:'mongo is error'})
 				}
-			});
-			re.find({},function(err,docs){
-				console.log(docs);
 			});
 		}
 		

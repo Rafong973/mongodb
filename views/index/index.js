@@ -34,10 +34,12 @@ function ajax(type,u,data){
 	if(type == 'POST') xml.setRequestHeader('Content-type','application/x-www-form-urlencoded');
 	xml.send(data);
 	xml.onload = function (e){
-		if(xml.status == 200 && xml.readyState === XMLHttpRequest.DONE){
+		console.log(xml);
+		if(xml.status === 200 && xml.readyState === 4){
 			d = JSON.parse(xml.response);
 			if(type == 'GET'){
 				select($('.room'),d);
+				return false;
 			}
 			if(d.status == 0){
 				setTimeout(function(){
@@ -46,7 +48,7 @@ function ajax(type,u,data){
 				setTimeout(function(){
 					app.alert("提交成功");
 				},800)
-				window.sessionStorage.setItem("repair",data);
+				// window.sessionStorage.setItem("repair",data);
 				return;
 			}
 		}else{
@@ -223,7 +225,6 @@ function switchDom(dom){
 
 /** 日期插件 **/
 $("#data-choose").flatpickr({
-	minDate: new Date(),
 	enableTime: true,
 	"locale": "zh",
 	time_24hr:true

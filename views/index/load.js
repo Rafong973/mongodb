@@ -37,22 +37,15 @@ window.onresize = function(){
 		cleanRotary();
 	}
 }
-
-
 function banner(){
 	var b = $('.banner');
 	for(var i = 0;i<b.length;i++){
 		var p = b[i].firstElementChild.clientHeight;
-		if(window.innerHeight < 800){
-			if(p > window.innerHeight){
-				b[i].style.height = p + 'px';
-			}else if(p < window.innerHeight){
-				b[i].style.height = window.innerHeight + 'px';
-			}else{
-				b[i].style.height = '800px';
-			}
-		}else{
-			b[i].style.height = '800px';
+		console.log(p,window.innerHeight);
+		if(p > window.innerHeight){
+			b[i].style.height = p + 'px';
+		}else {
+			b[i].style.height = window.innerHeight + 'px';
 		}
 	}
 }

@@ -2,6 +2,7 @@ var app = {
     alert: function(value) {
         if (!value) value = undefined;
         var body = document.getElementsByTagName('body')[0];
+        var masked = document.getElementsByClassName("mask") || "";
         // body.style.overflow= "hidden";
         var mask = document.createElement('div');
         var head = document.createElement('div');
@@ -49,20 +50,21 @@ var app = {
     close: function(attr) {
         var body = document.getElementsByTagName("body")[0];
         var mask = document.getElementsByClassName("mask") || "";
+        console.log('长度：' + mask.length)
         if (mask) {
             for (var i = 0; i < mask.length; i++) {
-                var remove = body.removeChild(mask[i])
+                body.removeChild(mask[i]);
             }
         } else {
             return false;
         }
     },
-    imgClose: function functionName() {
+    imgClose: function() {
         var body = document.getElementsByTagName("body")[0];
         var mask = document.getElementsByClassName("imgMask") || "";
         if (mask) {
             for (var i = 0; i < mask.length; i++) {
-                var remove = body.removeChild(mask[i])
+                body.removeChild(mask[i])
             }
         } else {
             return false;
