@@ -16,11 +16,11 @@
 			<div class="mr">
 				<div class="hoz-input">
 					<label class="input-label">报修时间：</label>
-					<flatpickr v-model="startTime"  placeholder="开始时间" :option="option"></flatpickr>
+					<flatpickr v-model="startTime"  placeholder="开始时间" :options="options"></flatpickr>
 				</div>
 				<div class="hoz-input">
 					<label for="input-label">-</label>
-					<flatpickr v-model="endTime"  placeholder="结束时间"></flatpickr>
+					<flatpickr v-model="endTime"  placeholder="结束时间" :options="options"></flatpickr>
 				</div>
 			</div>
 		</div>
@@ -82,6 +82,10 @@ export default{
 				],
 			selRoom: roomData,
 			msg:[],
+			options:{
+				enableTime: true,
+				time_24hr:true
+			}
 		}
 	},
 
@@ -91,18 +95,27 @@ export default{
     },
 
     methods:{
+    	getTime:getTime,
     	searchData(){
+    		let startTime;
+    		let endTime;
+    		let finalTime;
+    		if(this.startTime){
+    			startTime = getTime(this.startTime);
+    			finalTime = startTime;
+    		}
     		if(this.endTime){
+    			endTime = getTime(this.startTime);
     			if(this.endTime < this.startTime){
     				this.$root.$emit('dropFn','你的时间搞错了！！');
     			}else{
-    				this.startTime = this.endTime - this.startTime;
+    				finalTime = endTime - startTime;
     			}
     		}
     		this.msg = {
 				no:this.no,
 				tel:this.tel,
-				date:this.startTime,
+				date:finalTime,
 				name:this.user,
 				type:this.type,
 				room:this.room
@@ -114,17 +127,21 @@ export default{
     			}
     		}	
     		if(!data){
-    			this.$root.$emit('dropFn','来点东西搜索好吗？');
+    			this.$root.$emit('dropFn','没有条件怎么搜索呢，是吧？');
     			return;
+    		}else{
+	    		post('/data',data)
+	    		.then((res)=>{
+	    			console.log(res);
+	    		})
     		}
-    		post('/data',data)
-    		.then((res)=>{
-    			console.log(res);
-    		})
     	}
     }
 }
-
+function getTime(value){
+	let time = new Date(value);
+	return time.getTime();
+}
 </script>
 
 <style>

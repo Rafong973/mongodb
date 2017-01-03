@@ -14800,10 +14800,10 @@ webpackJsonp([0,1],[
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var t = 'http://localhost';
+	// let t = 'http://localhost'
 
 	function login(accout, password) {
-		return _vue2.default.http.post(t + '/login', 'u=' + accout + '&p=' + password, {
+		return _vue2.default.http.post('/login', 'u=' + accout + '&p=' + password, {
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 			}
@@ -14811,7 +14811,7 @@ webpackJsonp([0,1],[
 	}
 
 	function post(u, value) {
-		return _vue2.default.http.post(t + u, value, {
+		return _vue2.default.http.post(u, value, {
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 			}
@@ -14904,11 +14904,11 @@ webpackJsonp([0,1],[
 	// 			<div class="mr">
 	// 				<div class="hoz-input">
 	// 					<label class="input-label">报修时间：</label>
-	// 					<flatpickr v-model="startTime"  placeholder="开始时间" :option="option"></flatpickr>
+	// 					<flatpickr v-model="startTime"  placeholder="开始时间" :options="options"></flatpickr>
 	// 				</div>
 	// 				<div class="hoz-input">
 	// 					<label for="input-label">-</label>
-	// 					<flatpickr v-model="endTime"  placeholder="结束时间"></flatpickr>
+	// 					<flatpickr v-model="endTime"  placeholder="结束时间" :options="options"></flatpickr>
 	// 				</div>
 	// 			</div>
 	// 		</div>
@@ -14960,7 +14960,11 @@ webpackJsonp([0,1],[
 				endTime: '',
 				selType: [{ no: 1, name: '锐捷问题' }, { no: 2, name: '硬件问题' }, { no: 3, name: '软件问题' }],
 				selRoom: _room2.default,
-				msg: []
+				msg: [],
+				options: {
+					enableTime: true,
+					time_24hr: true
+				}
 			};
 		},
 
@@ -14971,18 +14975,27 @@ webpackJsonp([0,1],[
 		},
 
 		methods: {
+			getTime: getTime,
 			searchData: function searchData() {
+				var startTime = void 0;
+				var endTime = void 0;
+				var finalTime = void 0;
+				if (this.startTime) {
+					startTime = getTime(this.startTime);
+					finalTime = startTime;
+				}
 				if (this.endTime) {
+					endTime = getTime(this.startTime);
 					if (this.endTime < this.startTime) {
 						this.$root.$emit('dropFn', '你的时间搞错了！！');
 					} else {
-						this.startTime = this.endTime - this.startTime;
+						finalTime = endTime - startTime;
 					}
 				}
 				this.msg = {
 					no: this.no,
 					tel: this.tel,
-					date: this.startTime,
+					date: finalTime,
 					name: this.user,
 					type: this.type,
 					room: this.room
@@ -14994,16 +15007,21 @@ webpackJsonp([0,1],[
 					}
 				}
 				if (!data) {
-					this.$root.$emit('dropFn', '来点东西搜索好吗？');
+					this.$root.$emit('dropFn', '没有条件怎么搜索呢，是吧？');
 					return;
+				} else {
+					(0, _server.post)('/data', data).then(function (res) {
+						console.log(res);
+					});
 				}
-				(0, _server.post)('/data', data).then(function (res) {
-					console.log(res);
-				});
 			}
 		}
 	};
 
+	function getTime(value) {
+		var time = new Date(value);
+		return time.getTime();
+	}
 	// </script>
 	//
 	// <style>
@@ -18170,7 +18188,7 @@ webpackJsonp([0,1],[
 /* 101 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"search-body\">\n\t<div class=\"line\">\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">学号：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input large-input\" v-model=\"no\" placeholder=\"输入报修人学号，如果你知道\">\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">手机号码：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input large-input\" v-model=\"tel\" placeholder=\"报修人手机号码\">\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">报修时间：</label>\n\t\t\t\t<flatpickr v-model=\"startTime\"  placeholder=\"开始时间\" :option=\"option\"></flatpickr>\n\t\t\t</div>\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label for=\"input-label\">-</label>\n\t\t\t\t<flatpickr v-model=\"endTime\"  placeholder=\"结束时间\"></flatpickr>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"line\">\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">姓名：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input large-input\" v-model=\"user\" placeholder=\"报修人的名字\">\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">问题类型：</label>\n\t\t\t\t<sel :selectData.sync=\"selType\" :pla=\"'点一下，选择问题类型'\" :current-data.sync=\"type\" :show.sync=\"roomShow\"></sel>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">宿舍：</label>\n\t\t\t\t<sel :selectData.sync=\"selRoom\" :pla=\"'建议也只能选择'\" :current-data.sync=\"room\" :show.sync=\"typeShow\"></sel>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"input-group\">\n\t\t\t\t<a href=\"javascript:void(0)\" class=\"col-8 btn txc btn-primary pdtr\" @click=\"searchData\" style=\"max-height:80%;line-height:2.1875rem;\">搜索</a>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"search-body\">\n\t<div class=\"line\">\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">学号：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input large-input\" v-model=\"no\" placeholder=\"输入报修人学号，如果你知道\">\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">手机号码：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input large-input\" v-model=\"tel\" placeholder=\"报修人手机号码\">\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">报修时间：</label>\n\t\t\t\t<flatpickr v-model=\"startTime\"  placeholder=\"开始时间\" :options=\"options\"></flatpickr>\n\t\t\t</div>\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label for=\"input-label\">-</label>\n\t\t\t\t<flatpickr v-model=\"endTime\"  placeholder=\"结束时间\" :options=\"options\"></flatpickr>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"line\">\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">姓名：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input large-input\" v-model=\"user\" placeholder=\"报修人的名字\">\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">问题类型：</label>\n\t\t\t\t<sel :selectData.sync=\"selType\" :pla=\"'点一下，选择问题类型'\" :current-data.sync=\"type\" :show.sync=\"roomShow\"></sel>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">宿舍：</label>\n\t\t\t\t<sel :selectData.sync=\"selRoom\" :pla=\"'建议也只能选择'\" :current-data.sync=\"room\" :show.sync=\"typeShow\"></sel>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"input-group\">\n\t\t\t\t<a href=\"javascript:void(0)\" class=\"col-8 btn txc btn-primary pdtr\" @click=\"searchData\" style=\"max-height:80%;line-height:2.1875rem;\">搜索</a>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 102 */
