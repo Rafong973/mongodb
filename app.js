@@ -10,15 +10,11 @@ import request from './server/request'
 const app = express()
 
 // 设置跨域访问
-app.all('*', function(req, res,next) {
-    res.header("Access-Control-Allow-Credentials", "true");
-    res.header("Access-Control-Allow-Origin", "*");
-    // res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    // res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
-    // res.header("X-Powered-By",' 3.2.1')
-    // res.header("Content-Type", "application/html;charset=utf-8");
-    next();
-});
+// app.all('*', function(req, res,next) {
+//     res.header("Access-Control-Allow-Credentials", "true");
+//     res.header("Access-Control-Allow-Origin", "*");
+//     next();
+// });
 
 //session and cookie
 app.use(cookieParser());
@@ -59,6 +55,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 
 
-app.listen(80,function (){
-	console.log('app listen on port:80')
+app.listen(8080,function (){
+	console.log('app listen on port:8080')
 })

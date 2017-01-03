@@ -19,7 +19,7 @@ window.onload = function(){
 	setTimeout(function(){
 		$('.index-mask')[0].style.display = 'none';
 		$('.banner-title')[0].className += ' title-in';
-	},1200);
+	},800);
 	banner();
 	if(window.innerWidth <= 480){
 		document.getElementsByTagName("body")[0].style.width = window.innerWidth;
