@@ -93,6 +93,29 @@
       border-right: 0.0625rem solid #f0f0f1; }
     .detail tr td:last-child {
       text-indent: 0.9375rem; }
+.page {
+  padding: 0.625rem 0;
+  position: relative; }
+  .page ul {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%); }
+  .page li {
+    border-top: 1px solid #428bca;
+    border-bottom: 1px solid #428bca;
+    border-right: 1px solid #428bca;
+    float: left; }
+    .page li a {
+      color: #428bca;
+      background-color: #fff;
+      display: block;
+      padding: 0.3125rem 0.625rem; }
+      .page li a:hover {
+        color: #fff;
+        background-color: #428bca; }
+    .page li:first-child {
+      border-left: 1px solid #428bca; }
 body {
   font-size: 16px; }
 

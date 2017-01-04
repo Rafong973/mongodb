@@ -47,6 +47,7 @@
 					</div>
 				</div>
 			</div>
+			<page></page>
 			<detail :show.sync="detail" :msg.sync="detailData"></detail>
 		</div>
 	</div>
@@ -58,11 +59,12 @@
 import { post } from '../script/server'
 import search from './search.vue'
 import detail from './detail.vue'
+import page from './components/pagging.vue'
 
 export default{
 	name: 'home',
 
-	components:[search,detail],
+	components:[search,detail,page],
 	
 	data(){
 		return{
