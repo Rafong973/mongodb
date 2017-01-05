@@ -95,27 +95,36 @@
       text-indent: 0.9375rem; }
 .page {
   padding: 0.625rem 0;
-  position: relative; }
+  position: relative;
+  text-align: center; }
   .page ul {
-    position: absolute;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-            transform: translateX(-50%); }
+    display: inline-block; }
   .page li {
-    border-top: 1px solid #428bca;
-    border-bottom: 1px solid #428bca;
-    border-right: 1px solid #428bca;
+    border-top: 0.0625rem solid #428bca;
+    border-bottom: 0.0625rem solid #428bca;
+    border-right: 0.0625rem solid #428bca;
     float: left; }
-    .page li a {
+    .page li .hover {
+      color: #fff;
+      background-color: #428bca; }
+    .page li button {
       color: #428bca;
       background-color: #fff;
       display: block;
+      border: 0;
       padding: 0.3125rem 0.625rem; }
-      .page li a:hover {
+      .page li button:hover {
         color: #fff;
         background-color: #428bca; }
+      .page li button:focus {
+        outline: 0; }
     .page li:first-child {
-      border-left: 1px solid #428bca; }
+      border-top-left-radius: 0.3125rem;
+      border-bottom-left-radius: 0.3125rem;
+      border-left: 0.0625rem solid #428bca; }
+    .page li:last-child {
+      border-top-right-radius: 0.3125rem;
+      border-bottom-right-radius: 0.3125rem; }
 body {
   font-size: 16px; }
 
@@ -279,3 +288,5 @@ input[type="text"]:focus,input[type="number"]:focus,input[type="password"]:focus
 .fr{float: right;}
 .fl{float: left;}
 .mr{margin-right: .625rem;float: left;}
+
+/*# sourceMappingURL=style.css.map*/
