@@ -14885,7 +14885,6 @@ webpackJsonp([0,1],[
 		watch: {
 			'current': function current(newValue) {
 				if (newValue <= 1) this.current = 1;
-				if (newValue == this.totalPage) return;
 				if (newValue > this.total) {
 					newValue = this.total;
 					this.current = this.total;
@@ -14906,13 +14905,6 @@ webpackJsonp([0,1],[
 					_this.all = [];
 				}
 			});
-		},
-	
-		methods: {
-			disDetail: function disDetail(data) {
-				this.detailData = data;
-				this.detail = false;
-			}
 		}
 	};
 	// </script>
@@ -14968,9 +14960,9 @@ webpackJsonp([0,1],[
 	// 		<div class="data-row">
 	// 			<div class="data-list" v-show="detail == true">
 	// 				<search></search>
-	// 				<table-data :list.sync="list"></table-data>
+	// 				<table-data :list.sync="list" :detail-data.sync="detailData" :detail.sync="detail"></table-data>
 	// 			</div>
-	// 			<page :current.sync="current" :total.sync="total" v-show="all && all.length > 10"></page>
+	// 			<page :current.sync="current" :total.sync="total" v-show="all && all.length > 10 && detail"></page>
 	// 			<detail :show.sync="detail" :msg.sync="detailData"></detail>
 	// 		</div>
 	// 	</div>
@@ -15366,7 +15358,13 @@ webpackJsonp([0,1],[
 	
 	exports.default = {
 		name: 'tableData',
-		props: ['list']
+		props: ['list', 'detailData', 'detail'],
+		methods: {
+			disDetail: function disDetail(data) {
+				this.detailData = data;
+				this.detail = false;
+			}
+		}
 	};
 	// </script>
 
@@ -15396,6 +15394,7 @@ webpackJsonp([0,1],[
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	// let t = 'http://localhost:8080';
 	var t = '';
 	
 	function login(accout, password) {
@@ -18582,9 +18581,9 @@ webpackJsonp([0,1],[
 	// <template>
 	// 	<div class="detail-body" v-show='!show'>
 	// 		<div class="line" style="line-height:2.8175rem;">
-	// 			<a href="javascript:void" class="fl btn-ng" @click="back">返回</a>
-	// 			<a href="javascript:void" class="fr btn-ng" @click="editData" v-show="edit">编辑</a>
-	// 			<a href="javascript:void" class="fr btn-ng" @click="finish" v-show="!edit">完成</a>
+	// 			<a href="javascript:void(0)" class="fl btn-ng" @click="back">返回</a>
+	// 			<a href="javascript:void(0)" class="fr btn-ng" @click="editData" v-show="edit">编辑</a>
+	// 			<a href="javascript:void(0)" class="fr btn-ng" @click="finish" v-show="!edit">完成</a>
 	// 		</div>
 	// 		<table class="detail">
 	// 			<tbody>
@@ -18701,7 +18700,7 @@ webpackJsonp([0,1],[
 /* 109 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"detail-body\" v-show='!show'>\n\t<div class=\"line\" style=\"line-height:2.8175rem;\">\n\t\t<a href=\"javascript:void\" class=\"fl btn-ng\" @click=\"back\">返回</a>\n\t\t<a href=\"javascript:void\" class=\"fr btn-ng\" @click=\"editData\" v-show=\"edit\">编辑</a>\n\t\t<a href=\"javascript:void\" class=\"fr btn-ng\" @click=\"finish\" v-show=\"!edit\">完成</a>\n\t</div>\n\t<table class=\"detail\">\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td>学号</td>\n\t\t\t\t<td>{{ msg.no }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>手机号码</td>\n\t\t\t\t<td>\n\t\t\t\t\t<input type=\"text\" class=\"large-input\" v-model=\"msg.tel\" :readonly=\"edit\">\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>问题类型</td>\n\t\t\t\t<td>{{ msg.type | problem }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>宿舍</td>\n\t\t\t\t<td>{{ msg.room }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>预约时间</td>\n\t\t\t\t<td>{{ msg.date | timeReturn }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>报修时间</td>\n\t\t\t\t<td>2016-20-21 08：00</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>接单人</td>\n\t\t\t\t<td>飞机</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>状态</td>\n\t\t\t\t<td>{{ msg.status | numstatus }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>问题详情</td>\n\t\t\t\t<td>{{ msg.exp }}</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>\n";
+	module.exports = "\n<div class=\"detail-body\" v-show='!show'>\n\t<div class=\"line\" style=\"line-height:2.8175rem;\">\n\t\t<a href=\"javascript:void(0)\" class=\"fl btn-ng\" @click=\"back\">返回</a>\n\t\t<a href=\"javascript:void(0)\" class=\"fr btn-ng\" @click=\"editData\" v-show=\"edit\">编辑</a>\n\t\t<a href=\"javascript:void(0)\" class=\"fr btn-ng\" @click=\"finish\" v-show=\"!edit\">完成</a>\n\t</div>\n\t<table class=\"detail\">\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td>学号</td>\n\t\t\t\t<td>{{ msg.no }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>手机号码</td>\n\t\t\t\t<td>\n\t\t\t\t\t<input type=\"text\" class=\"large-input\" v-model=\"msg.tel\" :readonly=\"edit\">\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>问题类型</td>\n\t\t\t\t<td>{{ msg.type | problem }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>宿舍</td>\n\t\t\t\t<td>{{ msg.room }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>预约时间</td>\n\t\t\t\t<td>{{ msg.date | timeReturn }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>报修时间</td>\n\t\t\t\t<td>2016-20-21 08：00</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>接单人</td>\n\t\t\t\t<td>飞机</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>状态</td>\n\t\t\t\t<td>{{ msg.status | numstatus }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>问题详情</td>\n\t\t\t\t<td>{{ msg.exp }}</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>\n";
 
 /***/ },
 /* 110 */
@@ -18777,12 +18776,6 @@ webpackJsonp([0,1],[
 	exports.default = {
 		name: 'page',
 	
-		data: function data() {
-			return {
-				total: 5
-			};
-		},
-	
 		props: ['current', 'total']
 	};
 	// </script>
@@ -18824,7 +18817,7 @@ webpackJsonp([0,1],[
 /* 114 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"data-body\">\n\t<div class=\"data-row\">\n\t\t<div class=\"data-list\" v-show=\"detail == true\">\n\t\t\t<search></search>\n\t\t\t<table-data :list.sync=\"list\"></table-data>\n\t\t</div>\n\t\t<page :current.sync=\"current\" :total.sync=\"total\" v-show=\"all && all.length > 10\"></page>\n\t\t<detail :show.sync=\"detail\" :msg.sync=\"detailData\"></detail>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"data-body\">\n\t<div class=\"data-row\">\n\t\t<div class=\"data-list\" v-show=\"detail == true\">\n\t\t\t<search></search>\n\t\t\t<table-data :list.sync=\"list\" :detail-data.sync=\"detailData\" :detail.sync=\"detail\"></table-data>\n\t\t</div>\n\t\t<page :current.sync=\"current\" :total.sync=\"total\" v-show=\"all && all.length > 10 && detail\"></page>\n\t\t<detail :show.sync=\"detail\" :msg.sync=\"detailData\"></detail>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 115 */

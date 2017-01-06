@@ -48,6 +48,12 @@
 
 export default{
 	name:'tableData',
-	props:['list']
+	props:['list','detailData','detail'],
+	methods:{
+		disDetail(data){
+			this.detailData = data;
+			this.detail = false
+		}
+	}
 }
 </script>

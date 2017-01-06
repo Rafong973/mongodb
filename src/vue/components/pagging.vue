@@ -20,12 +20,7 @@
 
 export default{
 	name:'page',
-
-	data(){
-		return{
-			total:5
-		}
-	},
+	
 	props:['current','total'],
 }
 </script>

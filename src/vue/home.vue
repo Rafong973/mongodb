@@ -3,9 +3,9 @@
 		<div class="data-row">
 			<div class="data-list" v-show="detail == true">
 				<search></search>
-				<table-data :list.sync="list"></table-data>
+				<table-data :list.sync="list" :detail-data.sync="detailData" :detail.sync="detail"></table-data>
 			</div>
-			<page :current.sync="current" :total.sync="total" v-show="all && all.length > 10"></page>
+			<page :current.sync="current" :total.sync="total" v-show="all && all.length > 10 && detail"></page>
 			<detail :show.sync="detail" :msg.sync="detailData"></detail>
 		</div>
 	</div>
@@ -40,7 +40,6 @@ export default{
 	watch:{
 		'current':function(newValue){
 			if(newValue <= 1) this.current = 1;
-			if(newValue == this.totalPage) return;
 			if(newValue > this.total){
 				newValue = this.total;
 				this.current = this.total;
@@ -60,12 +59,6 @@ export default{
 				this.all = [];
 			}
 		})
-	},
-	methods:{
-		disDetail(data){
-			this.detailData = data;
-			this.detail = false
-		}
 	}
 }
 </script>
