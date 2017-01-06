@@ -34,7 +34,6 @@ function ajax(type,u,data){
 	if(type == 'POST') xml.setRequestHeader('Content-type','application/x-www-form-urlencoded');
 	xml.send(data);
 	xml.onload = function (e){
-		console.log(xml);
 		if(xml.status === 200 && xml.readyState === 4){
 			d = JSON.parse(xml.response);
 			if(type == 'GET'){
@@ -112,7 +111,7 @@ $("#save").onclick = function(){
 
 /**自定义下拉菜单 **/
 function select(dom,value){
-	if(!dom) return false;
+	if(!dom) return;
 	var w = dom[0].clientWidth,
 		f = dom[0].parentElement,
 	   ul = document.createElement('ul');
