@@ -27,30 +27,30 @@ webpackJsonp([0,1],[
 	
 	var _home2 = _interopRequireDefault(_home);
 	
-	var _app = __webpack_require__(111);
+	var _app = __webpack_require__(115);
 	
 	var _app2 = _interopRequireDefault(_app);
 	
-	var _login = __webpack_require__(127);
+	var _login = __webpack_require__(131);
 	
 	var _login2 = _interopRequireDefault(_login);
 	
-	var _register = __webpack_require__(131);
+	var _register = __webpack_require__(135);
 	
 	var _register2 = _interopRequireDefault(_register);
 	
-	var _vaildate = __webpack_require__(134);
+	var _vaildate = __webpack_require__(138);
 	
 	var _vaildate2 = _interopRequireDefault(_vaildate);
 	
-	var _filter = __webpack_require__(135);
+	var _filter = __webpack_require__(139);
 	
 	var _filter2 = _interopRequireDefault(_filter);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	/**css**/
-	__webpack_require__(136);
+	__webpack_require__(140);
 	
 	/**component**/
 	
@@ -97,23 +97,28 @@ webpackJsonp([0,1],[
 	route.afterEach(function (transition) {
 		console.log("成功浏览到：" + transition.to.path);
 	});
-	// route.beforeEach(function({to,next,abort,redirect}){
-	// 	const r = to.path,
-	// 	   user = sessionStorage.getItem('user');
-	// 	if(!user || user == '/logout'){
-	// 		if(r === '/login' || r == '/reg'){
-	// 			next()
-	// 		}else{
-	// 			redirect('/login')
-	// 		}
-	// 	}else{
-	// 		if(r === '/login' || r === '/reg'){
-	// 			abort()
-	// 		}else{
-	// 			next();
-	// 		}
-	// 	}
-	// })
+	route.beforeEach(function (_ref) {
+		var to = _ref.to,
+		    next = _ref.next,
+		    abort = _ref.abort,
+		    redirect = _ref.redirect;
+	
+		var r = to.path,
+		    user = sessionStorage.getItem('user');
+		if (!user || user == '/logout') {
+			if (r === '/login' || r == '/reg') {
+				next();
+			} else {
+				redirect('/login');
+			}
+		} else {
+			if (r === '/login' || r === '/reg') {
+				abort();
+			} else {
+				next();
+			}
+		}
+	});
 	route.start(_app2.default, "#app");
 
 /***/ },
@@ -14795,7 +14800,7 @@ webpackJsonp([0,1],[
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\vue\\home.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(110)
+	__vue_template__ = __webpack_require__(114)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -14835,105 +14840,72 @@ webpackJsonp([0,1],[
 		value: true
 	});
 	
-	var _server = __webpack_require__(9);
+	var _defineProperty2 = __webpack_require__(9);
 	
-	var _search = __webpack_require__(10);
+	var _defineProperty3 = _interopRequireDefault(_defineProperty2);
+	
+	var _data = __webpack_require__(28);
+	
+	var _data2 = _interopRequireDefault(_data);
+	
+	var _server = __webpack_require__(31);
+	
+	var _search = __webpack_require__(32);
 	
 	var _search2 = _interopRequireDefault(_search);
 	
-	var _detail = __webpack_require__(102);
+	var _detail = __webpack_require__(106);
 	
 	var _detail2 = _interopRequireDefault(_detail);
 	
-	var _pagging = __webpack_require__(106);
+	var _pagging = __webpack_require__(110);
 	
 	var _pagging2 = _interopRequireDefault(_pagging);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	// <template>
-	// 	<div class="data-body">
-	// 		<div class="data-row">
-	// 			<div class="data-list" v-show="detail == true">
-	// 				<search></search>
-	// 				<div class="data">
-	// 					<table class="table"> 
-	// 						<thead>
-	// 							<tr>
-	// 								<th>序号</th>
-	// 								<th>学号</th>
-	// 								<th>姓名</th>
-	// 								<th>手机号码</th>
-	// 								<th>问题类型</th>
-	// 								<th>宿舍</th>
-	// 								<th>预约时间</th>
-	// 								<th>问题详情</th>
-	// 								<th>状态</th>
-	// 								<th>操作</th>
-	// 							</tr>
-	// 						</thead>
-	// 						<tbody v-if="list" class="data-tbody">
-	// 							<tr v-for="l in list | limitBy 10">
-	// 								<td>{{ $index + 1 }}</td>
-	// 								<td>{{ l.no }}</td>
-	// 								<td>{{ l.name }}</td>
-	// 								<td>{{ l.tel }}</td>
-	// 								<td>{{ l.type | problem }}</td>
-	// 								<td>{{ l.room }}</td>
-	// 								<td>{{ l.date | timeReturn }}</td>
-	// 								<td class="td-spe"> {{ l.exp }}</td>
-	// 								<td>{{ l.status | numstatus }}</td>
-	// 								<td>
-	// 									<a href="javascript:void(0)" v-if="l.status == 0 && l.admin == 0">指派</a>
-	// 									<a href="javascript:void(0)">删除</a>
-	// 									<a href="javascript:void(0)" v-if="l.status == 0">我来处理</a>
-	// 									<a href="javascript:void(0)" v-if="l.status == 1 ">完成处理</a>
-	// 									<a href="javascript:void(0)" @click="disDetail(l)">
-	// 										详情
-	// 									</a>
-	// 								</td>
-	// 							</tr>
-	// 						</tbody>
-	// 					</table>
-	// 					<div class="txc" v-show="list.length == 0">
-	// 						无数据
-	// 					</div>
-	// 				</div>
-	// 			</div>
-	// 			<page :num.sync="list"></page>
-	// 			<detail :show.sync="detail" :msg.sync="detailData"></detail>
-	// 		</div>
-	// 	</div>
-	// </template>
-	//
-	//
-	// <script>
-	//js
 	exports.default = {
 		name: 'home',
 	
-		components: [_search2.default, _detail2.default, _pagging2.default],
+		components: [_search2.default, _detail2.default, _pagging2.default, _data2.default],
 	
 		data: function data() {
-			return {
+			var _ref;
+	
+			return _ref = {
 				name: 'home',
 				list: '',
 				detail: true,
-				detailData: ''
-			};
+				detailData: '',
+				current: '',
+				total: ''
+			}, (0, _defineProperty3.default)(_ref, 'current', 1), (0, _defineProperty3.default)(_ref, 'all', ''), _ref;
+		},
+	
+		watch: {
+			'current': function current(newValue) {
+				if (newValue <= 1) this.current = 1;
+				if (newValue == this.totalPage) return;
+				if (newValue > this.total) {
+					newValue = this.total;
+					this.current = this.total;
+				}
+				this.list = this.all.slice((newValue - 1) * 10, newValue * 10);
+			}
 		},
 		created: function created() {
-			// post('/data')
-			// .then((res) => {
-			// 	if(res.body.status == 0){
-			// 		this.list = res.body.msg;
-			// 	}else{  
-			// 		this.$root.$emit(`backLogin`,res.body);
-			// 		this.list = [];
-			// 	}
+			var _this = this;
 	
-			// })
-			this.list = [{ no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }, { no: 1, name: '你好', tel: 155222222, type: 1, room: '办公室', date: 14907878780, exp: '没什么事情', staus: 1 }];
+			(0, _server.post)('/data').then(function (res) {
+				if (res.body.status == 0) {
+					_this.all = res.body.msg;
+					_this.list = _this.all.slice(0, 10);
+					_this.total = Math.ceil(_this.all.length / 10);
+				} else {
+					_this.$root.$emit('backLogin', res.body);
+					_this.all = [];
+				}
+			});
 		},
 	
 		methods: {
@@ -14991,9 +14963,423 @@ webpackJsonp([0,1],[
 	// }
 	// </style>
 	/* generated by vue-loader */
+	// <template>
+	// 	<div class="data-body">
+	// 		<div class="data-row">
+	// 			<div class="data-list" v-show="detail == true">
+	// 				<search></search>
+	// 				<table-data :list.sync="list"></table-data>
+	// 			</div>
+	// 			<page :current.sync="current" :total.sync="total" v-show="all && all.length > 10"></page>
+	// 			<detail :show.sync="detail" :msg.sync="detailData"></detail>
+	// 		</div>
+	// 	</div>
+	// </template>
+	//
+	//
+	// <script>
+	//js
 
 /***/ },
 /* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	exports.__esModule = true;
+	
+	var _defineProperty = __webpack_require__(10);
+	
+	var _defineProperty2 = _interopRequireDefault(_defineProperty);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = function (obj, key, value) {
+	  if (key in obj) {
+	    (0, _defineProperty2.default)(obj, key, {
+	      value: value,
+	      enumerable: true,
+	      configurable: true,
+	      writable: true
+	    });
+	  } else {
+	    obj[key] = value;
+	  }
+	
+	  return obj;
+	};
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = { "default": __webpack_require__(11), __esModule: true };
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(12);
+	var $Object = __webpack_require__(15).Object;
+	module.exports = function defineProperty(it, key, desc){
+	  return $Object.defineProperty(it, key, desc);
+	};
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var $export = __webpack_require__(13);
+	// 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
+	$export($export.S + $export.F * !__webpack_require__(23), 'Object', {defineProperty: __webpack_require__(19).f});
+
+/***/ },
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var global    = __webpack_require__(14)
+	  , core      = __webpack_require__(15)
+	  , ctx       = __webpack_require__(16)
+	  , hide      = __webpack_require__(18)
+	  , PROTOTYPE = 'prototype';
+	
+	var $export = function(type, name, source){
+	  var IS_FORCED = type & $export.F
+	    , IS_GLOBAL = type & $export.G
+	    , IS_STATIC = type & $export.S
+	    , IS_PROTO  = type & $export.P
+	    , IS_BIND   = type & $export.B
+	    , IS_WRAP   = type & $export.W
+	    , exports   = IS_GLOBAL ? core : core[name] || (core[name] = {})
+	    , expProto  = exports[PROTOTYPE]
+	    , target    = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE]
+	    , key, own, out;
+	  if(IS_GLOBAL)source = name;
+	  for(key in source){
+	    // contains in native
+	    own = !IS_FORCED && target && target[key] !== undefined;
+	    if(own && key in exports)continue;
+	    // export native or passed
+	    out = own ? target[key] : source[key];
+	    // prevent global pollution for namespaces
+	    exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
+	    // bind timers to global for call from export context
+	    : IS_BIND && own ? ctx(out, global)
+	    // wrap global constructors for prevent change them in library
+	    : IS_WRAP && target[key] == out ? (function(C){
+	      var F = function(a, b, c){
+	        if(this instanceof C){
+	          switch(arguments.length){
+	            case 0: return new C;
+	            case 1: return new C(a);
+	            case 2: return new C(a, b);
+	          } return new C(a, b, c);
+	        } return C.apply(this, arguments);
+	      };
+	      F[PROTOTYPE] = C[PROTOTYPE];
+	      return F;
+	    // make static versions for prototype methods
+	    })(out) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
+	    // export proto methods to core.%CONSTRUCTOR%.methods.%NAME%
+	    if(IS_PROTO){
+	      (exports.virtual || (exports.virtual = {}))[key] = out;
+	      // export proto methods to core.%CONSTRUCTOR%.prototype.%NAME%
+	      if(type & $export.R && expProto && !expProto[key])hide(expProto, key, out);
+	    }
+	  }
+	};
+	// type bitmap
+	$export.F = 1;   // forced
+	$export.G = 2;   // global
+	$export.S = 4;   // static
+	$export.P = 8;   // proto
+	$export.B = 16;  // bind
+	$export.W = 32;  // wrap
+	$export.U = 64;  // safe
+	$export.R = 128; // real proto method for `library` 
+	module.exports = $export;
+
+/***/ },
+/* 14 */
+/***/ function(module, exports) {
+
+	// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+	var global = module.exports = typeof window != 'undefined' && window.Math == Math
+	  ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
+	if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
+
+/***/ },
+/* 15 */
+/***/ function(module, exports) {
+
+	var core = module.exports = {version: '2.4.0'};
+	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
+
+/***/ },
+/* 16 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// optional / simple context binding
+	var aFunction = __webpack_require__(17);
+	module.exports = function(fn, that, length){
+	  aFunction(fn);
+	  if(that === undefined)return fn;
+	  switch(length){
+	    case 1: return function(a){
+	      return fn.call(that, a);
+	    };
+	    case 2: return function(a, b){
+	      return fn.call(that, a, b);
+	    };
+	    case 3: return function(a, b, c){
+	      return fn.call(that, a, b, c);
+	    };
+	  }
+	  return function(/* ...args */){
+	    return fn.apply(that, arguments);
+	  };
+	};
+
+/***/ },
+/* 17 */
+/***/ function(module, exports) {
+
+	module.exports = function(it){
+	  if(typeof it != 'function')throw TypeError(it + ' is not a function!');
+	  return it;
+	};
+
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var dP         = __webpack_require__(19)
+	  , createDesc = __webpack_require__(27);
+	module.exports = __webpack_require__(23) ? function(object, key, value){
+	  return dP.f(object, key, createDesc(1, value));
+	} : function(object, key, value){
+	  object[key] = value;
+	  return object;
+	};
+
+/***/ },
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var anObject       = __webpack_require__(20)
+	  , IE8_DOM_DEFINE = __webpack_require__(22)
+	  , toPrimitive    = __webpack_require__(26)
+	  , dP             = Object.defineProperty;
+	
+	exports.f = __webpack_require__(23) ? Object.defineProperty : function defineProperty(O, P, Attributes){
+	  anObject(O);
+	  P = toPrimitive(P, true);
+	  anObject(Attributes);
+	  if(IE8_DOM_DEFINE)try {
+	    return dP(O, P, Attributes);
+	  } catch(e){ /* empty */ }
+	  if('get' in Attributes || 'set' in Attributes)throw TypeError('Accessors not supported!');
+	  if('value' in Attributes)O[P] = Attributes.value;
+	  return O;
+	};
+
+/***/ },
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var isObject = __webpack_require__(21);
+	module.exports = function(it){
+	  if(!isObject(it))throw TypeError(it + ' is not an object!');
+	  return it;
+	};
+
+/***/ },
+/* 21 */
+/***/ function(module, exports) {
+
+	module.exports = function(it){
+	  return typeof it === 'object' ? it !== null : typeof it === 'function';
+	};
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = !__webpack_require__(23) && !__webpack_require__(24)(function(){
+	  return Object.defineProperty(__webpack_require__(25)('div'), 'a', {get: function(){ return 7; }}).a != 7;
+	});
+
+/***/ },
+/* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// Thank's IE8 for his funny defineProperty
+	module.exports = !__webpack_require__(24)(function(){
+	  return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
+	});
+
+/***/ },
+/* 24 */
+/***/ function(module, exports) {
+
+	module.exports = function(exec){
+	  try {
+	    return !!exec();
+	  } catch(e){
+	    return true;
+	  }
+	};
+
+/***/ },
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var isObject = __webpack_require__(21)
+	  , document = __webpack_require__(14).document
+	  // in old IE typeof document.createElement is 'object'
+	  , is = isObject(document) && isObject(document.createElement);
+	module.exports = function(it){
+	  return is ? document.createElement(it) : {};
+	};
+
+/***/ },
+/* 26 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// 7.1.1 ToPrimitive(input [, PreferredType])
+	var isObject = __webpack_require__(21);
+	// instead of the ES6 spec version, we didn't implement @@toPrimitive case
+	// and the second argument - flag - preferred type is a string
+	module.exports = function(it, S){
+	  if(!isObject(it))return it;
+	  var fn, val;
+	  if(S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it)))return val;
+	  if(typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it)))return val;
+	  if(!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it)))return val;
+	  throw TypeError("Can't convert object to primitive value");
+	};
+
+/***/ },
+/* 27 */
+/***/ function(module, exports) {
+
+	module.exports = function(bitmap, value){
+	  return {
+	    enumerable  : !(bitmap & 1),
+	    configurable: !(bitmap & 2),
+	    writable    : !(bitmap & 4),
+	    value       : value
+	  };
+	};
+
+/***/ },
+/* 28 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(29)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\vue\\components\\data.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(30)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-6a9567b3/data.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 29 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	// <template>
+	// 	<div class="data">
+	// 		<table class="table"> 
+	// 			<thead>
+	// 				<tr>
+	// 					<th>序号</th>
+	// 					<th>学号</th>
+	// 					<th>姓名</th>
+	// 					<th>手机号码</th>
+	// 					<th>问题类型</th>
+	// 					<th>宿舍</th>
+	// 					<th>预约时间</th>
+	// 					<th>问题详情</th>
+	// 					<th>状态</th>
+	// 					<th>操作</th>
+	// 				</tr>
+	// 			</thead>
+	// 			<tbody v-if="list" class="data-tbody">
+	// 				<tr v-for="l in list ">
+	// 					<td>{{ $index + 1 }}</td>
+	// 					<td>{{ l.no }}</td>
+	// 					<td>{{ l.name }}</td>
+	// 					<td>{{ l.tel }}</td>
+	// 					<td>{{ l.type | problem }}</td>
+	// 					<td>{{ l.room }}</td>
+	// 					<td>{{ l.date | timeReturn }}</td>
+	// 					<td class="td-spe"> {{ l.exp }}</td>
+	// 					<td>{{ l.status | numstatus }}</td>
+	// 					<td>
+	// 						<a href="javascript:void(0)" v-if="l.status == 0 && l.admin == 0">指派</a>
+	// 						<a href="javascript:void(0)">删除</a>
+	// 						<a href="javascript:void(0)" v-if="l.status == 0">我来处理</a>
+	// 						<a href="javascript:void(0)" v-if="l.status == 1 ">完成处理</a>
+	// 						<a href="javascript:void(0)" @click="disDetail(l)">
+	// 							详情
+	// 						</a>
+	// 					</td>
+	// 				</tr>
+	// 			</tbody>
+	// 		</table>
+	// 		<div class="txc" v-show="list.length == 0">
+	// 			无数据
+	// 		</div>
+	// 	</div>
+	// </template>
+	//
+	// <script>
+	
+	exports.default = {
+		name: 'tableData',
+		props: ['list']
+	};
+	// </script>
+
+	/* generated by vue-loader */
+
+/***/ },
+/* 30 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"data\">\n\t<table class=\"table\"> \n\t\t<thead>\n\t\t\t<tr>\n\t\t\t\t<th>序号</th>\n\t\t\t\t<th>学号</th>\n\t\t\t\t<th>姓名</th>\n\t\t\t\t<th>手机号码</th>\n\t\t\t\t<th>问题类型</th>\n\t\t\t\t<th>宿舍</th>\n\t\t\t\t<th>预约时间</th>\n\t\t\t\t<th>问题详情</th>\n\t\t\t\t<th>状态</th>\n\t\t\t\t<th>操作</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody v-if=\"list\" class=\"data-tbody\">\n\t\t\t<tr v-for=\"l in list \">\n\t\t\t\t<td>{{ $index + 1 }}</td>\n\t\t\t\t<td>{{ l.no }}</td>\n\t\t\t\t<td>{{ l.name }}</td>\n\t\t\t\t<td>{{ l.tel }}</td>\n\t\t\t\t<td>{{ l.type | problem }}</td>\n\t\t\t\t<td>{{ l.room }}</td>\n\t\t\t\t<td>{{ l.date | timeReturn }}</td>\n\t\t\t\t<td class=\"td-spe\"> {{ l.exp }}</td>\n\t\t\t\t<td>{{ l.status | numstatus }}</td>\n\t\t\t\t<td>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 0 && l.admin == 0\">指派</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\">删除</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 0\">我来处理</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 1 \">完成处理</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" @click=\"disDetail(l)\">\n\t\t\t\t\t\t详情\n\t\t\t\t\t</a>\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n\t<div class=\"txc\" v-show=\"list.length == 0\">\n\t\t无数据\n\t</div>\n</div>\n";
+
+/***/ },
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15010,10 +15396,10 @@ webpackJsonp([0,1],[
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	// let t = 'http://localhost'
+	var t = '';
 	
 	function login(accout, password) {
-		return _vue2.default.http.post('/login', 'u=' + accout + '&p=' + password, {
+		return _vue2.default.http.post(t + '/login', 'u=' + accout + '&p=' + password, {
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 			}
@@ -15021,7 +15407,7 @@ webpackJsonp([0,1],[
 	}
 	
 	function post(u, value) {
-		return _vue2.default.http.post(u, value, {
+		return _vue2.default.http.post(t + u, value, {
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 			}
@@ -15029,18 +15415,18 @@ webpackJsonp([0,1],[
 	}
 
 /***/ },
-/* 10 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__webpack_require__(11)
-	__vue_script__ = __webpack_require__(12)
+	__webpack_require__(33)
+	__vue_script__ = __webpack_require__(34)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\vue\\search.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(101)
+	__vue_template__ = __webpack_require__(105)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -15065,13 +15451,13 @@ webpackJsonp([0,1],[
 	})()}
 
 /***/ },
-/* 11 */
+/* 33 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 12 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15080,19 +15466,19 @@ webpackJsonp([0,1],[
 		value: true
 	});
 	
-	var _select = __webpack_require__(13);
+	var _select = __webpack_require__(35);
 	
 	var _select2 = _interopRequireDefault(_select);
 	
-	var _room = __webpack_require__(21);
+	var _room = __webpack_require__(43);
 	
 	var _room2 = _interopRequireDefault(_room);
 	
-	var _flatpickr = __webpack_require__(22);
+	var _flatpickr = __webpack_require__(44);
 	
 	var _flatpickr2 = _interopRequireDefault(_flatpickr);
 	
-	var _server = __webpack_require__(9);
+	var _server = __webpack_require__(31);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -15252,18 +15638,18 @@ webpackJsonp([0,1],[
 	/* generated by vue-loader */
 
 /***/ },
-/* 13 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__webpack_require__(14)
-	__vue_script__ = __webpack_require__(15)
+	__webpack_require__(36)
+	__vue_script__ = __webpack_require__(37)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\vue\\components\\select.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(20)
+	__vue_template__ = __webpack_require__(42)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -15288,13 +15674,13 @@ webpackJsonp([0,1],[
 	})()}
 
 /***/ },
-/* 14 */
+/* 36 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 15 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15303,7 +15689,7 @@ webpackJsonp([0,1],[
 		value: true
 	});
 	
-	var _mask = __webpack_require__(16);
+	var _mask = __webpack_require__(38);
 	
 	var _mask2 = _interopRequireDefault(_mask);
 	
@@ -15365,18 +15751,18 @@ webpackJsonp([0,1],[
 	// <script>
 
 /***/ },
-/* 16 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__webpack_require__(17)
-	__vue_script__ = __webpack_require__(18)
+	__webpack_require__(39)
+	__vue_script__ = __webpack_require__(40)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\vue\\components\\mask.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(19)
+	__vue_template__ = __webpack_require__(41)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -15401,13 +15787,13 @@ webpackJsonp([0,1],[
 	})()}
 
 /***/ },
-/* 17 */
+/* 39 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 18 */
+/* 40 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -15444,19 +15830,19 @@ webpackJsonp([0,1],[
 	/* generated by vue-loader */
 
 /***/ },
-/* 19 */
+/* 41 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"mask-child\" @click=\"this.show = !this.show\" v-show=\"show\"></div>\n";
 
 /***/ },
-/* 20 */
+/* 42 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<input type=\"text\" class=\"input-input large-input\" placeholder=\"{{ pla }}\" readonly=\"readonly\" v-model=\"currentValue\" @click=\"display\">\n<ul class=\"select-list txc large-input\" v-show='show' :class=\"{ scroll : selectdata.length > 20}\">\n\t<li v-for=\"s in selectdata\" @click=\"getData($index)\">\n\t\t{{ s.name }}\n\t</li>\n</ul>\n\n<mask :show.sync=\"show\"></mask>\n";
 
 /***/ },
-/* 21 */
+/* 43 */
 /***/ function(module, exports) {
 
 	module.exports = [
@@ -15595,17 +15981,17 @@ webpackJsonp([0,1],[
 	];
 
 /***/ },
-/* 22 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(23)
+	__vue_script__ = __webpack_require__(45)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\vue\\flatpickr.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(100)
+	__vue_template__ = __webpack_require__(104)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -15630,7 +16016,7 @@ webpackJsonp([0,1],[
 	})()}
 
 /***/ },
-/* 23 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15639,7 +16025,7 @@ webpackJsonp([0,1],[
 	  value: true
 	});
 	
-	var _flatpickrZh = __webpack_require__(24);
+	var _flatpickrZh = __webpack_require__(46);
 	
 	var _flatpickrZh2 = _interopRequireDefault(_flatpickrZh);
 	
@@ -15677,28 +16063,28 @@ webpackJsonp([0,1],[
 	// <script>
 
 /***/ },
-/* 24 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _defineProperty = __webpack_require__(25);
+	var _defineProperty = __webpack_require__(10);
 	
 	var _defineProperty2 = _interopRequireDefault(_defineProperty);
 	
-	var _keys = __webpack_require__(43);
+	var _keys = __webpack_require__(47);
 	
 	var _keys2 = _interopRequireDefault(_keys);
 	
-	var _iterator = __webpack_require__(63);
+	var _iterator = __webpack_require__(67);
 	
 	var _iterator2 = _interopRequireDefault(_iterator);
 	
-	var _typeof3 = __webpack_require__(83);
+	var _typeof3 = __webpack_require__(87);
 	
 	var _typeof4 = _interopRequireDefault(_typeof3);
 	
-	var _symbol = __webpack_require__(84);
+	var _symbol = __webpack_require__(88);
 	
 	var _symbol2 = _interopRequireDefault(_symbol);
 	
@@ -17045,307 +17431,44 @@ webpackJsonp([0,1],[
 	}
 
 /***/ },
-/* 25 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(26), __esModule: true };
+	module.exports = { "default": __webpack_require__(48), __esModule: true };
 
 /***/ },
-/* 26 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(27);
-	var $Object = __webpack_require__(30).Object;
-	module.exports = function defineProperty(it, key, desc){
-	  return $Object.defineProperty(it, key, desc);
-	};
+	__webpack_require__(49);
+	module.exports = __webpack_require__(15).Object.keys;
 
 /***/ },
-/* 27 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var $export = __webpack_require__(28);
-	// 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
-	$export($export.S + $export.F * !__webpack_require__(38), 'Object', {defineProperty: __webpack_require__(34).f});
-
-/***/ },
-/* 28 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var global    = __webpack_require__(29)
-	  , core      = __webpack_require__(30)
-	  , ctx       = __webpack_require__(31)
-	  , hide      = __webpack_require__(33)
-	  , PROTOTYPE = 'prototype';
-	
-	var $export = function(type, name, source){
-	  var IS_FORCED = type & $export.F
-	    , IS_GLOBAL = type & $export.G
-	    , IS_STATIC = type & $export.S
-	    , IS_PROTO  = type & $export.P
-	    , IS_BIND   = type & $export.B
-	    , IS_WRAP   = type & $export.W
-	    , exports   = IS_GLOBAL ? core : core[name] || (core[name] = {})
-	    , expProto  = exports[PROTOTYPE]
-	    , target    = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE]
-	    , key, own, out;
-	  if(IS_GLOBAL)source = name;
-	  for(key in source){
-	    // contains in native
-	    own = !IS_FORCED && target && target[key] !== undefined;
-	    if(own && key in exports)continue;
-	    // export native or passed
-	    out = own ? target[key] : source[key];
-	    // prevent global pollution for namespaces
-	    exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
-	    // bind timers to global for call from export context
-	    : IS_BIND && own ? ctx(out, global)
-	    // wrap global constructors for prevent change them in library
-	    : IS_WRAP && target[key] == out ? (function(C){
-	      var F = function(a, b, c){
-	        if(this instanceof C){
-	          switch(arguments.length){
-	            case 0: return new C;
-	            case 1: return new C(a);
-	            case 2: return new C(a, b);
-	          } return new C(a, b, c);
-	        } return C.apply(this, arguments);
-	      };
-	      F[PROTOTYPE] = C[PROTOTYPE];
-	      return F;
-	    // make static versions for prototype methods
-	    })(out) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
-	    // export proto methods to core.%CONSTRUCTOR%.methods.%NAME%
-	    if(IS_PROTO){
-	      (exports.virtual || (exports.virtual = {}))[key] = out;
-	      // export proto methods to core.%CONSTRUCTOR%.prototype.%NAME%
-	      if(type & $export.R && expProto && !expProto[key])hide(expProto, key, out);
-	    }
-	  }
-	};
-	// type bitmap
-	$export.F = 1;   // forced
-	$export.G = 2;   // global
-	$export.S = 4;   // static
-	$export.P = 8;   // proto
-	$export.B = 16;  // bind
-	$export.W = 32;  // wrap
-	$export.U = 64;  // safe
-	$export.R = 128; // real proto method for `library` 
-	module.exports = $export;
-
-/***/ },
-/* 29 */
-/***/ function(module, exports) {
-
-	// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-	var global = module.exports = typeof window != 'undefined' && window.Math == Math
-	  ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
-	if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
-
-/***/ },
-/* 30 */
-/***/ function(module, exports) {
-
-	var core = module.exports = {version: '2.4.0'};
-	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
-
-/***/ },
-/* 31 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// optional / simple context binding
-	var aFunction = __webpack_require__(32);
-	module.exports = function(fn, that, length){
-	  aFunction(fn);
-	  if(that === undefined)return fn;
-	  switch(length){
-	    case 1: return function(a){
-	      return fn.call(that, a);
-	    };
-	    case 2: return function(a, b){
-	      return fn.call(that, a, b);
-	    };
-	    case 3: return function(a, b, c){
-	      return fn.call(that, a, b, c);
-	    };
-	  }
-	  return function(/* ...args */){
-	    return fn.apply(that, arguments);
-	  };
-	};
-
-/***/ },
-/* 32 */
-/***/ function(module, exports) {
-
-	module.exports = function(it){
-	  if(typeof it != 'function')throw TypeError(it + ' is not a function!');
-	  return it;
-	};
-
-/***/ },
-/* 33 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var dP         = __webpack_require__(34)
-	  , createDesc = __webpack_require__(42);
-	module.exports = __webpack_require__(38) ? function(object, key, value){
-	  return dP.f(object, key, createDesc(1, value));
-	} : function(object, key, value){
-	  object[key] = value;
-	  return object;
-	};
-
-/***/ },
-/* 34 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var anObject       = __webpack_require__(35)
-	  , IE8_DOM_DEFINE = __webpack_require__(37)
-	  , toPrimitive    = __webpack_require__(41)
-	  , dP             = Object.defineProperty;
-	
-	exports.f = __webpack_require__(38) ? Object.defineProperty : function defineProperty(O, P, Attributes){
-	  anObject(O);
-	  P = toPrimitive(P, true);
-	  anObject(Attributes);
-	  if(IE8_DOM_DEFINE)try {
-	    return dP(O, P, Attributes);
-	  } catch(e){ /* empty */ }
-	  if('get' in Attributes || 'set' in Attributes)throw TypeError('Accessors not supported!');
-	  if('value' in Attributes)O[P] = Attributes.value;
-	  return O;
-	};
-
-/***/ },
-/* 35 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var isObject = __webpack_require__(36);
-	module.exports = function(it){
-	  if(!isObject(it))throw TypeError(it + ' is not an object!');
-	  return it;
-	};
-
-/***/ },
-/* 36 */
-/***/ function(module, exports) {
-
-	module.exports = function(it){
-	  return typeof it === 'object' ? it !== null : typeof it === 'function';
-	};
-
-/***/ },
-/* 37 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = !__webpack_require__(38) && !__webpack_require__(39)(function(){
-	  return Object.defineProperty(__webpack_require__(40)('div'), 'a', {get: function(){ return 7; }}).a != 7;
-	});
-
-/***/ },
-/* 38 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// Thank's IE8 for his funny defineProperty
-	module.exports = !__webpack_require__(39)(function(){
-	  return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
-	});
-
-/***/ },
-/* 39 */
-/***/ function(module, exports) {
-
-	module.exports = function(exec){
-	  try {
-	    return !!exec();
-	  } catch(e){
-	    return true;
-	  }
-	};
-
-/***/ },
-/* 40 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var isObject = __webpack_require__(36)
-	  , document = __webpack_require__(29).document
-	  // in old IE typeof document.createElement is 'object'
-	  , is = isObject(document) && isObject(document.createElement);
-	module.exports = function(it){
-	  return is ? document.createElement(it) : {};
-	};
-
-/***/ },
-/* 41 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// 7.1.1 ToPrimitive(input [, PreferredType])
-	var isObject = __webpack_require__(36);
-	// instead of the ES6 spec version, we didn't implement @@toPrimitive case
-	// and the second argument - flag - preferred type is a string
-	module.exports = function(it, S){
-	  if(!isObject(it))return it;
-	  var fn, val;
-	  if(S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it)))return val;
-	  if(typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it)))return val;
-	  if(!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it)))return val;
-	  throw TypeError("Can't convert object to primitive value");
-	};
-
-/***/ },
-/* 42 */
-/***/ function(module, exports) {
-
-	module.exports = function(bitmap, value){
-	  return {
-	    enumerable  : !(bitmap & 1),
-	    configurable: !(bitmap & 2),
-	    writable    : !(bitmap & 4),
-	    value       : value
-	  };
-	};
-
-/***/ },
-/* 43 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(44), __esModule: true };
-
-/***/ },
-/* 44 */
-/***/ function(module, exports, __webpack_require__) {
-
-	__webpack_require__(45);
-	module.exports = __webpack_require__(30).Object.keys;
-
-/***/ },
-/* 45 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 19.1.2.14 Object.keys(O)
-	var toObject = __webpack_require__(46)
-	  , $keys    = __webpack_require__(48);
+	var toObject = __webpack_require__(50)
+	  , $keys    = __webpack_require__(52);
 	
-	__webpack_require__(62)('keys', function(){
+	__webpack_require__(66)('keys', function(){
 	  return function keys(it){
 	    return $keys(toObject(it));
 	  };
 	});
 
 /***/ },
-/* 46 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 7.1.13 ToObject(argument)
-	var defined = __webpack_require__(47);
+	var defined = __webpack_require__(51);
 	module.exports = function(it){
 	  return Object(defined(it));
 	};
 
 /***/ },
-/* 47 */
+/* 51 */
 /***/ function(module, exports) {
 
 	// 7.2.1 RequireObjectCoercible(argument)
@@ -17355,25 +17478,25 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 48 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 19.1.2.14 / 15.2.3.14 Object.keys(O)
-	var $keys       = __webpack_require__(49)
-	  , enumBugKeys = __webpack_require__(61);
+	var $keys       = __webpack_require__(53)
+	  , enumBugKeys = __webpack_require__(65);
 	
 	module.exports = Object.keys || function keys(O){
 	  return $keys(O, enumBugKeys);
 	};
 
 /***/ },
-/* 49 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var has          = __webpack_require__(50)
-	  , toIObject    = __webpack_require__(51)
-	  , arrayIndexOf = __webpack_require__(54)(false)
-	  , IE_PROTO     = __webpack_require__(58)('IE_PROTO');
+	var has          = __webpack_require__(54)
+	  , toIObject    = __webpack_require__(55)
+	  , arrayIndexOf = __webpack_require__(58)(false)
+	  , IE_PROTO     = __webpack_require__(62)('IE_PROTO');
 	
 	module.exports = function(object, names){
 	  var O      = toIObject(object)
@@ -17389,7 +17512,7 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 50 */
+/* 54 */
 /***/ function(module, exports) {
 
 	var hasOwnProperty = {}.hasOwnProperty;
@@ -17398,28 +17521,28 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 51 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// to indexed object, toObject with fallback for non-array-like ES3 strings
-	var IObject = __webpack_require__(52)
-	  , defined = __webpack_require__(47);
+	var IObject = __webpack_require__(56)
+	  , defined = __webpack_require__(51);
 	module.exports = function(it){
 	  return IObject(defined(it));
 	};
 
 /***/ },
-/* 52 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// fallback for non-array-like ES3 and non-enumerable old V8 strings
-	var cof = __webpack_require__(53);
+	var cof = __webpack_require__(57);
 	module.exports = Object('z').propertyIsEnumerable(0) ? Object : function(it){
 	  return cof(it) == 'String' ? it.split('') : Object(it);
 	};
 
 /***/ },
-/* 53 */
+/* 57 */
 /***/ function(module, exports) {
 
 	var toString = {}.toString;
@@ -17429,14 +17552,14 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 54 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// false -> Array#indexOf
 	// true  -> Array#includes
-	var toIObject = __webpack_require__(51)
-	  , toLength  = __webpack_require__(55)
-	  , toIndex   = __webpack_require__(57);
+	var toIObject = __webpack_require__(55)
+	  , toLength  = __webpack_require__(59)
+	  , toIndex   = __webpack_require__(61);
 	module.exports = function(IS_INCLUDES){
 	  return function($this, el, fromIndex){
 	    var O      = toIObject($this)
@@ -17455,18 +17578,18 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 55 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 7.1.15 ToLength
-	var toInteger = __webpack_require__(56)
+	var toInteger = __webpack_require__(60)
 	  , min       = Math.min;
 	module.exports = function(it){
 	  return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
 	};
 
 /***/ },
-/* 56 */
+/* 60 */
 /***/ function(module, exports) {
 
 	// 7.1.4 ToInteger
@@ -17477,10 +17600,10 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 57 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var toInteger = __webpack_require__(56)
+	var toInteger = __webpack_require__(60)
 	  , max       = Math.max
 	  , min       = Math.min;
 	module.exports = function(index, length){
@@ -17489,20 +17612,20 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 58 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var shared = __webpack_require__(59)('keys')
-	  , uid    = __webpack_require__(60);
+	var shared = __webpack_require__(63)('keys')
+	  , uid    = __webpack_require__(64);
 	module.exports = function(key){
 	  return shared[key] || (shared[key] = uid(key));
 	};
 
 /***/ },
-/* 59 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var global = __webpack_require__(29)
+	var global = __webpack_require__(14)
 	  , SHARED = '__core-js_shared__'
 	  , store  = global[SHARED] || (global[SHARED] = {});
 	module.exports = function(key){
@@ -17510,7 +17633,7 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 60 */
+/* 64 */
 /***/ function(module, exports) {
 
 	var id = 0
@@ -17520,7 +17643,7 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 61 */
+/* 65 */
 /***/ function(module, exports) {
 
 	// IE 8- don't enum bug keys
@@ -17529,13 +17652,13 @@ webpackJsonp([0,1],[
 	).split(',');
 
 /***/ },
-/* 62 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// most Object methods by ES6 should accept primitives
-	var $export = __webpack_require__(28)
-	  , core    = __webpack_require__(30)
-	  , fails   = __webpack_require__(39);
+	var $export = __webpack_require__(13)
+	  , core    = __webpack_require__(15)
+	  , fails   = __webpack_require__(24);
 	module.exports = function(KEY, exec){
 	  var fn  = (core.Object || {})[KEY] || Object[KEY]
 	    , exp = {};
@@ -17544,28 +17667,28 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 63 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(64), __esModule: true };
+	module.exports = { "default": __webpack_require__(68), __esModule: true };
 
 /***/ },
-/* 64 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(65);
-	__webpack_require__(78);
-	module.exports = __webpack_require__(82).f('iterator');
+	__webpack_require__(69);
+	__webpack_require__(82);
+	module.exports = __webpack_require__(86).f('iterator');
 
 /***/ },
-/* 65 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var $at  = __webpack_require__(66)(true);
+	var $at  = __webpack_require__(70)(true);
 	
 	// 21.1.3.27 String.prototype[@@iterator]()
-	__webpack_require__(67)(String, 'String', function(iterated){
+	__webpack_require__(71)(String, 'String', function(iterated){
 	  this._t = String(iterated); // target
 	  this._i = 0;                // next index
 	// 21.1.5.2.1 %StringIteratorPrototype%.next()
@@ -17580,11 +17703,11 @@ webpackJsonp([0,1],[
 	});
 
 /***/ },
-/* 66 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var toInteger = __webpack_require__(56)
-	  , defined   = __webpack_require__(47);
+	var toInteger = __webpack_require__(60)
+	  , defined   = __webpack_require__(51);
 	// true  -> String#at
 	// false -> String#codePointAt
 	module.exports = function(TO_STRING){
@@ -17602,20 +17725,20 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 67 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var LIBRARY        = __webpack_require__(68)
-	  , $export        = __webpack_require__(28)
-	  , redefine       = __webpack_require__(69)
-	  , hide           = __webpack_require__(33)
-	  , has            = __webpack_require__(50)
-	  , Iterators      = __webpack_require__(70)
-	  , $iterCreate    = __webpack_require__(71)
-	  , setToStringTag = __webpack_require__(75)
-	  , getPrototypeOf = __webpack_require__(77)
-	  , ITERATOR       = __webpack_require__(76)('iterator')
+	var LIBRARY        = __webpack_require__(72)
+	  , $export        = __webpack_require__(13)
+	  , redefine       = __webpack_require__(73)
+	  , hide           = __webpack_require__(18)
+	  , has            = __webpack_require__(54)
+	  , Iterators      = __webpack_require__(74)
+	  , $iterCreate    = __webpack_require__(75)
+	  , setToStringTag = __webpack_require__(79)
+	  , getPrototypeOf = __webpack_require__(81)
+	  , ITERATOR       = __webpack_require__(80)('iterator')
 	  , BUGGY          = !([].keys && 'next' in [].keys()) // Safari has buggy iterators w/o `next`
 	  , FF_ITERATOR    = '@@iterator'
 	  , KEYS           = 'keys'
@@ -17677,35 +17800,35 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 68 */
+/* 72 */
 /***/ function(module, exports) {
 
 	module.exports = true;
 
 /***/ },
-/* 69 */
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(33);
+	module.exports = __webpack_require__(18);
 
 /***/ },
-/* 70 */
+/* 74 */
 /***/ function(module, exports) {
 
 	module.exports = {};
 
 /***/ },
-/* 71 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var create         = __webpack_require__(72)
-	  , descriptor     = __webpack_require__(42)
-	  , setToStringTag = __webpack_require__(75)
+	var create         = __webpack_require__(76)
+	  , descriptor     = __webpack_require__(27)
+	  , setToStringTag = __webpack_require__(79)
 	  , IteratorPrototype = {};
 	
 	// 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-	__webpack_require__(33)(IteratorPrototype, __webpack_require__(76)('iterator'), function(){ return this; });
+	__webpack_require__(18)(IteratorPrototype, __webpack_require__(80)('iterator'), function(){ return this; });
 	
 	module.exports = function(Constructor, NAME, next){
 	  Constructor.prototype = create(IteratorPrototype, {next: descriptor(1, next)});
@@ -17713,27 +17836,27 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 72 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-	var anObject    = __webpack_require__(35)
-	  , dPs         = __webpack_require__(73)
-	  , enumBugKeys = __webpack_require__(61)
-	  , IE_PROTO    = __webpack_require__(58)('IE_PROTO')
+	var anObject    = __webpack_require__(20)
+	  , dPs         = __webpack_require__(77)
+	  , enumBugKeys = __webpack_require__(65)
+	  , IE_PROTO    = __webpack_require__(62)('IE_PROTO')
 	  , Empty       = function(){ /* empty */ }
 	  , PROTOTYPE   = 'prototype';
 	
 	// Create object with fake `null` prototype: use iframe Object with cleared prototype
 	var createDict = function(){
 	  // Thrash, waste and sodomy: IE GC bug
-	  var iframe = __webpack_require__(40)('iframe')
+	  var iframe = __webpack_require__(25)('iframe')
 	    , i      = enumBugKeys.length
 	    , lt     = '<'
 	    , gt     = '>'
 	    , iframeDocument;
 	  iframe.style.display = 'none';
-	  __webpack_require__(74).appendChild(iframe);
+	  __webpack_require__(78).appendChild(iframe);
 	  iframe.src = 'javascript:'; // eslint-disable-line no-script-url
 	  // createDict = iframe.contentWindow.Object;
 	  // html.removeChild(iframe);
@@ -17760,14 +17883,14 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 73 */
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var dP       = __webpack_require__(34)
-	  , anObject = __webpack_require__(35)
-	  , getKeys  = __webpack_require__(48);
+	var dP       = __webpack_require__(19)
+	  , anObject = __webpack_require__(20)
+	  , getKeys  = __webpack_require__(52);
 	
-	module.exports = __webpack_require__(38) ? Object.defineProperties : function defineProperties(O, Properties){
+	module.exports = __webpack_require__(23) ? Object.defineProperties : function defineProperties(O, Properties){
 	  anObject(O);
 	  var keys   = getKeys(Properties)
 	    , length = keys.length
@@ -17778,30 +17901,30 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 74 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(29).document && document.documentElement;
+	module.exports = __webpack_require__(14).document && document.documentElement;
 
 /***/ },
-/* 75 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var def = __webpack_require__(34).f
-	  , has = __webpack_require__(50)
-	  , TAG = __webpack_require__(76)('toStringTag');
+	var def = __webpack_require__(19).f
+	  , has = __webpack_require__(54)
+	  , TAG = __webpack_require__(80)('toStringTag');
 	
 	module.exports = function(it, tag, stat){
 	  if(it && !has(it = stat ? it : it.prototype, TAG))def(it, TAG, {configurable: true, value: tag});
 	};
 
 /***/ },
-/* 76 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var store      = __webpack_require__(59)('wks')
-	  , uid        = __webpack_require__(60)
-	  , Symbol     = __webpack_require__(29).Symbol
+	var store      = __webpack_require__(63)('wks')
+	  , uid        = __webpack_require__(64)
+	  , Symbol     = __webpack_require__(14).Symbol
 	  , USE_SYMBOL = typeof Symbol == 'function';
 	
 	var $exports = module.exports = function(name){
@@ -17812,13 +17935,13 @@ webpackJsonp([0,1],[
 	$exports.store = store;
 
 /***/ },
-/* 77 */
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
-	var has         = __webpack_require__(50)
-	  , toObject    = __webpack_require__(46)
-	  , IE_PROTO    = __webpack_require__(58)('IE_PROTO')
+	var has         = __webpack_require__(54)
+	  , toObject    = __webpack_require__(50)
+	  , IE_PROTO    = __webpack_require__(62)('IE_PROTO')
 	  , ObjectProto = Object.prototype;
 	
 	module.exports = Object.getPrototypeOf || function(O){
@@ -17830,14 +17953,14 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 78 */
+/* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(79);
-	var global        = __webpack_require__(29)
-	  , hide          = __webpack_require__(33)
-	  , Iterators     = __webpack_require__(70)
-	  , TO_STRING_TAG = __webpack_require__(76)('toStringTag');
+	__webpack_require__(83);
+	var global        = __webpack_require__(14)
+	  , hide          = __webpack_require__(18)
+	  , Iterators     = __webpack_require__(74)
+	  , TO_STRING_TAG = __webpack_require__(80)('toStringTag');
 	
 	for(var collections = ['NodeList', 'DOMTokenList', 'MediaList', 'StyleSheetList', 'CSSRuleList'], i = 0; i < 5; i++){
 	  var NAME       = collections[i]
@@ -17848,20 +17971,20 @@ webpackJsonp([0,1],[
 	}
 
 /***/ },
-/* 79 */
+/* 83 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var addToUnscopables = __webpack_require__(80)
-	  , step             = __webpack_require__(81)
-	  , Iterators        = __webpack_require__(70)
-	  , toIObject        = __webpack_require__(51);
+	var addToUnscopables = __webpack_require__(84)
+	  , step             = __webpack_require__(85)
+	  , Iterators        = __webpack_require__(74)
+	  , toIObject        = __webpack_require__(55);
 	
 	// 22.1.3.4 Array.prototype.entries()
 	// 22.1.3.13 Array.prototype.keys()
 	// 22.1.3.29 Array.prototype.values()
 	// 22.1.3.30 Array.prototype[@@iterator]()
-	module.exports = __webpack_require__(67)(Array, 'Array', function(iterated, kind){
+	module.exports = __webpack_require__(71)(Array, 'Array', function(iterated, kind){
 	  this._t = toIObject(iterated); // target
 	  this._i = 0;                   // next index
 	  this._k = kind;                // kind
@@ -17887,13 +18010,13 @@ webpackJsonp([0,1],[
 	addToUnscopables('entries');
 
 /***/ },
-/* 80 */
+/* 84 */
 /***/ function(module, exports) {
 
 	module.exports = function(){ /* empty */ };
 
 /***/ },
-/* 81 */
+/* 85 */
 /***/ function(module, exports) {
 
 	module.exports = function(done, value){
@@ -17901,24 +18024,24 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 82 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports.f = __webpack_require__(76);
+	exports.f = __webpack_require__(80);
 
 /***/ },
-/* 83 */
+/* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
 	exports.__esModule = true;
 	
-	var _iterator = __webpack_require__(63);
+	var _iterator = __webpack_require__(67);
 	
 	var _iterator2 = _interopRequireDefault(_iterator);
 	
-	var _symbol = __webpack_require__(84);
+	var _symbol = __webpack_require__(88);
 	
 	var _symbol2 = _interopRequireDefault(_symbol);
 	
@@ -17933,52 +18056,52 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 84 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(85), __esModule: true };
+	module.exports = { "default": __webpack_require__(89), __esModule: true };
 
 /***/ },
-/* 85 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(86);
-	__webpack_require__(97);
-	__webpack_require__(98);
-	__webpack_require__(99);
-	module.exports = __webpack_require__(30).Symbol;
+	__webpack_require__(90);
+	__webpack_require__(101);
+	__webpack_require__(102);
+	__webpack_require__(103);
+	module.exports = __webpack_require__(15).Symbol;
 
 /***/ },
-/* 86 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	// ECMAScript 6 symbols shim
-	var global         = __webpack_require__(29)
-	  , has            = __webpack_require__(50)
-	  , DESCRIPTORS    = __webpack_require__(38)
-	  , $export        = __webpack_require__(28)
-	  , redefine       = __webpack_require__(69)
-	  , META           = __webpack_require__(87).KEY
-	  , $fails         = __webpack_require__(39)
-	  , shared         = __webpack_require__(59)
-	  , setToStringTag = __webpack_require__(75)
-	  , uid            = __webpack_require__(60)
-	  , wks            = __webpack_require__(76)
-	  , wksExt         = __webpack_require__(82)
-	  , wksDefine      = __webpack_require__(88)
-	  , keyOf          = __webpack_require__(89)
-	  , enumKeys       = __webpack_require__(90)
-	  , isArray        = __webpack_require__(93)
-	  , anObject       = __webpack_require__(35)
-	  , toIObject      = __webpack_require__(51)
-	  , toPrimitive    = __webpack_require__(41)
-	  , createDesc     = __webpack_require__(42)
-	  , _create        = __webpack_require__(72)
-	  , gOPNExt        = __webpack_require__(94)
-	  , $GOPD          = __webpack_require__(96)
-	  , $DP            = __webpack_require__(34)
-	  , $keys          = __webpack_require__(48)
+	var global         = __webpack_require__(14)
+	  , has            = __webpack_require__(54)
+	  , DESCRIPTORS    = __webpack_require__(23)
+	  , $export        = __webpack_require__(13)
+	  , redefine       = __webpack_require__(73)
+	  , META           = __webpack_require__(91).KEY
+	  , $fails         = __webpack_require__(24)
+	  , shared         = __webpack_require__(63)
+	  , setToStringTag = __webpack_require__(79)
+	  , uid            = __webpack_require__(64)
+	  , wks            = __webpack_require__(80)
+	  , wksExt         = __webpack_require__(86)
+	  , wksDefine      = __webpack_require__(92)
+	  , keyOf          = __webpack_require__(93)
+	  , enumKeys       = __webpack_require__(94)
+	  , isArray        = __webpack_require__(97)
+	  , anObject       = __webpack_require__(20)
+	  , toIObject      = __webpack_require__(55)
+	  , toPrimitive    = __webpack_require__(26)
+	  , createDesc     = __webpack_require__(27)
+	  , _create        = __webpack_require__(76)
+	  , gOPNExt        = __webpack_require__(98)
+	  , $GOPD          = __webpack_require__(100)
+	  , $DP            = __webpack_require__(19)
+	  , $keys          = __webpack_require__(52)
 	  , gOPD           = $GOPD.f
 	  , dP             = $DP.f
 	  , gOPN           = gOPNExt.f
@@ -18101,11 +18224,11 @@ webpackJsonp([0,1],[
 	
 	  $GOPD.f = $getOwnPropertyDescriptor;
 	  $DP.f   = $defineProperty;
-	  __webpack_require__(95).f = gOPNExt.f = $getOwnPropertyNames;
-	  __webpack_require__(92).f  = $propertyIsEnumerable;
-	  __webpack_require__(91).f = $getOwnPropertySymbols;
+	  __webpack_require__(99).f = gOPNExt.f = $getOwnPropertyNames;
+	  __webpack_require__(96).f  = $propertyIsEnumerable;
+	  __webpack_require__(95).f = $getOwnPropertySymbols;
 	
-	  if(DESCRIPTORS && !__webpack_require__(68)){
+	  if(DESCRIPTORS && !__webpack_require__(72)){
 	    redefine(ObjectProto, 'propertyIsEnumerable', $propertyIsEnumerable, true);
 	  }
 	
@@ -18180,7 +18303,7 @@ webpackJsonp([0,1],[
 	});
 	
 	// 19.4.3.4 Symbol.prototype[@@toPrimitive](hint)
-	$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(33)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
+	$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(18)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
 	// 19.4.3.5 Symbol.prototype[@@toStringTag]
 	setToStringTag($Symbol, 'Symbol');
 	// 20.2.1.9 Math[@@toStringTag]
@@ -18189,18 +18312,18 @@ webpackJsonp([0,1],[
 	setToStringTag(global.JSON, 'JSON', true);
 
 /***/ },
-/* 87 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var META     = __webpack_require__(60)('meta')
-	  , isObject = __webpack_require__(36)
-	  , has      = __webpack_require__(50)
-	  , setDesc  = __webpack_require__(34).f
+	var META     = __webpack_require__(64)('meta')
+	  , isObject = __webpack_require__(21)
+	  , has      = __webpack_require__(54)
+	  , setDesc  = __webpack_require__(19).f
 	  , id       = 0;
 	var isExtensible = Object.isExtensible || function(){
 	  return true;
 	};
-	var FREEZE = !__webpack_require__(39)(function(){
+	var FREEZE = !__webpack_require__(24)(function(){
 	  return isExtensible(Object.preventExtensions({}));
 	});
 	var setMeta = function(it){
@@ -18247,25 +18370,25 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 88 */
+/* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var global         = __webpack_require__(29)
-	  , core           = __webpack_require__(30)
-	  , LIBRARY        = __webpack_require__(68)
-	  , wksExt         = __webpack_require__(82)
-	  , defineProperty = __webpack_require__(34).f;
+	var global         = __webpack_require__(14)
+	  , core           = __webpack_require__(15)
+	  , LIBRARY        = __webpack_require__(72)
+	  , wksExt         = __webpack_require__(86)
+	  , defineProperty = __webpack_require__(19).f;
 	module.exports = function(name){
 	  var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
 	  if(name.charAt(0) != '_' && !(name in $Symbol))defineProperty($Symbol, name, {value: wksExt.f(name)});
 	};
 
 /***/ },
-/* 89 */
+/* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getKeys   = __webpack_require__(48)
-	  , toIObject = __webpack_require__(51);
+	var getKeys   = __webpack_require__(52)
+	  , toIObject = __webpack_require__(55);
 	module.exports = function(object, el){
 	  var O      = toIObject(object)
 	    , keys   = getKeys(O)
@@ -18276,13 +18399,13 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 90 */
+/* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// all enumerable object keys, includes symbols
-	var getKeys = __webpack_require__(48)
-	  , gOPS    = __webpack_require__(91)
-	  , pIE     = __webpack_require__(92);
+	var getKeys = __webpack_require__(52)
+	  , gOPS    = __webpack_require__(95)
+	  , pIE     = __webpack_require__(96);
 	module.exports = function(it){
 	  var result     = getKeys(it)
 	    , getSymbols = gOPS.f;
@@ -18296,34 +18419,34 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 91 */
+/* 95 */
 /***/ function(module, exports) {
 
 	exports.f = Object.getOwnPropertySymbols;
 
 /***/ },
-/* 92 */
+/* 96 */
 /***/ function(module, exports) {
 
 	exports.f = {}.propertyIsEnumerable;
 
 /***/ },
-/* 93 */
+/* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 7.2.2 IsArray(argument)
-	var cof = __webpack_require__(53);
+	var cof = __webpack_require__(57);
 	module.exports = Array.isArray || function isArray(arg){
 	  return cof(arg) == 'Array';
 	};
 
 /***/ },
-/* 94 */
+/* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
-	var toIObject = __webpack_require__(51)
-	  , gOPN      = __webpack_require__(95).f
+	var toIObject = __webpack_require__(55)
+	  , gOPN      = __webpack_require__(99).f
 	  , toString  = {}.toString;
 	
 	var windowNames = typeof window == 'object' && window && Object.getOwnPropertyNames
@@ -18343,30 +18466,30 @@ webpackJsonp([0,1],[
 
 
 /***/ },
-/* 95 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
-	var $keys      = __webpack_require__(49)
-	  , hiddenKeys = __webpack_require__(61).concat('length', 'prototype');
+	var $keys      = __webpack_require__(53)
+	  , hiddenKeys = __webpack_require__(65).concat('length', 'prototype');
 	
 	exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O){
 	  return $keys(O, hiddenKeys);
 	};
 
 /***/ },
-/* 96 */
+/* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var pIE            = __webpack_require__(92)
-	  , createDesc     = __webpack_require__(42)
-	  , toIObject      = __webpack_require__(51)
-	  , toPrimitive    = __webpack_require__(41)
-	  , has            = __webpack_require__(50)
-	  , IE8_DOM_DEFINE = __webpack_require__(37)
+	var pIE            = __webpack_require__(96)
+	  , createDesc     = __webpack_require__(27)
+	  , toIObject      = __webpack_require__(55)
+	  , toPrimitive    = __webpack_require__(26)
+	  , has            = __webpack_require__(54)
+	  , IE8_DOM_DEFINE = __webpack_require__(22)
 	  , gOPD           = Object.getOwnPropertyDescriptor;
 	
-	exports.f = __webpack_require__(38) ? gOPD : function getOwnPropertyDescriptor(O, P){
+	exports.f = __webpack_require__(23) ? gOPD : function getOwnPropertyDescriptor(O, P){
 	  O = toIObject(O);
 	  P = toPrimitive(P, true);
 	  if(IE8_DOM_DEFINE)try {
@@ -18376,48 +18499,48 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 97 */
-/***/ function(module, exports) {
-
-
-
-/***/ },
-/* 98 */
-/***/ function(module, exports, __webpack_require__) {
-
-	__webpack_require__(88)('asyncIterator');
-
-/***/ },
-/* 99 */
-/***/ function(module, exports, __webpack_require__) {
-
-	__webpack_require__(88)('observable');
-
-/***/ },
-/* 100 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<input type=\"text\">\n";
-
-/***/ },
 /* 101 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"search-body\">\n\t<div class=\"line\">\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">学号：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input large-input\" v-model=\"no\" placeholder=\"输入报修人学号，如果你知道\">\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">手机号码：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input large-input\" v-model=\"tel\" placeholder=\"报修人手机号码\">\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">报修时间：</label>\n\t\t\t\t<flatpickr v-model=\"startTime\"  placeholder=\"开始时间\" :options=\"options\"></flatpickr>\n\t\t\t</div>\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label for=\"input-label\">-</label>\n\t\t\t\t<flatpickr v-model=\"endTime\"  placeholder=\"结束时间\" :options=\"options\"></flatpickr>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"line\">\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">姓名：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input large-input\" v-model=\"user\" placeholder=\"报修人的名字\">\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">问题类型：</label>\n\t\t\t\t<sel :selectData.sync=\"selType\" :pla=\"'点一下，选择问题类型'\" :current-data.sync=\"type\" :show.sync=\"roomShow\"></sel>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">宿舍：</label>\n\t\t\t\t<sel :selectData.sync=\"selRoom\" :pla=\"'建议也只能选择'\" :current-data.sync=\"room\" :show.sync=\"typeShow\"></sel>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"input-group\">\n\t\t\t\t<a href=\"javascript:void(0)\" class=\"col-8 btn txc btn-primary pdtr\" @click=\"searchData\" style=\"max-height:80%;line-height:2.1875rem;\">搜索</a>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n";
+
 
 /***/ },
 /* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
+	__webpack_require__(92)('asyncIterator');
+
+/***/ },
+/* 103 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(92)('observable');
+
+/***/ },
+/* 104 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<input type=\"text\">\n";
+
+/***/ },
+/* 105 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"search-body\">\n\t<div class=\"line\">\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">学号：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input large-input\" v-model=\"no\" placeholder=\"输入报修人学号，如果你知道\">\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">手机号码：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input large-input\" v-model=\"tel\" placeholder=\"报修人手机号码\">\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">报修时间：</label>\n\t\t\t\t<flatpickr v-model=\"startTime\"  placeholder=\"开始时间\" :options=\"options\"></flatpickr>\n\t\t\t</div>\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label for=\"input-label\">-</label>\n\t\t\t\t<flatpickr v-model=\"endTime\"  placeholder=\"结束时间\" :options=\"options\"></flatpickr>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"line\">\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">姓名：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input large-input\" v-model=\"user\" placeholder=\"报修人的名字\">\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">问题类型：</label>\n\t\t\t\t<sel :selectData.sync=\"selType\" :pla=\"'点一下，选择问题类型'\" :current-data.sync=\"type\" :show.sync=\"roomShow\"></sel>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">宿舍：</label>\n\t\t\t\t<sel :selectData.sync=\"selRoom\" :pla=\"'建议也只能选择'\" :current-data.sync=\"room\" :show.sync=\"typeShow\"></sel>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"input-group\">\n\t\t\t\t<a href=\"javascript:void(0)\" class=\"col-8 btn txc btn-primary pdtr\" @click=\"searchData\" style=\"max-height:80%;line-height:2.1875rem;\">搜索</a>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n";
+
+/***/ },
+/* 106 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__webpack_require__(103)
-	__vue_script__ = __webpack_require__(104)
+	__webpack_require__(107)
+	__vue_script__ = __webpack_require__(108)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\vue\\detail.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(105)
+	__vue_template__ = __webpack_require__(109)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -18442,13 +18565,13 @@ webpackJsonp([0,1],[
 	})()}
 
 /***/ },
-/* 103 */
+/* 107 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 104 */
+/* 108 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -18575,24 +18698,24 @@ webpackJsonp([0,1],[
 	/* generated by vue-loader */
 
 /***/ },
-/* 105 */
+/* 109 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"detail-body\" v-show='!show'>\n\t<div class=\"line\" style=\"line-height:2.8175rem;\">\n\t\t<a href=\"javascript:void\" class=\"fl btn-ng\" @click=\"back\">返回</a>\n\t\t<a href=\"javascript:void\" class=\"fr btn-ng\" @click=\"editData\" v-show=\"edit\">编辑</a>\n\t\t<a href=\"javascript:void\" class=\"fr btn-ng\" @click=\"finish\" v-show=\"!edit\">完成</a>\n\t</div>\n\t<table class=\"detail\">\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td>学号</td>\n\t\t\t\t<td>{{ msg.no }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>手机号码</td>\n\t\t\t\t<td>\n\t\t\t\t\t<input type=\"text\" class=\"large-input\" v-model=\"msg.tel\" :readonly=\"edit\">\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>问题类型</td>\n\t\t\t\t<td>{{ msg.type | problem }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>宿舍</td>\n\t\t\t\t<td>{{ msg.room }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>预约时间</td>\n\t\t\t\t<td>{{ msg.date | timeReturn }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>报修时间</td>\n\t\t\t\t<td>2016-20-21 08：00</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>接单人</td>\n\t\t\t\t<td>飞机</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>状态</td>\n\t\t\t\t<td>{{ msg.status | numstatus }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>问题详情</td>\n\t\t\t\t<td>{{ msg.exp }}</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>\n";
 
 /***/ },
-/* 106 */
+/* 110 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__webpack_require__(107)
-	__vue_script__ = __webpack_require__(108)
+	__webpack_require__(111)
+	__vue_script__ = __webpack_require__(112)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\vue\\components\\pagging.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(109)
+	__vue_template__ = __webpack_require__(113)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -18617,13 +18740,13 @@ webpackJsonp([0,1],[
 	})()}
 
 /***/ },
-/* 107 */
+/* 111 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 108 */
+/* 112 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -18632,22 +18755,18 @@ webpackJsonp([0,1],[
 		value: true
 	});
 	// <template>
-	// 	<div class="page">
+	// 	<div class="page txc">
 	// 		<ul>
 	// 			<li>
-	// 				<button href="javascript:void(0)" @click="current--" :disabled="current<=0">&lt;</button>
-	// 			</li>
-	// 			<li v-show="pageJudge > 1">
-	// 				<button href="javascript:void(0)" @click="pageJudge--">...</button>
-	// 			</li>
-	// 			<li v-for="i in pageNum">
-	// 				<button href="javascript:void(0)" @click="change($index)" v-bind:class="{'hover':current==$index}">{{ i }}</button>
-	// 			</li>
-	// 			<li v-show="Math.ceil(totalPage / 10)-1 == pageJudge || pageJudge == 0">
-	// 				<button href="javascript:void(0)" @click="pageJudge++">...</button>
+	// 				<button class="btn txc btn-primary pdtr" @click="current--" :disabled="current == 1 " :class="{'gray':current<=1}">上一页</button>
 	// 			</li>
 	// 			<li>
-	// 				<button href="javascript:void(0)" @click="current++" :disabled="current >= totalPage-1">&gt;</button>
+	// 				&nbsp;&nbsp;
+	// 				第<input type="text" v-model="current" class="no-bor txc"> 页，共&nbsp;&nbsp;{{ total }}&nbsp;&nbsp;页
+	// 				&nbsp;&nbsp;
+	// 			</li>
+	// 			<li>
+	// 				<button class="btn txc btn-primary pdtr" @click="current++" :disabled="current == total" :class="{'gray':current == total}">下一页</button>
 	// 			</li>
 	// 		</ul>
 	// 	</div>
@@ -18660,127 +18779,66 @@ webpackJsonp([0,1],[
 	
 		data: function data() {
 			return {
-				current: '',
-				pageJudge: 0,
-				totalPage: Math.ceil(this.num.length / 10) * 1,
-				total: this.num,
-				pageNum: ''
+				total: 5
 			};
 		},
 	
-		methods: {
-			change: function change(index) {
-				this.current = index;
-			}
-		},
-		watch: {
-			'current': function current(newValue) {
-				this.num = this.total.slice(newValue * 10, (newValue + 1) * 10);
-			},
-			'pageJudge': function pageJudge(newValue) {
-				this.pageNum = changePage(newValue, this.totalPage);
-			}
-		},
-	
-		props: ['num'],
-	
-		created: function created() {
-			this.num = this.total.slice(0, 10);
-			this.pageNum = changePage(0, this.totalPage);
-			console.log(Math.ceil(this.totalPage / 10) - 1 == this.pageJudge);
-		}
+		props: ['current', 'total']
 	};
-	
-	function changePage(newValue, total) {
-		console.log(newValue, total);
-		var temp = void 0,
-		    count = void 0,
-		    power = void 0;
-		var arr = [];
-		if (newValue == 0) {
-			count = 1;
-			power = 10;
-		} else {
-			count = total % (newValue * 10) + newValue * 10;
-			power = total % (newValue * 10) > 0 ? newValue * 10 + total % (newValue * 10) : newValue * 10;
-		}
-		for (var i = count; i < power + 1; i++) {
-			arr.push(i);
-		}
-		return arr;
-	}
 	// </script>
 	//
 	// <style>
 	// .page{
 	// 	padding: 0.625rem 0;
 	// 	position: relative;
-	// 	text-align: center;
+	// 	.no-bor{
+	// 		border: 0;
+	// 		width: 1.25rem;
+	// 		&:focus{
+	// 			outline: 0;
+	// 			border: 0;
+	// 		}
+	// 	}
+	// 	.gray{
+	// 		background-color: #ccc;
+	// 		border-color: #ccc;
+	// 	}
 	// 	ul{
 	// 		display: inline-block;
 	// 	}
-	// 	li{
-	// 		border-top:0.0625rem solid #428bca;
-	// 		border-bottom:0.0625rem solid #428bca;
-	// 		border-right:0.0625rem solid #428bca;
+	// 	li{	
 	// 		float: left;
-	// 		.hover{
-	// 			color: #fff;
-	// 			background-color: #428bca;
-	// 		}
-	// 		button{
-	// 			color: #428bca;
-	// 			background-color: #fff;
-	// 			display: block;
-	// 			border: 0;
-	// 			padding:0.3125rem 0.625rem;
-	// 			&:hover{
-	// 				color: #fff;
-	// 				background-color: #428bca;
-	// 			}
-	// 			&:focus{
-	// 				outline: 0;
-	// 			}
-	// 		}
-	// 		&:first-child{
-	// 			border-top-left-radius: 0.3125rem;
-	// 			border-bottom-left-radius: 0.3125rem;
-	// 			border-left: 0.0625rem solid #428bca;
-	// 		}
-	// 		&:last-child{
-	// 			border-top-right-radius: 0.3125rem;
-	// 			border-bottom-right-radius: 0.3125rem;
-	// 		}
+	// 		line-height: 1.875rem;
 	// 	}
 	// }
 	// </style>
 	/* generated by vue-loader */
 
 /***/ },
-/* 109 */
+/* 113 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"page\">\n\t<ul>\n\t\t<li>\n\t\t\t<button href=\"javascript:void(0)\" @click=\"current--\" :disabled=\"current<=0\">&lt;</button>\n\t\t</li>\n\t\t<li v-show=\"pageJudge > 1\">\n\t\t\t<button href=\"javascript:void(0)\" @click=\"pageJudge--\">...</button>\n\t\t</li>\n\t\t<li v-for=\"i in pageNum\">\n\t\t\t<button href=\"javascript:void(0)\" @click=\"change($index)\" v-bind:class=\"{'hover':current==$index}\">{{ i }}</button>\n\t\t</li>\n\t\t<li v-show=\"Math.ceil(totalPage / 10)-1 == pageJudge || pageJudge == 0\">\n\t\t\t<button href=\"javascript:void(0)\" @click=\"pageJudge++\">...</button>\n\t\t</li>\n\t\t<li>\n\t\t\t<button href=\"javascript:void(0)\" @click=\"current++\" :disabled=\"current >= totalPage-1\">&gt;</button>\n\t\t</li>\n\t</ul>\n</div>\n";
+	module.exports = "\n<div class=\"page txc\">\n\t<ul>\n\t\t<li>\n\t\t\t<button class=\"btn txc btn-primary pdtr\" @click=\"current--\" :disabled=\"current == 1 \" :class=\"{'gray':current<=1}\">上一页</button>\n\t\t</li>\n\t\t<li>\n\t\t\t&nbsp;&nbsp;\n\t\t\t第<input type=\"text\" v-model=\"current\" class=\"no-bor txc\"> 页，共&nbsp;&nbsp;{{ total }}&nbsp;&nbsp;页\n\t\t\t&nbsp;&nbsp;\n\t\t</li>\n\t\t<li>\n\t\t\t<button class=\"btn txc btn-primary pdtr\" @click=\"current++\" :disabled=\"current == total\" :class=\"{'gray':current == total}\">下一页</button>\n\t\t</li>\n\t</ul>\n</div>\n";
 
 /***/ },
-/* 110 */
+/* 114 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"data-body\">\n\t<div class=\"data-row\">\n\t\t<div class=\"data-list\" v-show=\"detail == true\">\n\t\t\t<search></search>\n\t\t\t<div class=\"data\">\n\t\t\t\t<table class=\"table\"> \n\t\t\t\t\t<thead>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>序号</th>\n\t\t\t\t\t\t\t<th>学号</th>\n\t\t\t\t\t\t\t<th>姓名</th>\n\t\t\t\t\t\t\t<th>手机号码</th>\n\t\t\t\t\t\t\t<th>问题类型</th>\n\t\t\t\t\t\t\t<th>宿舍</th>\n\t\t\t\t\t\t\t<th>预约时间</th>\n\t\t\t\t\t\t\t<th>问题详情</th>\n\t\t\t\t\t\t\t<th>状态</th>\n\t\t\t\t\t\t\t<th>操作</th>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</thead>\n\t\t\t\t\t<tbody v-if=\"list\" class=\"data-tbody\">\n\t\t\t\t\t\t<tr v-for=\"l in list | limitBy 10\">\n\t\t\t\t\t\t\t<td>{{ $index + 1 }}</td>\n\t\t\t\t\t\t\t<td>{{ l.no }}</td>\n\t\t\t\t\t\t\t<td>{{ l.name }}</td>\n\t\t\t\t\t\t\t<td>{{ l.tel }}</td>\n\t\t\t\t\t\t\t<td>{{ l.type | problem }}</td>\n\t\t\t\t\t\t\t<td>{{ l.room }}</td>\n\t\t\t\t\t\t\t<td>{{ l.date | timeReturn }}</td>\n\t\t\t\t\t\t\t<td class=\"td-spe\"> {{ l.exp }}</td>\n\t\t\t\t\t\t\t<td>{{ l.status | numstatus }}</td>\n\t\t\t\t\t\t\t<td>\n\t\t\t\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 0 && l.admin == 0\">指派</a>\n\t\t\t\t\t\t\t\t<a href=\"javascript:void(0)\">删除</a>\n\t\t\t\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 0\">我来处理</a>\n\t\t\t\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 1 \">完成处理</a>\n\t\t\t\t\t\t\t\t<a href=\"javascript:void(0)\" @click=\"disDetail(l)\">\n\t\t\t\t\t\t\t\t\t详情\n\t\t\t\t\t\t\t\t</a>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</tbody>\n\t\t\t\t</table>\n\t\t\t\t<div class=\"txc\" v-show=\"list.length == 0\">\n\t\t\t\t\t无数据\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t<page :num.sync=\"list\"></page>\n\t\t<detail :show.sync=\"detail\" :msg.sync=\"detailData\"></detail>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"data-body\">\n\t<div class=\"data-row\">\n\t\t<div class=\"data-list\" v-show=\"detail == true\">\n\t\t\t<search></search>\n\t\t\t<table-data :list.sync=\"list\"></table-data>\n\t\t</div>\n\t\t<page :current.sync=\"current\" :total.sync=\"total\" v-show=\"all && all.length > 10\"></page>\n\t\t<detail :show.sync=\"detail\" :msg.sync=\"detailData\"></detail>\n\t</div>\n</div>\n";
 
 /***/ },
-/* 111 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__webpack_require__(112)
-	__vue_script__ = __webpack_require__(113)
+	__webpack_require__(116)
+	__vue_script__ = __webpack_require__(117)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\vue\\app.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(126)
+	__vue_template__ = __webpack_require__(130)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -18805,13 +18863,13 @@ webpackJsonp([0,1],[
 	})()}
 
 /***/ },
-/* 112 */
+/* 116 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 113 */
+/* 117 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18820,15 +18878,15 @@ webpackJsonp([0,1],[
 		value: true
 	});
 	
-	var _nav = __webpack_require__(114);
+	var _nav = __webpack_require__(118);
 	
 	var _nav2 = _interopRequireDefault(_nav);
 	
-	var _alert = __webpack_require__(118);
+	var _alert = __webpack_require__(122);
 	
 	var _alert2 = _interopRequireDefault(_alert);
 	
-	var _drop = __webpack_require__(122);
+	var _drop = __webpack_require__(126);
 	
 	var _drop2 = _interopRequireDefault(_drop);
 	
@@ -18908,18 +18966,18 @@ webpackJsonp([0,1],[
 	//js
 
 /***/ },
-/* 114 */
+/* 118 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__webpack_require__(115)
-	__vue_script__ = __webpack_require__(116)
+	__webpack_require__(119)
+	__vue_script__ = __webpack_require__(120)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\vue\\components\\nav.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(117)
+	__vue_template__ = __webpack_require__(121)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -18944,13 +19002,13 @@ webpackJsonp([0,1],[
 	})()}
 
 /***/ },
-/* 115 */
+/* 119 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 116 */
+/* 120 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -19028,24 +19086,24 @@ webpackJsonp([0,1],[
 	/* generated by vue-loader */
 
 /***/ },
-/* 117 */
+/* 121 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"nav\">\n\t<a href=\"javascript:void(0)\" class=\"admin-set\" alt=\"用户设置\" ></a>\n\t<a href=\"javascript:void(0)\" class=\"logout\" alt=\"退出\" @click=\"logout\"></a>\n</div>\n";
 
 /***/ },
-/* 118 */
+/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__webpack_require__(119)
-	__vue_script__ = __webpack_require__(120)
+	__webpack_require__(123)
+	__vue_script__ = __webpack_require__(124)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\vue\\components\\alert.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(121)
+	__vue_template__ = __webpack_require__(125)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -19070,13 +19128,13 @@ webpackJsonp([0,1],[
 	})()}
 
 /***/ },
-/* 119 */
+/* 123 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 120 */
+/* 124 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -19147,24 +19205,24 @@ webpackJsonp([0,1],[
 	/* generated by vue-loader */
 
 /***/ },
-/* 121 */
+/* 125 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"alert gray-op\" v-show=\"show\">\n\t<div class=\"alert-content txc\">\n\t\t<p>{{ text }}</p>\n\t\t<a href=\"javascript:void(0)\" class=\"btn btn-primary pdtr\" @click=\"comeBack\" v-show=\"count\">继续操作</a>\n\t</div>\n</div>\n";
 
 /***/ },
-/* 122 */
+/* 126 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__webpack_require__(123)
-	__vue_script__ = __webpack_require__(124)
+	__webpack_require__(127)
+	__vue_script__ = __webpack_require__(128)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\vue\\components\\drop.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(125)
+	__vue_template__ = __webpack_require__(129)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -19189,13 +19247,13 @@ webpackJsonp([0,1],[
 	})()}
 
 /***/ },
-/* 123 */
+/* 127 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 124 */
+/* 128 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -19241,30 +19299,30 @@ webpackJsonp([0,1],[
 	/* generated by vue-loader */
 
 /***/ },
-/* 125 */
+/* 129 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"alert drop\" :class=\"{dropout:show}\" @click=\"this.show = ''\">\n\t<div class=\"drop-tip\">\n\t\t{{ show }}\n\t</div>\n</div>\n";
 
 /***/ },
-/* 126 */
+/* 130 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"app\">\n\t<router-view\n\ttransition=\"route\"\n\ttransition-mode=\"out-in\"\n\t>\n\t</router-view>\n\t<nav-bar></nav-bar>\n\t<tip :show.sync=\"ale\" :text=\"tipText\" :count.sync=\"opera\"></tip>\n\t<drop :show.sync=\"dropTip\"></drop>\n</div>\n";
 
 /***/ },
-/* 127 */
+/* 131 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__webpack_require__(128)
-	__vue_script__ = __webpack_require__(129)
+	__webpack_require__(132)
+	__vue_script__ = __webpack_require__(133)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\vue\\login.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(130)
+	__vue_template__ = __webpack_require__(134)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -19289,13 +19347,13 @@ webpackJsonp([0,1],[
 	})()}
 
 /***/ },
-/* 128 */
+/* 132 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 129 */
+/* 133 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19304,7 +19362,7 @@ webpackJsonp([0,1],[
 		value: true
 	});
 	
-	var _server = __webpack_require__(9);
+	var _server = __webpack_require__(31);
 	
 	exports.default = {
 		name: 'login',
@@ -19441,23 +19499,23 @@ webpackJsonp([0,1],[
 	//js
 
 /***/ },
-/* 130 */
+/* 134 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"login-body fix\">\n\t<div class=\"login-data\">\n\t\t<div class=\"login-title txc\">\n\t\t\t<h3 v-bind:class=\"{ warm:warm }\">{{ title }}</h3>\n\t\t</div>\n\t\t<form>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">Admin：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input\" v-model=\"admin\" placeholder=\"输入你的用户名\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">Password：</label>\n\t\t\t\t<input type=\"password\" class=\"input-input password\" v-model=\"password\" placeholder=\"这里写的是密码\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<input type=\"checkbox\" id=\"remeber\" class=\"input-checkbox\" v-model=\"remeber\" pla>\n\t\t\t\t<label class=\"check-label\" for=\"remeber\">Remeber Me</label>\n\t\t\t</div>\n\t\t\t<div class=\"input-group row\">\n\t\t\t\t<a href=\"javascript:void(0)\" class=\"txc btn btn-primary col-12\" @click=\"login\">Sign In</a>\n\t\t\t</div>\n\t\t\t<div class=\"input-group row\">\n\t\t\t\t<a href=\"javascript:void(0)\" class=\"txc btn btn-danger col-12\" v-link=\"{path:'/reg'}\">Sign up</a>\n\t\t\t</div>\n\t\t</form>\n\t</div>\n</div>\n";
 
 /***/ },
-/* 131 */
+/* 135 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__vue_script__ = __webpack_require__(132)
+	__vue_script__ = __webpack_require__(136)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\vue\\register.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(133)
+	__vue_template__ = __webpack_require__(137)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -19482,7 +19540,7 @@ webpackJsonp([0,1],[
 	})()}
 
 /***/ },
-/* 132 */
+/* 136 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19491,11 +19549,11 @@ webpackJsonp([0,1],[
 		value: true
 	});
 	
-	var _typeof2 = __webpack_require__(83);
+	var _typeof2 = __webpack_require__(87);
 	
 	var _typeof3 = _interopRequireDefault(_typeof2);
 	
-	var _server = __webpack_require__(9);
+	var _server = __webpack_require__(31);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -19628,13 +19686,13 @@ webpackJsonp([0,1],[
 	/* generated by vue-loader */
 
 /***/ },
-/* 133 */
+/* 137 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"login-body\">\n\t<div class=\"login-data\">\n\t\t<div class=\"login-title txc\">\n\t\t\t<h3 v-bind:class=\"{ warm:warm }\">{{ title }}</h3>\n\t\t</div>\n\t\t<form>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">Admin：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input\" v-model=\"admin\" placeholder=\"用户名，仅用于登陆\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">NickName：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input\" v-model=\"nickname\" placeholder=\"给自己取个好听的名字\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">Password：</label>\n\t\t\t\t<input type=\"password\" class=\"input-input password\" v-model=\"password\" placeholder=\"你的登陆密码，至关重要\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">PassAgain：</label>\n\t\t\t\t<input type=\"password\" class=\"input-input\" v-model=\"passagain\" placeholder=\"确认一下你写的密码对不对\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">Validation：</label>\n\t\t\t\t<input type=\"password\" class=\"input-input\" v-model=\"validation\" placeholder=\"只有够帅的人才能够完成注册\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<input type=\"checkbox\" id=\"super\" class=\"input-checkbox\" v-model=\"super\">\n\t\t\t\t<label class=\"check-label\" for=\"super\">Super Admin?</label>\n\t\t\t</div>\n\t\t\t<div class=\"input-group row\">\n\t\t\t\t<a href=\"javascript:void(0)\" class=\"txc btn btn-primary col-12\" @click='submit'>Submit</a>\n\t\t\t</div>\n\t\t\t<div class=\"input-group row\">\n\t\t\t\t<a href=\"javascript:void(0)\" class=\"txc btn btn-danger col-12\"  v-link=\"{path:'/login'}\">Sign in</a>\n\t\t\t</div>\n\t\t</form>\n\t</div>\n</div>\n";
 
 /***/ },
-/* 134 */
+/* 138 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -19653,7 +19711,7 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 135 */
+/* 139 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -19716,7 +19774,7 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 136 */
+/* 140 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

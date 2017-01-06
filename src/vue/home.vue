@@ -3,51 +3,9 @@
 		<div class="data-row">
 			<div class="data-list" v-show="detail == true">
 				<search></search>
-				<div class="data">
-					<table class="table"> 
-						<thead>
-							<tr>
-								<th>序号</th>
-								<th>学号</th>
-								<th>姓名</th>
-								<th>手机号码</th>
-								<th>问题类型</th>
-								<th>宿舍</th>
-								<th>预约时间</th>
-								<th>问题详情</th>
-								<th>状态</th>
-								<th>操作</th>
-							</tr>
-						</thead>
-						<tbody v-if="list" class="data-tbody">
-							<tr v-for="l in list | limitBy 10">
-								<td>{{ $index + 1 }}</td>
-								<td>{{ l.no }}</td>
-								<td>{{ l.name }}</td>
-								<td>{{ l.tel }}</td>
-								<td>{{ l.type | problem }}</td>
-								<td>{{ l.room }}</td>
-								<td>{{ l.date | timeReturn }}</td>
-								<td class="td-spe"> {{ l.exp }}</td>
-								<td>{{ l.status | numstatus }}</td>
-								<td>
-									<a href="javascript:void(0)" v-if="l.status == 0 && l.admin == 0">指派</a>
-									<a href="javascript:void(0)">删除</a>
-									<a href="javascript:void(0)" v-if="l.status == 0">我来处理</a>
-									<a href="javascript:void(0)" v-if="l.status == 1 ">完成处理</a>
-									<a href="javascript:void(0)" @click="disDetail(l)">
-										详情
-									</a>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-					<div class="txc" v-show="list.length == 0">
-						无数据
-					</div>
-				</div>
+				<table-data :list.sync="list"></table-data>
 			</div>
-			<page :num.sync="list"></page>
+			<page :current.sync="current" :total.sync="total" v-show="all && all.length > 10"></page>
 			<detail :show.sync="detail" :msg.sync="detailData"></detail>
 		</div>
 	</div>
@@ -56,6 +14,7 @@
 
 <script>
 //js
+import tableData from './components/data.vue'
 import { post } from '../script/server'
 import search from './search.vue'
 import detail from './detail.vue'
@@ -64,7 +23,7 @@ import page from './components/pagging.vue'
 export default{
 	name: 'home',
 
-	components:[search,detail,page],
+	components:[search,detail,page,tableData],
 	
 	data(){
 		return{
@@ -72,34 +31,35 @@ export default{
 			list:'',
 			detail:true,
 			detailData:'',
+			current:'',
+			total:'',
+			current:1,
+			all:''
+		}
+	},
+	watch:{
+		'current':function(newValue){
+			if(newValue <= 1) this.current = 1;
+			if(newValue == this.totalPage) return;
+			if(newValue > this.total){
+				newValue = this.total;
+				this.current = this.total;
+			} 
+			this.list = this.all.slice((newValue-1) * 10,newValue*10);
 		}
 	},
 	created(){
-		// post('/data')
-		// .then((res) => {
-		// 	if(res.body.status == 0){
-		// 		this.list = res.body.msg;
-		// 	}else{  
-		// 		this.$root.$emit(`backLogin`,res.body);
-		// 		this.list = [];
-		// 	}
-			
-		// })
-		this.list = [
-				{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},
-				{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},
-				{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},
-				{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},
-				{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},
-				{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},
-				{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},
-				{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},
-				{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},
-				{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},
-				{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},
-				{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},
-				{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},{no:1,name:'你好',tel:155222222,type:1,room:'办公室',date:14907878780,exp:'没什么事情',staus:1},
-			];
+		post('/data')
+		.then((res) => {
+			if(res.body.status == 0){
+				this.all = res.body.msg
+				this.list = this.all.slice(0,10);
+				this.total = Math.ceil(this.all.length / 10);
+			}else{  
+				this.$root.$emit(`backLogin`,res.body);
+				this.all = [];
+			}
+		})
 	},
 	methods:{
 		disDetail(data){

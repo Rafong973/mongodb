@@ -1,20 +1,16 @@
 <template>
-	<div class="page">
+	<div class="page txc">
 		<ul>
 			<li>
-				<button href="javascript:void(0)" @click="current--" :disabled="current<=0">&lt;</button>
-			</li>
-			<li v-show="pageJudge > 1">
-				<button href="javascript:void(0)" @click="pageJudge--">...</button>
-			</li>
-			<li v-for="i in pageNum">
-				<button href="javascript:void(0)" @click="change($index)" v-bind:class="{'hover':current==$index}">{{ i }}</button>
-			</li>
-			<li v-show="Math.ceil(totalPage / 10)-1 == pageJudge || pageJudge == 0">
-				<button href="javascript:void(0)" @click="pageJudge++">...</button>
+				<button class="btn txc btn-primary pdtr" @click="current--" :disabled="current == 1 " :class="{'gray':current<=1}">上一页</button>
 			</li>
 			<li>
-				<button href="javascript:void(0)" @click="current++" :disabled="current >= totalPage-1">&gt;</button>
+				&nbsp;&nbsp;
+				第<input type="text" v-model="current" class="no-bor txc"> 页，共&nbsp;&nbsp;{{ total }}&nbsp;&nbsp;页
+				&nbsp;&nbsp;
+			</li>
+			<li>
+				<button class="btn txc btn-primary pdtr" @click="current++" :disabled="current == total" :class="{'gray':current == total}">下一页</button>
 			</li>
 		</ul>
 	</div>
@@ -27,50 +23,10 @@ export default{
 
 	data(){
 		return{
-			current:'',
-			pageJudge:0,
-			totalPage:Math.ceil(this.num.length / 10) * 1,
-			total:this.num,
-			pageNum:''
+			total:5
 		}
 	},
-	methods:{
-		change(index){
-			this.current = index;
-		}
-	},
-	watch:{
-		'current':function(newValue){
-			this.num = this.total.slice(newValue * 10,(newValue+1)*10);
-		},
-		'pageJudge':function(newValue){
-			this.pageNum = changePage(newValue,this.totalPage);
-		}
-	},
-
-	props:['num'],
-
-	created(){
-		this.num = this.total.slice(0,10);
-		this.pageNum = changePage(0,this.totalPage);
-		console.log(Math.ceil(this.totalPage / 10)-1 == this.pageJudge)
-	}
-}
-function changePage(newValue,total){
-	console.log(newValue,total)
-	let temp,count,power;
-	var arr = [];
-	if(newValue == 0){
-		count = 1;
-		power = 10;
-	}else{
-		count = total % (newValue*10) + (newValue*10);
-		power = total % (newValue*10) > 0 ? newValue * 10 + total % (newValue*10) : newValue * 10;
-	}
-	for(var i = count;i < power+1;i++){
-		arr.push(i);
-	}
-	return arr;
+	props:['current','total'],
 }
 </script>
 
@@ -78,42 +34,24 @@ function changePage(newValue,total){
 .page{
 	padding: 0.625rem 0;
 	position: relative;
-	text-align: center;
+	.no-bor{
+		border: 0;
+		width: 1.25rem;
+		&:focus{
+			outline: 0;
+			border: 0;
+		}
+	}
+	.gray{
+		background-color: #ccc;
+		border-color: #ccc;
+	}
 	ul{
 		display: inline-block;
 	}
-	li{
-		border-top:0.0625rem solid #428bca;
-		border-bottom:0.0625rem solid #428bca;
-		border-right:0.0625rem solid #428bca;
+	li{	
 		float: left;
-		.hover{
-			color: #fff;
-			background-color: #428bca;
-		}
-		button{
-			color: #428bca;
-			background-color: #fff;
-			display: block;
-			border: 0;
-			padding:0.3125rem 0.625rem;
-			&:hover{
-				color: #fff;
-				background-color: #428bca;
-			}
-			&:focus{
-				outline: 0;
-			}
-		}
-		&:first-child{
-			border-top-left-radius: 0.3125rem;
-			border-bottom-left-radius: 0.3125rem;
-			border-left: 0.0625rem solid #428bca;
-		}
-		&:last-child{
-			border-top-right-radius: 0.3125rem;
-			border-bottom-right-radius: 0.3125rem;
-		}
+		line-height: 1.875rem;
 	}
 }
 </style>
