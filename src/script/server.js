@@ -1,9 +1,10 @@
 import vue from 'vue'
 
-// let t = 'http://localhost:8080';
-let t = '';
+let t = 'http://localhost:8080';
+// let t = '';
 
 export function login(accout,password){
+	vue.$root.$emit("loading");
 	return vue.http.post(
 		t +'/login',
 		`u=${accout}&p=${password}`,{

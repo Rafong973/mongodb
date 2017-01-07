@@ -2,7 +2,7 @@
 	<div class="data-body">
 		<div class="data-row">
 			<div class="data-list" v-show="detail == true">
-				<search></search>
+				<search :list.sync="all"></search>
 				<table-data :list.sync="list" :detail-data.sync="detailData" :detail.sync="detail"></table-data>
 			</div>
 			<page :current.sync="current" :total.sync="total" v-show="all && all.length > 10 && detail"></page>
@@ -37,28 +37,26 @@ export default{
 			all:''
 		}
 	},
-	watch:{
-		'current':function(newValue){
-			if(newValue <= 1) this.current = 1;
-			if(newValue > this.total){
-				newValue = this.total;
-				this.current = this.total;
-			} 
-			this.list = this.all.slice((newValue-1) * 10,newValue*10);
-		}
-	},
 	created(){
 		post('/data')
 		.then((res) => {
 			if(res.body.status == 0){
 				this.all = res.body.msg
-				this.list = this.all.slice(0,10);
-				this.total = Math.ceil(this.all.length / 10);
 			}else{  
 				this.$root.$emit(`backLogin`,res.body);
 				this.all = [];
 			}
 		})
+	},
+	watch:{
+		'current':function(newValue){
+			this.list = this.all.slice((newValue-1) * 10,newValue*10);
+		},
+		'all':function(){
+			this.current = 0;
+			this.list = this.all.slice(0,10);
+			this.total = Math.ceil(this.all.length / 10);
+		}
 	}
 }
 </script>
@@ -72,6 +70,9 @@ export default{
 	-webkit-transform: translateX(-50%);
 	color: #4d6076;
 	font-size: 0.8125rem;
+	.data{
+		min-height: 450px;
+	}
 }
 .table{
 	width: 1150px;

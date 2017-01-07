@@ -94,6 +94,8 @@ export default{
         flatpickr
     },
 
+    props:['list'],
+
     methods:{
     	getTime:getTime,
     	searchData(){
@@ -132,7 +134,10 @@ export default{
     		}else{
 	    		post('/data',data)
 	    		.then((res)=>{
-	    			console.log(res);
+	    			this.$root.$emit("loading")
+	    			.then(() =>{
+	    				this.list = res.body.msg;
+	    			})
 	    		})
     		}
     	}

@@ -21,7 +21,17 @@
 export default{
 	name:'page',
 	
-	props:['current','total'],
+	props:['current','total','list'],
+
+	watch:{
+		'current':function(newValue){
+			if(newValue <= 1) this.current = 1;
+			if(newValue > this.total){
+				newValue = this.total;
+				this.current = this.total;
+			} 
+		}
+	},
 }
 </script>
 
