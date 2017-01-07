@@ -56,7 +56,7 @@ export default{
 				login(this.admin,this.password)
 				.then((res) => {
 					if(res.status == 200){
-						if(res.body.status == 1){
+						if(res.body.status === 0){
 							this.title = '正在登陆...';
 							window.sessionStorage.setItem('user',res.body);
 							this.$router.go({path:'/home'})

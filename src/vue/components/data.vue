@@ -28,7 +28,7 @@
 					<td>{{ l.status | numstatus }}</td>
 					<td>
 						<a href="javascript:void(0)" v-if="l.status == 0 && l.admin == 0">指派</a>
-						<a href="javascript:void(0)">删除</a>
+						<a href="javascript:void(0)" @click="del(l)">删除</a>
 						<a href="javascript:void(0)" v-if="l.status == 0">我来处理</a>
 						<a href="javascript:void(0)" v-if="l.status == 1 ">完成处理</a>
 						<a href="javascript:void(0)" @click="disDetail(l)">
@@ -46,6 +46,8 @@
 
 <script>
 
+import { post } from '../../script/server'
+
 export default{
 	name:'tableData',
 	props:['list','detailData','detail'],
@@ -53,6 +55,18 @@ export default{
 		disDetail(data){
 			this.detailData = data;
 			this.detail = false
+		},
+		del(value){
+			const con = 'no=' + value.no + '&tel='
+						+ vaule.tel + '&name' + value.name
+			post('/del','_id=' + con )
+			.then( (res) => {
+				if(res.body.status === 0){
+					console.log(res.body)
+				}else{
+					console.log('fail');
+				}
+			})
 		}
 	}
 }

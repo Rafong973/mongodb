@@ -10,6 +10,14 @@ const re = user.Data;
 // 管理员验证	
 const vail = 'adminpd123';
 
+let err = (value) =>{
+	return {status:3,msg:value};
+}
+let success = (dom) => {
+	return {status:0,msg:dom};
+}
+
+const pderror = {status:2,msg:'password is error'};
 export default function server(app,body){
 	
 
@@ -19,27 +27,28 @@ export default function server(app,body){
 		if (!data) return res.sendStatus(400);
 		db.find({admin:data.u},function(err,docs){
 			if(docs.length == 0){
-				msg = {status:0,msg:'no this user'};
+				msg = err('no this user');
 			}else{
 				let pass = cry.createHmac('sha512',data.p)
 							  .update('I am bydqjx')
 							  .digest('hex');
 				if(pass == docs[0].password){
 					msg = {
-						   status:1,msg:'u r welcome',
+						   status:0,msg:'u r welcome',
 					       admin:docs[0].admin,
 					       user:docs[0].nickname,
 					       grade:docs[0].grade
 					      };
 					req.session.i = 1;
 				}else{
-					msg = {status:2,msg:'password is error'};
+					msg = pderror
 				}
 				
 			}
 			res.send(msg);
 		});
 	})
+
 	app.post('/sign',body.urlencoded(),function(req,res,next){
 		const data = req.body;
 		let msg = '';
@@ -54,9 +63,9 @@ export default function server(app,body){
 				data.password = pass;
 				let dataModule = new db(data);
 				dataModule.save();
-				msg = {status:0,msg:'success'};
+				msg = success('success');
 			}else{
-				msg = {status:1,msg:'the admin is have'};
+				msg = {status:2,msg:'the admin is have'};
 			}
 			res.send(msg);
 		})
@@ -64,28 +73,35 @@ export default function server(app,body){
 
 	app.post('/data',body.urlencoded(),function(req,res,next){
 		let data = req.body;
-		let time = data.date;
+		let startTime = data.date || "";
+		let endTime = data.endTime || "";
+		let condition = "";
+		if(startTime && endTime){
+			data.date = { $gte:parseInt(data.date),$lte:parseInt(data.endTime) };
+			delete data.endTime;
+		}else{
+			if(startTime){
+				data.date = { $gt:data.date };
+			}
+		}
 		if(Object.keys(data).length == 0){
 			re.find({},function(err,docs){
 				if(!err){
-					res.send({status:0,msg:docs});
+					res.send(success(docs));
 				}else{
-					res.send({status:3,msg:'mongo is error'})
+					res.send(error('mongodb is error'))
 				}
 			})
 		}else{
 			re.find(data,function(err,docs){
-				console.log(docs);
-				console.log(data);
 				if(!err){
-					res.send({status:0,msg:docs});
+					res.send(success(docs));
 				}else{
-					res.send({status:3,msg:'mongo is error'})
+					res.send(error('mongodb is error'))
 				}
 			});
 			
 		}
-		
 	});
 
 	app.post('/save',body.urlencoded(),function(req,res,next){
@@ -95,5 +111,19 @@ export default function server(app,body){
 			console.error(err);
 		});
 		res.send({status:0,msg:'susccess'});
+	});
+
+	app.post('/del',body.urlencoded(),(req,res) =>{
+		const data = req.data;
+		let msg = '';
+		re.remove(data,function(err){
+			console.log(data);
+			if(err){
+				msg = err('delete is failed')
+			}else{
+				msg = success('deleted');
+			}
+			res.send(msg);
+		})
 	});
 }

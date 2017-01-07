@@ -14635,7 +14635,7 @@ webpackJsonp([0,1],[
 
 	var _data2 = _interopRequireDefault(_data);
 
-	var _server = __webpack_require__(31);
+	var _server = __webpack_require__(30);
 
 	var _search = __webpack_require__(32);
 
@@ -14717,7 +14717,7 @@ webpackJsonp([0,1],[
 				this.list = this.all.slice((newValue - 1) * 10, newValue * 10);
 			},
 			'all': function all(newValue, old) {
-				this.current = 0;
+				this.current = 1;
 				this.list = this.all.slice(0, 10);
 				this.total = Math.ceil(this.all.length / 10);
 			}
@@ -15077,7 +15077,7 @@ webpackJsonp([0,1],[
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\vue\\components\\data.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(30)
+	__vue_template__ = __webpack_require__(31)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -15103,13 +15103,37 @@ webpackJsonp([0,1],[
 
 /***/ },
 /* 29 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+
+	var _server = __webpack_require__(30);
+
+	exports.default = {
+		name: 'tableData',
+		props: ['list', 'detailData', 'detail'],
+		methods: {
+			disDetail: function disDetail(data) {
+				this.detailData = data;
+				this.detail = false;
+			},
+			del: function del(value) {
+				var con = 'no=' + value.no + '&tel=' + vaule.tel + '&name' + value.name;
+				(0, _server.post)('/del', '_id=' + con).then(function (res) {
+					if (res.body.status === 0) {
+						console.log(res.body);
+					} else {
+						console.log('fail');
+					}
+				});
+			}
+		}
+	};
+	// </script>
 	// <template>
 	// 	<div class="data">
 	// 		<table class="table"> 
@@ -15140,7 +15164,7 @@ webpackJsonp([0,1],[
 	// 					<td>{{ l.status | numstatus }}</td>
 	// 					<td>
 	// 						<a href="javascript:void(0)" v-if="l.status == 0 && l.admin == 0">指派</a>
-	// 						<a href="javascript:void(0)">删除</a>
+	// 						<a href="javascript:void(0)" @click="del(l)">删除</a>
 	// 						<a href="javascript:void(0)" v-if="l.status == 0">我来处理</a>
 	// 						<a href="javascript:void(0)" v-if="l.status == 1 ">完成处理</a>
 	// 						<a href="javascript:void(0)" @click="disDetail(l)">
@@ -15158,26 +15182,8 @@ webpackJsonp([0,1],[
 	//
 	// <script>
 
-	exports.default = {
-		name: 'tableData',
-		props: ['list', 'detailData', 'detail'],
-		methods: {
-			disDetail: function disDetail(data) {
-				this.detailData = data;
-				this.detail = false;
-			}
-		}
-	};
-	// </script>
-
 /***/ },
 /* 30 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"data\">\n\t<table class=\"table\"> \n\t\t<thead>\n\t\t\t<tr>\n\t\t\t\t<th>序号</th>\n\t\t\t\t<th>学号</th>\n\t\t\t\t<th>姓名</th>\n\t\t\t\t<th>手机号码</th>\n\t\t\t\t<th>问题类型</th>\n\t\t\t\t<th>宿舍</th>\n\t\t\t\t<th>预约时间</th>\n\t\t\t\t<th>问题详情</th>\n\t\t\t\t<th>状态</th>\n\t\t\t\t<th>操作</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody v-if=\"list\" class=\"data-tbody\">\n\t\t\t<tr v-for=\"l in list \">\n\t\t\t\t<td>{{ $index + 1 }}</td>\n\t\t\t\t<td>{{ l.no }}</td>\n\t\t\t\t<td>{{ l.name }}</td>\n\t\t\t\t<td>{{ l.tel }}</td>\n\t\t\t\t<td>{{ l.type | problem }}</td>\n\t\t\t\t<td>{{ l.room }}</td>\n\t\t\t\t<td>{{ l.date | timeReturn }}</td>\n\t\t\t\t<td class=\"td-spe\"> {{ l.exp }}</td>\n\t\t\t\t<td>{{ l.status | numstatus }}</td>\n\t\t\t\t<td>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 0 && l.admin == 0\">指派</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\">删除</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 0\">我来处理</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 1 \">完成处理</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" @click=\"disDetail(l)\">\n\t\t\t\t\t\t详情\n\t\t\t\t\t</a>\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n\t<div class=\"txc\" v-show=\"list.length == 0\">\n\t\t无数据\n\t</div>\n</div>\n";
-
-/***/ },
-/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15212,6 +15218,12 @@ webpackJsonp([0,1],[
 			}
 		});
 	}
+
+/***/ },
+/* 31 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"data\">\n\t<table class=\"table\"> \n\t\t<thead>\n\t\t\t<tr>\n\t\t\t\t<th>序号</th>\n\t\t\t\t<th>学号</th>\n\t\t\t\t<th>姓名</th>\n\t\t\t\t<th>手机号码</th>\n\t\t\t\t<th>问题类型</th>\n\t\t\t\t<th>宿舍</th>\n\t\t\t\t<th>预约时间</th>\n\t\t\t\t<th>问题详情</th>\n\t\t\t\t<th>状态</th>\n\t\t\t\t<th>操作</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody v-if=\"list\" class=\"data-tbody\">\n\t\t\t<tr v-for=\"l in list \">\n\t\t\t\t<td>{{ $index + 1 }}</td>\n\t\t\t\t<td>{{ l.no }}</td>\n\t\t\t\t<td>{{ l.name }}</td>\n\t\t\t\t<td>{{ l.tel }}</td>\n\t\t\t\t<td>{{ l.type | problem }}</td>\n\t\t\t\t<td>{{ l.room }}</td>\n\t\t\t\t<td>{{ l.date | timeReturn }}</td>\n\t\t\t\t<td class=\"td-spe\"> {{ l.exp }}</td>\n\t\t\t\t<td>{{ l.status | numstatus }}</td>\n\t\t\t\t<td>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 0 && l.admin == 0\">指派</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" @click=\"del(l)\">删除</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 0\">我来处理</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 1 \">完成处理</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" @click=\"disDetail(l)\">\n\t\t\t\t\t\t详情\n\t\t\t\t\t</a>\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n\t<div class=\"txc\" v-show=\"list.length == 0\">\n\t\t无数据\n\t</div>\n</div>\n";
 
 /***/ },
 /* 32 */
@@ -15277,7 +15289,7 @@ webpackJsonp([0,1],[
 
 	var _flatpickr2 = _interopRequireDefault(_flatpickr);
 
-	var _server = __webpack_require__(31);
+	var _server = __webpack_require__(30);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -15378,23 +15390,18 @@ webpackJsonp([0,1],[
 
 				var startTime = void 0;
 				var endTime = void 0;
-				var finalTime = void 0;
-				if (this.startTime) {
-					startTime = getTime(this.startTime);
-					finalTime = startTime;
-				}
+				if (this.startTime) startTime = getTime(this.startTime);
 				if (this.endTime) {
-					endTime = getTime(this.startTime);
+					endTime = getTime(this.endTime);
 					if (this.endTime < this.startTime) {
 						this.$root.$emit('dropFn', '你的时间搞错了！！');
-					} else {
-						finalTime = endTime - startTime;
 					}
 				}
 				this.msg = {
 					no: this.no,
 					tel: this.tel,
-					date: finalTime,
+					date: startTime,
+					endTime: endTime,
 					name: this.user,
 					type: this.type,
 					room: this.room
@@ -15410,7 +15417,11 @@ webpackJsonp([0,1],[
 					return;
 				} else {
 					(0, _server.post)('/data', data).then(function (res) {
-						_this.list = res.body.msg;
+						if (res.body.status === 0) {
+							_this.list = res.body.msg;
+						} else {
+							_this.list = "";
+						}
 					});
 				}
 			}
@@ -18831,14 +18842,6 @@ webpackJsonp([0,1],[
 				this.timeOut = setTimeout(function () {
 					self.dropTip = '';
 				}, 2500);
-			},
-			loading: function loading() {
-				var self = this;
-				clearTimeout(time);
-				this.loading = true;
-				var time = setTimeout(function () {
-					self.loading = false;
-				}, 500);
 			}
 		}
 
@@ -19265,7 +19268,7 @@ webpackJsonp([0,1],[
 		value: true
 	});
 
-	var _server = __webpack_require__(31);
+	var _server = __webpack_require__(30);
 
 	exports.default = {
 		name: 'login',
@@ -19292,7 +19295,7 @@ webpackJsonp([0,1],[
 					this.title = '登陆';
 					(0, _server.login)(this.admin, this.password).then(function (res) {
 						if (res.status == 200) {
-							if (res.body.status == 1) {
+							if (res.body.status === 0) {
 								_this.title = '正在登陆...';
 								window.sessionStorage.setItem('user', res.body);
 								_this.$router.go({ path: '/home' });
@@ -19455,7 +19458,7 @@ webpackJsonp([0,1],[
 
 	var _typeof3 = _interopRequireDefault(_typeof2);
 
-	var _server = __webpack_require__(31);
+	var _server = __webpack_require__(30);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

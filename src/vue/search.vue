@@ -101,23 +101,18 @@ export default{
     	searchData(){
     		let startTime;
     		let endTime;
-    		let finalTime;
-    		if(this.startTime){
-    			startTime = getTime(this.startTime);
-    			finalTime = startTime;
-    		}
+    		if(this.startTime) startTime = getTime(this.startTime);
     		if(this.endTime){
-    			endTime = getTime(this.startTime);
+    			endTime = getTime(this.endTime);
     			if(this.endTime < this.startTime){
     				this.$root.$emit('dropFn','你的时间搞错了！！');
-    			}else{
-    				finalTime = endTime - startTime;
     			}
     		}
     		this.msg = {
 				no:this.no,
 				tel:this.tel,
-				date:finalTime,
+				date:startTime,
+				endTime:endTime,
 				name:this.user,
 				type:this.type,
 				room:this.room
@@ -133,8 +128,12 @@ export default{
     			return;
     		}else{
 	    		post('/data',data)
-	    		.then((res)=>{	
-	    			this.list = res.body.msg;
+	    		.then((res)=>{
+	    			if(res.body.status === 0){
+	    				this.list = res.body.msg;
+	    			}else{
+	    				this.list = "";
+	    			}
 	    		})
     		}
     	}

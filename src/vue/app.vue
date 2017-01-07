@@ -57,14 +57,6 @@ export default{
 			this.timeOut = setTimeout(function(){
 				self.dropTip = '';
 			},2500)
-		},
-		loading(){
-			let self = this;
-			clearTimeout(time);
-			this.loading = true;
-			let time = setTimeout(function(){
-				self.loading = false;
-			},500);
 		}
 	}
 

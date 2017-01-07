@@ -64,7 +64,7 @@ export default{
 			this.list = this.all.slice((newValue-1) * 10,newValue*10);
 		},
 		'all':function(newValue,old){
-			this.current = 0;
+			this.current = 1;
 			this.list = this.all.slice(0,10);
 			this.total = Math.ceil(this.all.length / 10);
 		}
