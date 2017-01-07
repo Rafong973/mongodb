@@ -8,7 +8,6 @@
 		<nav-bar></nav-bar>
 		<tip :show.sync="ale" :text="tipText" :count.sync="opera"></tip>
 		<drop :show.sync="dropTip"></drop>
-		<load v-if="loading"></load>
 	</div>
 </template>
 
@@ -18,7 +17,6 @@
 import navBar from './components/nav.vue'
 import tip from './components/alert.vue'
 import drop from './components/drop.vue'
-import load from './components/load.vue'
 
 export default{
 	name: 'app',
@@ -36,7 +34,7 @@ export default{
 		}
 	},
 
-	components:{ navBar,tip,drop,load },
+	components:{ navBar,tip,drop},
 
 	events:{
 		backLogin(res){
@@ -62,10 +60,11 @@ export default{
 		},
 		loading(){
 			let self = this;
+			clearTimeout(time);
 			this.loading = true;
 			let time = setTimeout(function(){
 				self.loading = false;
-			},500)
+			},500);
 		}
 	}
 

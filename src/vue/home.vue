@@ -8,6 +8,7 @@
 			<page :current.sync="current" :total.sync="total" v-show="all && all.length > 10 && detail"></page>
 			<detail :show.sync="detail" :msg.sync="detailData"></detail>
 		</div>
+		<load v-if="!list"></load>	
 	</div>
 </template>
 
@@ -19,11 +20,12 @@ import { post } from '../script/server'
 import search from './search.vue'
 import detail from './detail.vue'
 import page from './components/pagging.vue'
+import load from './components/load.vue'
 
 export default{
 	name: 'home',
 
-	components:[search,detail,page,tableData],
+	components:{search,detail,page,tableData,load} ,
 	
 	data(){
 		return{
@@ -37,22 +39,31 @@ export default{
 			all:''
 		}
 	},
+	methods:{
+		getData(){
+			post('/data','status=1')
+			.then((res) => {
+				if(res.body.status == 0){
+					this.all = res.body.msg
+				}else{  
+					this.$root.$emit(`backLogin`,res.body);
+					this.all = [];
+				}
+			})
+		}
+	},
 	created(){
-		post('/data')
-		.then((res) => {
-			if(res.body.status == 0){
-				this.all = res.body.msg
-			}else{  
-				this.$root.$emit(`backLogin`,res.body);
-				this.all = [];
-			}
-		})
+		this.all = "";
+		let self = this;
+		let time = setTimeout(function(){
+			self.getData();
+		}, 800);
 	},
 	watch:{
 		'current':function(newValue){
 			this.list = this.all.slice((newValue-1) * 10,newValue*10);
 		},
-		'all':function(){
+		'all':function(newValue,old){
 			this.current = 0;
 			this.list = this.all.slice(0,10);
 			this.total = Math.ceil(this.all.length / 10);

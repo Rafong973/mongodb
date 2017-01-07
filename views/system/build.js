@@ -27,7 +27,7 @@ webpackJsonp([0,1],[
 
 	var _home2 = _interopRequireDefault(_home);
 
-	var _app = __webpack_require__(115);
+	var _app = __webpack_require__(119);
 
 	var _app2 = _interopRequireDefault(_app);
 
@@ -14587,7 +14587,7 @@ webpackJsonp([0,1],[
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\vue\\home.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(114)
+	__vue_template__ = __webpack_require__(118)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -14649,12 +14649,33 @@ webpackJsonp([0,1],[
 
 	var _pagging2 = _interopRequireDefault(_pagging);
 
+	var _load = __webpack_require__(114);
+
+	var _load2 = _interopRequireDefault(_load);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	// <template>
+	// 	<div class="data-body">
+	// 		<div class="data-row">
+	// 			<div class="data-list" v-show="detail == true">
+	// 				<search :list.sync="all"></search>
+	// 				<table-data :list.sync="list" :detail-data.sync="detailData" :detail.sync="detail"></table-data>
+	// 			</div>
+	// 			<page :current.sync="current" :total.sync="total" v-show="all && all.length > 10 && detail"></page>
+	// 			<detail :show.sync="detail" :msg.sync="detailData"></detail>
+	// 		</div>
+	// 		<load v-if="!list"></load>	
+	// 	</div>
+	// </template>
+	//
+	//
+	// <script>
+	//js
 	exports.default = {
 		name: 'home',
 
-		components: [_search2.default, _detail2.default, _pagging2.default, _data2.default],
+		components: { search: _search2.default, detail: _detail2.default, page: _pagging2.default, tableData: _data2.default, load: _load2.default },
 
 		data: function data() {
 			var _ref;
@@ -14668,24 +14689,34 @@ webpackJsonp([0,1],[
 				total: ''
 			}, (0, _defineProperty3.default)(_ref, 'current', 1), (0, _defineProperty3.default)(_ref, 'all', ''), _ref;
 		},
-		created: function created() {
-			var _this = this;
 
-			(0, _server.post)('/data').then(function (res) {
-				if (res.body.status == 0) {
-					_this.all = res.body.msg;
-				} else {
-					_this.$root.$emit('backLogin', res.body);
-					_this.all = [];
-				}
-			});
+		methods: {
+			getData: function getData() {
+				var _this = this;
+
+				(0, _server.post)('/data', 'status=1').then(function (res) {
+					if (res.body.status == 0) {
+						_this.all = res.body.msg;
+					} else {
+						_this.$root.$emit('backLogin', res.body);
+						_this.all = [];
+					}
+				});
+			}
+		},
+		created: function created() {
+			this.all = "";
+			var self = this;
+			var time = setTimeout(function () {
+				self.getData();
+			}, 800);
 		},
 
 		watch: {
 			'current': function current(newValue) {
 				this.list = this.all.slice((newValue - 1) * 10, newValue * 10);
 			},
-			'all': function all() {
+			'all': function all(newValue, old) {
 				this.current = 0;
 				this.list = this.all.slice(0, 10);
 				this.total = Math.ceil(this.all.length / 10);
@@ -14742,22 +14773,6 @@ webpackJsonp([0,1],[
 	// 	overflow: hidden;
 	// }
 	// </style>
-	// <template>
-	// 	<div class="data-body">
-	// 		<div class="data-row">
-	// 			<div class="data-list" v-show="detail == true">
-	// 				<search :list.sync="all"></search>
-	// 				<table-data :list.sync="list" :detail-data.sync="detailData" :detail.sync="detail"></table-data>
-	// 			</div>
-	// 			<page :current.sync="current" :total.sync="total" v-show="all && all.length > 10 && detail"></page>
-	// 			<detail :show.sync="detail" :msg.sync="detailData"></detail>
-	// 		</div>
-	// 	</div>
-	// </template>
-	//
-	//
-	// <script>
-	//js
 
 /***/ },
 /* 9 */
@@ -15183,7 +15198,6 @@ webpackJsonp([0,1],[
 	// let t = '';
 
 	function login(accout, password) {
-		_vue2.default.$root.$emit("loading");
 		return _vue2.default.http.post(t + '/login', 'u=' + accout + '&p=' + password, {
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -15396,14 +15410,13 @@ webpackJsonp([0,1],[
 					return;
 				} else {
 					(0, _server.post)('/data', data).then(function (res) {
-						_this.$root.$emit("loading").then(function () {
-							_this.list = res.body.msg;
-						});
+						_this.list = res.body.msg;
 					});
 				}
 			}
 		}
 	};
+
 
 	function getTime(value) {
 		var time = new Date(value);
@@ -18610,18 +18623,116 @@ webpackJsonp([0,1],[
 
 /***/ },
 /* 114 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"data-body\">\n\t<div class=\"data-row\">\n\t\t<div class=\"data-list\" v-show=\"detail == true\">\n\t\t\t<search :list.sync=\"all\"></search>\n\t\t\t<table-data :list.sync=\"list\" :detail-data.sync=\"detailData\" :detail.sync=\"detail\"></table-data>\n\t\t</div>\n\t\t<page :current.sync=\"current\" :total.sync=\"total\" v-show=\"all && all.length > 10 && detail\"></page>\n\t\t<detail :show.sync=\"detail\" :msg.sync=\"detailData\"></detail>\n\t</div>\n</div>\n";
-
-/***/ },
-/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__webpack_require__(116)
-	__vue_script__ = __webpack_require__(117)
+	__webpack_require__(115)
+	__vue_script__ = __webpack_require__(116)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\vue\\components\\load.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(117)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-1c5d53a6/load.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 115 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 116 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	// <template>
+	// 	<div class="alert op-gray">
+	// 		<div class="op-radius"></div>
+	// 	</div>
+	// </template>
+	//
+	// <script>
+
+	exports.default = {
+
+		name: 'load',
+
+		data: function data() {
+			return {};
+		},
+		method: function method() {}
+	};
+
+	// </script>
+	//
+	// <style>
+	// .op-gray{
+	// 	background-color: rgba(0, 0, 0, .5);
+	// 	.op-radius{
+	// 		height: 1.875rem;
+	// 		width: 1.875rem;
+	// 		position: absolute;
+	// 		border-radius: 50%;
+	// 		border: 0.1875rem dashed #000;
+	// 		top: 50%;
+	// 		left: 50%;
+	// 		animation: loading .5s linear infinite;
+	// 	}
+	// }
+	// @keyframes loading {
+	// 	from { transform: translate3d(-50%, -50%, 0) rotate(0deg) }
+	// 	to { transform: translate3d(-50%, -50%, 0) rotate(360deg) }
+	// }
+	//
+	// </style>
+
+/***/ },
+/* 117 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"alert op-gray\">\n\t<div class=\"op-radius\"></div>\n</div>\n";
+
+/***/ },
+/* 118 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"data-body\">\n\t<div class=\"data-row\">\n\t\t<div class=\"data-list\" v-show=\"detail == true\">\n\t\t\t<search :list.sync=\"all\"></search>\n\t\t\t<table-data :list.sync=\"list\" :detail-data.sync=\"detailData\" :detail.sync=\"detail\"></table-data>\n\t\t</div>\n\t\t<page :current.sync=\"current\" :total.sync=\"total\" v-show=\"all && all.length > 10 && detail\"></page>\n\t\t<detail :show.sync=\"detail\" :msg.sync=\"detailData\"></detail>\n\t</div>\n\t<load v-if=\"!list\"></load>\t\n</div>\n";
+
+/***/ },
+/* 119 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__webpack_require__(120)
+	__vue_script__ = __webpack_require__(121)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
@@ -18651,13 +18762,13 @@ webpackJsonp([0,1],[
 	})()}
 
 /***/ },
-/* 116 */
+/* 120 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 117 */
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -18666,41 +18777,20 @@ webpackJsonp([0,1],[
 		value: true
 	});
 
-	var _nav = __webpack_require__(118);
+	var _nav = __webpack_require__(122);
 
 	var _nav2 = _interopRequireDefault(_nav);
 
-	var _alert = __webpack_require__(122);
+	var _alert = __webpack_require__(126);
 
 	var _alert2 = _interopRequireDefault(_alert);
 
-	var _drop = __webpack_require__(126);
+	var _drop = __webpack_require__(130);
 
 	var _drop2 = _interopRequireDefault(_drop);
 
-	var _load = __webpack_require__(130);
-
-	var _load2 = _interopRequireDefault(_load);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// <template>
-	// 	<div class="app">
-	// 		<router-view
-	// 		transition="route"
-	// 		transition-mode="out-in"
-	// 		>
-	// 		</router-view>
-	// 		<nav-bar></nav-bar>
-	// 		<tip :show.sync="ale" :text="tipText" :count.sync="opera"></tip>
-	// 		<drop :show.sync="dropTip"></drop>
-	// 		<load v-if="loading"></load>
-	// 	</div>
-	// </template>
-	//
-	//
-	// <script>
-	//js
 	exports.default = {
 		name: 'app',
 
@@ -18718,7 +18808,7 @@ webpackJsonp([0,1],[
 		},
 
 
-		components: { navBar: _nav2.default, tip: _alert2.default, drop: _drop2.default, load: _load2.default },
+		components: { navBar: _nav2.default, tip: _alert2.default, drop: _drop2.default },
 
 		events: {
 			backLogin: function backLogin(res) {
@@ -18744,6 +18834,7 @@ webpackJsonp([0,1],[
 			},
 			loading: function loading() {
 				var self = this;
+				clearTimeout(time);
 				this.loading = true;
 				var time = setTimeout(function () {
 					self.loading = false;
@@ -18763,20 +18854,36 @@ webpackJsonp([0,1],[
 	//     opacity: 0;
 	// }
 	// </style>
+	// <template>
+	// 	<div class="app">
+	// 		<router-view
+	// 		transition="route"
+	// 		transition-mode="out-in"
+	// 		>
+	// 		</router-view>
+	// 		<nav-bar></nav-bar>
+	// 		<tip :show.sync="ale" :text="tipText" :count.sync="opera"></tip>
+	// 		<drop :show.sync="dropTip"></drop>
+	// 	</div>
+	// </template>
+	//
+	//
+	// <script>
+	//js
 
 /***/ },
-/* 118 */
+/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__webpack_require__(119)
-	__vue_script__ = __webpack_require__(120)
+	__webpack_require__(123)
+	__vue_script__ = __webpack_require__(124)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\vue\\components\\nav.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(121)
+	__vue_template__ = __webpack_require__(125)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -18801,13 +18908,13 @@ webpackJsonp([0,1],[
 	})()}
 
 /***/ },
-/* 119 */
+/* 123 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 120 */
+/* 124 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -18884,24 +18991,24 @@ webpackJsonp([0,1],[
 	// </style>
 
 /***/ },
-/* 121 */
+/* 125 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"nav\">\n\t<a href=\"javascript:void(0)\" class=\"admin-set\" alt=\"用户设置\" ></a>\n\t<a href=\"javascript:void(0)\" class=\"logout\" alt=\"退出\" @click=\"logout\"></a>\n</div>\n";
 
 /***/ },
-/* 122 */
+/* 126 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__webpack_require__(123)
-	__vue_script__ = __webpack_require__(124)
+	__webpack_require__(127)
+	__vue_script__ = __webpack_require__(128)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\vue\\components\\alert.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(125)
+	__vue_template__ = __webpack_require__(129)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -18926,13 +19033,13 @@ webpackJsonp([0,1],[
 	})()}
 
 /***/ },
-/* 123 */
+/* 127 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 124 */
+/* 128 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -19002,24 +19109,24 @@ webpackJsonp([0,1],[
 	// </style>
 
 /***/ },
-/* 125 */
+/* 129 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"alert gray-op\" v-show=\"show\">\n\t<div class=\"alert-content txc\">\n\t\t<p>{{ text }}</p>\n\t\t<a href=\"javascript:void(0)\" class=\"btn btn-primary pdtr\" @click=\"comeBack\" v-show=\"count\">继续操作</a>\n\t</div>\n</div>\n";
 
 /***/ },
-/* 126 */
+/* 130 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __vue_script__, __vue_template__
 	var __vue_styles__ = {}
-	__webpack_require__(127)
-	__vue_script__ = __webpack_require__(128)
+	__webpack_require__(131)
+	__vue_script__ = __webpack_require__(132)
 	if (__vue_script__ &&
 	    __vue_script__.__esModule &&
 	    Object.keys(__vue_script__).length > 1) {
 	  console.warn("[vue-loader] src\\vue\\components\\drop.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(129)
+	__vue_template__ = __webpack_require__(133)
 	module.exports = __vue_script__ || {}
 	if (module.exports.__esModule) module.exports = module.exports.default
 	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
@@ -19044,13 +19151,13 @@ webpackJsonp([0,1],[
 	})()}
 
 /***/ },
-/* 127 */
+/* 131 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 128 */
+/* 132 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -19095,114 +19202,16 @@ webpackJsonp([0,1],[
 	// </style>
 
 /***/ },
-/* 129 */
+/* 133 */
 /***/ function(module, exports) {
 
 	module.exports = "\n<div class=\"alert drop\" :class=\"{dropout:show}\" @click=\"this.show = ''\">\n\t<div class=\"drop-tip\">\n\t\t{{ show }}\n\t</div>\n</div>\n";
 
 /***/ },
-/* 130 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __vue_script__, __vue_template__
-	var __vue_styles__ = {}
-	__webpack_require__(131)
-	__vue_script__ = __webpack_require__(132)
-	if (__vue_script__ &&
-	    __vue_script__.__esModule &&
-	    Object.keys(__vue_script__).length > 1) {
-	  console.warn("[vue-loader] src\\vue\\components\\load.vue: named exports in *.vue files are ignored.")}
-	__vue_template__ = __webpack_require__(133)
-	module.exports = __vue_script__ || {}
-	if (module.exports.__esModule) module.exports = module.exports.default
-	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
-	if (__vue_template__) {
-	__vue_options__.template = __vue_template__
-	}
-	if (!__vue_options__.computed) __vue_options__.computed = {}
-	Object.keys(__vue_styles__).forEach(function (key) {
-	var module = __vue_styles__[key]
-	__vue_options__.computed[key] = function () { return module }
-	})
-	if (false) {(function () {  module.hot.accept()
-	  var hotAPI = require("vue-hot-reload-api")
-	  hotAPI.install(require("vue"), false)
-	  if (!hotAPI.compatible) return
-	  var id = "_v-1c5d53a6/load.vue"
-	  if (!module.hot.data) {
-	    hotAPI.createRecord(id, module.exports)
-	  } else {
-	    hotAPI.update(id, module.exports, __vue_template__)
-	  }
-	})()}
-
-/***/ },
-/* 131 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 132 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	// <template>
-	// 	<div class="alert op-gray">
-	// 		<div class="op-radius"></div>
-	// 	</div>
-	// </template>
-	//
-	// <script>
-
-	exports.default = {
-
-		name: 'load',
-
-		data: function data() {
-			return {};
-		},
-		method: function method() {}
-	};
-
-	// </script>
-	//
-	// <style>
-	// .op-gray{
-	// 	background-color: rgba(0, 0, 0, .5);
-	// 	.op-radius{
-	// 		height: 1.875rem;
-	// 		width: 1.875rem;
-	// 		position: absolute;
-	// 		border-radius: 50%;
-	// 		border: 0.1875rem dashed #000;
-	// 		top: 50%;
-	// 		left: 50%;
-	// 		animation: loading .5s linear infinite;
-	// 	}
-	// }
-	// @keyframes loading {
-	// 	from { transform: translate3d(-50%, -50%, 0) rotate(0deg) }
-	// 	to { transform: translate3d(-50%, -50%, 0) rotate(360deg) }
-	// }
-	//
-	// </style>
-
-/***/ },
-/* 133 */
-/***/ function(module, exports) {
-
-	module.exports = "\n<div class=\"alert op-gray\">\n\t<div class=\"op-radius\"></div>\n</div>\n";
-
-/***/ },
 /* 134 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"app\">\n\t<router-view\n\ttransition=\"route\"\n\ttransition-mode=\"out-in\"\n\t>\n\t</router-view>\n\t<nav-bar></nav-bar>\n\t<tip :show.sync=\"ale\" :text=\"tipText\" :count.sync=\"opera\"></tip>\n\t<drop :show.sync=\"dropTip\"></drop>\n\t<load v-if=\"loading\"></load>\n</div>\n";
+	module.exports = "\n<div class=\"app\">\n\t<router-view\n\ttransition=\"route\"\n\ttransition-mode=\"out-in\"\n\t>\n\t</router-view>\n\t<nav-bar></nav-bar>\n\t<tip :show.sync=\"ale\" :text=\"tipText\" :count.sync=\"opera\"></tip>\n\t<drop :show.sync=\"dropTip\"></drop>\n</div>\n";
 
 /***/ },
 /* 135 */

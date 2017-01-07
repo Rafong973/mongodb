@@ -64,6 +64,7 @@ export default function server(app,body){
 
 	app.post('/data',body.urlencoded(),function(req,res,next){
 		let data = req.body;
+		let time = data.date;
 		if(Object.keys(data).length == 0){
 			re.find({},function(err,docs){
 				if(!err){
@@ -82,6 +83,7 @@ export default function server(app,body){
 					res.send({status:3,msg:'mongo is error'})
 				}
 			});
+			
 		}
 		
 	});

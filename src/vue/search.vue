@@ -133,16 +133,14 @@ export default{
     			return;
     		}else{
 	    		post('/data',data)
-	    		.then((res)=>{
-	    			this.$root.$emit("loading")
-	    			.then(() =>{
-	    				this.list = res.body.msg;
-	    			})
+	    		.then((res)=>{	
+	    			this.list = res.body.msg;
 	    		})
     		}
     	}
     }
 }
+
 function getTime(value){
 	let time = new Date(value);
 	return time.getTime();
