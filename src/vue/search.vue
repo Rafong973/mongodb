@@ -49,6 +49,18 @@
 				</div>
 			</div>
 		</div>
+		<div class="line order-search">
+			<button class="btn txc btn-primary pdtr" @click="getData" >所有订单</button>
+			<button class="btn txc btn-primary pdtr" @click="getData(`status=1`)">所有未处理订单</button>
+			<button class="btn txc btn-primary pdtr" @click="getData(`status=2`)">所有处理中订单</button>
+			<button class="btn txc btn-primary pdtr" @click="getData(`status=3`)">所有已完成订单</button>
+		</div>
+		<div class="line order-search">
+			<button class="btn txc btn-primary pdtr" @click="getData(`grade=${this.grade}&admin=${this.user_name}&status=1`)">我的订单</button>
+			<button class="btn txc btn-primary pdtr" @click="getData(`grade=${this.grade}&admin=${this.user_name}&status=1`)">我的未处理订单</button>
+			<button class="btn txc btn-primary pdtr" @click="getData(`grade=${this.grade}&admin=${this.user_name}&status=2`)">我的处理中订单</button>
+			<button class="btn txc btn-primary pdtr" @click="getData(`grade=${this.grade}&admin=${this.user_name}&status=3`)">我的已完成订单</button>
+		</div>
 	</div>
 </template>
 
@@ -74,6 +86,8 @@ export default{
 			roomShow:false,
 			tel:'',
 			startTime:'',
+			grade:sessionStorage.getItem('user'),
+			user_name:sessionStorage.getItem('admin'),
 			endTime:'',
 			selType:[
 					{no:1,name:'锐捷问题'},
@@ -116,7 +130,7 @@ export default{
 				name:this.user,
 				type:this.type,
 				room:this.room
-			}
+			};
     		let data = "";
     		for(var x in this.msg){
     			if(this.msg[x]){
@@ -127,16 +141,35 @@ export default{
     			this.$root.$emit('dropFn','没有条件怎么搜索呢，是吧？');
     			return;
     		}else{
-	    		post('/data',data)
-	    		.then((res)=>{
-	    			if(res.body.status === 0){
-	    				this.list = res.body.msg;
-	    			}else{
-	    				this.list = "";
-	    			}
-	    		})
+	    		this.getData(data);
     		}
+    	},
+    	getData(data){
+    		if(!data) data = '';
+    		post('/data',data)
+    		.then((res)=>{
+    			this.list = "";
+    			switch(res.body.status){
+    				case 0:
+    					this.list = res.body.msg;
+    				break;
+    				case 4:
+    					this.$root.$emit('dropFn','权限不够，你干了什么？');
+    				break;
+    				case 3:
+    					this.$root.$emit('dropFn','连接服务器失败？？');
+    				break;
+    				case 5:
+    					this.$root.$emit(`backLogin`,res.body);
+						this.list = [];
+					break;
+    			}
+    			return;
+    		})
     	}
+    },
+    created(){
+    	this.getData();
     }
 }
 
@@ -152,12 +185,17 @@ function getTime(value){
 
 .search-body{
 	width: 68.75rem;
-	margin: 0.9375rem auto;
-	border-radius: 0.625rem;
+	margin: .9375rem auto;
+	border-radius: .625rem;
 }
 .scroll{
 	overflow-y: scroll;
 	max-height: 400px;
 }
+.order-search{
+	button{
+		margin-right: .9375rem;
+	}
 
+}
 </style>

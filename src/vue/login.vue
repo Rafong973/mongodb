@@ -58,7 +58,8 @@ export default{
 					if(res.status == 200){
 						if(res.body.status === 0){
 							this.title = '正在登陆...';
-							window.sessionStorage.setItem('user',res.body);
+							sessionStorage.setItem('user',res.body.msg.grade);
+							sessionStorage.setItem('admin',res.body.msg.admin);
 							this.$router.go({path:'/home'})
 						}else{
 							this.title = '登陆信息可能存在错误...';

@@ -4,7 +4,7 @@ a{text-decoration: none;}
 .app{width: 100%;min-height: 100%;}
 .txc{text-align: center;}
 .none{display: none;}
-.line{height:2.1875rem;margin-bottom: .625rem;width: 100%;}
+.line{height:2.1875rem;margin-bottom: .625rem;width: 100%;overflow: hidden;line-height: 2.1875rem;}
 html{font-family: "Microsoft Yahei";}
 .input-group{position:relative;width: 100%;line-height:2.1875;margin-bottom: .625rem;padding-bottom: .625rem;}
 .vertical-input .input-label,.vertical-input .input-input,.flatpickr-mobile{width: 90%;margin:0 auto;text-align: left;display:block;height: 2.1875rem;}

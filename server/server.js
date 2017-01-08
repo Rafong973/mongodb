@@ -10,14 +10,18 @@ const re = user.Data;
 // 管理员验证	
 const vail = 'adminpd123';
 
-let err = (value) =>{
-	return {status:3,msg:value};
-}
 let success = (dom) => {
 	return {status:0,msg:dom};
 }
 
 const pderror = {status:2,msg:'password is error'};
+
+let err = (value) =>{
+	return {status:3,msg:value};
+}
+
+let op = {status:4,msg:'admin is error'};
+
 export default function server(app,body){
 	
 
@@ -33,17 +37,16 @@ export default function server(app,body){
 							  .update('I am bydqjx')
 							  .digest('hex');
 				if(pass == docs[0].password){
-					msg = {
-						   status:0,msg:'u r welcome',
-					       admin:docs[0].admin,
-					       user:docs[0].nickname,
-					       grade:docs[0].grade
-					      };
+					const user_temp = {
+						admin:docs[0].admin,
+					    user:docs[0].nickname,
+					    grade:docs[0].grade
+					}
+					msg = success(user_temp);
 					req.session.i = 1;
 					req.session.grade = docs[0].grade;
-					console.log(req.session);
 				}else{
-					msg = pderror
+					msg = pderror;
 				}
 				
 			}
@@ -78,6 +81,15 @@ export default function server(app,body){
 		let startTime = data.date || "";
 		let endTime = data.endTime || "";
 		let condition = "";
+		if(data.grade){
+			if(data.grade != req.session.grade){
+				res.send(op);
+				return;
+			}else{
+				delete data.grade;
+			}
+		}
+		console.log(data);
 		if(startTime && endTime){
 			data.date = { $gte:parseInt(data.date),$lte:parseInt(data.endTime) };
 			delete data.endTime;

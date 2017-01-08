@@ -8,7 +8,7 @@
 			<page :current.sync="current" :total.sync="total" v-show="all && all.length > 10 && detail"></page>
 			<detail :show.sync="detail" :msg.sync="detailData"></detail>
 		</div>
-		<load v-if="!list"></load>	
+		<load v-if="false"></load>	
 	</div>
 </template>
 
@@ -39,31 +39,16 @@ export default{
 			all:''
 		}
 	},
-	methods:{
-		getData(){
-			post('/data','status=1')
-			.then((res) => {
-				if(res.body.status == 0){
-					this.all = res.body.msg
-				}else{  
-					this.$root.$emit(`backLogin`,res.body);
-					this.all = [];
-				}
-			})
-		}
-	},
 	created(){
 		this.all = "";
-		let self = this;
-		let time = setTimeout(function(){
-			self.getData();
-		}, 800);
+		
 	},
 	watch:{
 		'current':function(newValue){
 			this.list = this.all.slice((newValue-1) * 10,newValue*10);
 		},
 		'all':function(newValue,old){
+			console.log(newValue)
 			this.current = 1;
 			this.list = this.all.slice(0,10);
 			this.total = Math.ceil(this.all.length / 10);

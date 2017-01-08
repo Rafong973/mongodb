@@ -4,6 +4,7 @@ export default function(){
 	return function (req,res,next){ 
 		let t = req.method; 
 		let p = req.path;
+		console.log(req.cookies);
 		if(req.session.i < 1){
 			if(t == 'POST' && p !== '/login'){ 
 				res.send({msg:'you must login',status:5})

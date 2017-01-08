@@ -55,21 +55,21 @@ route.redirect({
 route.afterEach(function(transition){
 	console.log("成功浏览到：" + transition.to.path)
 })
-// route.beforeEach(function({to,next,abort,redirect}){
-// 	const r = to.path,
-// 	   user = sessionStorage.getItem('user');
-// 	if(!user || user == '/logout'){
-// 		if(r === '/login' || r == '/reg'){
-// 			next()
-// 		}else{
-// 			redirect('/login')
-// 		}
-// 	}else{
-// 		if(r === '/login' || r === '/reg'){
-// 			abort()
-// 		}else{
-// 			next();
-// 		}
-// 	}
-// })
+route.beforeEach(function({to,next,abort,redirect}){
+	const r = to.path,
+	   user = sessionStorage.getItem('user');
+	if(!user || user == '/logout'){
+		if(r === '/login' || r == '/reg'){
+			next()
+		}else{
+			redirect('/login')
+		}
+	}else{
+		if(r === '/login' || r === '/reg'){
+			abort()
+		}else{
+			next();
+		}
+	}
+})
 route.start(app,"#app");

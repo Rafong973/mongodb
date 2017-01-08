@@ -97,23 +97,28 @@ webpackJsonp([0,1],[
 	route.afterEach(function (transition) {
 		console.log("成功浏览到：" + transition.to.path);
 	});
-	// route.beforeEach(function({to,next,abort,redirect}){
-	// 	const r = to.path,
-	// 	   user = sessionStorage.getItem('user');
-	// 	if(!user || user == '/logout'){
-	// 		if(r === '/login' || r == '/reg'){
-	// 			next()
-	// 		}else{
-	// 			redirect('/login')
-	// 		}
-	// 	}else{
-	// 		if(r === '/login' || r === '/reg'){
-	// 			abort()
-	// 		}else{
-	// 			next();
-	// 		}
-	// 	}
-	// })
+	route.beforeEach(function (_ref) {
+		var to = _ref.to,
+		    next = _ref.next,
+		    abort = _ref.abort,
+		    redirect = _ref.redirect;
+
+		var r = to.path,
+		    user = sessionStorage.getItem('user');
+		if (!user || user == '/logout') {
+			if (r === '/login' || r == '/reg') {
+				next();
+			} else {
+				redirect('/login');
+			}
+		} else {
+			if (r === '/login' || r === '/reg') {
+				abort();
+			} else {
+				next();
+			}
+		}
+	});
 	route.start(_app2.default, "#app");
 
 /***/ },
@@ -14665,7 +14670,7 @@ webpackJsonp([0,1],[
 	// 			<page :current.sync="current" :total.sync="total" v-show="all && all.length > 10 && detail"></page>
 	// 			<detail :show.sync="detail" :msg.sync="detailData"></detail>
 	// 		</div>
-	// 		<load v-if="!list"></load>	
+	// 		<load v-if="false"></load>	
 	// 	</div>
 	// </template>
 	//
@@ -14689,27 +14694,8 @@ webpackJsonp([0,1],[
 				total: ''
 			}, (0, _defineProperty3.default)(_ref, 'current', 1), (0, _defineProperty3.default)(_ref, 'all', ''), _ref;
 		},
-
-		methods: {
-			getData: function getData() {
-				var _this = this;
-
-				(0, _server.post)('/data', 'status=1').then(function (res) {
-					if (res.body.status == 0) {
-						_this.all = res.body.msg;
-					} else {
-						_this.$root.$emit('backLogin', res.body);
-						_this.all = [];
-					}
-				});
-			}
-		},
 		created: function created() {
 			this.all = "";
-			var self = this;
-			var time = setTimeout(function () {
-				self.getData();
-			}, 800);
 		},
 
 		watch: {
@@ -14717,6 +14703,7 @@ webpackJsonp([0,1],[
 				this.list = this.all.slice((newValue - 1) * 10, newValue * 10);
 			},
 			'all': function all(newValue, old) {
+				console.log(newValue);
 				this.current = 1;
 				this.list = this.all.slice(0, 10);
 				this.total = Math.ceil(this.all.length / 10);
@@ -15294,7 +15281,7 @@ webpackJsonp([0,1],[
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 
 	var _select = __webpack_require__(35);
@@ -15364,94 +15351,127 @@ webpackJsonp([0,1],[
 	// 				</div>
 	// 			</div>
 	// 		</div>
+	// 		<div class="line order-search">
+	// 			<button class="btn txc btn-primary pdtr" @click="getData" >所有订单</button>
+	// 			<button class="btn txc btn-primary pdtr" @click="getData(`status=1`)">所有未处理订单</button>
+	// 			<button class="btn txc btn-primary pdtr" @click="getData(`status=2`)">所有处理中订单</button>
+	// 			<button class="btn txc btn-primary pdtr" @click="getData(`status=3`)">所有已完成订单</button>
+	// 		</div>
+	// 		<div class="line order-search">
+	// 			<button class="btn txc btn-primary pdtr" @click="getData(`grade=${this.grade}&admin=${this.user_name}&status=1`)">我的订单</button>
+	// 			<button class="btn txc btn-primary pdtr" @click="getData(`grade=${this.grade}&admin=${this.user_name}&status=1`)">我的未处理订单</button>
+	// 			<button class="btn txc btn-primary pdtr" @click="getData(`grade=${this.grade}&admin=${this.user_name}&status=2`)">我的处理中订单</button>
+	// 			<button class="btn txc btn-primary pdtr" @click="getData(`grade=${this.grade}&admin=${this.user_name}&status=3`)">我的已完成订单</button>
+	// 		</div>
 	// 	</div>
 	// </template>
 	//
 	// <script>
 
 	exports.default = {
-		name: 'search',
+	  name: 'search',
 
-		data: function data() {
-			return {
-				name: 'search',
-				no: '',
-				user: '',
-				typeName: '',
-				type: '',
-				room: '',
-				typeShow: false,
-				roomShow: false,
-				tel: '',
-				startTime: '',
-				endTime: '',
-				selType: [{ no: 1, name: '锐捷问题' }, { no: 2, name: '硬件问题' }, { no: 3, name: '软件问题' }],
-				selRoom: _room2.default,
-				msg: [],
-				options: {
-					enableTime: true,
-					time_24hr: true
-				}
-			};
-		},
+	  data: function data() {
+	    return {
+	      name: 'search',
+	      no: '',
+	      user: '',
+	      typeName: '',
+	      type: '',
+	      room: '',
+	      typeShow: false,
+	      roomShow: false,
+	      tel: '',
+	      startTime: '',
+	      grade: sessionStorage.getItem('user'),
+	      user_name: sessionStorage.getItem('admin'),
+	      endTime: '',
+	      selType: [{ no: 1, name: '锐捷问题' }, { no: 2, name: '硬件问题' }, { no: 3, name: '软件问题' }],
+	      selRoom: _room2.default,
+	      msg: [],
+	      options: {
+	        enableTime: true,
+	        time_24hr: true
+	      }
+	    };
+	  },
 
 
-		components: {
-			sel: _select2.default,
-			flatpickr: _flatpickr2.default
-		},
+	  components: {
+	    sel: _select2.default,
+	    flatpickr: _flatpickr2.default
+	  },
 
-		props: ['list'],
+	  props: ['list'],
 
-		methods: {
-			getTime: getTime,
-			searchData: function searchData() {
-				var _this = this;
+	  methods: {
+	    getTime: getTime,
+	    searchData: function searchData() {
+	      var startTime = void 0;
+	      var endTime = void 0;
+	      if (this.startTime) startTime = getTime(this.startTime);
+	      if (this.endTime) {
+	        endTime = getTime(this.endTime);
+	        if (this.endTime < this.startTime) {
+	          this.$root.$emit('dropFn', '你的时间搞错了！！');
+	        }
+	      }
+	      this.msg = {
+	        no: this.no,
+	        tel: this.tel,
+	        date: startTime,
+	        endTime: endTime,
+	        name: this.user,
+	        type: this.type,
+	        room: this.room
+	      };
+	      var data = "";
+	      for (var x in this.msg) {
+	        if (this.msg[x]) {
+	          data += x + '=' + this.msg[x] + "&";
+	        }
+	      }
+	      if (!data) {
+	        this.$root.$emit('dropFn', '没有条件怎么搜索呢，是吧？');
+	        return;
+	      } else {
+	        this.getData(data);
+	      }
+	    },
+	    getData: function getData(data) {
+	      var _this = this;
 
-				var startTime = void 0;
-				var endTime = void 0;
-				if (this.startTime) startTime = getTime(this.startTime);
-				if (this.endTime) {
-					endTime = getTime(this.endTime);
-					if (this.endTime < this.startTime) {
-						this.$root.$emit('dropFn', '你的时间搞错了！！');
-					}
-				}
-				this.msg = {
-					no: this.no,
-					tel: this.tel,
-					date: startTime,
-					endTime: endTime,
-					name: this.user,
-					type: this.type,
-					room: this.room
-				};
-				var data = "";
-				for (var x in this.msg) {
-					if (this.msg[x]) {
-						data += x + '=' + this.msg[x] + "&";
-					}
-				}
-				if (!data) {
-					this.$root.$emit('dropFn', '没有条件怎么搜索呢，是吧？');
-					return;
-				} else {
-					(0, _server.post)('/data', data).then(function (res) {
-						if (res.body.status === 0) {
-							_this.list = res.body.msg;
-						} else {
-							_this.list = "";
-						}
-					});
-				}
-			}
-		}
+	      if (!data) data = '';
+	      (0, _server.post)('/data', data).then(function (res) {
+	        _this.list = "";
+	        switch (res.body.status) {
+	          case 0:
+	            _this.list = res.body.msg;
+	            break;
+	          case 4:
+	            _this.$root.$emit('dropFn', '权限不够，你干了什么？');
+	            break;
+	          case 3:
+	            _this.$root.$emit('dropFn', '连接服务器失败？？');
+	            break;
+	          case 5:
+	            _this.$root.$emit('backLogin', res.body);
+	            _this.list = [];
+	            break;
+	        }
+	        return;
+	      });
+	    }
+	  },
+	  created: function created() {
+	    this.getData();
+	  }
 	};
 
 
 	function getTime(value) {
-		var time = new Date(value);
-		return time.getTime();
+	  var time = new Date(value);
+	  return time.getTime();
 	}
 	// </script>
 	//
@@ -15461,14 +15481,19 @@ webpackJsonp([0,1],[
 	//
 	// .search-body{
 	// 	width: 68.75rem;
-	// 	margin: 0.9375rem auto;
-	// 	border-radius: 0.625rem;
+	// 	margin: .9375rem auto;
+	// 	border-radius: .625rem;
 	// }
 	// .scroll{
 	// 	overflow-y: scroll;
 	// 	max-height: 400px;
 	// }
+	// .order-search{
+	// 	button{
+	// 		margin-right: .9375rem;
+	// 	}
 	//
+	// }
 	// </style>
 
 /***/ },
@@ -18356,7 +18381,7 @@ webpackJsonp([0,1],[
 /* 105 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"search-body\">\n\t<div class=\"line\">\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">学号：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input large-input\" v-model=\"no\" placeholder=\"输入报修人学号，如果你知道\">\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">手机号码：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input large-input\" v-model=\"tel\" placeholder=\"报修人手机号码\">\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">报修时间：</label>\n\t\t\t\t<flatpickr v-model=\"startTime\"  placeholder=\"开始时间\" :options=\"options\"></flatpickr>\n\t\t\t</div>\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label for=\"input-label\">-</label>\n\t\t\t\t<flatpickr v-model=\"endTime\"  placeholder=\"结束时间\" :options=\"options\"></flatpickr>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"line\">\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">姓名：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input large-input\" v-model=\"user\" placeholder=\"报修人的名字\">\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">问题类型：</label>\n\t\t\t\t<sel :selectData.sync=\"selType\" :pla=\"'点一下，选择问题类型'\" :current-data.sync=\"type\" :show.sync=\"roomShow\"></sel>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">宿舍：</label>\n\t\t\t\t<sel :selectData.sync=\"selRoom\" :pla=\"'建议也只能选择'\" :current-data.sync=\"room\" :show.sync=\"typeShow\"></sel>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"input-group\">\n\t\t\t\t<a href=\"javascript:void(0)\" class=\"col-8 btn txc btn-primary pdtr\" @click=\"searchData\" style=\"max-height:80%;line-height:2.1875rem;\">搜索</a>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"search-body\">\n\t<div class=\"line\">\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">学号：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input large-input\" v-model=\"no\" placeholder=\"输入报修人学号，如果你知道\">\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">手机号码：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input large-input\" v-model=\"tel\" placeholder=\"报修人手机号码\">\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">报修时间：</label>\n\t\t\t\t<flatpickr v-model=\"startTime\"  placeholder=\"开始时间\" :options=\"options\"></flatpickr>\n\t\t\t</div>\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label for=\"input-label\">-</label>\n\t\t\t\t<flatpickr v-model=\"endTime\"  placeholder=\"结束时间\" :options=\"options\"></flatpickr>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"line\">\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">姓名：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input large-input\" v-model=\"user\" placeholder=\"报修人的名字\">\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">问题类型：</label>\n\t\t\t\t<sel :selectData.sync=\"selType\" :pla=\"'点一下，选择问题类型'\" :current-data.sync=\"type\" :show.sync=\"roomShow\"></sel>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"hoz-input\">\n\t\t\t\t<label class=\"input-label\">宿舍：</label>\n\t\t\t\t<sel :selectData.sync=\"selRoom\" :pla=\"'建议也只能选择'\" :current-data.sync=\"room\" :show.sync=\"typeShow\"></sel>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class=\"mr\">\n\t\t\t<div class=\"input-group\">\n\t\t\t\t<a href=\"javascript:void(0)\" class=\"col-8 btn txc btn-primary pdtr\" @click=\"searchData\" style=\"max-height:80%;line-height:2.1875rem;\">搜索</a>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<div class=\"line order-search\">\n\t\t<button class=\"btn txc btn-primary pdtr\" @click=\"getData\" >所有订单</button>\n\t\t<button class=\"btn txc btn-primary pdtr\" @click=\"getData(`status=1`)\">所有未处理订单</button>\n\t\t<button class=\"btn txc btn-primary pdtr\" @click=\"getData(`status=2`)\">所有处理中订单</button>\n\t\t<button class=\"btn txc btn-primary pdtr\" @click=\"getData(`status=3`)\">所有已完成订单</button>\n\t</div>\n\t<div class=\"line order-search\">\n\t\t<button class=\"btn txc btn-primary pdtr\" @click=\"getData(`grade=${this.grade}&admin=${this.user_name}&status=1`)\">我的订单</button>\n\t\t<button class=\"btn txc btn-primary pdtr\" @click=\"getData(`grade=${this.grade}&admin=${this.user_name}&status=1`)\">我的未处理订单</button>\n\t\t<button class=\"btn txc btn-primary pdtr\" @click=\"getData(`grade=${this.grade}&admin=${this.user_name}&status=2`)\">我的处理中订单</button>\n\t\t<button class=\"btn txc btn-primary pdtr\" @click=\"getData(`grade=${this.grade}&admin=${this.user_name}&status=3`)\">我的已完成订单</button>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 106 */
@@ -18754,7 +18779,7 @@ webpackJsonp([0,1],[
 /* 118 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"data-body\">\n\t<div class=\"data-row\">\n\t\t<div class=\"data-list\" v-show=\"detail == true\">\n\t\t\t<search :list.sync=\"all\"></search>\n\t\t\t<table-data :list.sync=\"list\" :detail-data.sync=\"detailData\" :detail.sync=\"detail\"></table-data>\n\t\t</div>\n\t\t<page :current.sync=\"current\" :total.sync=\"total\" v-show=\"all && all.length > 10 && detail\"></page>\n\t\t<detail :show.sync=\"detail\" :msg.sync=\"detailData\"></detail>\n\t</div>\n\t<load v-if=\"!list\"></load>\t\n</div>\n";
+	module.exports = "\n<div class=\"data-body\">\n\t<div class=\"data-row\">\n\t\t<div class=\"data-list\" v-show=\"detail == true\">\n\t\t\t<search :list.sync=\"all\"></search>\n\t\t\t<table-data :list.sync=\"list\" :detail-data.sync=\"detailData\" :detail.sync=\"detail\"></table-data>\n\t\t</div>\n\t\t<page :current.sync=\"current\" :total.sync=\"total\" v-show=\"all && all.length > 10 && detail\"></page>\n\t\t<detail :show.sync=\"detail\" :msg.sync=\"detailData\"></detail>\n\t</div>\n\t<load v-if=\"false\"></load>\t\n</div>\n";
 
 /***/ },
 /* 119 */
@@ -19317,7 +19342,8 @@ webpackJsonp([0,1],[
 						if (res.status == 200) {
 							if (res.body.status === 0) {
 								_this.title = '正在登陆...';
-								window.sessionStorage.setItem('user', res.body);
+								sessionStorage.setItem('user', res.body.msg.grade);
+								sessionStorage.setItem('admin', res.body.msg.admin);
 								_this.$router.go({ path: '/home' });
 							} else {
 								_this.title = '登陆信息可能存在错误...';
