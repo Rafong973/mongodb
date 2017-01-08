@@ -15114,20 +15114,40 @@ webpackJsonp([0,1],[
 	var _server = __webpack_require__(30);
 
 	exports.default = {
+
 		name: 'tableData',
+
 		props: ['list', 'detailData', 'detail'],
+
+		data: function data() {
+			return {
+				time: ''
+			};
+		},
+
+
 		methods: {
 			disDetail: function disDetail(data) {
 				this.detailData = data;
 				this.detail = false;
 			},
 			del: function del(value) {
-				var con = 'no=' + value.no + '&tel=' + vaule.tel + '&name' + value.name;
-				(0, _server.post)('/del', '_id=' + con).then(function (res) {
+				var _this = this;
+
+				clearTimeout(this.time);
+				var con = '_id=' + value._id + '&no=' + value.no + '&tel=' + value.tel + '&name=' + value.name;
+				(0, _server.post)('/del', con).then(function (res) {
 					if (res.body.status === 0) {
-						console.log(res.body);
+						(function () {
+							_this.$root.$emit('dropFn', '删除成功了');
+							var self = _this;
+							_this.time = setTimeout(function () {
+								self.list.$remove(value);
+							}, 800);
+						})();
 					} else {
-						console.log('fail');
+						_this.$root.$emit('dropFn', '可能失败了');
+						return;
 					}
 				});
 			}
@@ -19474,7 +19494,7 @@ webpackJsonp([0,1],[
 				passagain: '',
 				validation: '',
 				password: '',
-				super: false,
+				super: 1,
 				warm: false
 			};
 		},
@@ -19485,7 +19505,7 @@ webpackJsonp([0,1],[
 				var _this = this;
 
 				var a = vail(this.passagain);
-				var s = this.super ? 0 : 1;
+				var s = this.super ? 2 : 1;
 				var arr = {
 					admin: this.admin,
 					password: this.password,

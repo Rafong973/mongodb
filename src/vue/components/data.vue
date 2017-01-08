@@ -49,22 +49,36 @@
 import { post } from '../../script/server'
 
 export default{
+
 	name:'tableData',
+
 	props:['list','detailData','detail'],
+
+	data(){
+		return{
+			time:''
+		}
+	},
+
 	methods:{
 		disDetail(data){
 			this.detailData = data;
 			this.detail = false
 		},
 		del(value){
-			const con = 'no=' + value.no + '&tel='
-						+ vaule.tel + '&name' + value.name
-			post('/del','_id=' + con )
+			clearTimeout(this.time);
+			const con = '_id='+ value._id +'&no=' + value.no + '&tel='+ value.tel + '&name=' + value.name;
+			post('/del',con )
 			.then( (res) => {
 				if(res.body.status === 0){
-					console.log(res.body)
+					this.$root.$emit('dropFn','删除成功了');
+					let self = this;
+					this.time = setTimeout(() =>{
+						self.list.$remove(value);
+					},800)
 				}else{
-					console.log('fail');
+					this.$root.$emit('dropFn','可能失败了');
+					return;
 				}
 			})
 		}

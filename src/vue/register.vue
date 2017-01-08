@@ -57,7 +57,7 @@ export default{
 			passagain: '',
 			validation: '',
 			password: '',
-			super: false,
+			super: 1,
 			warm:false
 		}
 	},
@@ -65,7 +65,7 @@ export default{
 	methods:{
 		submit(){
 			let a = vail(this.passagain);
-			let s = this.super ? 0 : 1;
+			let s = this.super ? 2 : 1;
 			let arr = {
 				admin: this.admin,
 				password: this.password,
