@@ -33,3 +33,16 @@ var Kitten = mongo.model('Kitten',kittySchema);
 var Data = mongo.model('Data',KittyData);
 
 export default {Admin : Kitten,Data: Data};
+
+
+/**
+问题类型:
+{type:1,name:'锐捷问题'},
+{type:2,name:'硬件问题'},
+{type:3,name:'软件问题'}
+
+管理员级别
+{grade:1,name:'普通管理员'},
+{grade:2,name:'最高管理员'}
+
+**/

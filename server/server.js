@@ -40,6 +40,8 @@ export default function server(app,body){
 					       grade:docs[0].grade
 					      };
 					req.session.i = 1;
+					req.session.grade = docs[0].grade;
+					console.log(req.session);
 				}else{
 					msg = pderror
 				}
@@ -54,8 +56,8 @@ export default function server(app,body){
 		let msg = '';
 		if (!data) return xres.sendStatus(400);
 		if(data.validation != vail) return res.send({status:4,msg:'the admin is error'})
-		db.find({admin:data.admin},function(err,docs){
-			if(err) res.send({status:3,msg:'sever is error'});
+		db.find({admin:data.admin},function(error,docs){
+			if(error) res.send({status:3,msg:'sever is error'});
 			if(docs.length <= 0){
 				let pass = cry.createHmac('sha512',data.password)
 							  .update('I am bydqjx')
@@ -85,16 +87,16 @@ export default function server(app,body){
 			}
 		}
 		if(Object.keys(data).length == 0){
-			re.find({},function(err,docs){
-				if(!err){
+			re.find({},function(error,docs){
+				if(!error){
 					res.send(success(docs));
 				}else{
 					res.send(error('mongodb is error'))
 				}
 			})
 		}else{
-			re.find(data,function(err,docs){
-				if(!err){
+			re.find(data,function(error,docs){
+				if(!error){
 					res.send(success(docs));
 				}else{
 					res.send(error('mongodb is error'))
@@ -107,19 +109,19 @@ export default function server(app,body){
 	app.post('/save',body.urlencoded(),function(req,res,next){
 		const data = req.body;
 		let m = new re(data);
-		m.save(function(err){
-			console.error(err);
+		m.save(function(error){
+			console.error(error);
 		});
 		res.send({status:0,msg:'susccess'});
 	});
 
 	app.post('/del',body.urlencoded(),(req,res) =>{
-		const data = req.data;
+		const data = req.body;
 		let msg = '';
-		re.remove(data,function(err){
-			console.log(data);
-			if(err){
-				msg = err('delete is failed')
+		re.remove(data,function(error){
+			console.log(error);
+			if(error){
+				msg = err('delete is failed');
 			}else{
 				msg = success('deleted');
 			}
