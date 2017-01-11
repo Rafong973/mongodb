@@ -89,7 +89,6 @@ export default function server(app,body){
 				delete data.grade;
 			}
 		}
-		console.log(data);
 		if(startTime && endTime){
 			data.date = { $gte:parseInt(data.date),$lte:parseInt(data.endTime) };
 			delete data.endTime;
@@ -131,7 +130,6 @@ export default function server(app,body){
 		const data = req.body;
 		let msg = '';
 		re.remove(data,function(error){
-			console.log(error);
 			if(error){
 				msg = err('delete is failed');
 			}else{

@@ -4,9 +4,9 @@ a{text-decoration: none;}
 .app{width: 100%;min-height: 100%;}
 .txc{text-align: center;}
 .none{display: none;}
-.line{height:2.1875rem;margin-bottom: .625rem;width: 100%;overflow: hidden;line-height: 2.1875rem;}
+.line{height:2.1875rem;margin-bottom: .625rem;width: 100%;line-height: 2.1875rem;}
 html{font-family: "Microsoft Yahei";}
-.input-group{position:relative;width: 100%;line-height:2.1875;margin-bottom: .625rem;padding-bottom: .625rem;}
+.input-group{position:relative;width: 100%;line-height:2.1875;margin-bottom: .625rem;padding-bottom: 0.9375rem;}
 .vertical-input .input-label,.vertical-input .input-input,.flatpickr-mobile{width: 90%;margin:0 auto;text-align: left;display:block;height: 2.1875rem;}
 .hoz-input{position:relative;height: 2.1875rem;float:left;line-height: 2.1875rem;margin-right: .3125rem;}
 .flatpickr-input{border-radius: .25rem;border:.0625rem solid #ccc;text-indent: .5rem;}
@@ -30,4 +30,5 @@ input[type="text"]:focus,input[type="number"]:focus,input[type="password"]:focus
 .col-12{width: 100%;display: block;position: relative;}
 .fr{float: right;}
 .fl{float: left;}
+.over-hidden{overflow:hidden; }
 .mr{margin-right: .625rem;float: left;}

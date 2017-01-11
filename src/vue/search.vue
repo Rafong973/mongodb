@@ -39,7 +39,7 @@
 			</div>
 			<div class="mr">
 				<div class="hoz-input">
-					<label class="input-label">宿舍：</label>
+					<label class="input-label">宿舍楼层：</label>
 					<sel :selectData.sync="selRoom" :pla="'建议也只能选择'" :current-data.sync="room" :show.sync="typeShow"></sel>
 				</div>
 			</div>
@@ -50,7 +50,7 @@
 			</div>
 		</div>
 		<div class="line order-search">
-			<button class="btn txc btn-primary pdtr" @click="getData" >所有订单</button>
+			<button class="btn txc btn-primary pdtr" @click="getData()" >所有订单</button>
 			<button class="btn txc btn-primary pdtr" @click="getData(`status=1`)">所有未处理订单</button>
 			<button class="btn txc btn-primary pdtr" @click="getData(`status=2`)">所有处理中订单</button>
 			<button class="btn txc btn-primary pdtr" @click="getData(`status=3`)">所有已完成订单</button>
@@ -145,7 +145,7 @@ export default{
     		}
     	},
     	getData(data){
-    		if(!data) data = '';
+    		if(!data) data = null;
     		post('/data',data)
     		.then((res)=>{
     			this.list = "";
@@ -185,7 +185,7 @@ function getTime(value){
 
 .search-body{
 	width: 68.75rem;
-	margin: .9375rem auto;
+	margin: .9375rem 0;
 	border-radius: .625rem;
 }
 .scroll{
@@ -196,6 +196,7 @@ function getTime(value){
 	button{
 		margin-right: .9375rem;
 	}
+	overflow:hidden;
 
 }
 </style>
