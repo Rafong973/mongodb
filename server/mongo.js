@@ -45,4 +45,9 @@ export default {Admin : Kitten,Data: Data};
 {grade:1,name:'普通管理员'},
 {grade:2,name:'最高管理员'}
 
+订单状态
+{status: 1 ,name:'未处理'}
+{status: 2 ,name:'处理中'}
+{status: 3 ,name:'已完成'}
+
 **/

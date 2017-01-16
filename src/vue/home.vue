@@ -64,7 +64,6 @@ export default{
 	left: 50%;
 	transform: translateX(-50%);
 	-webkit-transform: translateX(-50%);
-	color: #4d6076;
 	font-size: 0.8125rem;
 	.data{
 		min-height: 450px;

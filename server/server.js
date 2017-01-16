@@ -138,4 +138,31 @@ export default function server(app,body){
 			res.send(msg);
 		})
 	});
+
+	app.post('/update',body.urlencoded(),(req,res) =>{
+		const data = req.body;
+		const id = data._id;
+		delete data.id;
+		// re.update({'_id':id},{'admin':data.admin,'status':2},function(err,docs){
+		// 	console.log(err,docs);
+		// 	if(err){
+		// 		res.send(err('update failed'));
+		// 	}else{
+		// 		re.findOne({'_id':id},function(err,docs){
+		// 			res.send(success(docs));
+		// 		});
+		// 	}
+		// });
+		re.findOne({'_id':id},function(err,doc){
+			if(doc.status > 1){
+				res.send('can not use');
+				return;
+			}else{
+				doc.admin = data.admin;
+				doc.status = 2;
+				doc.save();
+				res.send(success(doc));
+			}
+		})
+	})
 }

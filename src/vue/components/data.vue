@@ -29,8 +29,8 @@
 					<td>
 						<a href="javascript:void(0)" v-if="l.status == 0 && l.admin == 0">指派</a>
 						<a href="javascript:void(0)" @click="del(l)">删除</a>
-						<a href="javascript:void(0)" v-if="l.status == 0">我来处理</a>
-						<a href="javascript:void(0)" v-if="l.status == 1 ">完成处理</a>
+						<a href="javascript:void(0)" v-if="l.status == 1" @click="my(l._id)">我来处理</a>
+						<a href="javascript:void(0)" v-if="l.status == 2 " @click="my(l._id)">完成处理</a>
 						<a href="javascript:void(0)" @click="disDetail(l)">
 							详情
 						</a>
@@ -81,6 +81,21 @@ export default{
 					return;
 				}
 			})
+		},
+		getMy(id){
+			let admin = sessionStorage.getItem('admin');
+			console.log(admin);
+			post('/update','admin=' + admin + '&_id=' + id)
+			.then((res) => {
+				if(res.body.status===0){
+					let l = res.body.msg;
+				}else{
+					this.$root.$emit('dropFn','接单失败');
+				}	
+			})
+		},
+		my(id){
+				
 		}
 	}
 }

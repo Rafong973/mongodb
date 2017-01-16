@@ -4,7 +4,6 @@
   left: 50%;
   transform: translateX(-50%);
   -webkit-transform: translateX(-50%);
-  color: #4d6076;
   font-size: 0.8125rem; }
   .data-row .data {
     min-height: 450px; }
@@ -148,6 +147,9 @@
 body {
   font-size: 16px; }
 
+.app {
+  color: #4d6076; }
+
 .route-transition {
   -webkit-transition: opacity .5s ease;
   transition: opacity .5s ease; }
@@ -230,6 +232,11 @@ body {
 .dropout {
   -webkit-transform: translateY(0);
           transform: translateY(0); }
+.secondary {
+  min-width: 150px;
+  max-width: 200px; }
+  .secondary div:first-child {
+    margin-bottom: 10px; }
 .login-body {
   width: 100%;
   height: 100%;

@@ -8,6 +8,7 @@
 		<nav-bar></nav-bar>
 		<tip :show.sync="ale" :text="tipText" :count.sync="opera"></tip>
 		<drop :show.sync="dropTip"></drop>
+		<secondary></secondary>
 	</div>
 </template>
 
@@ -17,6 +18,7 @@
 import navBar from './components/nav.vue'
 import tip from './components/alert.vue'
 import drop from './components/drop.vue'
+import secondary from './components/secondary.vue'
 
 export default{
 	name: 'app',
@@ -30,11 +32,12 @@ export default{
 			opera:true,
 			dropTip:'',
 			timeOut:'',
-			loading:false
+			loading:false,
+			secondTip:''
 		}
 	},
 
-	components:{ navBar,tip,drop},
+	components:{ navBar,tip,drop,secondary},
 
 	events:{
 		backLogin(res){
@@ -58,13 +61,16 @@ export default{
 				self.dropTip = '';
 			},2500)
 		}
-	}
+	},
 
 }
 </script>
 
 <style>
 body{font-size:16px;}
+.app{
+	color: #4d6076;
+}
 .route-transition {
     transition: opacity .5s ease;
 }
