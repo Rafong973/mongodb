@@ -14,7 +14,7 @@
 				<tr>
 					<td>手机号码</td>
 					<td>
-						<input type="text" class="large-input" v-model="msg.tel" :readonly="edit">
+						<input type="text" class="large-input detail-input" v-model="msg.tel" :readonly="edit" :class="{warm:!edit}">
 					</td>
 				</tr>
 				<tr>
@@ -27,7 +27,10 @@
 				</tr>
 				<tr>
 					<td>预约时间</td>
-					<td>{{ msg.date | timeReturn }}</td>
+					<td>
+					<span type="text" class="large-input" :class="{warm:!edit}">{{ msg.date | timeReturn }}</span>
+					<flatpickr :options="options" v-model="newTime" v-show="!edit" :class="{warm:!edit}"></flatpickr>
+					</td>
 				</tr>
 				<tr>
 					<td>报修时间</td>
@@ -51,15 +54,27 @@
 </template>
 
 <script>
+
+import flatpickr from './flatpickr.vue'
+
 export default{
 	
 	name: 'detail',
 
 	props:['msg','show'],
 
+	components: {
+        flatpickr
+    },
+
 	data(){
 		return{
 			edit:true,
+			options:{
+				enableTime: true,
+				time_24hr:true
+			},
+			newTime:''
 		}
 	},
 	methods:{
@@ -73,10 +88,13 @@ export default{
 			this.edit = true;
 		}
 	},
-	created(){
-
+	watch:{
+		newTime(newValue){
+			let date = new Date(newValue);
+			let time = date.getTime();
+			this.msg.date = time;
+		}
 	}
-
 }
 </script>
 
@@ -93,18 +111,23 @@ export default{
 		border-bottom: .0625rem solid #f0f0f1;
 	}
 	input{
-		border: 0;
-		background-color: #fafafa;
-		font-size: .8125rem;
-		color: #4d6076;
 		&:focus{
 			outline: 0;
 			border: 0;
 		}
 	}
+	.flatpickr-input{
+		text-indent: 0;
+		opacity: 0;
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+	}
 	td{
 		padding: .625rem 0;
 		width: 80%;
+		position: relative;
 		&:first-child {
 			width: 20%;
 			text-align: center;
@@ -114,5 +137,11 @@ export default{
 			text-indent: 0.9375rem;
 		}
 	}
+}
+.detail-input{
+	border: 0;
+	background-color: #fafafa;
+	font-size: .8125rem;
+	color: #4d6076;
 }
 </style>

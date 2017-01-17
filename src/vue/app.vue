@@ -6,7 +6,7 @@
 		>
 		</router-view>
 		<nav-bar></nav-bar>
-		<tip :show.sync="tipText" :text="tipText" :fn.sync="alertFnTip"></tip>
+		<tip :show.sync="tipText" :text.sync="tipText" :method="tipFn"></tip>
 		<drop :show.sync="dropTip"></drop>
 	</div>
 </template>
@@ -18,6 +18,7 @@ import navBar from './components/nav.vue'
 import tip from './components/alert.vue'
 import drop from './components/drop.vue'
 import secondary from './components/secondary.vue'
+import { post } from '../script/server'
 
 export default{
 	name: 'app',
@@ -25,25 +26,22 @@ export default{
 	data(){
 		return{
 			name : 'app',
-			curUser:{},
 			tipText:'',
 			dropTip:'',
 			timeOut:'',
 			loading:false,
 			secondTip:'',
-			alertFnTip:''
+			tipFn:'',
+			time:''
 		}
 	},
 
 	components:{ navBar,tip,drop,secondary},
 
 	events:{
-		backLogin(res){
-			if(res.status == 5){
-				this.$root.$emit('alertFn','你可能需要重新登陆，才能继续操作',this.logout());
-			}else if(res.status == 3){
-				this.$root.$emit('alertFn','请求错误，我建议你重新登陆',this.logout());
-			}
+		backLogin(){
+			this.$root.$emit('alertFn','你可能需要重新登陆，才能继续操作');
+			this.$dispatch('child','logout');
 		},
 		dropFn(text){
 			let self = this;
@@ -53,15 +51,45 @@ export default{
 				self.dropTip = '';
 			},2500)
 		},
-		alertFn(value,fn){
-			this.tipText = value;
-			eval(fn);
-		}
-	},
-	methods:{
+		delete(value){
+			clearTimeout(this.time);
+			const con = '_id='+ value._id +'&no=' + value.no + '&tel='+ value.tel + '&name=' + value.name;
+			post('/del',con)
+			.then( (res) => {
+				if(res.body.status === 0){
+					this.$root.$emit('dropFn','删除成功了');
+					let self = this;
+					this.time = setTimeout(() =>{
+						self.$broadcast('deleteId',value);
+					},800)
+				}else{
+					this.$root.$emit('dropFn','可能失败了');
+					return;
+				}
+			})
+		},
+		getMy(id){
+			let admin = sessionStorage.getItem('admin');
+			post('/update','admin=' + admin + '&_id=' + id)
+			.then((res) => {
+				if(res.body.status===0){
+					let l = res.body.msg;
+				}else{
+					this.$root.$emit('dropFn','接单失败');
+				}	
+			})
+		},
 		logout(){	
 			sessionStorage.removeItem('user');
+			sessionStorage.removeItem('admin');
+			sessionStorage.removeItem('id');
 			this.$router.go({path:'/login'});
+		},
+		child(msg){
+			this.tipFn = msg;
+		},
+		alertFn(value){
+			this.tipText = value;
 		},
 	}
 

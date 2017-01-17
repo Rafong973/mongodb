@@ -10,74 +10,68 @@ webpackJsonp([0,1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	var _vue = __webpack_require__(2);
-
+	
 	var _vue2 = _interopRequireDefault(_vue);
-
+	
 	var _vueRouter = __webpack_require__(4);
-
+	
 	var _vueRouter2 = _interopRequireDefault(_vueRouter);
-
+	
 	var _vueResource = __webpack_require__(5);
-
+	
 	var _vueResource2 = _interopRequireDefault(_vueResource);
-
+	
 	var _home = __webpack_require__(6);
-
+	
 	var _home2 = _interopRequireDefault(_home);
-
+	
 	var _app = __webpack_require__(119);
-
+	
 	var _app2 = _interopRequireDefault(_app);
-
+	
 	var _login = __webpack_require__(139);
-
+	
 	var _login2 = _interopRequireDefault(_login);
-
+	
 	var _register = __webpack_require__(143);
-
+	
 	var _register2 = _interopRequireDefault(_register);
-
-	var _vaildate = __webpack_require__(146);
-
-	var _vaildate2 = _interopRequireDefault(_vaildate);
-
-	var _filter = __webpack_require__(147);
-
+	
+	var _filter = __webpack_require__(146);
+	
 	var _filter2 = _interopRequireDefault(_filter);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	/**css**/
-	__webpack_require__(148);
-
+	__webpack_require__(147);
+	
 	/**component**/
-
-
+	
+	
 	/**directive**/
-
-
+	
 	/**filter**/
-
-
+	
+	
 	_vue2.default.use(_vueRouter2.default);
 	_vue2.default.use(_vueResource2.default);
-
+	
 	/**directive**/
-	_vue2.default.directive('vaildate', _vaildate2.default);
-
+	
 	/**filter**/
 	_vue2.default.filter('numstatus', _filter2.default.numstatus);
 	_vue2.default.filter('problem', _filter2.default.problem);
 	_vue2.default.filter('timeReturn', _filter2.default.timeReturn);
-
+	
 	var route = new _vueRouter2.default({
 		hashbang: false,
 		history: false,
 		saveScrollPosition: true
 	});
-
+	
 	route.map({
 		'/home': {
 			component: _home2.default
@@ -89,11 +83,11 @@ webpackJsonp([0,1],[
 			component: _register2.default
 		}
 	});
-
+	
 	route.redirect({
 		'*': '/home'
 	});
-
+	
 	route.afterEach(function (transition) {
 		console.log("成功浏览到：" + transition.to.path);
 	});
@@ -102,7 +96,7 @@ webpackJsonp([0,1],[
 		    next = _ref.next,
 		    abort = _ref.abort,
 		    redirect = _ref.redirect;
-
+	
 		var r = to.path,
 		    user = sessionStorage.getItem('user');
 		if (!user || user == '/logout') {
@@ -125,13 +119,13 @@ webpackJsonp([0,1],[
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global, process) {/*!
-	 * Vue.js v1.0.24
+	/* WEBPACK VAR INJECTION */(function(process) {/*!
+	 * Vue.js v1.0.28
 	 * (c) 2016 Evan You
 	 * Released under the MIT License.
 	 */
 	'use strict';
-
+	
 	function set(obj, key, val) {
 	  if (hasOwn(obj, key)) {
 	    obj[key] = val;
@@ -158,14 +152,14 @@ webpackJsonp([0,1],[
 	  }
 	  return val;
 	}
-
+	
 	/**
 	 * Delete a property and trigger change if necessary.
 	 *
 	 * @param {Object} obj
 	 * @param {String} key
 	 */
-
+	
 	function del(obj, key) {
 	  if (!hasOwn(obj, key)) {
 	    return;
@@ -189,7 +183,7 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	}
-
+	
 	var hasOwnProperty = Object.prototype.hasOwnProperty;
 	/**
 	 * Check whether the object has the property.
@@ -198,36 +192,36 @@ webpackJsonp([0,1],[
 	 * @param {String} key
 	 * @return {Boolean}
 	 */
-
+	
 	function hasOwn(obj, key) {
 	  return hasOwnProperty.call(obj, key);
 	}
-
+	
 	/**
 	 * Check if an expression is a literal value.
 	 *
 	 * @param {String} exp
 	 * @return {Boolean}
 	 */
-
+	
 	var literalValueRE = /^\s?(true|false|-?[\d\.]+|'[^']*'|"[^"]*")\s?$/;
-
+	
 	function isLiteral(exp) {
 	  return literalValueRE.test(exp);
 	}
-
+	
 	/**
 	 * Check if a string starts with $ or _
 	 *
 	 * @param {String} str
 	 * @return {Boolean}
 	 */
-
+	
 	function isReserved(str) {
 	  var c = (str + '').charCodeAt(0);
 	  return c === 0x24 || c === 0x5F;
 	}
-
+	
 	/**
 	 * Guard text output, make sure undefined outputs
 	 * empty string
@@ -235,11 +229,11 @@ webpackJsonp([0,1],[
 	 * @param {*} value
 	 * @return {String}
 	 */
-
+	
 	function _toString(value) {
 	  return value == null ? '' : value.toString();
 	}
-
+	
 	/**
 	 * Check and convert possible numeric strings to numbers
 	 * before setting back to data
@@ -247,7 +241,7 @@ webpackJsonp([0,1],[
 	 * @param {*} value
 	 * @return {*|Number}
 	 */
-
+	
 	function toNumber(value) {
 	  if (typeof value !== 'string') {
 	    return value;
@@ -256,61 +250,61 @@ webpackJsonp([0,1],[
 	    return isNaN(parsed) ? value : parsed;
 	  }
 	}
-
+	
 	/**
 	 * Convert string boolean literals into real booleans.
 	 *
 	 * @param {*} value
 	 * @return {*|Boolean}
 	 */
-
+	
 	function toBoolean(value) {
 	  return value === 'true' ? true : value === 'false' ? false : value;
 	}
-
+	
 	/**
 	 * Strip quotes from a string
 	 *
 	 * @param {String} str
 	 * @return {String | false}
 	 */
-
+	
 	function stripQuotes(str) {
 	  var a = str.charCodeAt(0);
 	  var b = str.charCodeAt(str.length - 1);
 	  return a === b && (a === 0x22 || a === 0x27) ? str.slice(1, -1) : str;
 	}
-
+	
 	/**
-	 * Camelize a hyphen-delmited string.
+	 * Camelize a hyphen-delimited string.
 	 *
 	 * @param {String} str
 	 * @return {String}
 	 */
-
+	
 	var camelizeRE = /-(\w)/g;
-
+	
 	function camelize(str) {
 	  return str.replace(camelizeRE, toUpper);
 	}
-
+	
 	function toUpper(_, c) {
 	  return c ? c.toUpperCase() : '';
 	}
-
+	
 	/**
 	 * Hyphenate a camelCase string.
 	 *
 	 * @param {String} str
 	 * @return {String}
 	 */
-
-	var hyphenateRE = /([a-z\d])([A-Z])/g;
-
+	
+	var hyphenateRE = /([^-])([A-Z])/g;
+	
 	function hyphenate(str) {
-	  return str.replace(hyphenateRE, '$1-$2').toLowerCase();
+	  return str.replace(hyphenateRE, '$1-$2').replace(hyphenateRE, '$1-$2').toLowerCase();
 	}
-
+	
 	/**
 	 * Converts hyphen/underscore/slash delimitered names into
 	 * camelized classNames.
@@ -322,13 +316,13 @@ webpackJsonp([0,1],[
 	 * @param {String} str
 	 * @return {String}
 	 */
-
+	
 	var classifyRE = /(?:^|[-_\/])(\w)/g;
-
+	
 	function classify(str) {
 	  return str.replace(classifyRE, toUpper);
 	}
-
+	
 	/**
 	 * Simple bind, faster than native
 	 *
@@ -336,14 +330,14 @@ webpackJsonp([0,1],[
 	 * @param {Object} ctx
 	 * @return {Function}
 	 */
-
+	
 	function bind(fn, ctx) {
 	  return function (a) {
 	    var l = arguments.length;
 	    return l ? l > 1 ? fn.apply(ctx, arguments) : fn.call(ctx, a) : fn.call(ctx);
 	  };
 	}
-
+	
 	/**
 	 * Convert an Array-like object to a real Array.
 	 *
@@ -351,7 +345,7 @@ webpackJsonp([0,1],[
 	 * @param {Number} [start] - start index
 	 * @return {Array}
 	 */
-
+	
 	function toArray(list, start) {
 	  start = start || 0;
 	  var i = list.length - start;
@@ -361,14 +355,14 @@ webpackJsonp([0,1],[
 	  }
 	  return ret;
 	}
-
+	
 	/**
 	 * Mix properties into target object.
 	 *
 	 * @param {Object} to
 	 * @param {Object} from
 	 */
-
+	
 	function extend(to, from) {
 	  var keys = Object.keys(from);
 	  var i = keys.length;
@@ -377,7 +371,7 @@ webpackJsonp([0,1],[
 	  }
 	  return to;
 	}
-
+	
 	/**
 	 * Quick object check - this is primarily used to tell
 	 * Objects from primitive values when we know the value
@@ -386,11 +380,11 @@ webpackJsonp([0,1],[
 	 * @param {*} obj
 	 * @return {Boolean}
 	 */
-
+	
 	function isObject(obj) {
 	  return obj !== null && typeof obj === 'object';
 	}
-
+	
 	/**
 	 * Strict object type check. Only returns true
 	 * for plain JavaScript objects.
@@ -398,23 +392,23 @@ webpackJsonp([0,1],[
 	 * @param {*} obj
 	 * @return {Boolean}
 	 */
-
+	
 	var toString = Object.prototype.toString;
 	var OBJECT_STRING = '[object Object]';
-
+	
 	function isPlainObject(obj) {
 	  return toString.call(obj) === OBJECT_STRING;
 	}
-
+	
 	/**
 	 * Array type check.
 	 *
 	 * @param {*} obj
 	 * @return {Boolean}
 	 */
-
+	
 	var isArray = Array.isArray;
-
+	
 	/**
 	 * Define a property.
 	 *
@@ -423,7 +417,7 @@ webpackJsonp([0,1],[
 	 * @param {*} val
 	 * @param {Boolean} [enumerable]
 	 */
-
+	
 	function def(obj, key, val, enumerable) {
 	  Object.defineProperty(obj, key, {
 	    value: val,
@@ -432,7 +426,7 @@ webpackJsonp([0,1],[
 	    configurable: true
 	  });
 	}
-
+	
 	/**
 	 * Debounce a function so it only gets called after the
 	 * input stops arriving after the given wait period.
@@ -441,7 +435,7 @@ webpackJsonp([0,1],[
 	 * @param {Number} wait
 	 * @return {Function} - the debounced function
 	 */
-
+	
 	function _debounce(func, wait) {
 	  var timeout, args, context, timestamp, result;
 	  var later = function later() {
@@ -464,7 +458,7 @@ webpackJsonp([0,1],[
 	    return result;
 	  };
 	}
-
+	
 	/**
 	 * Manual indexOf because it's slightly faster than
 	 * native.
@@ -472,7 +466,7 @@ webpackJsonp([0,1],[
 	 * @param {Array} arr
 	 * @param {*} obj
 	 */
-
+	
 	function indexOf(arr, obj) {
 	  var i = arr.length;
 	  while (i--) {
@@ -480,14 +474,14 @@ webpackJsonp([0,1],[
 	  }
 	  return -1;
 	}
-
+	
 	/**
 	 * Make a cancellable version of an async callback.
 	 *
 	 * @param {Function} fn
 	 * @return {Function}
 	 */
-
+	
 	function cancellable(fn) {
 	  var cb = function cb() {
 	    if (!cb.cancelled) {
@@ -499,7 +493,7 @@ webpackJsonp([0,1],[
 	  };
 	  return cb;
 	}
-
+	
 	/**
 	 * Check if two values are loosely equal - that is,
 	 * if they are plain objects, do they have the same shape?
@@ -508,33 +502,33 @@ webpackJsonp([0,1],[
 	 * @param {*} b
 	 * @return {Boolean}
 	 */
-
+	
 	function looseEqual(a, b) {
 	  /* eslint-disable eqeqeq */
 	  return a == b || (isObject(a) && isObject(b) ? JSON.stringify(a) === JSON.stringify(b) : false);
 	  /* eslint-enable eqeqeq */
 	}
-
+	
 	var hasProto = ('__proto__' in {});
-
+	
 	// Browser environment sniffing
 	var inBrowser = typeof window !== 'undefined' && Object.prototype.toString.call(window) !== '[object Object]';
-
+	
 	// detect devtools
 	var devtools = inBrowser && window.__VUE_DEVTOOLS_GLOBAL_HOOK__;
-
+	
 	// UA sniffing for working around browser-specific quirks
 	var UA = inBrowser && window.navigator.userAgent.toLowerCase();
+	var isIE = UA && UA.indexOf('trident') > 0;
 	var isIE9 = UA && UA.indexOf('msie 9.0') > 0;
 	var isAndroid = UA && UA.indexOf('android') > 0;
-	var isIos = UA && /(iphone|ipad|ipod|ios)/i.test(UA);
-	var isWechat = UA && UA.indexOf('micromessenger') > 0;
-
+	var isIOS = UA && /iphone|ipad|ipod|ios/.test(UA);
+	
 	var transitionProp = undefined;
 	var transitionEndEvent = undefined;
 	var animationProp = undefined;
 	var animationEndEvent = undefined;
-
+	
 	// Transition property/event sniffing
 	if (inBrowser && !isIE9) {
 	  var isWebkitTrans = window.ontransitionend === undefined && window.onwebkittransitionend !== undefined;
@@ -544,7 +538,13 @@ webpackJsonp([0,1],[
 	  animationProp = isWebkitAnim ? 'WebkitAnimation' : 'animation';
 	  animationEndEvent = isWebkitAnim ? 'webkitAnimationEnd' : 'animationend';
 	}
-
+	
+	/* istanbul ignore next */
+	function isNative(Ctor) {
+	  return (/native code/.test(Ctor.toString())
+	  );
+	}
+	
 	/**
 	 * Defer a task to execute it asynchronously. Ideally this
 	 * should be executed as a microtask, so we leverage
@@ -554,39 +554,59 @@ webpackJsonp([0,1],[
 	 * @param {Function} cb
 	 * @param {Object} ctx
 	 */
-
+	
 	var nextTick = (function () {
 	  var callbacks = [];
 	  var pending = false;
-	  var timerFunc;
+	  var timerFunc = undefined;
+	
 	  function nextTickHandler() {
 	    pending = false;
 	    var copies = callbacks.slice(0);
-	    callbacks = [];
+	    callbacks.length = 0;
 	    for (var i = 0; i < copies.length; i++) {
 	      copies[i]();
 	    }
 	  }
-
+	
+	  // the nextTick behavior leverages the microtask queue, which can be accessed
+	  // via either native Promise.then or MutationObserver.
+	  // MutationObserver has wider support, however it is seriously bugged in
+	  // UIWebView in iOS >= 9.3.3 when triggered in touch event handlers. It
+	  // completely stops working after triggering a few times... so, if native
+	  // Promise is available, we will use it:
 	  /* istanbul ignore if */
-	  if (typeof MutationObserver !== 'undefined' && !(isWechat && isIos)) {
+	  if (typeof Promise !== 'undefined' && isNative(Promise)) {
+	    var p = Promise.resolve();
+	    var noop = function noop() {};
+	    timerFunc = function () {
+	      p.then(nextTickHandler);
+	      // in problematic UIWebViews, Promise.then doesn't completely break, but
+	      // it can get stuck in a weird state where callbacks are pushed into the
+	      // microtask queue but the queue isn't being flushed, until the browser
+	      // needs to do some other work, e.g. handle a timer. Therefore we can
+	      // "force" the microtask queue to be flushed by adding an empty timer.
+	      if (isIOS) setTimeout(noop);
+	    };
+	  } else if (typeof MutationObserver !== 'undefined') {
+	    // use MutationObserver where native Promise is not available,
+	    // e.g. IE11, iOS7, Android 4.4
 	    var counter = 1;
 	    var observer = new MutationObserver(nextTickHandler);
-	    var textNode = document.createTextNode(counter);
+	    var textNode = document.createTextNode(String(counter));
 	    observer.observe(textNode, {
 	      characterData: true
 	    });
 	    timerFunc = function () {
 	      counter = (counter + 1) % 2;
-	      textNode.data = counter;
+	      textNode.data = String(counter);
 	    };
 	  } else {
-	    // webpack attempts to inject a shim for setImmediate
-	    // if it is used as a global, so we have to work around that to
-	    // avoid bundling unnecessary code.
-	    var context = inBrowser ? window : typeof global !== 'undefined' ? global : {};
-	    timerFunc = context.setImmediate || setTimeout;
+	    // fallback to setTimeout
+	    /* istanbul ignore next */
+	    timerFunc = setTimeout;
 	  }
+	
 	  return function (cb, ctx) {
 	    var func = ctx ? function () {
 	      cb.call(ctx);
@@ -597,10 +617,10 @@ webpackJsonp([0,1],[
 	    timerFunc(nextTickHandler, 0);
 	  };
 	})();
-
+	
 	var _Set = undefined;
 	/* istanbul ignore if */
-	if (typeof Set !== 'undefined' && Set.toString().match(/native code/)) {
+	if (typeof Set !== 'undefined' && isNative(Set)) {
 	  // use native Set when available.
 	  _Set = Set;
 	} else {
@@ -618,16 +638,16 @@ webpackJsonp([0,1],[
 	    this.set = Object.create(null);
 	  };
 	}
-
+	
 	function Cache(limit) {
 	  this.size = 0;
 	  this.limit = limit;
 	  this.head = this.tail = undefined;
 	  this._keymap = Object.create(null);
 	}
-
+	
 	var p = Cache.prototype;
-
+	
 	/**
 	 * Put <value> into the cache associated with <key>.
 	 * Returns the entry which was removed to make room for
@@ -638,15 +658,15 @@ webpackJsonp([0,1],[
 	 * @param {*} value
 	 * @return {Entry|undefined}
 	 */
-
+	
 	p.put = function (key, value) {
 	  var removed;
-	  if (this.size === this.limit) {
-	    removed = this.shift();
-	  }
-
+	
 	  var entry = this.get(key, true);
 	  if (!entry) {
+	    if (this.size === this.limit) {
+	      removed = this.shift();
+	    }
 	    entry = {
 	      key: key
 	    };
@@ -661,16 +681,16 @@ webpackJsonp([0,1],[
 	    this.size++;
 	  }
 	  entry.value = value;
-
+	
 	  return removed;
 	};
-
+	
 	/**
 	 * Purge the least recently used (oldest) entry from the
 	 * cache. Returns the removed entry or undefined if the
 	 * cache was empty.
 	 */
-
+	
 	p.shift = function () {
 	  var entry = this.head;
 	  if (entry) {
@@ -682,7 +702,7 @@ webpackJsonp([0,1],[
 	  }
 	  return entry;
 	};
-
+	
 	/**
 	 * Get and register recent use of <key>. Returns the value
 	 * associated with <key> or undefined if not in cache.
@@ -691,7 +711,7 @@ webpackJsonp([0,1],[
 	 * @param {Boolean} returnEntry
 	 * @return {Entry|*}
 	 */
-
+	
 	p.get = function (key, returnEntry) {
 	  var entry = this._keymap[key];
 	  if (entry === undefined) return;
@@ -719,55 +739,186 @@ webpackJsonp([0,1],[
 	  this.tail = entry;
 	  return returnEntry ? entry : entry.value;
 	};
-
+	
 	var cache$1 = new Cache(1000);
-	var filterTokenRE = /[^\s'"]+|'[^']*'|"[^"]*"/g;
 	var reservedArgRE = /^in$|^-?\d+/;
-
+	
 	/**
 	 * Parser state
 	 */
-
+	
 	var str;
 	var dir;
-	var c;
-	var prev;
-	var i;
-	var l;
-	var lastFilterIndex;
-	var inSingle;
-	var inDouble;
-	var curly;
-	var square;
-	var paren;
-	/**
-	 * Push a filter to the current directive object
-	 */
-
-	function pushFilter() {
-	  var exp = str.slice(lastFilterIndex, i).trim();
-	  var filter;
-	  if (exp) {
-	    filter = {};
-	    var tokens = exp.match(filterTokenRE);
-	    filter.name = tokens[0];
-	    if (tokens.length > 1) {
-	      filter.args = tokens.slice(1).map(processFilterArg);
+	var len;
+	var index;
+	var chr;
+	var state;
+	var startState = 0;
+	var filterState = 1;
+	var filterNameState = 2;
+	var filterArgState = 3;
+	
+	var doubleChr = 0x22;
+	var singleChr = 0x27;
+	var pipeChr = 0x7C;
+	var escapeChr = 0x5C;
+	var spaceChr = 0x20;
+	
+	var expStartChr = { 0x5B: 1, 0x7B: 1, 0x28: 1 };
+	var expChrPair = { 0x5B: 0x5D, 0x7B: 0x7D, 0x28: 0x29 };
+	
+	function peek() {
+	  return str.charCodeAt(index + 1);
+	}
+	
+	function next() {
+	  return str.charCodeAt(++index);
+	}
+	
+	function eof() {
+	  return index >= len;
+	}
+	
+	function eatSpace() {
+	  while (peek() === spaceChr) {
+	    next();
+	  }
+	}
+	
+	function isStringStart(chr) {
+	  return chr === doubleChr || chr === singleChr;
+	}
+	
+	function isExpStart(chr) {
+	  return expStartChr[chr];
+	}
+	
+	function isExpEnd(start, chr) {
+	  return expChrPair[start] === chr;
+	}
+	
+	function parseString() {
+	  var stringQuote = next();
+	  var chr;
+	  while (!eof()) {
+	    chr = next();
+	    // escape char
+	    if (chr === escapeChr) {
+	      next();
+	    } else if (chr === stringQuote) {
+	      break;
 	    }
 	  }
-	  if (filter) {
-	    (dir.filters = dir.filters || []).push(filter);
-	  }
-	  lastFilterIndex = i + 1;
 	}
-
+	
+	function parseSpecialExp(chr) {
+	  var inExp = 0;
+	  var startChr = chr;
+	
+	  while (!eof()) {
+	    chr = peek();
+	    if (isStringStart(chr)) {
+	      parseString();
+	      continue;
+	    }
+	
+	    if (startChr === chr) {
+	      inExp++;
+	    }
+	    if (isExpEnd(startChr, chr)) {
+	      inExp--;
+	    }
+	
+	    next();
+	
+	    if (inExp === 0) {
+	      break;
+	    }
+	  }
+	}
+	
+	/**
+	 * syntax:
+	 * expression | filterName  [arg  arg [| filterName arg arg]]
+	 */
+	
+	function parseExpression() {
+	  var start = index;
+	  while (!eof()) {
+	    chr = peek();
+	    if (isStringStart(chr)) {
+	      parseString();
+	    } else if (isExpStart(chr)) {
+	      parseSpecialExp(chr);
+	    } else if (chr === pipeChr) {
+	      next();
+	      chr = peek();
+	      if (chr === pipeChr) {
+	        next();
+	      } else {
+	        if (state === startState || state === filterArgState) {
+	          state = filterState;
+	        }
+	        break;
+	      }
+	    } else if (chr === spaceChr && (state === filterNameState || state === filterArgState)) {
+	      eatSpace();
+	      break;
+	    } else {
+	      if (state === filterState) {
+	        state = filterNameState;
+	      }
+	      next();
+	    }
+	  }
+	
+	  return str.slice(start + 1, index) || null;
+	}
+	
+	function parseFilterList() {
+	  var filters = [];
+	  while (!eof()) {
+	    filters.push(parseFilter());
+	  }
+	  return filters;
+	}
+	
+	function parseFilter() {
+	  var filter = {};
+	  var args;
+	
+	  state = filterState;
+	  filter.name = parseExpression().trim();
+	
+	  state = filterArgState;
+	  args = parseFilterArguments();
+	
+	  if (args.length) {
+	    filter.args = args;
+	  }
+	  return filter;
+	}
+	
+	function parseFilterArguments() {
+	  var args = [];
+	  while (!eof() && state !== filterState) {
+	    var arg = parseExpression();
+	    if (!arg) {
+	      break;
+	    }
+	    args.push(processFilterArg(arg));
+	  }
+	
+	  return args;
+	}
+	
 	/**
 	 * Check if an argument is dynamic and strip quotes.
 	 *
 	 * @param {String} arg
 	 * @return {Object}
 	 */
-
+	
 	function processFilterArg(arg) {
 	  if (reservedArgRE.test(arg)) {
 	    return {
@@ -783,7 +934,7 @@ webpackJsonp([0,1],[
 	    };
 	  }
 	}
-
+	
 	/**
 	 * Parse a directive value and extract the expression
 	 * and its filters into a descriptor.
@@ -801,75 +952,41 @@ webpackJsonp([0,1],[
 	 * @param {String} s
 	 * @return {Object}
 	 */
-
+	
 	function parseDirective(s) {
 	  var hit = cache$1.get(s);
 	  if (hit) {
 	    return hit;
 	  }
-
+	
 	  // reset parser state
 	  str = s;
-	  inSingle = inDouble = false;
-	  curly = square = paren = 0;
-	  lastFilterIndex = 0;
 	  dir = {};
-
-	  for (i = 0, l = str.length; i < l; i++) {
-	    prev = c;
-	    c = str.charCodeAt(i);
-	    if (inSingle) {
-	      // check single quote
-	      if (c === 0x27 && prev !== 0x5C) inSingle = !inSingle;
-	    } else if (inDouble) {
-	      // check double quote
-	      if (c === 0x22 && prev !== 0x5C) inDouble = !inDouble;
-	    } else if (c === 0x7C && // pipe
-	    str.charCodeAt(i + 1) !== 0x7C && str.charCodeAt(i - 1) !== 0x7C) {
-	      if (dir.expression == null) {
-	        // first filter, end of expression
-	        lastFilterIndex = i + 1;
-	        dir.expression = str.slice(0, i).trim();
-	      } else {
-	        // already has filter
-	        pushFilter();
-	      }
-	    } else {
-	      switch (c) {
-	        case 0x22:
-	          inDouble = true;break; // "
-	        case 0x27:
-	          inSingle = true;break; // '
-	        case 0x28:
-	          paren++;break; // (
-	        case 0x29:
-	          paren--;break; // )
-	        case 0x5B:
-	          square++;break; // [
-	        case 0x5D:
-	          square--;break; // ]
-	        case 0x7B:
-	          curly++;break; // {
-	        case 0x7D:
-	          curly--;break; // }
-	      }
+	  len = str.length;
+	  index = -1;
+	  chr = '';
+	  state = startState;
+	
+	  var filters;
+	
+	  if (str.indexOf('|') < 0) {
+	    dir.expression = str.trim();
+	  } else {
+	    dir.expression = parseExpression().trim();
+	    filters = parseFilterList();
+	    if (filters.length) {
+	      dir.filters = filters;
 	    }
 	  }
-
-	  if (dir.expression == null) {
-	    dir.expression = str.slice(0, i).trim();
-	  } else if (lastFilterIndex !== 0) {
-	    pushFilter();
-	  }
-
+	
 	  cache$1.put(s, dir);
 	  return dir;
 	}
-
+	
 	var directive = Object.freeze({
 	  parseDirective: parseDirective
 	});
-
+	
 	var regexEscapeRE = /[-.*+?^${}()|[\]\/\\]/g;
 	var cache = undefined;
 	var tagRE = undefined;
@@ -880,22 +997,22 @@ webpackJsonp([0,1],[
 	 *
 	 * @param {String} str
 	 */
-
+	
 	function escapeRegex(str) {
 	  return str.replace(regexEscapeRE, '\\$&');
 	}
-
+	
 	function compileRegex() {
 	  var open = escapeRegex(config.delimiters[0]);
 	  var close = escapeRegex(config.delimiters[1]);
 	  var unsafeOpen = escapeRegex(config.unsafeDelimiters[0]);
 	  var unsafeClose = escapeRegex(config.unsafeDelimiters[1]);
 	  tagRE = new RegExp(unsafeOpen + '((?:.|\\n)+?)' + unsafeClose + '|' + open + '((?:.|\\n)+?)' + close, 'g');
-	  htmlRE = new RegExp('^' + unsafeOpen + '.*' + unsafeClose + '$');
+	  htmlRE = new RegExp('^' + unsafeOpen + '((?:.|\\n)+?)' + unsafeClose + '$');
 	  // reset cache
 	  cache = new Cache(1000);
 	}
-
+	
 	/**
 	 * Parse a template text string into an array of tokens.
 	 *
@@ -906,7 +1023,7 @@ webpackJsonp([0,1],[
 	 *               - {Boolean} [html]
 	 *               - {Boolean} [oneTime]
 	 */
-
+	
 	function parseText(text) {
 	  if (!cache) {
 	    compileRegex();
@@ -953,7 +1070,7 @@ webpackJsonp([0,1],[
 	  cache.put(text, tokens);
 	  return tokens;
 	}
-
+	
 	/**
 	 * Format a list of tokens into an expression.
 	 * e.g. tokens parsed from 'a {{b}} c' can be serialized
@@ -963,7 +1080,7 @@ webpackJsonp([0,1],[
 	 * @param {Vue} [vm]
 	 * @return {String}
 	 */
-
+	
 	function tokensToExp(tokens, vm) {
 	  if (tokens.length > 1) {
 	    return tokens.map(function (token) {
@@ -973,7 +1090,7 @@ webpackJsonp([0,1],[
 	    return formatToken(tokens[0], vm, true);
 	  }
 	}
-
+	
 	/**
 	 * Format a single token.
 	 *
@@ -982,11 +1099,11 @@ webpackJsonp([0,1],[
 	 * @param {Boolean} [single]
 	 * @return {String}
 	 */
-
+	
 	function formatToken(token, vm, single) {
 	  return token.tag ? token.oneTime && vm ? '"' + vm.$eval(token.value) + '"' : inlineFilters(token.value, single) : '"' + token.value + '"';
 	}
-
+	
 	/**
 	 * For an attribute with multiple interpolation tags,
 	 * e.g. attr="some-{{thing | filter}}", in order to combine
@@ -999,7 +1116,7 @@ webpackJsonp([0,1],[
 	 * @param {Boolean} single
 	 * @return {String}
 	 */
-
+	
 	var filterRE = /[^|]\|[^|]/;
 	function inlineFilters(exp, single) {
 	  if (!filterRE.test(exp)) {
@@ -1016,88 +1133,88 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	}
-
+	
 	var text = Object.freeze({
 	  compileRegex: compileRegex,
 	  parseText: parseText,
 	  tokensToExp: tokensToExp
 	});
-
+	
 	var delimiters = ['{{', '}}'];
 	var unsafeDelimiters = ['{{{', '}}}'];
-
+	
 	var config = Object.defineProperties({
-
+	
 	  /**
 	   * Whether to print debug messages.
 	   * Also enables stack trace for warnings.
 	   *
 	   * @type {Boolean}
 	   */
-
+	
 	  debug: false,
-
+	
 	  /**
 	   * Whether to suppress warnings.
 	   *
 	   * @type {Boolean}
 	   */
-
+	
 	  silent: false,
-
+	
 	  /**
 	   * Whether to use async rendering.
 	   */
-
+	
 	  async: true,
-
+	
 	  /**
 	   * Whether to warn against errors caught when evaluating
 	   * expressions.
 	   */
-
+	
 	  warnExpressionErrors: true,
-
+	
 	  /**
 	   * Whether to allow devtools inspection.
 	   * Disabled by default in production builds.
 	   */
-
+	
 	  devtools: process.env.NODE_ENV !== 'production',
-
+	
 	  /**
 	   * Internal flag to indicate the delimiters have been
 	   * changed.
 	   *
 	   * @type {Boolean}
 	   */
-
+	
 	  _delimitersChanged: true,
-
+	
 	  /**
 	   * List of asset types that a component can own.
 	   *
 	   * @type {Array}
 	   */
-
+	
 	  _assetTypes: ['component', 'directive', 'elementDirective', 'filter', 'transition', 'partial'],
-
+	
 	  /**
 	   * prop binding modes
 	   */
-
+	
 	  _propBindingModes: {
 	    ONE_WAY: 0,
 	    TWO_WAY: 1,
 	    ONE_TIME: 2
 	  },
-
+	
 	  /**
 	   * Max circular updates allowed in a batcher flush cycle.
 	   */
-
+	
 	  _maxUpdateCount: 100
-
+	
 	}, {
 	  delimiters: { /**
 	                 * Interpolation delimiters. Changing these would trigger
@@ -1105,7 +1222,7 @@ webpackJsonp([0,1],[
 	                 *
 	                 * @type {Array<String>}
 	                 */
-
+	
 	    get: function get() {
 	      return delimiters;
 	    },
@@ -1128,27 +1245,27 @@ webpackJsonp([0,1],[
 	    enumerable: true
 	  }
 	});
-
+	
 	var warn = undefined;
 	var formatComponentName = undefined;
-
+	
 	if (process.env.NODE_ENV !== 'production') {
 	  (function () {
 	    var hasConsole = typeof console !== 'undefined';
-
+	
 	    warn = function (msg, vm) {
 	      if (hasConsole && !config.silent) {
 	        console.error('[Vue warn]: ' + msg + (vm ? formatComponentName(vm) : ''));
 	      }
 	    };
-
+	
 	    formatComponentName = function (vm) {
 	      var name = vm._isVue ? vm.$options.name : vm.name;
 	      return name ? ' (found in component: <' + hyphenate(name) + '>)' : '';
 	    };
 	  })();
 	}
-
+	
 	/**
 	 * Append with transition.
 	 *
@@ -1157,13 +1274,13 @@ webpackJsonp([0,1],[
 	 * @param {Vue} vm
 	 * @param {Function} [cb]
 	 */
-
+	
 	function appendWithTransition(el, target, vm, cb) {
 	  applyTransition(el, 1, function () {
 	    target.appendChild(el);
 	  }, vm, cb);
 	}
-
+	
 	/**
 	 * InsertBefore with transition.
 	 *
@@ -1172,13 +1289,13 @@ webpackJsonp([0,1],[
 	 * @param {Vue} vm
 	 * @param {Function} [cb]
 	 */
-
+	
 	function beforeWithTransition(el, target, vm, cb) {
 	  applyTransition(el, 1, function () {
 	    before(el, target);
 	  }, vm, cb);
 	}
-
+	
 	/**
 	 * Remove with transition.
 	 *
@@ -1186,13 +1303,13 @@ webpackJsonp([0,1],[
 	 * @param {Vue} vm
 	 * @param {Function} [cb]
 	 */
-
+	
 	function removeWithTransition(el, vm, cb) {
 	  applyTransition(el, -1, function () {
 	    remove(el);
 	  }, vm, cb);
 	}
-
+	
 	/**
 	 * Apply transitions with an operation callback.
 	 *
@@ -1204,7 +1321,7 @@ webpackJsonp([0,1],[
 	 * @param {Vue} vm
 	 * @param {Function} [cb]
 	 */
-
+	
 	function applyTransition(el, direction, op, vm, cb) {
 	  var transition = el.__v_trans;
 	  if (!transition ||
@@ -1224,21 +1341,21 @@ webpackJsonp([0,1],[
 	  var action = direction > 0 ? 'enter' : 'leave';
 	  transition[action](op, cb);
 	}
-
+	
 	var transition = Object.freeze({
 	  appendWithTransition: appendWithTransition,
 	  beforeWithTransition: beforeWithTransition,
 	  removeWithTransition: removeWithTransition,
 	  applyTransition: applyTransition
 	});
-
+	
 	/**
 	 * Query an element selector if it's not an element already.
 	 *
 	 * @param {String|Element} el
 	 * @return {Element}
 	 */
-
+	
 	function query(el) {
 	  if (typeof el === 'string') {
 	    var selector = el;
@@ -1249,7 +1366,7 @@ webpackJsonp([0,1],[
 	  }
 	  return el;
 	}
-
+	
 	/**
 	 * Check if a node is in the document.
 	 * Note: document.documentElement.contains should work here
@@ -1261,21 +1378,21 @@ webpackJsonp([0,1],[
 	 * @param {Node} node
 	 * @return {Boolean}
 	 */
-
+	
 	function inDoc(node) {
 	  if (!node) return false;
 	  var doc = node.ownerDocument.documentElement;
 	  var parent = node.parentNode;
 	  return doc === node || doc === parent || !!(parent && parent.nodeType === 1 && doc.contains(parent));
 	}
-
+	
 	/**
 	 * Get and remove an attribute from a node.
 	 *
 	 * @param {Node} node
 	 * @param {String} _attr
 	 */
-
+	
 	function getAttr(node, _attr) {
 	  var val = node.getAttribute(_attr);
 	  if (val !== null) {
@@ -1283,7 +1400,7 @@ webpackJsonp([0,1],[
 	  }
 	  return val;
 	}
-
+	
 	/**
 	 * Get an attribute with colon or v-bind: prefix.
 	 *
@@ -1291,7 +1408,7 @@ webpackJsonp([0,1],[
 	 * @param {String} name
 	 * @return {String|null}
 	 */
-
+	
 	function getBindAttr(node, name) {
 	  var val = getAttr(node, ':' + name);
 	  if (val === null) {
@@ -1299,7 +1416,7 @@ webpackJsonp([0,1],[
 	  }
 	  return val;
 	}
-
+	
 	/**
 	 * Check the presence of a bind attribute.
 	 *
@@ -1307,29 +1424,29 @@ webpackJsonp([0,1],[
 	 * @param {String} name
 	 * @return {Boolean}
 	 */
-
+	
 	function hasBindAttr(node, name) {
 	  return node.hasAttribute(name) || node.hasAttribute(':' + name) || node.hasAttribute('v-bind:' + name);
 	}
-
+	
 	/**
 	 * Insert el before target
 	 *
 	 * @param {Element} el
 	 * @param {Element} target
 	 */
-
+	
 	function before(el, target) {
 	  target.parentNode.insertBefore(el, target);
 	}
-
+	
 	/**
 	 * Insert el after target
 	 *
 	 * @param {Element} el
 	 * @param {Element} target
 	 */
-
+	
 	function after(el, target) {
 	  if (target.nextSibling) {
 	    before(el, target.nextSibling);
@@ -1337,24 +1454,24 @@ webpackJsonp([0,1],[
 	    target.parentNode.appendChild(el);
 	  }
 	}
-
+	
 	/**
 	 * Remove el from DOM
 	 *
 	 * @param {Element} el
 	 */
-
+	
 	function remove(el) {
 	  el.parentNode.removeChild(el);
 	}
-
+	
 	/**
 	 * Prepend el to target
 	 *
 	 * @param {Element} el
 	 * @param {Element} target
 	 */
-
+	
 	function prepend(el, target) {
 	  if (target.firstChild) {
 	    before(el, target.firstChild);
@@ -1362,21 +1479,21 @@ webpackJsonp([0,1],[
 	    target.appendChild(el);
 	  }
 	}
-
+	
 	/**
 	 * Replace target with el
 	 *
 	 * @param {Element} target
 	 * @param {Element} el
 	 */
-
+	
 	function replace(target, el) {
 	  var parent = target.parentNode;
 	  if (parent) {
 	    parent.replaceChild(el, target);
 	  }
 	}
-
+	
 	/**
 	 * Add event listener shorthand.
 	 *
@@ -1385,11 +1502,11 @@ webpackJsonp([0,1],[
 	 * @param {Function} cb
 	 * @param {Boolean} [useCapture]
 	 */
-
+	
 	function on(el, event, cb, useCapture) {
 	  el.addEventListener(event, cb, useCapture);
 	}
-
+	
 	/**
 	 * Remove event listener shorthand.
 	 *
@@ -1397,11 +1514,11 @@ webpackJsonp([0,1],[
 	 * @param {String} event
 	 * @param {Function} cb
 	 */
-
+	
 	function off(el, event, cb) {
 	  el.removeEventListener(event, cb);
 	}
-
+	
 	/**
 	 * For IE9 compat: when both class and :class are present
 	 * getAttribute('class') returns wrong value...
@@ -1409,7 +1526,7 @@ webpackJsonp([0,1],[
 	 * @param {Element} el
 	 * @return {String}
 	 */
-
+	
 	function getClass(el) {
 	  var classname = el.className;
 	  if (typeof classname === 'object') {
@@ -1417,7 +1534,7 @@ webpackJsonp([0,1],[
 	  }
 	  return classname;
 	}
-
+	
 	/**
 	 * In IE9, setAttribute('class') will result in empty class
 	 * if the element also has the :class attribute; However in
@@ -1427,7 +1544,7 @@ webpackJsonp([0,1],[
 	 * @param {Element} el
 	 * @param {String} cls
 	 */
-
+	
 	function setClass(el, cls) {
 	  /* istanbul ignore if */
 	  if (isIE9 && !/svg$/.test(el.namespaceURI)) {
@@ -1436,14 +1553,14 @@ webpackJsonp([0,1],[
 	    el.setAttribute('class', cls);
 	  }
 	}
-
+	
 	/**
 	 * Add class with compatibility for IE & SVG
 	 *
 	 * @param {Element} el
 	 * @param {String} cls
 	 */
-
+	
 	function addClass(el, cls) {
 	  if (el.classList) {
 	    el.classList.add(cls);
@@ -1454,14 +1571,14 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	}
-
+	
 	/**
 	 * Remove class with compatibility for IE & SVG
 	 *
 	 * @param {Element} el
 	 * @param {String} cls
 	 */
-
+	
 	function removeClass(el, cls) {
 	  if (el.classList) {
 	    el.classList.remove(cls);
@@ -1477,7 +1594,7 @@ webpackJsonp([0,1],[
 	    el.removeAttribute('class');
 	  }
 	}
-
+	
 	/**
 	 * Extract raw content inside an element into a temporary
 	 * container div
@@ -1486,7 +1603,7 @@ webpackJsonp([0,1],[
 	 * @param {Boolean} asFragment
 	 * @return {Element|DocumentFragment}
 	 */
-
+	
 	function extractContent(el, asFragment) {
 	  var child;
 	  var rawContent;
@@ -1505,14 +1622,14 @@ webpackJsonp([0,1],[
 	  }
 	  return rawContent;
 	}
-
+	
 	/**
 	 * Trim possible empty head/tail text and comment
 	 * nodes inside a parent.
 	 *
 	 * @param {Node} node
 	 */
-
+	
 	function trimNode(node) {
 	  var child;
 	  /* eslint-disable no-sequences */
@@ -1524,11 +1641,11 @@ webpackJsonp([0,1],[
 	  }
 	  /* eslint-enable no-sequences */
 	}
-
+	
 	function isTrimmable(node) {
 	  return node && (node.nodeType === 3 && !node.data.trim() || node.nodeType === 8);
 	}
-
+	
 	/**
 	 * Check if an element is a template tag.
 	 * Note if the template appears inside an SVG its tagName
@@ -1536,11 +1653,11 @@ webpackJsonp([0,1],[
 	 *
 	 * @param {Element} el
 	 */
-
+	
 	function isTemplate(el) {
 	  return el.tagName && el.tagName.toLowerCase() === 'template';
 	}
-
+	
 	/**
 	 * Create an "anchor" for performing dom insertion/removals.
 	 * This is used in a number of scenarios:
@@ -1558,22 +1675,22 @@ webpackJsonp([0,1],[
 	 *                            templates.
 	 * @return {Comment|Text}
 	 */
-
+	
 	function createAnchor(content, persist) {
 	  var anchor = config.debug ? document.createComment(content) : document.createTextNode(persist ? ' ' : '');
 	  anchor.__v_anchor = true;
 	  return anchor;
 	}
-
+	
 	/**
 	 * Find a component ref attribute that starts with $.
 	 *
 	 * @param {Element} node
 	 * @return {String|undefined}
 	 */
-
+	
 	var refRE = /^v-ref:/;
-
+	
 	function findRef(node) {
 	  if (node.hasAttributes()) {
 	    var attrs = node.attributes;
@@ -1585,7 +1702,7 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	}
-
+	
 	/**
 	 * Map a function to a range of nodes .
 	 *
@@ -1593,7 +1710,7 @@ webpackJsonp([0,1],[
 	 * @param {Node} end
 	 * @param {Function} op
 	 */
-
+	
 	function mapNodeRange(node, end, op) {
 	  var next;
 	  while (node !== end) {
@@ -1603,7 +1720,7 @@ webpackJsonp([0,1],[
 	  }
 	  op(end);
 	}
-
+	
 	/**
 	 * Remove a range of nodes with transition, store
 	 * the nodes in a fragment with correct ordering,
@@ -1615,7 +1732,7 @@ webpackJsonp([0,1],[
 	 * @param {DocumentFragment} frag
 	 * @param {Function} cb
 	 */
-
+	
 	function removeNodeRange(start, end, vm, frag, cb) {
 	  var done = false;
 	  var removed = 0;
@@ -1635,18 +1752,18 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	}
-
+	
 	/**
 	 * Check if a node is a DocumentFragment.
 	 *
 	 * @param {Node} node
 	 * @return {Boolean}
 	 */
-
+	
 	function isFragment(node) {
 	  return node && node.nodeType === 11;
 	}
-
+	
 	/**
 	 * Get outerHTML of elements, taking care
 	 * of SVG elements in IE as well.
@@ -1654,7 +1771,7 @@ webpackJsonp([0,1],[
 	 * @param {Element} el
 	 * @return {String}
 	 */
-
+	
 	function getOuterHTML(el) {
 	  if (el.outerHTML) {
 	    return el.outerHTML;
@@ -1664,10 +1781,10 @@ webpackJsonp([0,1],[
 	    return container.innerHTML;
 	  }
 	}
-
+	
 	var commonTagRE = /^(div|p|span|img|a|b|i|br|ul|ol|li|h1|h2|h3|h4|h5|h6|code|pre|table|th|td|tr|form|label|input|select|option|nav|article|section|header|footer)$/i;
 	var reservedTagRE = /^(slot|partial|component)$/i;
-
+	
 	var isUnknownElement = undefined;
 	if (process.env.NODE_ENV !== 'production') {
 	  isUnknownElement = function (el, tag) {
@@ -1678,12 +1795,13 @@ webpackJsonp([0,1],[
 	      return (/HTMLUnknownElement/.test(el.toString()) &&
 	        // Chrome returns unknown for several HTML5 elements.
 	        // https://code.google.com/p/chromium/issues/detail?id=540526
-	        !/^(data|time|rtc|rb)$/.test(tag)
+	        // Firefox returns unknown for some "Interactive elements."
+	        !/^(data|time|rtc|rb|details|dialog|summary)$/.test(tag)
 	      );
 	    }
 	  };
 	}
-
+	
 	/**
 	 * Check if an element is a component, if yes return its
 	 * component id.
@@ -1692,7 +1810,7 @@ webpackJsonp([0,1],[
 	 * @param {Object} options
 	 * @return {Object|undefined}
 	 */
-
+	
 	function checkComponentAttr(el, options) {
 	  var tag = el.tagName.toLowerCase();
 	  var hasAttrs = el.hasAttributes();
@@ -1716,7 +1834,7 @@ webpackJsonp([0,1],[
 	    return getIsBinding(el, options);
 	  }
 	}
-
+	
 	/**
 	 * Get "is" binding from an element.
 	 *
@@ -1724,7 +1842,7 @@ webpackJsonp([0,1],[
 	 * @param {Object} options
 	 * @return {Object|undefined}
 	 */
-
+	
 	function getIsBinding(el, options) {
 	  // dynamic syntax
 	  var exp = el.getAttribute('is');
@@ -1740,7 +1858,7 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	}
-
+	
 	/**
 	 * Option overwriting strategies are functions that handle
 	 * how to merge a parent option value and a child option
@@ -1752,13 +1870,13 @@ webpackJsonp([0,1],[
 	 * @param {*} childVal
 	 * @param {Vue} [vm]
 	 */
-
+	
 	var strats = config.optionMergeStrategies = Object.create(null);
-
+	
 	/**
 	 * Helper that recursively merges two data objects together.
 	 */
-
+	
 	function mergeData(to, from) {
 	  var key, toVal, fromVal;
 	  for (key in from) {
@@ -1772,11 +1890,11 @@ webpackJsonp([0,1],[
 	  }
 	  return to;
 	}
-
+	
 	/**
 	 * Data
 	 */
-
+	
 	strats.data = function (parentVal, childVal, vm) {
 	  if (!vm) {
 	    // in a Vue.extend merge, both should be functions
@@ -1811,11 +1929,11 @@ webpackJsonp([0,1],[
 	    };
 	  }
 	};
-
+	
 	/**
 	 * El
 	 */
-
+	
 	strats.el = function (parentVal, childVal, vm) {
 	  if (!vm && childVal && typeof childVal !== 'function') {
 	    process.env.NODE_ENV !== 'production' && warn('The "el" option should be a function ' + 'that returns a per-instance value in component ' + 'definitions.', vm);
@@ -1825,15 +1943,15 @@ webpackJsonp([0,1],[
 	  // invoke the element factory if this is instance merge
 	  return vm && typeof ret === 'function' ? ret.call(vm) : ret;
 	};
-
+	
 	/**
 	 * Hooks and param attributes are merged as arrays.
 	 */
-
+	
 	strats.init = strats.created = strats.ready = strats.attached = strats.detached = strats.beforeCompile = strats.compiled = strats.beforeDestroy = strats.destroyed = strats.activate = function (parentVal, childVal) {
 	  return childVal ? parentVal ? parentVal.concat(childVal) : isArray(childVal) ? childVal : [childVal] : parentVal;
 	};
-
+	
 	/**
 	 * Assets
 	 *
@@ -1841,23 +1959,23 @@ webpackJsonp([0,1],[
 	 * a three-way merge between constructor options, instance
 	 * options and parent options.
 	 */
-
+	
 	function mergeAssets(parentVal, childVal) {
 	  var res = Object.create(parentVal || null);
 	  return childVal ? extend(res, guardArrayAssets(childVal)) : res;
 	}
-
+	
 	config._assetTypes.forEach(function (type) {
 	  strats[type + 's'] = mergeAssets;
 	});
-
+	
 	/**
 	 * Events & Watchers.
 	 *
 	 * Events & watchers hashes should not overwrite one
 	 * another, so we merge them as arrays.
 	 */
-
+	
 	strats.watch = strats.events = function (parentVal, childVal) {
 	  if (!childVal) return parentVal;
 	  if (!parentVal) return childVal;
@@ -1873,11 +1991,11 @@ webpackJsonp([0,1],[
 	  }
 	  return ret;
 	};
-
+	
 	/**
 	 * Other object hashes.
 	 */
-
+	
 	strats.props = strats.methods = strats.computed = function (parentVal, childVal) {
 	  if (!childVal) return parentVal;
 	  if (!parentVal) return childVal;
@@ -1886,22 +2004,22 @@ webpackJsonp([0,1],[
 	  extend(ret, childVal);
 	  return ret;
 	};
-
+	
 	/**
 	 * Default strategy.
 	 */
-
+	
 	var defaultStrat = function defaultStrat(parentVal, childVal) {
 	  return childVal === undefined ? parentVal : childVal;
 	};
-
+	
 	/**
 	 * Make sure component options get converted to actual
 	 * constructors.
 	 *
 	 * @param {Object} options
 	 */
-
+	
 	function guardComponents(options) {
 	  if (options.components) {
 	    var components = options.components = guardArrayAssets(options.components);
@@ -1928,14 +2046,14 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	}
-
+	
 	/**
 	 * Ensure all props option syntax are normalized into the
 	 * Object-based format.
 	 *
 	 * @param {Object} options
 	 */
-
+	
 	function guardProps(options) {
 	  var props = options.props;
 	  var i, val;
@@ -1961,7 +2079,7 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	}
-
+	
 	/**
 	 * Guard an Array-format assets option and converted it
 	 * into the key-value Object format.
@@ -1969,7 +2087,7 @@ webpackJsonp([0,1],[
 	 * @param {Object|Array} assets
 	 * @return {Object}
 	 */
-
+	
 	function guardArrayAssets(assets) {
 	  if (isArray(assets)) {
 	    var res = {};
@@ -1988,7 +2106,7 @@ webpackJsonp([0,1],[
 	  }
 	  return assets;
 	}
-
+	
 	/**
 	 * Merge two option objects into a new one.
 	 * Core utility used in both instantiation and inheritance.
@@ -1998,7 +2116,7 @@ webpackJsonp([0,1],[
 	 * @param {Vue} [vm] - if vm is present, indicates this is
 	 *                     an instantiation merge.
 	 */
-
+	
 	function mergeOptions(parent, child, vm) {
 	  guardComponents(child);
 	  guardProps(child);
@@ -2014,7 +2132,9 @@ webpackJsonp([0,1],[
 	  }
 	  if (child.mixins) {
 	    for (var i = 0, l = child.mixins.length; i < l; i++) {
-	      parent = mergeOptions(parent, child.mixins[i], vm);
+	      var mixin = child.mixins[i];
+	      var mixinOptions = mixin.prototype instanceof Vue ? mixin.options : mixin;
+	      parent = mergeOptions(parent, mixinOptions, vm);
 	    }
 	  }
 	  for (key in parent) {
@@ -2031,7 +2151,7 @@ webpackJsonp([0,1],[
 	  }
 	  return options;
 	}
-
+	
 	/**
 	 * Resolve an asset.
 	 * This function is used because child instances need access
@@ -2043,7 +2163,7 @@ webpackJsonp([0,1],[
 	 * @param {Boolean} warnMissing
 	 * @return {Object|Function}
 	 */
-
+	
 	function resolveAsset(options, type, id, warnMissing) {
 	  /* istanbul ignore if */
 	  if (typeof id !== 'string') {
@@ -2061,9 +2181,9 @@ webpackJsonp([0,1],[
 	  }
 	  return res;
 	}
-
+	
 	var uid$1 = 0;
-
+	
 	/**
 	 * A dep is an observable that can have multiple
 	 * directives subscribing to it.
@@ -2074,44 +2194,44 @@ webpackJsonp([0,1],[
 	  this.id = uid$1++;
 	  this.subs = [];
 	}
-
+	
 	// the current target watcher being evaluated.
 	// this is globally unique because there could be only one
 	// watcher being evaluated at any time.
 	Dep.target = null;
-
+	
 	/**
 	 * Add a directive subscriber.
 	 *
 	 * @param {Directive} sub
 	 */
-
+	
 	Dep.prototype.addSub = function (sub) {
 	  this.subs.push(sub);
 	};
-
+	
 	/**
 	 * Remove a directive subscriber.
 	 *
 	 * @param {Directive} sub
 	 */
-
+	
 	Dep.prototype.removeSub = function (sub) {
 	  this.subs.$remove(sub);
 	};
-
+	
 	/**
 	 * Add self as a dependency to the target watcher.
 	 */
-
+	
 	Dep.prototype.depend = function () {
 	  Dep.target.addDep(this);
 	};
-
+	
 	/**
 	 * Notify all subscribers of a new value.
 	 */
-
+	
 	Dep.prototype.notify = function () {
 	  // stablize the subscriber list first
 	  var subs = toArray(this.subs);
@@ -2119,14 +2239,14 @@ webpackJsonp([0,1],[
 	    subs[i].update();
 	  }
 	};
-
+	
 	var arrayProto = Array.prototype;
 	var arrayMethods = Object.create(arrayProto)
-
+	
 	/**
 	 * Intercept mutating methods and emit events
 	 */
-
+	
 	;['push', 'pop', 'shift', 'unshift', 'splice', 'sort', 'reverse'].forEach(function (method) {
 	  // cache original method
 	  var original = arrayProto[method];
@@ -2158,7 +2278,7 @@ webpackJsonp([0,1],[
 	    return result;
 	  });
 	});
-
+	
 	/**
 	 * Swap the element at the given index with a new value
 	 * and emits corresponding event.
@@ -2167,20 +2287,20 @@ webpackJsonp([0,1],[
 	 * @param {*} val
 	 * @return {*} - replaced element
 	 */
-
+	
 	def(arrayProto, '$set', function $set(index, val) {
 	  if (index >= this.length) {
 	    this.length = Number(index) + 1;
 	  }
 	  return this.splice(index, 1, val)[0];
 	});
-
+	
 	/**
 	 * Convenience method to remove the element at given index or target element reference.
 	 *
 	 * @param {*} item
 	 */
-
+	
 	def(arrayProto, '$remove', function $remove(item) {
 	  /* istanbul ignore if */
 	  if (!this.length) return;
@@ -2189,9 +2309,9 @@ webpackJsonp([0,1],[
 	    return this.splice(index, 1);
 	  }
 	});
-
+	
 	var arrayKeys = Object.getOwnPropertyNames(arrayMethods);
-
+	
 	/**
 	 * By default, when a reactive property is set, the new value is
 	 * also converted to become reactive. However in certain cases, e.g.
@@ -2201,15 +2321,15 @@ webpackJsonp([0,1],[
 	 * So whenever we want to set a reactive property without forcing
 	 * conversion on the new value, we wrap that call inside this function.
 	 */
-
+	
 	var shouldConvert = true;
-
+	
 	function withoutConversion(fn) {
 	  shouldConvert = false;
 	  fn();
 	  shouldConvert = true;
 	}
-
+	
 	/**
 	 * Observer class that are attached to each observed
 	 * object. Once attached, the observer converts target
@@ -2219,7 +2339,7 @@ webpackJsonp([0,1],[
 	 * @param {Array|Object} value
 	 * @constructor
 	 */
-
+	
 	function Observer(value) {
 	  this.value = value;
 	  this.dep = new Dep();
@@ -2232,9 +2352,9 @@ webpackJsonp([0,1],[
 	    this.walk(value);
 	  }
 	}
-
+	
 	// Instance methods
-
+	
 	/**
 	 * Walk through each property and convert them into
 	 * getter/setters. This method should only be called when
@@ -2242,26 +2362,26 @@ webpackJsonp([0,1],[
 	 *
 	 * @param {Object} obj
 	 */
-
+	
 	Observer.prototype.walk = function (obj) {
 	  var keys = Object.keys(obj);
 	  for (var i = 0, l = keys.length; i < l; i++) {
 	    this.convert(keys[i], obj[keys[i]]);
 	  }
 	};
-
+	
 	/**
 	 * Observe a list of Array items.
 	 *
 	 * @param {Array} items
 	 */
-
+	
 	Observer.prototype.observeArray = function (items) {
 	  for (var i = 0, l = items.length; i < l; i++) {
 	    observe(items[i]);
 	  }
 	};
-
+	
 	/**
 	 * Convert a property into getter/setter so we can emit
 	 * the events when the property is accessed/changed.
@@ -2269,11 +2389,11 @@ webpackJsonp([0,1],[
 	 * @param {String} key
 	 * @param {*} val
 	 */
-
+	
 	Observer.prototype.convert = function (key, val) {
 	  defineReactive(this.value, key, val);
 	};
-
+	
 	/**
 	 * Add an owner vm, so that when $set/$delete mutations
 	 * happen we can notify owner vms to proxy the keys and
@@ -2282,24 +2402,24 @@ webpackJsonp([0,1],[
 	 *
 	 * @param {Vue} vm
 	 */
-
+	
 	Observer.prototype.addVm = function (vm) {
 	  (this.vms || (this.vms = [])).push(vm);
 	};
-
+	
 	/**
 	 * Remove an owner vm. This is called when the object is
 	 * swapped out as an instance's $data object.
 	 *
 	 * @param {Vue} vm
 	 */
-
+	
 	Observer.prototype.removeVm = function (vm) {
 	  this.vms.$remove(vm);
 	};
-
+	
 	// helpers
-
+	
 	/**
 	 * Augment an target Object or Array by intercepting
 	 * the prototype chain using __proto__
@@ -2307,13 +2427,13 @@ webpackJsonp([0,1],[
 	 * @param {Object|Array} target
 	 * @param {Object} src
 	 */
-
+	
 	function protoAugment(target, src) {
 	  /* eslint-disable no-proto */
 	  target.__proto__ = src;
 	  /* eslint-enable no-proto */
 	}
-
+	
 	/**
 	 * Augment an target Object or Array by defining
 	 * hidden properties.
@@ -2321,14 +2441,14 @@ webpackJsonp([0,1],[
 	 * @param {Object|Array} target
 	 * @param {Object} proto
 	 */
-
+	
 	function copyAugment(target, src, keys) {
 	  for (var i = 0, l = keys.length; i < l; i++) {
 	    var key = keys[i];
 	    def(target, key, src[key]);
 	  }
 	}
-
+	
 	/**
 	 * Attempt to create an observer instance for a value,
 	 * returns the new observer if successfully observed,
@@ -2339,7 +2459,7 @@ webpackJsonp([0,1],[
 	 * @return {Observer|undefined}
 	 * @static
 	 */
-
+	
 	function observe(value, vm) {
 	  if (!value || typeof value !== 'object') {
 	    return;
@@ -2355,7 +2475,7 @@ webpackJsonp([0,1],[
 	  }
 	  return ob;
 	}
-
+	
 	/**
 	 * Define a reactive property on an Object.
 	 *
@@ -2363,19 +2483,19 @@ webpackJsonp([0,1],[
 	 * @param {String} key
 	 * @param {*} val
 	 */
-
+	
 	function defineReactive(obj, key, val) {
 	  var dep = new Dep();
-
+	
 	  var property = Object.getOwnPropertyDescriptor(obj, key);
 	  if (property && property.configurable === false) {
 	    return;
 	  }
-
+	
 	  // cater for pre-defined getter/setters
 	  var getter = property && property.get;
 	  var setter = property && property.set;
-
+	
 	  var childOb = observe(val);
 	  Object.defineProperty(obj, key, {
 	    enumerable: true,
@@ -2411,9 +2531,9 @@ webpackJsonp([0,1],[
 	    }
 	  });
 	}
-
-
-
+	
+	
+	
 	var util = Object.freeze({
 		defineReactive: defineReactive,
 		set: set,
@@ -2442,10 +2562,10 @@ webpackJsonp([0,1],[
 		hasProto: hasProto,
 		inBrowser: inBrowser,
 		devtools: devtools,
+		isIE: isIE,
 		isIE9: isIE9,
 		isAndroid: isAndroid,
-		isIos: isIos,
-		isWechat: isWechat,
+		isIOS: isIOS,
 		get transitionProp () { return transitionProp; },
 		get transitionEndEvent () { return transitionEndEvent; },
 		get animationProp () { return animationProp; },
@@ -2483,9 +2603,9 @@ webpackJsonp([0,1],[
 		reservedTagRE: reservedTagRE,
 		get warn () { return warn; }
 	});
-
+	
 	var uid = 0;
-
+	
 	function initMixin (Vue) {
 	  /**
 	   * The main init sequence. This is called for every
@@ -2497,10 +2617,10 @@ webpackJsonp([0,1],[
 	   *                           options and the options passed
 	   *                           in to the constructor.
 	   */
-
+	
 	  Vue.prototype._init = function (options) {
 	    options = options || {};
-
+	
 	    this.$el = null;
 	    this.$parent = options.parent;
 	    this.$root = this.$parent ? this.$parent.$root : this;
@@ -2509,91 +2629,91 @@ webpackJsonp([0,1],[
 	    this.$els = {}; // element references
 	    this._watchers = []; // all watchers as an array
 	    this._directives = []; // all directives
-
+	
 	    // a uid
 	    this._uid = uid++;
-
+	
 	    // a flag to avoid this being observed
 	    this._isVue = true;
-
+	
 	    // events bookkeeping
 	    this._events = {}; // registered callbacks
 	    this._eventsCount = {}; // for $broadcast optimization
-
+	
 	    // fragment instance properties
 	    this._isFragment = false;
 	    this._fragment = // @type {DocumentFragment}
 	    this._fragmentStart = // @type {Text|Comment}
 	    this._fragmentEnd = null; // @type {Text|Comment}
-
+	
 	    // lifecycle state
 	    this._isCompiled = this._isDestroyed = this._isReady = this._isAttached = this._isBeingDestroyed = this._vForRemoving = false;
 	    this._unlinkFn = null;
-
+	
 	    // context:
 	    // if this is a transcluded component, context
 	    // will be the common parent vm of this instance
 	    // and its host.
 	    this._context = options._context || this.$parent;
-
+	
 	    // scope:
 	    // if this is inside an inline v-for, the scope
 	    // will be the intermediate scope created for this
 	    // repeat fragment. this is used for linking props
 	    // and container directives.
 	    this._scope = options._scope;
-
+	
 	    // fragment:
 	    // if this instance is compiled inside a Fragment, it
-	    // needs to reigster itself as a child of that fragment
+	    // needs to register itself as a child of that fragment
 	    // for attach/detach to work properly.
 	    this._frag = options._frag;
 	    if (this._frag) {
 	      this._frag.children.push(this);
 	    }
-
+	
 	    // push self into parent / transclusion host
 	    if (this.$parent) {
 	      this.$parent.$children.push(this);
 	    }
-
+	
 	    // merge options.
 	    options = this.$options = mergeOptions(this.constructor.options, options, this);
-
+	
 	    // set ref
 	    this._updateRef();
-
+	
 	    // initialize data as empty object.
 	    // it will be filled up in _initData().
 	    this._data = {};
-
+	
 	    // call init hook
 	    this._callHook('init');
-
+	
 	    // initialize data observation and scope inheritance.
 	    this._initState();
-
+	
 	    // setup event system and option events.
 	    this._initEvents();
-
+	
 	    // call created hook
 	    this._callHook('created');
-
+	
 	    // if `el` option is passed, start compilation.
 	    if (options.el) {
 	      this.$mount(options.el);
 	    }
 	  };
 	}
-
+	
 	var pathCache = new Cache(1000);
-
+	
 	// actions
 	var APPEND = 0;
 	var PUSH = 1;
 	var INC_SUB_PATH_DEPTH = 2;
 	var PUSH_SUB_PATH = 3;
-
+	
 	// states
 	var BEFORE_PATH = 0;
 	var IN_PATH = 1;
@@ -2604,28 +2724,28 @@ webpackJsonp([0,1],[
 	var IN_DOUBLE_QUOTE = 6;
 	var AFTER_PATH = 7;
 	var ERROR = 8;
-
+	
 	var pathStateMachine = [];
-
+	
 	pathStateMachine[BEFORE_PATH] = {
 	  'ws': [BEFORE_PATH],
 	  'ident': [IN_IDENT, APPEND],
 	  '[': [IN_SUB_PATH],
 	  'eof': [AFTER_PATH]
 	};
-
+	
 	pathStateMachine[IN_PATH] = {
 	  'ws': [IN_PATH],
 	  '.': [BEFORE_IDENT],
 	  '[': [IN_SUB_PATH],
 	  'eof': [AFTER_PATH]
 	};
-
+	
 	pathStateMachine[BEFORE_IDENT] = {
 	  'ws': [BEFORE_IDENT],
 	  'ident': [IN_IDENT, APPEND]
 	};
-
+	
 	pathStateMachine[IN_IDENT] = {
 	  'ident': [IN_IDENT, APPEND],
 	  '0': [IN_IDENT, APPEND],
@@ -2635,7 +2755,7 @@ webpackJsonp([0,1],[
 	  '[': [IN_SUB_PATH, PUSH],
 	  'eof': [AFTER_PATH, PUSH]
 	};
-
+	
 	pathStateMachine[IN_SUB_PATH] = {
 	  "'": [IN_SINGLE_QUOTE, APPEND],
 	  '"': [IN_DOUBLE_QUOTE, APPEND],
@@ -2644,33 +2764,33 @@ webpackJsonp([0,1],[
 	  'eof': ERROR,
 	  'else': [IN_SUB_PATH, APPEND]
 	};
-
+	
 	pathStateMachine[IN_SINGLE_QUOTE] = {
 	  "'": [IN_SUB_PATH, APPEND],
 	  'eof': ERROR,
 	  'else': [IN_SINGLE_QUOTE, APPEND]
 	};
-
+	
 	pathStateMachine[IN_DOUBLE_QUOTE] = {
 	  '"': [IN_SUB_PATH, APPEND],
 	  'eof': ERROR,
 	  'else': [IN_DOUBLE_QUOTE, APPEND]
 	};
-
+	
 	/**
 	 * Determine the type of a character in a keypath.
 	 *
 	 * @param {Char} ch
 	 * @return {String} type
 	 */
-
+	
 	function getPathCharType(ch) {
 	  if (ch === undefined) {
 	    return 'eof';
 	  }
-
+	
 	  var code = ch.charCodeAt(0);
-
+	
 	  switch (code) {
 	    case 0x5B: // [
 	    case 0x5D: // ]
@@ -2680,12 +2800,12 @@ webpackJsonp([0,1],[
 	    case 0x30:
 	      // 0
 	      return ch;
-
+	
 	    case 0x5F: // _
 	    case 0x24:
 	      // $
 	      return 'ident';
-
+	
 	    case 0x20: // Space
 	    case 0x09: // Tab
 	    case 0x0A: // Newline
@@ -2697,20 +2817,20 @@ webpackJsonp([0,1],[
 	      // Paragraph Separator
 	      return 'ws';
 	  }
-
+	
 	  // a-z, A-Z
 	  if (code >= 0x61 && code <= 0x7A || code >= 0x41 && code <= 0x5A) {
 	    return 'ident';
 	  }
-
+	
 	  // 1-9
 	  if (code >= 0x31 && code <= 0x39) {
 	    return 'number';
 	  }
-
+	
 	  return 'else';
 	}
-
+	
 	/**
 	 * Format a subPath, return its plain form if it is
 	 * a literal string or number. Otherwise prepend the
@@ -2719,7 +2839,7 @@ webpackJsonp([0,1],[
 	 * @param {String} path
 	 * @return {String}
 	 */
-
+	
 	function formatSubPath(path) {
 	  var trimmed = path.trim();
 	  // invalid leading 0
@@ -2728,30 +2848,30 @@ webpackJsonp([0,1],[
 	  }
 	  return isLiteral(trimmed) ? stripQuotes(trimmed) : '*' + trimmed;
 	}
-
+	
 	/**
 	 * Parse a string path into an array of segments
 	 *
 	 * @param {String} path
 	 * @return {Array|undefined}
 	 */
-
+	
 	function parse(path) {
 	  var keys = [];
 	  var index = -1;
 	  var mode = BEFORE_PATH;
 	  var subPathDepth = 0;
 	  var c, newChar, key, type, transition, action, typeMap;
-
+	
 	  var actions = [];
-
+	
 	  actions[PUSH] = function () {
 	    if (key !== undefined) {
 	      keys.push(key);
 	      key = undefined;
 	    }
 	  };
-
+	
 	  actions[APPEND] = function () {
 	    if (key === undefined) {
 	      key = newChar;
@@ -2759,12 +2879,12 @@ webpackJsonp([0,1],[
 	      key += newChar;
 	    }
 	  };
-
+	
 	  actions[INC_SUB_PATH_DEPTH] = function () {
 	    actions[APPEND]();
 	    subPathDepth++;
 	  };
-
+	
 	  actions[PUSH_SUB_PATH] = function () {
 	    if (subPathDepth > 0) {
 	      subPathDepth--;
@@ -2780,7 +2900,7 @@ webpackJsonp([0,1],[
 	      }
 	    }
 	  };
-
+	
 	  function maybeUnescapeQuote() {
 	    var nextChar = path[index + 1];
 	    if (mode === IN_SINGLE_QUOTE && nextChar === "'" || mode === IN_DOUBLE_QUOTE && nextChar === '"') {
@@ -2790,23 +2910,23 @@ webpackJsonp([0,1],[
 	      return true;
 	    }
 	  }
-
+	
 	  while (mode != null) {
 	    index++;
 	    c = path[index];
-
+	
 	    if (c === '\\' && maybeUnescapeQuote()) {
 	      continue;
 	    }
-
+	
 	    type = getPathCharType(c);
 	    typeMap = pathStateMachine[mode];
 	    transition = typeMap[type] || typeMap['else'] || ERROR;
-
+	
 	    if (transition === ERROR) {
 	      return; // parse error
 	    }
-
+	
 	    mode = transition[0];
 	    action = actions[transition[1]];
 	    if (action) {
@@ -2816,21 +2936,21 @@ webpackJsonp([0,1],[
 	        return;
 	      }
 	    }
-
+	
 	    if (mode === AFTER_PATH) {
 	      keys.raw = path;
 	      return keys;
 	    }
 	  }
 	}
-
+	
 	/**
 	 * External parse that check for a cache hit first
 	 *
 	 * @param {String} path
 	 * @return {Array|undefined}
 	 */
-
+	
 	function parsePath(path) {
 	  var hit = pathCache.get(path);
 	  if (!hit) {
@@ -2841,29 +2961,29 @@ webpackJsonp([0,1],[
 	  }
 	  return hit;
 	}
-
+	
 	/**
 	 * Get from an object from a path string
 	 *
 	 * @param {Object} obj
 	 * @param {String} path
 	 */
-
+	
 	function getPath(obj, path) {
-	  return parseExpression(path).get(obj);
+	  return parseExpression$1(path).get(obj);
 	}
-
+	
 	/**
 	 * Warn against setting non-existent root path on a vm.
 	 */
-
+	
 	var warnNonExistent;
 	if (process.env.NODE_ENV !== 'production') {
 	  warnNonExistent = function (path, vm) {
 	    warn('You are setting a non-existent path "' + path.raw + '" ' + 'on a vm instance. Consider pre-initializing the property ' + 'with the "data" option for more reliable reactivity ' + 'and better performance.', vm);
 	  };
 	}
-
+	
 	/**
 	 * Set on an object from a path
 	 *
@@ -2871,7 +2991,7 @@ webpackJsonp([0,1],[
 	 * @param {String | Array} path
 	 * @param {*} val
 	 */
-
+	
 	function setPath(obj, path, val) {
 	  var original = obj;
 	  if (typeof path === 'string') {
@@ -2885,7 +3005,7 @@ webpackJsonp([0,1],[
 	    last = obj;
 	    key = path[i];
 	    if (key.charAt(0) === '*') {
-	      key = parseExpression(key.slice(1)).get.call(original, original);
+	      key = parseExpression$1(key.slice(1)).get.call(original, original);
 	    }
 	    if (i < l - 1) {
 	      obj = obj[key];
@@ -2911,30 +3031,32 @@ webpackJsonp([0,1],[
 	  }
 	  return true;
 	}
-
+	
 	var path = Object.freeze({
 	  parsePath: parsePath,
 	  getPath: getPath,
 	  setPath: setPath
 	});
-
+	
 	var expressionCache = new Cache(1000);
-
+	
 	var allowedKeywords = 'Math,Date,this,true,false,null,undefined,Infinity,NaN,' + 'isNaN,isFinite,decodeURI,decodeURIComponent,encodeURI,' + 'encodeURIComponent,parseInt,parseFloat';
 	var allowedKeywordsRE = new RegExp('^(' + allowedKeywords.replace(/,/g, '\\b|') + '\\b)');
-
+	
 	// keywords that don't make sense inside expressions
 	var improperKeywords = 'break,case,class,catch,const,continue,debugger,default,' + 'delete,do,else,export,extends,finally,for,function,if,' + 'import,in,instanceof,let,return,super,switch,throw,try,' + 'var,while,with,yield,enum,await,implements,package,' + 'protected,static,interface,private,public';
 	var improperKeywordsRE = new RegExp('^(' + improperKeywords.replace(/,/g, '\\b|') + '\\b)');
-
+	
 	var wsRE = /\s/g;
 	var newlineRE = /\n/g;
-	var saveRE = /[\{,]\s*[\w\$_]+\s*:|('(?:[^'\\]|\\.)*'|"(?:[^"\\]|\\.)*"|`(?:[^`\\]|\\.)*\$\{|\}(?:[^`\\]|\\.)*`|`(?:[^`\\]|\\.)*`)|new |typeof |void /g;
+	var saveRE = /[\{,]\s*[\w\$_]+\s*:|('(?:[^'\\]|\\.)*'|"(?:[^"\\]|\\.)*"|`(?:[^`\\]|\\.)*\$\{|\}(?:[^`\\"']|\\.)*`|`(?:[^`\\]|\\.)*`)|new |typeof |void /g;
 	var restoreRE = /"(\d+)"/g;
 	var pathTestRE = /^[A-Za-z_$][\w$]*(?:\.[A-Za-z_$][\w$]*|\['.*?'\]|\[".*?"\]|\[\d+\]|\[[A-Za-z_$][\w$]*\])*$/;
 	var identRE = /[^\w$\.](?:[A-Za-z_$][\w$]*)/g;
-	var booleanLiteralRE = /^(?:true|false)$/;
-
+	var literalValueRE$1 = /^(?:true|false|null|undefined|Infinity|NaN)$/;
+	
+	function noop() {}
+	
 	/**
 	 * Save / Rewrite / Restore
 	 *
@@ -2944,9 +3066,9 @@ webpackJsonp([0,1],[
 	 * remove and store these parts in a temporary array, and
 	 * restore them after the path rewrite.
 	 */
-
+	
 	var saved = [];
-
+	
 	/**
 	 * Save replacer
 	 *
@@ -2961,20 +3083,20 @@ webpackJsonp([0,1],[
 	 * @param {String} isString - str if matched as a string
 	 * @return {String} - placeholder with index
 	 */
-
+	
 	function save(str, isString) {
 	  var i = saved.length;
 	  saved[i] = isString ? str.replace(newlineRE, '\\n') : str;
 	  return '"' + i + '"';
 	}
-
+	
 	/**
 	 * Path rewrite replacer
 	 *
 	 * @param {String} raw
 	 * @return {String}
 	 */
-
+	
 	function rewrite(raw) {
 	  var c = raw.charAt(0);
 	  var path = raw.slice(1);
@@ -2985,7 +3107,7 @@ webpackJsonp([0,1],[
 	    return c + 'scope.' + path;
 	  }
 	}
-
+	
 	/**
 	 * Restore replacer
 	 *
@@ -2993,11 +3115,11 @@ webpackJsonp([0,1],[
 	 * @param {String} i - matched save index
 	 * @return {String}
 	 */
-
+	
 	function restore(str, i) {
 	  return saved[i];
 	}
-
+	
 	/**
 	 * Rewrite an expression, prefixing all path accessors with
 	 * `scope.` and generate getter/setter functions.
@@ -3005,7 +3127,7 @@ webpackJsonp([0,1],[
 	 * @param {String} exp
 	 * @return {Function}
 	 */
-
+	
 	function compileGetter(exp) {
 	  if (improperKeywordsRE.test(exp)) {
 	    process.env.NODE_ENV !== 'production' && warn('Avoid using reserved keywords in expression: ' + exp);
@@ -3015,11 +3137,11 @@ webpackJsonp([0,1],[
 	  // save strings and object literal keys
 	  var body = exp.replace(saveRE, save).replace(wsRE, '');
 	  // rewrite all paths
-	  // pad 1 space here becaue the regex matches 1 extra char
+	  // pad 1 space here because the regex matches 1 extra char
 	  body = (' ' + body).replace(identRE, rewrite).replace(restoreRE, restore);
 	  return makeGetterFn(body);
 	}
-
+	
 	/**
 	 * Build a getter function. Requires eval.
 	 *
@@ -3029,24 +3151,32 @@ webpackJsonp([0,1],[
 	 * @param {String} body
 	 * @return {Function|undefined}
 	 */
-
+	
 	function makeGetterFn(body) {
 	  try {
 	    /* eslint-disable no-new-func */
 	    return new Function('scope', 'return ' + body + ';');
 	    /* eslint-enable no-new-func */
 	  } catch (e) {
-	    process.env.NODE_ENV !== 'production' && warn('Invalid expression. ' + 'Generated function body: ' + body);
+	    if (process.env.NODE_ENV !== 'production') {
+	      /* istanbul ignore if */
+	      if (e.toString().match(/unsafe-eval|CSP/)) {
+	        warn('It seems you are using the default build of Vue.js in an environment ' + 'with Content Security Policy that prohibits unsafe-eval. ' + 'Use the CSP-compliant build instead: ' + 'http://vuejs.org/guide/installation.html#CSP-compliant-build');
+	      } else {
+	        warn('Invalid expression. ' + 'Generated function body: ' + body);
+	      }
+	    }
+	    return noop;
 	  }
 	}
-
+	
 	/**
 	 * Compile a setter function for the expression.
 	 *
 	 * @param {String} exp
 	 * @return {Function|undefined}
 	 */
-
+	
 	function compileSetter(exp) {
 	  var path = parsePath(exp);
 	  if (path) {
@@ -3057,7 +3187,7 @@ webpackJsonp([0,1],[
 	    process.env.NODE_ENV !== 'production' && warn('Invalid setter expression: ' + exp);
 	  }
 	}
-
+	
 	/**
 	 * Parse an expression into re-written getter/setters.
 	 *
@@ -3065,8 +3195,8 @@ webpackJsonp([0,1],[
 	 * @param {Boolean} needSet
 	 * @return {Function}
 	 */
-
-	function parseExpression(exp, needSet) {
+	
+	function parseExpression$1(exp, needSet) {
 	  exp = exp.trim();
 	  // try cache
 	  var hit = expressionCache.get(exp);
@@ -3088,44 +3218,44 @@ webpackJsonp([0,1],[
 	  expressionCache.put(exp, res);
 	  return res;
 	}
-
+	
 	/**
 	 * Check if an expression is a simple path.
 	 *
 	 * @param {String} exp
 	 * @return {Boolean}
 	 */
-
+	
 	function isSimplePath(exp) {
 	  return pathTestRE.test(exp) &&
-	  // don't treat true/false as paths
-	  !booleanLiteralRE.test(exp) &&
+	  // don't treat literal values as paths
+	  !literalValueRE$1.test(exp) &&
 	  // Math constants e.g. Math.PI, Math.E etc.
 	  exp.slice(0, 5) !== 'Math.';
 	}
-
+	
 	var expression = Object.freeze({
-	  parseExpression: parseExpression,
+	  parseExpression: parseExpression$1,
 	  isSimplePath: isSimplePath
 	});
-
+	
 	// we have two separate queues: one for directive updates
 	// and one for user watcher registered via $watch().
 	// we want to guarantee directive updates to be called
 	// before user watchers so that when user watchers are
 	// triggered, the DOM would have already been in updated
 	// state.
-
+	
 	var queue = [];
 	var userQueue = [];
 	var has = {};
 	var circular = {};
 	var waiting = false;
-
+	
 	/**
 	 * Reset the batcher's state.
 	 */
-
+	
 	function resetBatcherState() {
 	  queue.length = 0;
 	  userQueue.length = 0;
@@ -3133,17 +3263,17 @@ webpackJsonp([0,1],[
 	  circular = {};
 	  waiting = false;
 	}
-
+	
 	/**
 	 * Flush both queues and run the watchers.
 	 */
-
+	
 	function flushBatcherQueue() {
 	  var _again = true;
-
+	
 	  _function: while (_again) {
 	    _again = false;
-
+	
 	    runBatcherQueue(queue);
 	    runBatcherQueue(userQueue);
 	    // user watchers triggered more watchers,
@@ -3160,13 +3290,13 @@ webpackJsonp([0,1],[
 	    resetBatcherState();
 	  }
 	}
-
+	
 	/**
 	 * Run the watchers in a single queue.
 	 *
 	 * @param {Array} queue
 	 */
-
+	
 	function runBatcherQueue(queue) {
 	  // do not cache length because more watchers might be pushed
 	  // as we run existing watchers
@@ -3186,7 +3316,7 @@ webpackJsonp([0,1],[
 	  }
 	  queue.length = 0;
 	}
-
+	
 	/**
 	 * Push a watcher into the watcher queue.
 	 * Jobs with duplicate IDs will be skipped unless it's
@@ -3197,7 +3327,7 @@ webpackJsonp([0,1],[
 	 *   - {Number} id
 	 *   - {Function} run
 	 */
-
+	
 	function pushWatcher(watcher) {
 	  var id = watcher.id;
 	  if (has[id] == null) {
@@ -3212,9 +3342,9 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	}
-
+	
 	var uid$2 = 0;
-
+	
 	/**
 	 * A watcher parses an expression, collects dependencies,
 	 * and fires callback when the expression value changes.
@@ -3257,7 +3387,7 @@ webpackJsonp([0,1],[
 	    this.getter = expOrFn;
 	    this.setter = undefined;
 	  } else {
-	    var res = parseExpression(expOrFn, this.twoWay);
+	    var res = parseExpression$1(expOrFn, this.twoWay);
 	    this.getter = res.get;
 	    this.setter = res.set;
 	  }
@@ -3266,11 +3396,11 @@ webpackJsonp([0,1],[
 	  // watchers during vm._digest()
 	  this.queued = this.shallow = false;
 	}
-
+	
 	/**
 	 * Evaluate the getter, and re-collect dependencies.
 	 */
-
+	
 	Watcher.prototype.get = function () {
 	  this.beforeGet();
 	  var scope = this.scope || this.vm;
@@ -3299,13 +3429,13 @@ webpackJsonp([0,1],[
 	  this.afterGet();
 	  return value;
 	};
-
+	
 	/**
 	 * Set the corresponding value with the setter.
 	 *
 	 * @param {*} value
 	 */
-
+	
 	Watcher.prototype.set = function (value) {
 	  var scope = this.scope || this.vm;
 	  if (this.filters) {
@@ -3335,21 +3465,21 @@ webpackJsonp([0,1],[
 	    });
 	  }
 	};
-
+	
 	/**
 	 * Prepare for dependency collection.
 	 */
-
+	
 	Watcher.prototype.beforeGet = function () {
 	  Dep.target = this;
 	};
-
+	
 	/**
 	 * Add a dependency to this directive.
 	 *
 	 * @param {Dep} dep
 	 */
-
+	
 	Watcher.prototype.addDep = function (dep) {
 	  var id = dep.id;
 	  if (!this.newDepIds.has(id)) {
@@ -3360,11 +3490,11 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	};
-
+	
 	/**
 	 * Clean up for dependency collection.
 	 */
-
+	
 	Watcher.prototype.afterGet = function () {
 	  Dep.target = null;
 	  var i = this.deps.length;
@@ -3383,14 +3513,14 @@ webpackJsonp([0,1],[
 	  this.newDeps = tmp;
 	  this.newDeps.length = 0;
 	};
-
+	
 	/**
 	 * Subscriber interface.
 	 * Will be called when a dependency changes.
 	 *
 	 * @param {Boolean} shallow
 	 */
-
+	
 	Watcher.prototype.update = function (shallow) {
 	  if (this.lazy) {
 	    this.dirty = true;
@@ -3409,12 +3539,12 @@ webpackJsonp([0,1],[
 	    pushWatcher(this);
 	  }
 	};
-
+	
 	/**
 	 * Batcher job interface.
 	 * Will be called by the batcher.
 	 */
-
+	
 	Watcher.prototype.run = function () {
 	  if (this.active) {
 	    var value = this.get();
@@ -3449,12 +3579,12 @@ webpackJsonp([0,1],[
 	    this.queued = this.shallow = false;
 	  }
 	};
-
+	
 	/**
 	 * Evaluate the value of the watcher.
 	 * This only gets called for lazy watchers.
 	 */
-
+	
 	Watcher.prototype.evaluate = function () {
 	  // avoid overwriting another watcher that is being
 	  // collected.
@@ -3463,22 +3593,22 @@ webpackJsonp([0,1],[
 	  this.dirty = false;
 	  Dep.target = current;
 	};
-
+	
 	/**
 	 * Depend on all deps collected by this watcher.
 	 */
-
+	
 	Watcher.prototype.depend = function () {
 	  var i = this.deps.length;
 	  while (i--) {
 	    this.deps[i].depend();
 	  }
 	};
-
+	
 	/**
 	 * Remove self from all dependencies' subcriber list.
 	 */
-
+	
 	Watcher.prototype.teardown = function () {
 	  if (this.active) {
 	    // remove self from vm's watcher list
@@ -3496,7 +3626,7 @@ webpackJsonp([0,1],[
 	    this.vm = this.cb = this.value = null;
 	  }
 	};
-
+	
 	/**
 	 * Recrusively traverse an object to evoke all converted
 	 * getters, so that every nested property inside the object
@@ -3504,7 +3634,7 @@ webpackJsonp([0,1],[
 	 *
 	 * @param {*} val
 	 */
-
+	
 	var seenObjects = new _Set();
 	function traverse(val, seen) {
 	  var i = undefined,
@@ -3515,7 +3645,7 @@ webpackJsonp([0,1],[
 	  }
 	  var isA = isArray(val);
 	  var isO = isObject(val);
-	  if (isA || isO) {
+	  if ((isA || isO) && Object.isExtensible(val)) {
 	    if (val.__ob__) {
 	      var depId = val.__ob__.dep.id;
 	      if (seen.has(depId)) {
@@ -3534,36 +3664,36 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	}
-
+	
 	var text$1 = {
-
+	
 	  bind: function bind() {
 	    this.attr = this.el.nodeType === 3 ? 'data' : 'textContent';
 	  },
-
+	
 	  update: function update(value) {
 	    this.el[this.attr] = _toString(value);
 	  }
 	};
-
+	
 	var templateCache = new Cache(1000);
 	var idSelectorCache = new Cache(1000);
-
+	
 	var map = {
 	  efault: [0, '', ''],
 	  legend: [1, '<fieldset>', '</fieldset>'],
 	  tr: [2, '<table><tbody>', '</tbody></table>'],
 	  col: [2, '<table><tbody></tbody><colgroup>', '</colgroup></table>']
 	};
-
+	
 	map.td = map.th = [3, '<table><tbody><tr>', '</tr></tbody></table>'];
-
+	
 	map.option = map.optgroup = [1, '<select multiple="multiple">', '</select>'];
-
+	
 	map.thead = map.tbody = map.colgroup = map.caption = map.tfoot = [1, '<table>', '</table>'];
-
+	
 	map.g = map.defs = map.symbol = map.use = map.image = map.text = map.circle = map.ellipse = map.line = map.path = map.polygon = map.polyline = map.rect = [1, '<svg ' + 'xmlns="http://www.w3.org/2000/svg" ' + 'xmlns:xlink="http://www.w3.org/1999/xlink" ' + 'xmlns:ev="http://www.w3.org/2001/xml-events"' + 'version="1.1">', '</svg>'];
-
+	
 	/**
 	 * Check if a node is a supported template node with a
 	 * DocumentFragment content.
@@ -3571,14 +3701,15 @@ webpackJsonp([0,1],[
 	 * @param {Node} node
 	 * @return {Boolean}
 	 */
-
+	
 	function isRealTemplate(node) {
 	  return isTemplate(node) && isFragment(node.content);
 	}
-
+	
 	var tagRE$1 = /<([\w:-]+)/;
 	var entityRE = /&#?\w+?;/;
-
+	var commentRE = /<!--/;
+	
 	/**
 	 * Convert a string template to a DocumentFragment.
 	 * Determines correct wrapping by tag types. Wrapping
@@ -3588,7 +3719,7 @@ webpackJsonp([0,1],[
 	 * @param {Boolean} raw
 	 * @return {DocumentFragment}
 	 */
-
+	
 	function stringToFragment(templateString, raw) {
 	  // try a cache hit first
 	  var cacheKey = raw ? templateString : templateString.trim();
@@ -3596,12 +3727,13 @@ webpackJsonp([0,1],[
 	  if (hit) {
 	    return hit;
 	  }
-
+	
 	  var frag = document.createDocumentFragment();
 	  var tagMatch = templateString.match(tagRE$1);
 	  var entityMatch = entityRE.test(templateString);
-
-	  if (!tagMatch && !entityMatch) {
+	  var commentMatch = commentRE.test(templateString);
+	
+	  if (!tagMatch && !entityMatch && !commentMatch) {
 	    // text only, return a single text node.
 	    frag.appendChild(document.createTextNode(templateString));
 	  } else {
@@ -3611,12 +3743,12 @@ webpackJsonp([0,1],[
 	    var prefix = wrap[1];
 	    var suffix = wrap[2];
 	    var node = document.createElement('div');
-
+	
 	    node.innerHTML = prefix + templateString + suffix;
 	    while (depth--) {
 	      node = node.lastChild;
 	    }
-
+	
 	    var child;
 	    /* eslint-disable no-cond-assign */
 	    while (child = node.firstChild) {
@@ -3630,14 +3762,14 @@ webpackJsonp([0,1],[
 	  templateCache.put(cacheKey, frag);
 	  return frag;
 	}
-
+	
 	/**
 	 * Convert a template node to a DocumentFragment.
 	 *
 	 * @param {Node} node
 	 * @return {DocumentFragment}
 	 */
-
+	
 	function nodeToFragment(node) {
 	  // if its a template tag and the browser supports it,
 	  // its content is already a document fragment. However, iOS Safari has
@@ -3664,7 +3796,7 @@ webpackJsonp([0,1],[
 	  trimNode(frag);
 	  return frag;
 	}
-
+	
 	// Test for the presence of the Safari template cloning bug
 	// https://bugs.webkit.org/showug.cgi?id=137755
 	var hasBrokenTemplate = (function () {
@@ -3677,7 +3809,7 @@ webpackJsonp([0,1],[
 	    return false;
 	  }
 	})();
-
+	
 	// Test for IE10/11 textarea placeholder clone bug
 	var hasTextareaCloneBug = (function () {
 	  /* istanbul ignore else */
@@ -3689,7 +3821,7 @@ webpackJsonp([0,1],[
 	    return false;
 	  }
 	})();
-
+	
 	/**
 	 * 1. Deal with Safari cloning nested <template> bug by
 	 *    manually cloning all template instances.
@@ -3699,7 +3831,7 @@ webpackJsonp([0,1],[
 	 * @param {Element|DocumentFragment} node
 	 * @return {Element|DocumentFragment}
 	 */
-
+	
 	function cloneNode(node) {
 	  /* istanbul ignore if */
 	  if (!node.querySelectorAll) {
@@ -3740,7 +3872,7 @@ webpackJsonp([0,1],[
 	  }
 	  return res;
 	}
-
+	
 	/**
 	 * Process the template option and normalizes it into a
 	 * a DocumentFragment that can be used as a partial or a
@@ -3758,17 +3890,17 @@ webpackJsonp([0,1],[
 	 *        selector and keep whitespace in the string.
 	 * @return {DocumentFragment|undefined}
 	 */
-
+	
 	function parseTemplate(template, shouldClone, raw) {
 	  var node, frag;
-
+	
 	  // if the template is already a document fragment,
 	  // do nothing
 	  if (isFragment(template)) {
 	    trimNode(template);
 	    return shouldClone ? cloneNode(template) : template;
 	  }
-
+	
 	  if (typeof template === 'string') {
 	    // id selector
 	    if (!raw && template.charAt(0) === '#') {
@@ -3790,17 +3922,17 @@ webpackJsonp([0,1],[
 	    // a direct node
 	    frag = nodeToFragment(template);
 	  }
-
+	
 	  return frag && shouldClone ? cloneNode(frag) : frag;
 	}
-
+	
 	var template = Object.freeze({
 	  cloneNode: cloneNode,
 	  parseTemplate: parseTemplate
 	});
-
+	
 	var html = {
-
+	
 	  bind: function bind() {
 	    // a comment node means this is a binding for
 	    // {{{ inline unescaped html }}}
@@ -3812,7 +3944,7 @@ webpackJsonp([0,1],[
 	      replace(this.el, this.anchor);
 	    }
 	  },
-
+	
 	  update: function update(value) {
 	    value = _toString(value);
 	    if (this.nodes) {
@@ -3821,7 +3953,7 @@ webpackJsonp([0,1],[
 	      this.el.innerHTML = value;
 	    }
 	  },
-
+	
 	  swap: function swap(value) {
 	    // remove old nodes
 	    var i = this.nodes.length;
@@ -3836,7 +3968,7 @@ webpackJsonp([0,1],[
 	    before(frag, this.anchor);
 	  }
 	};
-
+	
 	/**
 	 * Abstraction for a partially-compiled fragment.
 	 * Can optionally compile content with a child scope.
@@ -3877,7 +4009,7 @@ webpackJsonp([0,1],[
 	  }
 	  this.node.__v_frag = this;
 	}
-
+	
 	/**
 	 * Call attach/detach for all components contained within
 	 * this fragment. Also do so recursively for all child
@@ -3885,7 +4017,7 @@ webpackJsonp([0,1],[
 	 *
 	 * @param {Function} hook
 	 */
-
+	
 	Fragment.prototype.callHook = function (hook) {
 	  var i, l;
 	  for (i = 0, l = this.childFrags.length; i < l; i++) {
@@ -3895,14 +4027,14 @@ webpackJsonp([0,1],[
 	    hook(this.children[i]);
 	  }
 	};
-
+	
 	/**
 	 * Insert fragment before target, single node version
 	 *
 	 * @param {Node} target
 	 * @param {Boolean} withTransition
 	 */
-
+	
 	function singleBefore(target, withTransition) {
 	  this.inserted = true;
 	  var method = withTransition !== false ? beforeWithTransition : before;
@@ -3911,11 +4043,11 @@ webpackJsonp([0,1],[
 	    this.callHook(attach);
 	  }
 	}
-
+	
 	/**
 	 * Remove fragment, single node version
 	 */
-
+	
 	function singleRemove() {
 	  this.inserted = false;
 	  var shouldCallRemove = inDoc(this.node);
@@ -3928,14 +4060,14 @@ webpackJsonp([0,1],[
 	    self.destroy();
 	  });
 	}
-
+	
 	/**
 	 * Insert fragment before target, multi-nodes version
 	 *
 	 * @param {Node} target
 	 * @param {Boolean} withTransition
 	 */
-
+	
 	function multiBefore(target, withTransition) {
 	  this.inserted = true;
 	  var vm = this.vm;
@@ -3947,11 +4079,11 @@ webpackJsonp([0,1],[
 	    this.callHook(attach);
 	  }
 	}
-
+	
 	/**
 	 * Remove fragment, multi-nodes version
 	 */
-
+	
 	function multiRemove() {
 	  this.inserted = false;
 	  var self = this;
@@ -3964,11 +4096,11 @@ webpackJsonp([0,1],[
 	    self.destroy();
 	  });
 	}
-
+	
 	/**
 	 * Prepare the fragment for removal.
 	 */
-
+	
 	Fragment.prototype.beforeRemove = function () {
 	  var i, l;
 	  for (i = 0, l = this.childFrags.length; i < l; i++) {
@@ -3992,11 +4124,11 @@ webpackJsonp([0,1],[
 	    dirs[i]._watcher && dirs[i]._watcher.teardown();
 	  }
 	};
-
+	
 	/**
 	 * Destroy the fragment.
 	 */
-
+	
 	Fragment.prototype.destroy = function () {
 	  if (this.parentFrag) {
 	    this.parentFrag.childFrags.$remove(this);
@@ -4004,33 +4136,33 @@ webpackJsonp([0,1],[
 	  this.node.__v_frag = null;
 	  this.unlink();
 	};
-
+	
 	/**
 	 * Call attach hook for a Vue instance.
 	 *
 	 * @param {Vue} child
 	 */
-
+	
 	function attach(child) {
 	  if (!child._isAttached && inDoc(child.$el)) {
 	    child._callHook('attached');
 	  }
 	}
-
+	
 	/**
 	 * Call detach hook for a Vue instance.
 	 *
 	 * @param {Vue} child
 	 */
-
+	
 	function detach(child) {
 	  if (child._isAttached && !inDoc(child.$el)) {
 	    child._callHook('detached');
 	  }
 	}
-
+	
 	var linkerCache = new Cache(5000);
-
+	
 	/**
 	 * A factory that can be used to create instances of a
 	 * fragment. Caches the compiled linker if possible.
@@ -4064,7 +4196,7 @@ webpackJsonp([0,1],[
 	  }
 	  this.linker = linker;
 	}
-
+	
 	/**
 	 * Create a fragment instance with given host and scope.
 	 *
@@ -4072,12 +4204,12 @@ webpackJsonp([0,1],[
 	 * @param {Object} scope
 	 * @param {Fragment} parentFrag
 	 */
-
+	
 	FragmentFactory.prototype.create = function (host, scope, parentFrag) {
 	  var frag = cloneNode(this.template);
 	  return new Fragment(this.linker, this.vm, frag, host, scope, parentFrag);
 	};
-
+	
 	var ON = 700;
 	var MODEL = 800;
 	var BIND = 850;
@@ -4088,17 +4220,21 @@ webpackJsonp([0,1],[
 	var IF = 2100;
 	var FOR = 2200;
 	var SLOT = 2300;
-
+	
 	var uid$3 = 0;
-
+	
 	var vFor = {
-
+	
 	  priority: FOR,
 	  terminal: true,
-
+	
 	  params: ['track-by', 'stagger', 'enter-stagger', 'leave-stagger'],
-
+	
 	  bind: function bind() {
+	    if (process.env.NODE_ENV !== 'production' && this.el.hasAttribute('v-if')) {
+	      warn('<' + this.el.tagName.toLowerCase() + ' v-for="' + this.expression + '" v-if="' + this.el.getAttribute('v-if') + '">: ' + 'Using v-if and v-for on the same element is not recommended - ' + 'consider filtering the source Array instead.', this.vm);
+	    }
+	
 	    // support "item in/of items" syntax
 	    var inMatch = this.expression.match(/(.*) (?:in|of) (.*)/);
 	    if (inMatch) {
@@ -4111,15 +4247,15 @@ webpackJsonp([0,1],[
 	      }
 	      this.expression = inMatch[2];
 	    }
-
+	
 	    if (!this.alias) {
 	      process.env.NODE_ENV !== 'production' && warn('Invalid v-for expression "' + this.descriptor.raw + '": ' + 'alias is required.', this.vm);
 	      return;
 	    }
-
+	
 	    // uid as a cache identifier
 	    this.id = '__v-for__' + ++uid$3;
-
+	
 	    // check if this is an option list,
 	    // so that we know if we need to update the <select>'s
 	    // v-model when the option list has changed.
@@ -4128,26 +4264,26 @@ webpackJsonp([0,1],[
 	    // retrive it in the actual updateModel() function.
 	    var tag = this.el.tagName;
 	    this.isOption = (tag === 'OPTION' || tag === 'OPTGROUP') && this.el.parentNode.tagName === 'SELECT';
-
+	
 	    // setup anchor nodes
 	    this.start = createAnchor('v-for-start');
 	    this.end = createAnchor('v-for-end');
 	    replace(this.el, this.end);
 	    before(this.start, this.end);
-
+	
 	    // cache
 	    this.cache = Object.create(null);
-
+	
 	    // fragment factory
 	    this.factory = new FragmentFactory(this.vm, this.el);
 	  },
-
+	
 	  update: function update(data) {
 	    this.diff(data);
 	    this.updateRef();
 	    this.updateModel();
 	  },
-
+	
 	  /**
 	   * Diff, based on new data and old data, determine the
 	   * minimum amount of DOM manipulations needed to make the
@@ -4161,12 +4297,12 @@ webpackJsonp([0,1],[
 	   *
 	   * @param {Array} data
 	   */
-
+	
 	  diff: function diff(data) {
 	    // check if the Array was converted from an Object
 	    var item = data[0];
 	    var convertedFromObject = this.fromObject = isObject(item) && hasOwn(item, '$key') && hasOwn(item, '$value');
-
+	
 	    var trackByKey = this.params.trackBy;
 	    var oldFrags = this.frags;
 	    var frags = this.frags = new Array(data.length);
@@ -4177,7 +4313,7 @@ webpackJsonp([0,1],[
 	    var inDocument = inDoc(start);
 	    var init = !oldFrags;
 	    var i, l, frag, key, value, primitive;
-
+	
 	    // First pass, go through the new Array and fill up
 	    // the new frags array. If a piece of data has a cached
 	    // instance for it, we reuse it. Otherwise build a new
@@ -4209,7 +4345,7 @@ webpackJsonp([0,1],[
 	          });
 	        }
 	      } else {
-	        // new isntance
+	        // new instance
 	        frag = this.create(value, alias, i, key);
 	        frag.fresh = !init;
 	      }
@@ -4218,12 +4354,12 @@ webpackJsonp([0,1],[
 	        frag.before(end);
 	      }
 	    }
-
+	
 	    // we're done for the initial render.
 	    if (init) {
 	      return;
 	    }
-
+	
 	    // Second pass, go through the old fragments and
 	    // destroy those who are not reused (and remove them
 	    // from cache)
@@ -4246,7 +4382,7 @@ webpackJsonp([0,1],[
 	        return w.active;
 	      });
 	    }
-
+	
 	    // Final pass, move/insert new fragments into the
 	    // right place.
 	    var targetPrev, prevEl, currentPrev;
@@ -4272,7 +4408,7 @@ webpackJsonp([0,1],[
 	      frag.reused = frag.fresh = false;
 	    }
 	  },
-
+	
 	  /**
 	   * Create a new fragment instance.
 	   *
@@ -4282,7 +4418,7 @@ webpackJsonp([0,1],[
 	   * @param {String} [key]
 	   * @return {Fragment}
 	   */
-
+	
 	  create: function create(value, alias, index, key) {
 	    var host = this._host;
 	    // create iteration scope
@@ -4316,11 +4452,11 @@ webpackJsonp([0,1],[
 	    this.cacheFrag(value, frag, index, key);
 	    return frag;
 	  },
-
+	
 	  /**
 	   * Update the v-ref on owner vm.
 	   */
-
+	
 	  updateRef: function updateRef() {
 	    var ref = this.descriptor.ref;
 	    if (!ref) return;
@@ -4336,12 +4472,12 @@ webpackJsonp([0,1],[
 	    }
 	    hash[ref] = refs;
 	  },
-
+	
 	  /**
 	   * For option lists, update the containing v-model on
 	   * parent <select>.
 	   */
-
+	
 	  updateModel: function updateModel() {
 	    if (this.isOption) {
 	      var parent = this.start.parentNode;
@@ -4351,7 +4487,7 @@ webpackJsonp([0,1],[
 	      }
 	    }
 	  },
-
+	
 	  /**
 	   * Insert a fragment. Handles staggering.
 	   *
@@ -4360,7 +4496,7 @@ webpackJsonp([0,1],[
 	   * @param {Node} prevEl
 	   * @param {Boolean} inDocument
 	   */
-
+	
 	  insert: function insert(frag, index, prevEl, inDocument) {
 	    if (frag.staggerCb) {
 	      frag.staggerCb.cancel();
@@ -4395,7 +4531,7 @@ webpackJsonp([0,1],[
 	      frag.before(target);
 	    }
 	  },
-
+	
 	  /**
 	   * Remove a fragment. Handles staggering.
 	   *
@@ -4404,7 +4540,7 @@ webpackJsonp([0,1],[
 	   * @param {Number} total
 	   * @param {Boolean} inDocument
 	   */
-
+	
 	  remove: function remove(frag, index, total, inDocument) {
 	    if (frag.staggerCb) {
 	      frag.staggerCb.cancel();
@@ -4427,7 +4563,7 @@ webpackJsonp([0,1],[
 	      frag.remove();
 	    }
 	  },
-
+	
 	  /**
 	   * Move a fragment to a new position.
 	   * Force no transition.
@@ -4435,7 +4571,7 @@ webpackJsonp([0,1],[
 	   * @param {Fragment} frag
 	   * @param {Node} prevEl
 	   */
-
+	
 	  move: function move(frag, prevEl) {
 	    // fix a common issue with Sortable:
 	    // if prevEl doesn't have nextSibling, this means it's
@@ -4447,7 +4583,7 @@ webpackJsonp([0,1],[
 	    }
 	    frag.before(prevEl.nextSibling, false);
 	  },
-
+	
 	  /**
 	   * Cache a fragment using track-by or the object key.
 	   *
@@ -4456,7 +4592,7 @@ webpackJsonp([0,1],[
 	   * @param {Number} index
 	   * @param {String} [key]
 	   */
-
+	
 	  cacheFrag: function cacheFrag(value, frag, index, key) {
 	    var trackByKey = this.params.trackBy;
 	    var cache = this.cache;
@@ -4485,7 +4621,7 @@ webpackJsonp([0,1],[
 	    }
 	    frag.raw = value;
 	  },
-
+	
 	  /**
 	   * Get a cached fragment from the value/index/key
 	   *
@@ -4494,7 +4630,7 @@ webpackJsonp([0,1],[
 	   * @param {String} key
 	   * @return {Fragment}
 	   */
-
+	
 	  getCachedFrag: function getCachedFrag(value, index, key) {
 	    var trackByKey = this.params.trackBy;
 	    var primitive = !isObject(value);
@@ -4510,13 +4646,13 @@ webpackJsonp([0,1],[
 	    }
 	    return frag;
 	  },
-
+	
 	  /**
 	   * Delete a fragment from cache.
 	   *
 	   * @param {Fragment} frag
 	   */
-
+	
 	  deleteCachedFrag: function deleteCachedFrag(frag) {
 	    var value = frag.raw;
 	    var trackByKey = this.params.trackBy;
@@ -4534,7 +4670,7 @@ webpackJsonp([0,1],[
 	      frag.raw = null;
 	    }
 	  },
-
+	
 	  /**
 	   * Get the stagger amount for an insertion/removal.
 	   *
@@ -4543,7 +4679,7 @@ webpackJsonp([0,1],[
 	   * @param {Number} total
 	   * @param {String} type
 	   */
-
+	
 	  getStagger: function getStagger(frag, index, total, type) {
 	    type = type + 'Stagger';
 	    var trans = frag.node.__v_trans;
@@ -4551,27 +4687,27 @@ webpackJsonp([0,1],[
 	    var hook = hooks && (hooks[type] || hooks.stagger);
 	    return hook ? hook.call(frag, index, total) : index * parseInt(this.params[type] || this.params.stagger, 10);
 	  },
-
+	
 	  /**
 	   * Pre-process the value before piping it through the
 	   * filters. This is passed to and called by the watcher.
 	   */
-
+	
 	  _preProcess: function _preProcess(value) {
 	    // regardless of type, store the un-filtered raw value.
 	    this.rawValue = value;
 	    return value;
 	  },
-
+	
 	  /**
 	   * Post-process the value after it has been piped through
 	   * the filters. This is passed to and called by the watcher.
 	   *
 	   * It is necessary for this to be called during the
-	   * wathcer's dependency collection phase because we want
+	   * watcher's dependency collection phase because we want
 	   * the v-for to update when the source Object is mutated.
 	   */
-
+	
 	  _postProcess: function _postProcess(value) {
 	    if (isArray(value)) {
 	      return value;
@@ -4596,7 +4732,7 @@ webpackJsonp([0,1],[
 	      return value || [];
 	    }
 	  },
-
+	
 	  unbind: function unbind() {
 	    if (this.descriptor.ref) {
 	      (this._scope || this.vm).$refs[this.descriptor.ref] = null;
@@ -4612,7 +4748,7 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	};
-
+	
 	/**
 	 * Helper to find the previous element that is a fragment
 	 * anchor. This is necessary because a destroyed frag's
@@ -4628,7 +4764,7 @@ webpackJsonp([0,1],[
 	 * @param {String} id
 	 * @return {Fragment}
 	 */
-
+	
 	function findPrevFrag(frag, anchor, id) {
 	  var el = frag.node.previousSibling;
 	  /* istanbul ignore if */
@@ -4642,14 +4778,49 @@ webpackJsonp([0,1],[
 	  }
 	  return frag;
 	}
-
+	
+	/**
+	 * Create a range array from given number.
+	 *
+	 * @param {Number} n
+	 * @return {Array}
+	 */
+	
+	function range(n) {
+	  var i = -1;
+	  var ret = new Array(Math.floor(n));
+	  while (++i < n) {
+	    ret[i] = i;
+	  }
+	  return ret;
+	}
+	
+	/**
+	 * Get the track by key for an item.
+	 *
+	 * @param {Number} index
+	 * @param {String} key
+	 * @param {*} value
+	 * @param {String} [trackByKey]
+	 */
+	
+	function getTrackByKey(index, key, value, trackByKey) {
+	  return trackByKey ? trackByKey === '$index' ? index : trackByKey.charAt(0).match(/\w/) ? getPath(value, trackByKey) : value[trackByKey] : key || value;
+	}
+	
+	if (process.env.NODE_ENV !== 'production') {
+	  vFor.warnDuplicate = function (value) {
+	    warn('Duplicate value found in v-for="' + this.descriptor.raw + '": ' + JSON.stringify(value) + '. Use track-by="$index" if ' + 'you are expecting duplicate values.', this.vm);
+	  };
+	}
+	
 	/**
 	 * Find a vm from a fragment.
 	 *
 	 * @param {Fragment} frag
 	 * @return {Vue|undefined}
 	 */
-
+	
 	function findVmFromFrag(frag) {
 	  var node = frag.node;
 	  // handle multi-node frag
@@ -4660,47 +4831,12 @@ webpackJsonp([0,1],[
 	  }
 	  return node.__vue__;
 	}
-
-	/**
-	 * Create a range array from given number.
-	 *
-	 * @param {Number} n
-	 * @return {Array}
-	 */
-
-	function range(n) {
-	  var i = -1;
-	  var ret = new Array(Math.floor(n));
-	  while (++i < n) {
-	    ret[i] = i;
-	  }
-	  return ret;
-	}
-
-	/**
-	 * Get the track by key for an item.
-	 *
-	 * @param {Number} index
-	 * @param {String} key
-	 * @param {*} value
-	 * @param {String} [trackByKey]
-	 */
-
-	function getTrackByKey(index, key, value, trackByKey) {
-	  return trackByKey ? trackByKey === '$index' ? index : trackByKey.charAt(0).match(/\w/) ? getPath(value, trackByKey) : value[trackByKey] : key || value;
-	}
-
-	if (process.env.NODE_ENV !== 'production') {
-	  vFor.warnDuplicate = function (value) {
-	    warn('Duplicate value found in v-for="' + this.descriptor.raw + '": ' + JSON.stringify(value) + '. Use track-by="$index" if ' + 'you are expecting duplicate values.', this.vm);
-	  };
-	}
-
+	
 	var vIf = {
-
+	
 	  priority: IF,
 	  terminal: true,
-
+	
 	  bind: function bind() {
 	    var el = this.el;
 	    if (!el.__vue__) {
@@ -4718,7 +4854,7 @@ webpackJsonp([0,1],[
 	      this.invalid = true;
 	    }
 	  },
-
+	
 	  update: function update(value) {
 	    if (this.invalid) return;
 	    if (value) {
@@ -4729,7 +4865,7 @@ webpackJsonp([0,1],[
 	      this.remove();
 	    }
 	  },
-
+	
 	  insert: function insert() {
 	    if (this.elseFrag) {
 	      this.elseFrag.remove();
@@ -4742,7 +4878,7 @@ webpackJsonp([0,1],[
 	    this.frag = this.factory.create(this._host, this._scope, this._frag);
 	    this.frag.before(this.anchor);
 	  },
-
+	
 	  remove: function remove() {
 	    if (this.frag) {
 	      this.frag.remove();
@@ -4756,7 +4892,7 @@ webpackJsonp([0,1],[
 	      this.elseFrag.before(this.anchor);
 	    }
 	  },
-
+	
 	  unbind: function unbind() {
 	    if (this.frag) {
 	      this.frag.destroy();
@@ -4766,9 +4902,9 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	};
-
+	
 	var show = {
-
+	
 	  bind: function bind() {
 	    // check else block
 	    var next = this.el.nextElementSibling;
@@ -4776,14 +4912,14 @@ webpackJsonp([0,1],[
 	      this.elseEl = next;
 	    }
 	  },
-
+	
 	  update: function update(value) {
 	    this.apply(this.el, value);
 	    if (this.elseEl) {
 	      this.apply(this.elseEl, !value);
 	    }
 	  },
-
+	
 	  apply: function apply(el, value) {
 	    if (inDoc(el)) {
 	      applyTransition(el, value ? 1 : -1, toggle, this.vm);
@@ -4795,9 +4931,9 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	};
-
+	
 	var text$2 = {
-
+	
 	  bind: function bind() {
 	    var self = this;
 	    var el = this.el;
@@ -4805,7 +4941,7 @@ webpackJsonp([0,1],[
 	    var lazy = this.params.lazy;
 	    var number = this.params.number;
 	    var debounce = this.params.debounce;
-
+	
 	    // handle composition events.
 	    //   http://blog.evanyou.me/2014/01/03/composition-event/
 	    // skip this for Android because it handles composition
@@ -4830,7 +4966,7 @@ webpackJsonp([0,1],[
 	        }
 	      });
 	    }
-
+	
 	    // prevent messing with the input when user is typing,
 	    // and force update on blur.
 	    this.focused = false;
@@ -4846,7 +4982,7 @@ webpackJsonp([0,1],[
 	        }
 	      });
 	    }
-
+	
 	    // Now attach the main listener
 	    this.listener = this.rawListener = function () {
 	      if (composing || !self._bound) {
@@ -4862,12 +4998,12 @@ webpackJsonp([0,1],[
 	        }
 	      });
 	    };
-
+	
 	    // apply debounce
 	    if (debounce) {
 	      this.listener = _debounce(this.listener, debounce);
 	    }
-
+	
 	    // Support jQuery events, since jQuery.trigger() doesn't
 	    // trigger native events in some cases and some plugins
 	    // rely on $.trigger()
@@ -4891,7 +5027,7 @@ webpackJsonp([0,1],[
 	        this.on('input', this.listener);
 	      }
 	    }
-
+	
 	    // IE9 doesn't fire input event on backspace/del/cut
 	    if (!lazy && isIE9) {
 	      this.on('cut', function () {
@@ -4903,17 +5039,20 @@ webpackJsonp([0,1],[
 	        }
 	      });
 	    }
-
+	
 	    // set initial value if present
 	    if (el.hasAttribute('value') || el.tagName === 'TEXTAREA' && el.value.trim()) {
 	      this.afterBind = this.listener;
 	    }
 	  },
-
+	
 	  update: function update(value) {
-	    this.el.value = _toString(value);
+	    // #3029 only update when the value changes. This prevent
+	    // browsers from overwriting values like selectionStart
+	    value = _toString(value);
+	    if (value !== this.el.value) this.el.value = value;
 	  },
-
+	
 	  unbind: function unbind() {
 	    var el = this.el;
 	    if (this.hasjQuery) {
@@ -4923,13 +5062,13 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	};
-
+	
 	var radio = {
-
+	
 	  bind: function bind() {
 	    var self = this;
 	    var el = this.el;
-
+	
 	    this.getValue = function () {
 	      // value overwrite via v-bind:value
 	      if (el.hasOwnProperty('_value')) {
@@ -4941,38 +5080,40 @@ webpackJsonp([0,1],[
 	      }
 	      return val;
 	    };
-
+	
 	    this.listener = function () {
 	      self.set(self.getValue());
 	    };
 	    this.on('change', this.listener);
-
+	
 	    if (el.hasAttribute('checked')) {
 	      this.afterBind = this.listener;
 	    }
 	  },
-
+	
 	  update: function update(value) {
 	    this.el.checked = looseEqual(value, this.getValue());
 	  }
 	};
-
+	
 	var select = {
-
+	
 	  bind: function bind() {
+	    var _this = this;
+	
 	    var self = this;
 	    var el = this.el;
-
+	
 	    // method to force update DOM using latest value.
 	    this.forceUpdate = function () {
 	      if (self._watcher) {
 	        self.update(self._watcher.get());
 	      }
 	    };
-
+	
 	    // check if this is a multiple select
 	    var multiple = this.multiple = el.hasAttribute('multiple');
-
+	
 	    // attach listener
 	    this.listener = function () {
 	      var value = getValue(el, multiple);
@@ -4980,20 +5121,25 @@ webpackJsonp([0,1],[
 	      self.set(value);
 	    };
 	    this.on('change', this.listener);
-
+	
 	    // if has initial value, set afterBind
 	    var initValue = getValue(el, multiple, true);
 	    if (multiple && initValue.length || !multiple && initValue !== null) {
 	      this.afterBind = this.listener;
 	    }
-
+	
 	    // All major browsers except Firefox resets
 	    // selectedIndex with value -1 to 0 when the element
 	    // is appended to a new parent, therefore we have to
 	    // force a DOM update whenever that happens...
-	    this.vm.$on('hook:attached', this.forceUpdate);
+	    this.vm.$on('hook:attached', function () {
+	      nextTick(_this.forceUpdate);
+	    });
+	    if (!inDoc(el)) {
+	      nextTick(this.forceUpdate);
+	    }
 	  },
-
+	
 	  update: function update(value) {
 	    var el = this.el;
 	    el.selectedIndex = -1;
@@ -5009,13 +5155,13 @@ webpackJsonp([0,1],[
 	      /* eslint-enable eqeqeq */
 	    }
 	  },
-
+	
 	  unbind: function unbind() {
 	    /* istanbul ignore next */
 	    this.vm.$off('hook:attached', this.forceUpdate);
 	  }
 	};
-
+	
 	/**
 	 * Get select value
 	 *
@@ -5024,7 +5170,7 @@ webpackJsonp([0,1],[
 	 * @param {Boolean} init
 	 * @return {Array|*}
 	 */
-
+	
 	function getValue(el, multi, init) {
 	  var res = multi ? [] : null;
 	  var op, val, selected;
@@ -5042,7 +5188,7 @@ webpackJsonp([0,1],[
 	  }
 	  return res;
 	}
-
+	
 	/**
 	 * Native Array.indexOf uses strict equal, but in this
 	 * case we need to match string/numbers with custom equal.
@@ -5050,7 +5196,7 @@ webpackJsonp([0,1],[
 	 * @param {Array} arr
 	 * @param {*} val
 	 */
-
+	
 	function indexOf$1(arr, val) {
 	  var i = arr.length;
 	  while (i--) {
@@ -5060,17 +5206,17 @@ webpackJsonp([0,1],[
 	  }
 	  return -1;
 	}
-
+	
 	var checkbox = {
-
+	
 	  bind: function bind() {
 	    var self = this;
 	    var el = this.el;
-
+	
 	    this.getValue = function () {
 	      return el.hasOwnProperty('_value') ? el._value : self.params.number ? toNumber(el.value) : el.value;
 	    };
-
+	
 	    function getBooleanValue() {
 	      var val = el.checked;
 	      if (val && el.hasOwnProperty('_trueValue')) {
@@ -5081,29 +5227,30 @@ webpackJsonp([0,1],[
 	      }
 	      return val;
 	    }
-
+	
 	    this.listener = function () {
-	      var model = self._watcher.value;
+	      var model = self._watcher.get();
 	      if (isArray(model)) {
 	        var val = self.getValue();
+	        var i = indexOf(model, val);
 	        if (el.checked) {
-	          if (indexOf(model, val) < 0) {
-	            model.push(val);
+	          if (i < 0) {
+	            self.set(model.concat(val));
 	          }
-	        } else {
-	          model.$remove(val);
+	        } else if (i > -1) {
+	          self.set(model.slice(0, i).concat(model.slice(i + 1)));
 	        }
 	      } else {
 	        self.set(getBooleanValue());
 	      }
 	    };
-
+	
 	    this.on('change', this.listener);
 	    if (el.hasAttribute('checked')) {
 	      this.afterBind = this.listener;
 	    }
 	  },
-
+	
 	  update: function update(value) {
 	    var el = this.el;
 	    if (isArray(value)) {
@@ -5117,21 +5264,21 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	};
-
+	
 	var handlers = {
 	  text: text$2,
 	  radio: radio,
 	  select: select,
 	  checkbox: checkbox
 	};
-
+	
 	var model = {
-
+	
 	  priority: MODEL,
 	  twoWay: true,
 	  handlers: handlers,
 	  params: ['lazy', 'number', 'debounce'],
-
+	
 	  /**
 	   * Possible elements:
 	   *   <select>
@@ -5142,7 +5289,7 @@ webpackJsonp([0,1],[
 	   *     - radio
 	   *     - number
 	   */
-
+	
 	  bind: function bind() {
 	    // friendly warning...
 	    this.checkFilters();
@@ -5167,11 +5314,11 @@ webpackJsonp([0,1],[
 	    this.update = handler.update;
 	    this._unbind = handler.unbind;
 	  },
-
+	
 	  /**
 	   * Check read/write filter stats.
 	   */
-
+	
 	  checkFilters: function checkFilters() {
 	    var filters = this.filters;
 	    if (!filters) return;
@@ -5186,13 +5333,13 @@ webpackJsonp([0,1],[
 	      }
 	    }
 	  },
-
+	
 	  unbind: function unbind() {
 	    this.el.__v_model = null;
 	    this._unbind && this._unbind();
 	  }
 	};
-
+	
 	// keyCode aliases
 	var keyCodes = {
 	  esc: 27,
@@ -5205,7 +5352,7 @@ webpackJsonp([0,1],[
 	  right: 39,
 	  down: 40
 	};
-
+	
 	function keyFilter(handler, keys) {
 	  var codes = keys.map(function (key) {
 	    var charCode = key.charCodeAt(0);
@@ -5227,21 +5374,21 @@ webpackJsonp([0,1],[
 	    }
 	  };
 	}
-
+	
 	function stopFilter(handler) {
 	  return function stopHandler(e) {
 	    e.stopPropagation();
 	    return handler.call(this, e);
 	  };
 	}
-
+	
 	function preventFilter(handler) {
 	  return function preventHandler(e) {
 	    e.preventDefault();
 	    return handler.call(this, e);
 	  };
 	}
-
+	
 	function selfFilter(handler) {
 	  return function selfHandler(e) {
 	    if (e.target === e.currentTarget) {
@@ -5249,13 +5396,13 @@ webpackJsonp([0,1],[
 	    }
 	  };
 	}
-
+	
 	var on$1 = {
-
+	
 	  priority: ON,
 	  acceptStatement: true,
 	  keyCodes: keyCodes,
-
+	
 	  bind: function bind() {
 	    // deal with iframes
 	    if (this.el.tagName === 'IFRAME' && this.arg !== 'load') {
@@ -5266,19 +5413,19 @@ webpackJsonp([0,1],[
 	      this.on('load', this.iframeBind);
 	    }
 	  },
-
+	
 	  update: function update(handler) {
 	    // stub a noop for v-on with no value,
 	    // e.g. @mousedown.prevent
 	    if (!this.descriptor.raw) {
 	      handler = function () {};
 	    }
-
+	
 	    if (typeof handler !== 'function') {
 	      process.env.NODE_ENV !== 'production' && warn('v-on:' + this.arg + '="' + this.expression + '" expects a function value, ' + 'got ' + handler, this.vm);
 	      return;
 	    }
-
+	
 	    // apply modifiers
 	    if (this.modifiers.stop) {
 	      handler = stopFilter(handler);
@@ -5296,40 +5443,40 @@ webpackJsonp([0,1],[
 	    if (keys.length) {
 	      handler = keyFilter(handler, keys);
 	    }
-
+	
 	    this.reset();
 	    this.handler = handler;
-
+	
 	    if (this.iframeBind) {
 	      this.iframeBind();
 	    } else {
 	      on(this.el, this.arg, this.handler, this.modifiers.capture);
 	    }
 	  },
-
+	
 	  reset: function reset() {
 	    var el = this.iframeBind ? this.el.contentWindow : this.el;
 	    if (this.handler) {
 	      off(el, this.arg, this.handler);
 	    }
 	  },
-
+	
 	  unbind: function unbind() {
 	    this.reset();
 	  }
 	};
-
+	
 	var prefixes = ['-webkit-', '-moz-', '-ms-'];
 	var camelPrefixes = ['Webkit', 'Moz', 'ms'];
 	var importantRE = /!important;?$/;
 	var propCache = Object.create(null);
-
+	
 	var testEl = null;
-
+	
 	var style = {
-
+	
 	  deep: true,
-
+	
 	  update: function update(value) {
 	    if (typeof value === 'string') {
 	      this.el.style.cssText = value;
@@ -5339,7 +5486,7 @@ webpackJsonp([0,1],[
 	      this.handleObject(value || {});
 	    }
 	  },
-
+	
 	  handleObject: function handleObject(value) {
 	    // cache object styles so that only changed props
 	    // are actually updated.
@@ -5359,7 +5506,7 @@ webpackJsonp([0,1],[
 	      }
 	    }
 	  },
-
+	
 	  handleSingle: function handleSingle(prop, value) {
 	    prop = normalize(prop);
 	    if (!prop) return; // unsupported prop
@@ -5381,9 +5528,9 @@ webpackJsonp([0,1],[
 	      this.el.style[prop.camel] = '';
 	    }
 	  }
-
+	
 	};
-
+	
 	/**
 	 * Normalize a CSS property name.
 	 * - cache result
@@ -5393,7 +5540,7 @@ webpackJsonp([0,1],[
 	 * @param {String} prop
 	 * @return {String}
 	 */
-
+	
 	function normalize(prop) {
 	  if (propCache[prop]) {
 	    return propCache[prop];
@@ -5402,7 +5549,7 @@ webpackJsonp([0,1],[
 	  propCache[prop] = propCache[res] = res;
 	  return res;
 	}
-
+	
 	/**
 	 * Auto detect the appropriate prefix for a CSS property.
 	 * https://gist.github.com/paulirish/523692
@@ -5410,7 +5557,7 @@ webpackJsonp([0,1],[
 	 * @param {String} prop
 	 * @return {String}
 	 */
-
+	
 	function prefix(prop) {
 	  prop = hyphenate(prop);
 	  var camel = camelize(prop);
@@ -5436,11 +5583,11 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	}
-
+	
 	// xlink
 	var xlinkNS = 'http://www.w3.org/1999/xlink';
 	var xlinkRE = /^xlink:/;
-
+	
 	// check for attributes that prohibit interpolations
 	var disallowedInterpAttrRE = /^v-|^:|^@|^(?:is|transition|transition-mode|debounce|track-by|stagger|enter-stagger|leave-stagger)$/;
 	// these attributes should also set their corresponding properties
@@ -5449,7 +5596,7 @@ webpackJsonp([0,1],[
 	// these attributes expect enumrated values of "true" or "false"
 	// but are not boolean attributes
 	var enumeratedAttrRE = /^(?:draggable|contenteditable|spellcheck)$/;
-
+	
 	// these attributes should set a hidden property for
 	// binding v-model to object values
 	var modelProps = {
@@ -5457,11 +5604,11 @@ webpackJsonp([0,1],[
 	  'true-value': '_trueValue',
 	  'false-value': '_falseValue'
 	};
-
+	
 	var bind$1 = {
-
+	
 	  priority: BIND,
-
+	
 	  bind: function bind() {
 	    var attr = this.arg;
 	    var tag = this.el.tagName;
@@ -5477,14 +5624,14 @@ webpackJsonp([0,1],[
 	      if (descriptor.hasOneTime) {
 	        this.expression = tokensToExp(tokens, this._scope || this.vm);
 	      }
-
+	
 	      // only allow binding on native attributes
 	      if (disallowedInterpAttrRE.test(attr) || attr === 'name' && (tag === 'PARTIAL' || tag === 'SLOT')) {
 	        process.env.NODE_ENV !== 'production' && warn(attr + '="' + descriptor.raw + '": ' + 'attribute interpolation is not allowed in Vue.js ' + 'directives and special attributes.', this.vm);
 	        this.el.removeAttribute(attr);
 	        this.invalid = true;
 	      }
-
+	
 	      /* istanbul ignore if */
 	      if (process.env.NODE_ENV !== 'production') {
 	        var raw = attr + '="' + descriptor.raw + '": ';
@@ -5492,7 +5639,7 @@ webpackJsonp([0,1],[
 	        if (attr === 'src') {
 	          warn(raw + 'interpolation in "src" attribute will cause ' + 'a 404 request. Use v-bind:src instead.', this.vm);
 	        }
-
+	
 	        // warn style
 	        if (attr === 'style') {
 	          warn(raw + 'interpolation in "style" attribute will cause ' + 'the attribute to be discarded in Internet Explorer. ' + 'Use v-bind:style instead.', this.vm);
@@ -5500,7 +5647,7 @@ webpackJsonp([0,1],[
 	      }
 	    }
 	  },
-
+	
 	  update: function update(value) {
 	    if (this.invalid) {
 	      return;
@@ -5512,10 +5659,10 @@ webpackJsonp([0,1],[
 	      this.handleObject(value || {});
 	    }
 	  },
-
+	
 	  // share object handler with v-bind:class
 	  handleObject: style.handleObject,
-
+	
 	  handleSingle: function handleSingle(attr, value) {
 	    var el = this.el;
 	    var interp = this.descriptor.interp;
@@ -5525,7 +5672,7 @@ webpackJsonp([0,1],[
 	    if (!interp && attrWithPropsRE.test(attr) && attr in el) {
 	      var attrValue = attr === 'value' ? value == null // IE9 will set input.value to "null" for null...
 	      ? '' : value : value;
-
+	
 	      if (el[attr] !== attrValue) {
 	        el[attr] = attrValue;
 	      }
@@ -5566,11 +5713,11 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	};
-
+	
 	var el = {
-
+	
 	  priority: EL,
-
+	
 	  bind: function bind() {
 	    /* istanbul ignore if */
 	    if (!this.arg) {
@@ -5584,7 +5731,7 @@ webpackJsonp([0,1],[
 	      defineReactive(refs, id, this.el);
 	    }
 	  },
-
+	
 	  unbind: function unbind() {
 	    var refs = (this._scope || this.vm).$els;
 	    if (refs[this.id] === this.el) {
@@ -5592,13 +5739,13 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	};
-
+	
 	var ref = {
 	  bind: function bind() {
 	    process.env.NODE_ENV !== 'production' && warn('v-ref:' + this.arg + ' must be used on a child ' + 'component. Found on <' + this.el.tagName.toLowerCase() + '>.', this.vm);
 	  }
 	};
-
+	
 	var cloak = {
 	  bind: function bind() {
 	    var el = this.el;
@@ -5607,7 +5754,13 @@ webpackJsonp([0,1],[
 	    });
 	  }
 	};
-
+	
+	// logic control
+	// two-way binding
+	// event handling
+	// attributes
+	// ref & el
+	// cloak
 	// must export plain object
 	var directives = {
 	  text: text$1,
@@ -5622,11 +5775,11 @@ webpackJsonp([0,1],[
 	  ref: ref,
 	  cloak: cloak
 	};
-
+	
 	var vClass = {
-
+	
 	  deep: true,
-
+	
 	  update: function update(value) {
 	    if (!value) {
 	      this.cleanup();
@@ -5636,7 +5789,7 @@ webpackJsonp([0,1],[
 	      this.setClass(normalize$1(value));
 	    }
 	  },
-
+	
 	  setClass: function setClass(value) {
 	    this.cleanup(value);
 	    for (var i = 0, l = value.length; i < l; i++) {
@@ -5647,7 +5800,7 @@ webpackJsonp([0,1],[
 	    }
 	    this.prevKeys = value;
 	  },
-
+	
 	  cleanup: function cleanup(value) {
 	    var prevKeys = this.prevKeys;
 	    if (!prevKeys) return;
@@ -5660,7 +5813,7 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	};
-
+	
 	/**
 	 * Normalize objects and arrays (potentially containing objects)
 	 * into array of strings.
@@ -5668,7 +5821,7 @@ webpackJsonp([0,1],[
 	 * @param {Object|Array<String|Object>} value
 	 * @return {Array<String>}
 	 */
-
+	
 	function normalize$1(value) {
 	  var res = [];
 	  if (isArray(value)) {
@@ -5691,7 +5844,7 @@ webpackJsonp([0,1],[
 	  }
 	  return res;
 	}
-
+	
 	/**
 	 * Add or remove a class/classes on an element
 	 *
@@ -5702,7 +5855,7 @@ webpackJsonp([0,1],[
 	 *                     names at once.
 	 * @param {Function} fn
 	 */
-
+	
 	function apply(el, key, fn) {
 	  key = key.trim();
 	  if (key.indexOf(' ') === -1) {
@@ -5717,13 +5870,13 @@ webpackJsonp([0,1],[
 	    fn(el, keys[i]);
 	  }
 	}
-
+	
 	var component = {
-
+	
 	  priority: COMPONENT,
-
+	
 	  params: ['keep-alive', 'transition-mode', 'inline-template'],
-
+	
 	  /**
 	   * Setup. Two possible usages:
 	   *
@@ -5733,7 +5886,7 @@ webpackJsonp([0,1],[
 	   * - dynamic:
 	   *   <component :is="view">
 	   */
-
+	
 	  bind: function bind() {
 	    if (!this.el.__vue__) {
 	      // keep-alive cache
@@ -5772,18 +5925,18 @@ webpackJsonp([0,1],[
 	      process.env.NODE_ENV !== 'production' && warn('cannot mount component "' + this.expression + '" ' + 'on already mounted element: ' + this.el);
 	    }
 	  },
-
+	
 	  /**
 	   * Public update, called by the watcher in the dynamic
 	   * literal scenario, e.g. <component :is="view">
 	   */
-
+	
 	  update: function update(value) {
 	    if (!this.literal) {
 	      this.setComponent(value);
 	    }
 	  },
-
+	
 	  /**
 	   * Switch dynamic components. May resolve the component
 	   * asynchronously, and perform transition based on
@@ -5796,7 +5949,7 @@ webpackJsonp([0,1],[
 	   * @param {String} value
 	   * @param {Function} [cb]
 	   */
-
+	
 	  setComponent: function setComponent(value, cb) {
 	    this.invalidatePending();
 	    if (!value) {
@@ -5811,7 +5964,7 @@ webpackJsonp([0,1],[
 	      });
 	    }
 	  },
-
+	
 	  /**
 	   * Resolve the component constructor to use when creating
 	   * the child vm.
@@ -5819,7 +5972,7 @@ webpackJsonp([0,1],[
 	   * @param {String|Function} value
 	   * @param {Function} cb
 	   */
-
+	
 	  resolveComponent: function resolveComponent(value, cb) {
 	    var self = this;
 	    this.pendingComponentCb = cancellable(function (Component) {
@@ -5829,7 +5982,7 @@ webpackJsonp([0,1],[
 	    });
 	    this.vm._resolveComponent(value, this.pendingComponentCb);
 	  },
-
+	
 	  /**
 	   * Create a new instance using the current constructor and
 	   * replace the existing instance. This method doesn't care
@@ -5838,7 +5991,7 @@ webpackJsonp([0,1],[
 	   *
 	   * @param {Function} [cb]
 	   */
-
+	
 	  mountComponent: function mountComponent(cb) {
 	    // actual mount
 	    this.unbuild(true);
@@ -5863,20 +6016,20 @@ webpackJsonp([0,1],[
 	      this.transition(newComponent, cb);
 	    }
 	  },
-
+	
 	  /**
 	   * When the component changes or unbinds before an async
 	   * constructor is resolved, we need to invalidate its
 	   * pending callback.
 	   */
-
+	
 	  invalidatePending: function invalidatePending() {
 	    if (this.pendingComponentCb) {
 	      this.pendingComponentCb.cancel();
 	      this.pendingComponentCb = null;
 	    }
 	  },
-
+	
 	  /**
 	   * Instantiate/insert a new child vm.
 	   * If keep alive and has cached instance, insert that
@@ -5885,7 +6038,7 @@ webpackJsonp([0,1],[
 	   * @param {Object} [extraOptions]
 	   * @return {Vue} - the created instance
 	   */
-
+	
 	  build: function build(extraOptions) {
 	    var cached = this.getCached();
 	    if (cached) {
@@ -5939,24 +6092,24 @@ webpackJsonp([0,1],[
 	      return child;
 	    }
 	  },
-
+	
 	  /**
 	   * Try to get a cached instance of the current component.
 	   *
 	   * @return {Vue|undefined}
 	   */
-
+	
 	  getCached: function getCached() {
 	    return this.keepAlive && this.cache[this.Component.cid];
 	  },
-
+	
 	  /**
 	   * Teardown the current child, but defers cleanup so
 	   * that we can separate the destroy and removal steps.
 	   *
 	   * @param {Boolean} defer
 	   */
-
+	
 	  unbuild: function unbuild(defer) {
 	    if (this.waitingFor) {
 	      if (!this.keepAlive) {
@@ -5978,14 +6131,14 @@ webpackJsonp([0,1],[
 	    // later.
 	    child.$destroy(false, defer);
 	  },
-
+	
 	  /**
 	   * Remove current destroyed child and manually do
 	   * the cleanup after removal.
 	   *
 	   * @param {Function} cb
 	   */
-
+	
 	  remove: function remove(child, cb) {
 	    var keepAlive = this.keepAlive;
 	    if (child) {
@@ -6008,7 +6161,7 @@ webpackJsonp([0,1],[
 	      cb();
 	    }
 	  },
-
+	
 	  /**
 	   * Actually swap the components, depending on the
 	   * transition mode. Defaults to simultaneous.
@@ -6016,7 +6169,7 @@ webpackJsonp([0,1],[
 	   * @param {Vue} target
 	   * @param {Function} [cb]
 	   */
-
+	
 	  transition: function transition(target, cb) {
 	    var self = this;
 	    var current = this.childVM;
@@ -6040,11 +6193,11 @@ webpackJsonp([0,1],[
 	        target.$before(self.anchor, cb);
 	    }
 	  },
-
+	
 	  /**
 	   * Unbind.
 	   */
-
+	
 	  unbind: function unbind() {
 	    this.invalidatePending();
 	    // Do not defer cleanup when unbinding
@@ -6058,7 +6211,7 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	};
-
+	
 	/**
 	 * Call activate hooks in order (asynchronous)
 	 *
@@ -6066,7 +6219,7 @@ webpackJsonp([0,1],[
 	 * @param {Vue} vm
 	 * @param {Function} cb
 	 */
-
+	
 	function callActivateHooks(hooks, vm, cb) {
 	  var total = hooks.length;
 	  var called = 0;
@@ -6079,14 +6232,14 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	}
-
+	
 	var propBindingModes = config._propBindingModes;
 	var empty = {};
-
+	
 	// regexes
 	var identRE$1 = /^[$_a-zA-Z]+[\w$]*$/;
 	var settablePathRE = /^[A-Za-z_$][\w$]*(\.[A-Za-z_$][\w$]*|\[[^\[\]]+\])*$/;
-
+	
 	/**
 	 * Compile props on a root element and return
 	 * a props link function.
@@ -6096,21 +6249,22 @@ webpackJsonp([0,1],[
 	 * @param {Vue} vm
 	 * @return {Function} propsLinkFn
 	 */
-
+	
 	function compileProps(el, propOptions, vm) {
 	  var props = [];
+	  var propsData = vm.$options.propsData;
 	  var names = Object.keys(propOptions);
 	  var i = names.length;
 	  var options, name, attr, value, path, parsed, prop;
 	  while (i--) {
 	    name = names[i];
 	    options = propOptions[name] || empty;
-
+	
 	    if (process.env.NODE_ENV !== 'production' && name === '$data') {
 	      warn('Do not use $data as prop.', vm);
 	      continue;
 	    }
-
+	
 	    // props could contain dashes, which will be
 	    // interpreted as minus calculations by the parser
 	    // so we need to camelize the path here
@@ -6119,7 +6273,7 @@ webpackJsonp([0,1],[
 	      process.env.NODE_ENV !== 'production' && warn('Invalid prop key: "' + name + '". Prop keys ' + 'must be valid identifiers.', vm);
 	      continue;
 	    }
-
+	
 	    prop = {
 	      name: name,
 	      path: path,
@@ -6127,7 +6281,7 @@ webpackJsonp([0,1],[
 	      mode: propBindingModes.ONE_WAY,
 	      raw: null
 	    };
-
+	
 	    attr = hyphenate(name);
 	    // first check dynamic version
 	    if ((value = getBindAttr(el, attr)) === null) {
@@ -6158,7 +6312,7 @@ webpackJsonp([0,1],[
 	        }
 	      }
 	      prop.parentPath = value;
-
+	
 	      // warn required two-way
 	      if (process.env.NODE_ENV !== 'production' && options.twoWay && prop.mode !== propBindingModes.TWO_WAY) {
 	        warn('Prop "' + name + '" expects a two-way binding type.', vm);
@@ -6166,13 +6320,16 @@ webpackJsonp([0,1],[
 	    } else if ((value = getAttr(el, attr)) !== null) {
 	      // has literal binding!
 	      prop.raw = value;
+	    } else if (propsData && (value = propsData[name] || propsData[path]) !== null) {
+	      // has propsData
+	      prop.raw = value;
 	    } else if (process.env.NODE_ENV !== 'production') {
 	      // check possible camelCase prop usage
 	      var lowerCaseName = path.toLowerCase();
 	      value = /[A-Z\-]/.test(name) && (el.getAttribute(lowerCaseName) || el.getAttribute(':' + lowerCaseName) || el.getAttribute('v-bind:' + lowerCaseName) || el.getAttribute(':' + lowerCaseName + '.once') || el.getAttribute('v-bind:' + lowerCaseName + '.once') || el.getAttribute(':' + lowerCaseName + '.sync') || el.getAttribute('v-bind:' + lowerCaseName + '.sync'));
 	      if (value) {
 	        warn('Possible usage error for prop `' + lowerCaseName + '` - ' + 'did you mean `' + attr + '`? HTML is case-insensitive, remember to use ' + 'kebab-case for props in templates.', vm);
-	      } else if (options.required) {
+	      } else if (options.required && (!propsData || !(name in propsData) && !(path in propsData))) {
 	        // warn missing required
 	        warn('Missing required prop: ' + name, vm);
 	      }
@@ -6182,14 +6339,14 @@ webpackJsonp([0,1],[
 	  }
 	  return makePropsLinkFn(props);
 	}
-
+	
 	/**
 	 * Build a function that applies props to a vm.
 	 *
 	 * @param {Array} props
 	 * @return {Function} propsLinkFn
 	 */
-
+	
 	function makePropsLinkFn(props) {
 	  return function propsLinkFn(vm, scope) {
 	    // store resolved props info
@@ -6243,7 +6400,7 @@ webpackJsonp([0,1],[
 	    }
 	  };
 	}
-
+	
 	/**
 	 * Process a prop with a rawValue, applying necessary coersions,
 	 * default values & assertions and call the given callback with
@@ -6254,14 +6411,14 @@ webpackJsonp([0,1],[
 	 * @param {*} rawValue
 	 * @param {Function} fn
 	 */
-
+	
 	function processPropValue(vm, prop, rawValue, fn) {
 	  var isSimple = prop.dynamic && isSimplePath(prop.parentPath);
 	  var value = rawValue;
 	  if (value === undefined) {
 	    value = getPropDefaultValue(vm, prop);
 	  }
-	  value = coerceProp(prop, value);
+	  value = coerceProp(prop, value, vm);
 	  var coerced = value !== rawValue;
 	  if (!assertProp(prop, value, vm)) {
 	    value = undefined;
@@ -6274,7 +6431,7 @@ webpackJsonp([0,1],[
 	    fn(value);
 	  }
 	}
-
+	
 	/**
 	 * Set a prop's initial value on a vm and its data object.
 	 *
@@ -6282,13 +6439,13 @@ webpackJsonp([0,1],[
 	 * @param {Object} prop
 	 * @param {*} value
 	 */
-
+	
 	function initProp(vm, prop, value) {
 	  processPropValue(vm, prop, value, function (value) {
 	    defineReactive(vm, prop.path, value);
 	  });
 	}
-
+	
 	/**
 	 * Update a prop's value on a vm.
 	 *
@@ -6296,13 +6453,13 @@ webpackJsonp([0,1],[
 	 * @param {Object} prop
 	 * @param {*} value
 	 */
-
+	
 	function updateProp(vm, prop, value) {
 	  processPropValue(vm, prop, value, function (value) {
 	    vm[prop.path] = value;
 	  });
 	}
-
+	
 	/**
 	 * Get the default value of a prop.
 	 *
@@ -6310,7 +6467,7 @@ webpackJsonp([0,1],[
 	 * @param {Object} prop
 	 * @return {*}
 	 */
-
+	
 	function getPropDefaultValue(vm, prop) {
 	  // no default, return undefined
 	  var options = prop.options;
@@ -6326,7 +6483,7 @@ webpackJsonp([0,1],[
 	  // call factory function for non-Function types
 	  return typeof def === 'function' && options.type !== Function ? def.call(vm) : def;
 	}
-
+	
 	/**
 	 * Assert whether a prop is valid.
 	 *
@@ -6334,7 +6491,7 @@ webpackJsonp([0,1],[
 	 * @param {*} value
 	 * @param {Vue} vm
 	 */
-
+	
 	function assertProp(prop, value, vm) {
 	  if (!prop.options.required && ( // non-required
 	  prop.raw === null || // abscent
@@ -6371,7 +6528,7 @@ webpackJsonp([0,1],[
 	  }
 	  return true;
 	}
-
+	
 	/**
 	 * Force parsing value with coerce option.
 	 *
@@ -6379,16 +6536,20 @@ webpackJsonp([0,1],[
 	 * @param {Object} options
 	 * @return {*}
 	 */
-
-	function coerceProp(prop, value) {
+	
+	function coerceProp(prop, value, vm) {
 	  var coerce = prop.options.coerce;
 	  if (!coerce) {
 	    return value;
 	  }
-	  // coerce is a function
-	  return coerce(value);
+	  if (typeof coerce === 'function') {
+	    return coerce(value);
+	  } else {
+	    process.env.NODE_ENV !== 'production' && warn('Invalid coerce for prop "' + prop.name + '": expected function, got ' + typeof coerce + '.', vm);
+	    return value;
+	  }
 	}
-
+	
 	/**
 	 * Assert the type of a value
 	 *
@@ -6396,7 +6557,7 @@ webpackJsonp([0,1],[
 	 * @param {Function} type
 	 * @return {Object}
 	 */
-
+	
 	function assertType(value, type) {
 	  var valid;
 	  var expectedType;
@@ -6426,33 +6587,33 @@ webpackJsonp([0,1],[
 	    expectedType: expectedType
 	  };
 	}
-
+	
 	/**
 	 * Format type for output
 	 *
 	 * @param {String} type
 	 * @return {String}
 	 */
-
+	
 	function formatType(type) {
 	  return type ? type.charAt(0).toUpperCase() + type.slice(1) : 'custom type';
 	}
-
+	
 	/**
 	 * Format value
 	 *
 	 * @param {*} value
 	 * @return {String}
 	 */
-
+	
 	function formatValue(val) {
 	  return Object.prototype.toString.call(val).slice(8, -1);
 	}
-
+	
 	var bindingModes = config._propBindingModes;
-
+	
 	var propDef = {
-
+	
 	  bind: function bind() {
 	    var child = this.vm;
 	    var parent = child._context;
@@ -6461,7 +6622,7 @@ webpackJsonp([0,1],[
 	    var childKey = prop.path;
 	    var parentKey = prop.parentPath;
 	    var twoWay = prop.mode === bindingModes.TWO_WAY;
-
+	
 	    var parentWatcher = this.parentWatcher = new Watcher(parent, parentKey, function (val) {
 	      updateProp(child, prop, val);
 	    }, {
@@ -6471,10 +6632,10 @@ webpackJsonp([0,1],[
 	      // v-for scope if present
 	      scope: this._scope
 	    });
-
+	
 	    // set the child initial value.
 	    initProp(child, prop, parentWatcher.value);
-
+	
 	    // setup two-way binding
 	    if (twoWay) {
 	      // important: defer the child watcher creation until
@@ -6492,7 +6653,7 @@ webpackJsonp([0,1],[
 	      });
 	    }
 	  },
-
+	
 	  unbind: function unbind() {
 	    this.parentWatcher.teardown();
 	    if (this.childWatcher) {
@@ -6500,16 +6661,16 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	};
-
+	
 	var queue$1 = [];
 	var queued = false;
-
+	
 	/**
 	 * Push a job into the queue.
 	 *
 	 * @param {Function} job
 	 */
-
+	
 	function pushJob(job) {
 	  queue$1.push(job);
 	  if (!queued) {
@@ -6517,12 +6678,12 @@ webpackJsonp([0,1],[
 	    nextTick(flush);
 	  }
 	}
-
+	
 	/**
 	 * Flush the queue, and do one forced reflow before
 	 * triggering transitions.
 	 */
-
+	
 	function flush() {
 	  // Force layout
 	  var f = document.documentElement.offsetHeight;
@@ -6535,12 +6696,12 @@ webpackJsonp([0,1],[
 	  // unused variable f
 	  return f;
 	}
-
+	
 	var TYPE_TRANSITION = 'transition';
 	var TYPE_ANIMATION = 'animation';
 	var transDurationProp = transitionProp + 'Duration';
 	var animDurationProp = animationProp + 'Duration';
-
+	
 	/**
 	 * If a just-entered element is applied the
 	 * leave class while its enter transition hasn't started yet,
@@ -6555,7 +6716,7 @@ webpackJsonp([0,1],[
 	 * these environments are usually slow, we are giving it a
 	 * relatively large timeout.
 	 */
-
+	
 	var raf = inBrowser && window.requestAnimationFrame;
 	var waitForTransitionStart = raf
 	/* istanbul ignore next */
@@ -6566,7 +6727,7 @@ webpackJsonp([0,1],[
 	} : function (fn) {
 	  setTimeout(fn, 50);
 	};
-
+	
 	/**
 	 * A Transition object that encapsulates the state and logic
 	 * of the transition.
@@ -6601,9 +6762,9 @@ webpackJsonp([0,1],[
 	    self[m] = bind(self[m], self);
 	  });
 	}
-
+	
 	var p$1 = Transition.prototype;
-
+	
 	/**
 	 * Start an entering transition.
 	 *
@@ -6628,7 +6789,7 @@ webpackJsonp([0,1],[
 	 * @param {Function} op - insert/show the element
 	 * @param {Function} [cb]
 	 */
-
+	
 	p$1.enter = function (op, cb) {
 	  this.cancelPending();
 	  this.callHook('beforeEnter');
@@ -6643,16 +6804,16 @@ webpackJsonp([0,1],[
 	  this.cancel = this.hooks && this.hooks.enterCancelled;
 	  pushJob(this.enterNextTick);
 	};
-
+	
 	/**
 	 * The "nextTick" phase of an entering transition, which is
 	 * to be pushed into a queue and executed after a reflow so
 	 * that removing the class can trigger a CSS transition.
 	 */
-
+	
 	p$1.enterNextTick = function () {
 	  var _this = this;
-
+	
 	  // prevent transition skipping
 	  this.justEntered = true;
 	  waitForTransitionStart(function () {
@@ -6674,11 +6835,11 @@ webpackJsonp([0,1],[
 	    removeClass(this.el, this.enterClass);
 	  }
 	};
-
+	
 	/**
 	 * The "cleanup" phase of an entering transition.
 	 */
-
+	
 	p$1.enterDone = function () {
 	  this.entered = true;
 	  this.cancel = this.pendingJsCb = null;
@@ -6686,7 +6847,7 @@ webpackJsonp([0,1],[
 	  this.callHook('afterEnter');
 	  if (this.cb) this.cb();
 	};
-
+	
 	/**
 	 * Start a leaving transition.
 	 *
@@ -6707,7 +6868,7 @@ webpackJsonp([0,1],[
 	 * @param {Function} op - remove/hide the element
 	 * @param {Function} [cb]
 	 */
-
+	
 	p$1.leave = function (op, cb) {
 	  this.cancelPending();
 	  this.callHook('beforeLeave');
@@ -6735,11 +6896,11 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	};
-
+	
 	/**
 	 * The "nextTick" phase of a leaving transition.
 	 */
-
+	
 	p$1.leaveNextTick = function () {
 	  var type = this.getCssTransitionType(this.leaveClass);
 	  if (type) {
@@ -6749,11 +6910,11 @@ webpackJsonp([0,1],[
 	    this.leaveDone();
 	  }
 	};
-
+	
 	/**
 	 * The "cleanup" phase of a leaving transition.
 	 */
-
+	
 	p$1.leaveDone = function () {
 	  this.left = true;
 	  this.cancel = this.pendingJsCb = null;
@@ -6763,12 +6924,12 @@ webpackJsonp([0,1],[
 	  if (this.cb) this.cb();
 	  this.op = null;
 	};
-
+	
 	/**
 	 * Cancel any pending callbacks from a previously running
 	 * but not finished transition.
 	 */
-
+	
 	p$1.cancelPending = function () {
 	  this.op = this.cb = null;
 	  var hasPending = false;
@@ -6791,19 +6952,19 @@ webpackJsonp([0,1],[
 	    this.cancel = null;
 	  }
 	};
-
+	
 	/**
 	 * Call a user-provided synchronous hook function.
 	 *
 	 * @param {String} type
 	 */
-
+	
 	p$1.callHook = function (type) {
 	  if (this.hooks && this.hooks[type]) {
 	    this.hooks[type].call(this.vm, this.el);
 	  }
 	};
-
+	
 	/**
 	 * Call a user-provided, potentially-async hook function.
 	 * We check for the length of arguments to see if the hook
@@ -6814,7 +6975,7 @@ webpackJsonp([0,1],[
 	 *
 	 * @param {String} type
 	 */
-
+	
 	p$1.callHookWithCb = function (type) {
 	  var hook = this.hooks && this.hooks[type];
 	  if (hook) {
@@ -6824,7 +6985,7 @@ webpackJsonp([0,1],[
 	    hook.call(this.vm, this.el, this.pendingJsCb);
 	  }
 	};
-
+	
 	/**
 	 * Get an element's transition type based on the
 	 * calculated styles.
@@ -6832,7 +6993,7 @@ webpackJsonp([0,1],[
 	 * @param {String} className
 	 * @return {Number}
 	 */
-
+	
 	p$1.getCssTransitionType = function (className) {
 	  /* istanbul ignore if */
 	  if (!transitionEndEvent ||
@@ -6866,14 +7027,14 @@ webpackJsonp([0,1],[
 	  }
 	  return type;
 	};
-
+	
 	/**
 	 * Setup a CSS transitionend/animationend callback.
 	 *
 	 * @param {String} event
 	 * @param {Function} cb
 	 */
-
+	
 	p$1.setupCssCb = function (event, cb) {
 	  this.pendingCssEvent = event;
 	  var self = this;
@@ -6889,7 +7050,7 @@ webpackJsonp([0,1],[
 	  };
 	  on(el, event, onEnd);
 	};
-
+	
 	/**
 	 * Check if an element is hidden - in that case we can just
 	 * skip the transition alltogether.
@@ -6897,7 +7058,7 @@ webpackJsonp([0,1],[
 	 * @param {Element} el
 	 * @return {Boolean}
 	 */
-
+	
 	function isHidden(el) {
 	  if (/svg$/.test(el.namespaceURI)) {
 	    // SVG elements do not have offset(Width|Height)
@@ -6908,24 +7069,23 @@ webpackJsonp([0,1],[
 	    return !(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
 	  }
 	}
-
+	
 	var transition$1 = {
-
+	
 	  priority: TRANSITION,
-
+	
 	  update: function update(id, oldId) {
 	    var el = this.el;
 	    // resolve on owner vm
 	    var hooks = resolveAsset(this.vm.$options, 'transitions', id);
 	    id = id || 'v';
+	    oldId = oldId || 'v';
 	    el.__v_trans = new Transition(el, id, hooks, this.vm);
-	    if (oldId) {
-	      removeClass(el, oldId + '-transition');
-	    }
+	    removeClass(el, oldId + '-transition');
 	    addClass(el, id + '-transition');
 	  }
 	};
-
+	
 	var internalDirectives = {
 	  style: style,
 	  'class': vClass,
@@ -6933,18 +7093,18 @@ webpackJsonp([0,1],[
 	  prop: propDef,
 	  transition: transition$1
 	};
-
+	
 	// special binding prefixes
 	var bindRE = /^v-bind:|^:/;
 	var onRE = /^v-on:|^@/;
 	var dirAttrRE = /^v-([^:]+)(?:$|:(.*)$)/;
 	var modifierRE = /\.[^\.]+/g;
 	var transitionRE = /^(v-bind:|:)?transition$/;
-
+	
 	// default directive priority
 	var DEFAULT_PRIORITY = 1000;
 	var DEFAULT_TERMINAL_PRIORITY = 2000;
-
+	
 	/**
 	 * Compile a template and return a reusable composite link
 	 * function, which recursively contains more link functions
@@ -6961,13 +7121,13 @@ webpackJsonp([0,1],[
 	 * @param {Boolean} partial
 	 * @return {Function}
 	 */
-
+	
 	function compile(el, options, partial) {
 	  // link function for the node itself.
 	  var nodeLinkFn = partial || !options._asComponent ? compileNode(el, options) : null;
 	  // link function for the childNodes
 	  var childLinkFn = !(nodeLinkFn && nodeLinkFn.terminal) && !isScript(el) && el.hasChildNodes() ? compileNodeList(el.childNodes, options) : null;
-
+	
 	  /**
 	   * A composite linker function to be called on a already
 	   * compiled piece of DOM, which instantiates all directive
@@ -6980,7 +7140,7 @@ webpackJsonp([0,1],[
 	   * @param {Fragment} [frag] - link context fragment
 	   * @return {Function|undefined}
 	   */
-
+	
 	  return function compositeLinkFn(vm, el, host, scope, frag) {
 	    // cache childNodes before linking parent, fix #657
 	    var childNodes = toArray(el.childNodes);
@@ -6992,7 +7152,7 @@ webpackJsonp([0,1],[
 	    return makeUnlinkFn(vm, dirs);
 	  };
 	}
-
+	
 	/**
 	 * Apply a linker to a vm/element pair and capture the
 	 * directives created during the process.
@@ -7000,7 +7160,7 @@ webpackJsonp([0,1],[
 	 * @param {Function} linker
 	 * @param {Vue} vm
 	 */
-
+	
 	function linkAndCapture(linker, vm) {
 	  /* istanbul ignore if */
 	  if (process.env.NODE_ENV === 'production') {
@@ -7014,26 +7174,47 @@ webpackJsonp([0,1],[
 	  var originalDirCount = vm._directives.length;
 	  linker();
 	  var dirs = vm._directives.slice(originalDirCount);
-	  dirs.sort(directiveComparator);
+	  sortDirectives(dirs);
 	  for (var i = 0, l = dirs.length; i < l; i++) {
 	    dirs[i]._bind();
 	  }
 	  return dirs;
 	}
-
+	
 	/**
-	 * Directive priority sort comparator
+	 * sort directives by priority (stable sort)
 	 *
-	 * @param {Object} a
-	 * @param {Object} b
+	 * @param {Array} dirs
 	 */
-
-	function directiveComparator(a, b) {
-	  a = a.descriptor.def.priority || DEFAULT_PRIORITY;
-	  b = b.descriptor.def.priority || DEFAULT_PRIORITY;
-	  return a > b ? -1 : a === b ? 0 : 1;
+	function sortDirectives(dirs) {
+	  if (dirs.length === 0) return;
+	
+	  var groupedMap = {};
+	  var i, j, k, l;
+	  var index = 0;
+	  var priorities = [];
+	  for (i = 0, j = dirs.length; i < j; i++) {
+	    var dir = dirs[i];
+	    var priority = dir.descriptor.def.priority || DEFAULT_PRIORITY;
+	    var array = groupedMap[priority];
+	    if (!array) {
+	      array = groupedMap[priority] = [];
+	      priorities.push(priority);
+	    }
+	    array.push(dir);
+	  }
+	
+	  priorities.sort(function (a, b) {
+	    return a > b ? -1 : a === b ? 0 : 1;
+	  });
+	  for (i = 0, j = priorities.length; i < j; i++) {
+	    var group = groupedMap[priorities[i]];
+	    for (k = 0, l = group.length; k < l; k++) {
+	      dirs[index++] = group[k];
+	    }
+	  }
 	}
-
+	
 	/**
 	 * Linker functions return an unlink function that
 	 * tearsdown all directives instances generated during
@@ -7048,7 +7229,7 @@ webpackJsonp([0,1],[
 	 * @param {Array} [contextDirs]
 	 * @return {Function}
 	 */
-
+	
 	function makeUnlinkFn(vm, dirs, context, contextDirs) {
 	  function unlink(destroying) {
 	    teardownDirs(vm, dirs, destroying);
@@ -7060,7 +7241,7 @@ webpackJsonp([0,1],[
 	  unlink.dirs = dirs;
 	  return unlink;
 	}
-
+	
 	/**
 	 * Teardown partial linked directives.
 	 *
@@ -7068,7 +7249,7 @@ webpackJsonp([0,1],[
 	 * @param {Array} dirs
 	 * @param {Boolean} destroying
 	 */
-
+	
 	function teardownDirs(vm, dirs, destroying) {
 	  var i = dirs.length;
 	  while (i--) {
@@ -7078,7 +7259,7 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	}
-
+	
 	/**
 	 * Compile link props on an instance.
 	 *
@@ -7088,7 +7269,7 @@ webpackJsonp([0,1],[
 	 * @param {Object} [scope]
 	 * @return {Function}
 	 */
-
+	
 	function compileAndLinkProps(vm, el, props, scope) {
 	  var propsLinkFn = compileProps(el, props, vm);
 	  var propDirs = linkAndCapture(function () {
@@ -7096,7 +7277,7 @@ webpackJsonp([0,1],[
 	  }, vm);
 	  return makeUnlinkFn(vm, propDirs);
 	}
-
+	
 	/**
 	 * Compile the root element of an instance.
 	 *
@@ -7111,12 +7292,12 @@ webpackJsonp([0,1],[
 	 * @param {Object} contextOptions
 	 * @return {Function}
 	 */
-
+	
 	function compileRoot(el, options, contextOptions) {
 	  var containerAttrs = options._containerAttrs;
 	  var replacerAttrs = options._replacerAttrs;
 	  var contextLinkFn, replacerLinkFn;
-
+	
 	  // only need to compile other attributes for
 	  // non-fragment instances
 	  if (el.nodeType !== 11) {
@@ -7149,10 +7330,16 @@ webpackJsonp([0,1],[
 	    });
 	    if (names.length) {
 	      var plural = names.length > 1;
-	      warn('Attribute' + (plural ? 's ' : ' ') + names.join(', ') + (plural ? ' are' : ' is') + ' ignored on component ' + '<' + options.el.tagName.toLowerCase() + '> because ' + 'the component is a fragment instance: ' + 'http://vuejs.org/guide/components.html#Fragment-Instance');
+	
+	      var componentName = options.el.tagName.toLowerCase();
+	      if (componentName === 'component' && options.name) {
+	        componentName += ':' + options.name;
+	      }
+	
+	      warn('Attribute' + (plural ? 's ' : ' ') + names.join(', ') + (plural ? ' are' : ' is') + ' ignored on component ' + '<' + componentName + '> because ' + 'the component is a fragment instance: ' + 'http://vuejs.org/guide/components.html#Fragment-Instance');
 	    }
 	  }
-
+	
 	  options._containerAttrs = options._replacerAttrs = null;
 	  return function rootLinkFn(vm, el, scope) {
 	    // link context scope dirs
@@ -7163,18 +7350,18 @@ webpackJsonp([0,1],[
 	        contextLinkFn(context, el, null, scope);
 	      }, context);
 	    }
-
+	
 	    // link self
 	    var selfDirs = linkAndCapture(function () {
 	      if (replacerLinkFn) replacerLinkFn(vm, el);
 	    }, vm);
-
+	
 	    // return the unlink function that tearsdown context
 	    // container directives.
 	    return makeUnlinkFn(vm, selfDirs, context, contextDirs);
 	  };
 	}
-
+	
 	/**
 	 * Compile a node and return a nodeLinkFn based on the
 	 * node type.
@@ -7183,7 +7370,7 @@ webpackJsonp([0,1],[
 	 * @param {Object} options
 	 * @return {Function|null}
 	 */
-
+	
 	function compileNode(node, options) {
 	  var type = node.nodeType;
 	  if (type === 1 && !isScript(node)) {
@@ -7194,7 +7381,7 @@ webpackJsonp([0,1],[
 	    return null;
 	  }
 	}
-
+	
 	/**
 	 * Compile an element and return a nodeLinkFn.
 	 *
@@ -7202,12 +7389,16 @@ webpackJsonp([0,1],[
 	 * @param {Object} options
 	 * @return {Function|null}
 	 */
-
+	
 	function compileElement(el, options) {
 	  // preprocess textareas.
 	  // textarea treats its text content as the initial value.
 	  // just bind it as an attr directive for value.
 	  if (el.tagName === 'TEXTAREA') {
+	    // a textarea which has v-pre attr should skip complie.
+	    if (getAttr(el, 'v-pre') !== null) {
+	      return skip;
+	    }
 	    var tokens = parseText(el.value);
 	    if (tokens) {
 	      el.setAttribute(':value', tokensToExp(tokens));
@@ -7235,7 +7426,7 @@ webpackJsonp([0,1],[
 	  }
 	  return linkFn;
 	}
-
+	
 	/**
 	 * Compile a textNode and return a nodeLinkFn.
 	 *
@@ -7243,18 +7434,18 @@ webpackJsonp([0,1],[
 	 * @param {Object} options
 	 * @return {Function|null} textNodeLinkFn
 	 */
-
+	
 	function compileTextNode(node, options) {
 	  // skip marked text nodes
 	  if (node._skip) {
 	    return removeText;
 	  }
-
+	
 	  var tokens = parseText(node.wholeText);
 	  if (!tokens) {
 	    return null;
 	  }
-
+	
 	  // mark adjacent text nodes as skipped,
 	  // because we are using node.wholeText to compile
 	  // all adjacent text nodes together. This fixes
@@ -7265,7 +7456,7 @@ webpackJsonp([0,1],[
 	    next._skip = true;
 	    next = next.nextSibling;
 	  }
-
+	
 	  var frag = document.createDocumentFragment();
 	  var el, token;
 	  for (var i = 0, l = tokens.length; i < l; i++) {
@@ -7275,18 +7466,18 @@ webpackJsonp([0,1],[
 	  }
 	  return makeTextNodeLinkFn(tokens, frag, options);
 	}
-
+	
 	/**
 	 * Linker for an skipped text node.
 	 *
 	 * @param {Vue} vm
 	 * @param {Text} node
 	 */
-
+	
 	function removeText(vm, node) {
 	  remove(node);
 	}
-
+	
 	/**
 	 * Process a single text token.
 	 *
@@ -7294,7 +7485,7 @@ webpackJsonp([0,1],[
 	 * @param {Object} options
 	 * @return {Node}
 	 */
-
+	
 	function processTextToken(token, options) {
 	  var el;
 	  if (token.oneTime) {
@@ -7323,14 +7514,14 @@ webpackJsonp([0,1],[
 	  }
 	  return el;
 	}
-
+	
 	/**
 	 * Build a function that processes a textNode.
 	 *
 	 * @param {Array<Object>} tokens
 	 * @param {DocumentFragment} frag
 	 */
-
+	
 	function makeTextNodeLinkFn(tokens, frag) {
 	  return function textNodeLinkFn(vm, el, host, scope) {
 	    var fragClone = frag.cloneNode(true);
@@ -7346,7 +7537,7 @@ webpackJsonp([0,1],[
 	          if (token.html) {
 	            replace(node, parseTemplate(value, true));
 	          } else {
-	            node.data = value;
+	            node.data = _toString(value);
 	          }
 	        } else {
 	          vm._bindDir(token.descriptor, node, host, scope);
@@ -7356,7 +7547,7 @@ webpackJsonp([0,1],[
 	    replace(el, fragClone);
 	  };
 	}
-
+	
 	/**
 	 * Compile a node list and return a childLinkFn.
 	 *
@@ -7364,7 +7555,7 @@ webpackJsonp([0,1],[
 	 * @param {Object} options
 	 * @return {Function|undefined}
 	 */
-
+	
 	function compileNodeList(nodeList, options) {
 	  var linkFns = [];
 	  var nodeLinkFn, childLinkFn, node;
@@ -7376,14 +7567,14 @@ webpackJsonp([0,1],[
 	  }
 	  return linkFns.length ? makeChildLinkFn(linkFns) : null;
 	}
-
+	
 	/**
 	 * Make a child link function for a node's childNodes.
 	 *
 	 * @param {Array<Function>} linkFns
 	 * @return {Function} childLinkFn
 	 */
-
+	
 	function makeChildLinkFn(linkFns) {
 	  return function childLinkFn(vm, nodes, host, scope, frag) {
 	    var node, nodeLinkFn, childrenLinkFn;
@@ -7402,7 +7593,7 @@ webpackJsonp([0,1],[
 	    }
 	  };
 	}
-
+	
 	/**
 	 * Check for element directives (custom elements that should
 	 * be resovled as terminal directives).
@@ -7410,7 +7601,7 @@ webpackJsonp([0,1],[
 	 * @param {Element} el
 	 * @param {Object} options
 	 */
-
+	
 	function checkElementDirectives(el, options) {
 	  var tag = el.tagName.toLowerCase();
 	  if (commonTagRE.test(tag)) {
@@ -7421,7 +7612,7 @@ webpackJsonp([0,1],[
 	    return makeTerminalNodeLinkFn(el, tag, '', options, def);
 	  }
 	}
-
+	
 	/**
 	 * Check if an element is a component. If yes, return
 	 * a component link function.
@@ -7430,7 +7621,7 @@ webpackJsonp([0,1],[
 	 * @param {Object} options
 	 * @return {Function|undefined}
 	 */
-
+	
 	function checkComponent(el, options) {
 	  var component = checkComponentAttr(el, options);
 	  if (component) {
@@ -7454,7 +7645,7 @@ webpackJsonp([0,1],[
 	    return componentLinkFn;
 	  }
 	}
-
+	
 	/**
 	 * Check an element for terminal directives in fixed order.
 	 * If it finds one, return a terminal link function.
@@ -7464,7 +7655,7 @@ webpackJsonp([0,1],[
 	 * @param {Object} options
 	 * @return {Function} terminalLinkFn
 	 */
-
+	
 	function checkTerminalDirectives(el, attrs, options) {
 	  // skip v-pre
 	  if (getAttr(el, 'v-pre') !== null) {
@@ -7477,7 +7668,7 @@ webpackJsonp([0,1],[
 	      return skip;
 	    }
 	  }
-
+	
 	  var attr, name, value, modifiers, matched, dirName, rawName, arg, def, termDef;
 	  for (var i = 0, j = attrs.length; i < j; i++) {
 	    attr = attrs[i];
@@ -7496,15 +7687,15 @@ webpackJsonp([0,1],[
 	      }
 	    }
 	  }
-
+	
 	  if (termDef) {
 	    return makeTerminalNodeLinkFn(el, dirName, value, options, termDef, rawName, arg, modifiers);
 	  }
 	}
-
+	
 	function skip() {}
 	skip.terminal = true;
-
+	
 	/**
 	 * Build a node link function for a terminal directive.
 	 * A terminal link function terminates the current
@@ -7521,7 +7712,7 @@ webpackJsonp([0,1],[
 	 * @param {Object} [modifiers]
 	 * @return {Function} terminalLinkFn
 	 */
-
+	
 	function makeTerminalNodeLinkFn(el, dirName, value, options, def, rawName, arg, modifiers) {
 	  var parsed = parseDirective(value);
 	  var descriptor = {
@@ -7534,7 +7725,7 @@ webpackJsonp([0,1],[
 	    modifiers: modifiers,
 	    def: def
 	  };
-	  // check ref for v-for and router-view
+	  // check ref for v-for, v-if and router-view
 	  if (dirName === 'for' || dirName === 'router-view') {
 	    descriptor.ref = findRef(el);
 	  }
@@ -7547,7 +7738,7 @@ webpackJsonp([0,1],[
 	  fn.terminal = true;
 	  return fn;
 	}
-
+	
 	/**
 	 * Compile the directives on an element and return a linker.
 	 *
@@ -7555,7 +7746,7 @@ webpackJsonp([0,1],[
 	 * @param {Object} options
 	 * @return {Function}
 	 */
-
+	
 	function compileDirectives(attrs, options) {
 	  var i = attrs.length;
 	  var dirs = [];
@@ -7570,7 +7761,7 @@ webpackJsonp([0,1],[
 	    // check modifiers
 	    modifiers = parseModifiers(name);
 	    name = name.replace(modifierRE, '');
-
+	
 	    // attribute interpolations
 	    if (tokens) {
 	      value = tokensToExp(tokens);
@@ -7585,19 +7776,19 @@ webpackJsonp([0,1],[
 	        }
 	      }
 	    } else
-
+	
 	      // special attribute: transition
 	      if (transitionRE.test(name)) {
 	        modifiers.literal = !bindRE.test(name);
 	        pushDir('transition', internalDirectives.transition);
 	      } else
-
+	
 	        // event handlers
 	        if (onRE.test(name)) {
 	          arg = name.replace(onRE, '');
 	          pushDir('on', directives.on);
 	        } else
-
+	
 	          // attribute bindings
 	          if (bindRE.test(name)) {
 	            dirName = name.replace(bindRE, '');
@@ -7608,24 +7799,24 @@ webpackJsonp([0,1],[
 	              pushDir('bind', directives.bind);
 	            }
 	          } else
-
+	
 	            // normal directives
 	            if (matched = name.match(dirAttrRE)) {
 	              dirName = matched[1];
 	              arg = matched[2];
-
+	
 	              // skip v-else (when used with v-show)
 	              if (dirName === 'else') {
 	                continue;
 	              }
-
+	
 	              dirDef = resolveAsset(options, 'directives', dirName, true);
 	              if (dirDef) {
 	                pushDir(dirName, dirDef);
 	              }
 	            }
 	  }
-
+	
 	  /**
 	   * Push a directive.
 	   *
@@ -7633,7 +7824,7 @@ webpackJsonp([0,1],[
 	   * @param {Object|Function} def
 	   * @param {Array} [interpTokens]
 	   */
-
+	
 	  function pushDir(dirName, def, interpTokens) {
 	    var hasOneTimeToken = interpTokens && hasOneTime(interpTokens);
 	    var parsed = !hasOneTimeToken && parseDirective(value);
@@ -7653,19 +7844,19 @@ webpackJsonp([0,1],[
 	      hasOneTime: hasOneTimeToken
 	    });
 	  }
-
+	
 	  if (dirs.length) {
 	    return makeNodeLinkFn(dirs);
 	  }
 	}
-
+	
 	/**
 	 * Parse modifiers from directive attribute name.
 	 *
 	 * @param {String} name
 	 * @return {Object}
 	 */
-
+	
 	function parseModifiers(name) {
 	  var res = Object.create(null);
 	  var match = name.match(modifierRE);
@@ -7677,14 +7868,14 @@ webpackJsonp([0,1],[
 	  }
 	  return res;
 	}
-
+	
 	/**
 	 * Build a link function for all directives on a single node.
 	 *
 	 * @param {Array} directives
 	 * @return {Function} directivesLinkFn
 	 */
-
+	
 	function makeNodeLinkFn(directives) {
 	  return function nodeLinkFn(vm, el, host, scope, frag) {
 	    // reverse apply because it's sorted low to high
@@ -7694,27 +7885,27 @@ webpackJsonp([0,1],[
 	    }
 	  };
 	}
-
+	
 	/**
 	 * Check if an interpolation string contains one-time tokens.
 	 *
 	 * @param {Array} tokens
 	 * @return {Boolean}
 	 */
-
+	
 	function hasOneTime(tokens) {
 	  var i = tokens.length;
 	  while (i--) {
 	    if (tokens[i].oneTime) return true;
 	  }
 	}
-
+	
 	function isScript(el) {
 	  return el.tagName === 'SCRIPT' && (!el.hasAttribute('type') || el.getAttribute('type') === 'text/javascript');
 	}
-
+	
 	var specialCharRE = /[^\w\-:\.]/;
-
+	
 	/**
 	 * Process an element or a DocumentFragment based on a
 	 * instance option object. This allows us to transclude
@@ -7726,7 +7917,7 @@ webpackJsonp([0,1],[
 	 * @param {Object} options
 	 * @return {Element|DocumentFragment}
 	 */
-
+	
 	function transclude(el, options) {
 	  // extract container attributes to pass them down
 	  // to compiler, because they need to be compiled in
@@ -7759,7 +7950,7 @@ webpackJsonp([0,1],[
 	  }
 	  return el;
 	}
-
+	
 	/**
 	 * Process the template option.
 	 * If the replace option is true this will swap the $el.
@@ -7768,12 +7959,15 @@ webpackJsonp([0,1],[
 	 * @param {Object} options
 	 * @return {Element|DocumentFragment}
 	 */
-
+	
 	function transcludeTemplate(el, options) {
 	  var template = options.template;
 	  var frag = parseTemplate(template, true);
 	  if (frag) {
 	    var replacer = frag.firstChild;
+	    if (!replacer) {
+	      return frag;
+	    }
 	    var tag = replacer.tagName && replacer.tagName.toLowerCase();
 	    if (options.replace) {
 	      /* istanbul ignore if */
@@ -7810,7 +8004,7 @@ webpackJsonp([0,1],[
 	    process.env.NODE_ENV !== 'production' && warn('Invalid template option: ' + template);
 	  }
 	}
-
+	
 	/**
 	 * Helper to extract a component container's attributes
 	 * into a plain object array.
@@ -7818,13 +8012,13 @@ webpackJsonp([0,1],[
 	 * @param {Element} el
 	 * @return {Array}
 	 */
-
+	
 	function extractAttrs(el) {
 	  if (el.nodeType === 1 && el.hasAttributes()) {
 	    return toArray(el.attributes);
 	  }
 	}
-
+	
 	/**
 	 * Merge the attributes of two elements, and make sure
 	 * the class names are merged properly.
@@ -7832,7 +8026,7 @@ webpackJsonp([0,1],[
 	 * @param {Element} from
 	 * @param {Element} to
 	 */
-
+	
 	function mergeAttrs(from, to) {
 	  var attrs = from.attributes;
 	  var i = attrs.length;
@@ -7849,7 +8043,7 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	}
-
+	
 	/**
 	 * Scan and determine slot content distribution.
 	 * We do this during transclusion instead at compile time so that
@@ -7860,7 +8054,7 @@ webpackJsonp([0,1],[
 	 * @param {Element} content
 	 * @param {Vue} vm
 	 */
-
+	
 	function resolveSlots(vm, content) {
 	  if (!content) {
 	    return;
@@ -7889,14 +8083,14 @@ webpackJsonp([0,1],[
 	    contents['default'] = extractFragment(content.childNodes, content);
 	  }
 	}
-
+	
 	/**
 	 * Extract qualified content nodes from a node list.
 	 *
 	 * @param {NodeList} nodes
 	 * @return {DocumentFragment}
 	 */
-
+	
 	function extractFragment(nodes, parent) {
 	  var frag = document.createDocumentFragment();
 	  nodes = toArray(nodes);
@@ -7910,9 +8104,9 @@ webpackJsonp([0,1],[
 	  }
 	  return frag;
 	}
-
-
-
+	
+	
+	
 	var compiler = Object.freeze({
 		compile: compile,
 		compileAndLinkProps: compileAndLinkProps,
@@ -7920,14 +8114,14 @@ webpackJsonp([0,1],[
 		transclude: transclude,
 		resolveSlots: resolveSlots
 	});
-
+	
 	function stateMixin (Vue) {
 	  /**
 	   * Accessor for `$data` property, since setting $data
 	   * requires observing the new object and updating
 	   * proxied properties.
 	   */
-
+	
 	  Object.defineProperty(Vue.prototype, '$data', {
 	    get: function get() {
 	      return this._data;
@@ -7938,7 +8132,7 @@ webpackJsonp([0,1],[
 	      }
 	    }
 	  });
-
+	
 	  /**
 	   * Setup the scope of an instance, which contains:
 	   * - observed data
@@ -7946,7 +8140,7 @@ webpackJsonp([0,1],[
 	   * - user methods
 	   * - meta properties
 	   */
-
+	
 	  Vue.prototype._initState = function () {
 	    this._initProps();
 	    this._initMeta();
@@ -7954,11 +8148,11 @@ webpackJsonp([0,1],[
 	    this._initData();
 	    this._initComputed();
 	  };
-
+	
 	  /**
 	   * Initialize props.
 	   */
-
+	
 	  Vue.prototype._initProps = function () {
 	    var options = this.$options;
 	    var el = options.el;
@@ -7972,11 +8166,11 @@ webpackJsonp([0,1],[
 	    // props must be linked in proper scope if inside v-for
 	    ? compileAndLinkProps(this, el, props, this._scope) : null;
 	  };
-
+	
 	  /**
 	   * Initialize the data.
 	   */
-
+	
 	  Vue.prototype._initData = function () {
 	    var dataFn = this.$options.data;
 	    var data = this._data = dataFn ? dataFn() : {};
@@ -8004,13 +8198,13 @@ webpackJsonp([0,1],[
 	    // observe data
 	    observe(data, this);
 	  };
-
+	
 	  /**
 	   * Swap the instance's $data. Called in $data's setter.
 	   *
 	   * @param {Object} newData
 	   */
-
+	
 	  Vue.prototype._setData = function (newData) {
 	    newData = newData || {};
 	    var oldData = this._data;
@@ -8040,14 +8234,14 @@ webpackJsonp([0,1],[
 	    observe(newData, this);
 	    this._digest();
 	  };
-
+	
 	  /**
 	   * Proxy a property, so that
 	   * vm.prop === vm._data.prop
 	   *
 	   * @param {String} key
 	   */
-
+	
 	  Vue.prototype._proxy = function (key) {
 	    if (!isReserved(key)) {
 	      // need to store ref to self here
@@ -8067,34 +8261,34 @@ webpackJsonp([0,1],[
 	      });
 	    }
 	  };
-
+	
 	  /**
 	   * Unproxy a property.
 	   *
 	   * @param {String} key
 	   */
-
+	
 	  Vue.prototype._unproxy = function (key) {
 	    if (!isReserved(key)) {
 	      delete this[key];
 	    }
 	  };
-
+	
 	  /**
 	   * Force update on every watcher in scope.
 	   */
-
+	
 	  Vue.prototype._digest = function () {
 	    for (var i = 0, l = this._watchers.length; i < l; i++) {
 	      this._watchers[i].update(true); // shallow updates
 	    }
 	  };
-
+	
 	  /**
 	   * Setup computed properties. They are essentially
 	   * special getter/setters
 	   */
-
+	
 	  function noop() {}
 	  Vue.prototype._initComputed = function () {
 	    var computed = this.$options.computed;
@@ -8116,7 +8310,7 @@ webpackJsonp([0,1],[
 	      }
 	    }
 	  };
-
+	
 	  function makeComputedGetter(getter, owner) {
 	    var watcher = new Watcher(owner, getter, null, {
 	      lazy: true
@@ -8131,13 +8325,13 @@ webpackJsonp([0,1],[
 	      return watcher.value;
 	    };
 	  }
-
+	
 	  /**
 	   * Setup instance methods. Methods must be bound to the
 	   * instance since they might be passed down as a prop to
 	   * child components.
 	   */
-
+	
 	  Vue.prototype._initMethods = function () {
 	    var methods = this.$options.methods;
 	    if (methods) {
@@ -8146,11 +8340,11 @@ webpackJsonp([0,1],[
 	      }
 	    }
 	  };
-
+	
 	  /**
 	   * Initialize meta information like $index, $key & $value.
 	   */
-
+	
 	  Vue.prototype._initMeta = function () {
 	    var metas = this.$options._meta;
 	    if (metas) {
@@ -8160,16 +8354,16 @@ webpackJsonp([0,1],[
 	    }
 	  };
 	}
-
+	
 	var eventRE = /^v-on:|^@/;
-
+	
 	function eventsMixin (Vue) {
 	  /**
 	   * Setup the instance's option events & watchers.
 	   * If the value is a string, we pull it from the
 	   * instance's methods by name.
 	   */
-
+	
 	  Vue.prototype._initEvents = function () {
 	    var options = this.$options;
 	    if (options._asComponent) {
@@ -8178,14 +8372,14 @@ webpackJsonp([0,1],[
 	    registerCallbacks(this, '$on', options.events);
 	    registerCallbacks(this, '$watch', options.watch);
 	  };
-
+	
 	  /**
 	   * Register v-on events on a child component
 	   *
 	   * @param {Vue} vm
 	   * @param {Element} el
 	   */
-
+	
 	  function registerComponentEvents(vm, el) {
 	    var attrs = el.attributes;
 	    var name, value, handler;
@@ -8206,7 +8400,7 @@ webpackJsonp([0,1],[
 	      }
 	    }
 	  }
-
+	
 	  /**
 	   * Register callbacks for option events and watchers.
 	   *
@@ -8214,7 +8408,7 @@ webpackJsonp([0,1],[
 	   * @param {String} action
 	   * @param {Object} hash
 	   */
-
+	
 	  function registerCallbacks(vm, action, hash) {
 	    if (!hash) return;
 	    var handlers, key, i, j;
@@ -8229,7 +8423,7 @@ webpackJsonp([0,1],[
 	      }
 	    }
 	  }
-
+	
 	  /**
 	   * Helper to register an event/watch callback.
 	   *
@@ -8239,7 +8433,7 @@ webpackJsonp([0,1],[
 	   * @param {Function|String|Object} handler
 	   * @param {Object} [options]
 	   */
-
+	
 	  function register(vm, action, key, handler, options) {
 	    var type = typeof handler;
 	    if (type === 'function') {
@@ -8256,68 +8450,68 @@ webpackJsonp([0,1],[
 	      register(vm, action, key, handler.handler, handler);
 	    }
 	  }
-
+	
 	  /**
 	   * Setup recursive attached/detached calls
 	   */
-
+	
 	  Vue.prototype._initDOMHooks = function () {
 	    this.$on('hook:attached', onAttached);
 	    this.$on('hook:detached', onDetached);
 	  };
-
+	
 	  /**
 	   * Callback to recursively call attached hook on children
 	   */
-
+	
 	  function onAttached() {
 	    if (!this._isAttached) {
 	      this._isAttached = true;
 	      this.$children.forEach(callAttach);
 	    }
 	  }
-
+	
 	  /**
 	   * Iterator to call attached hook
 	   *
 	   * @param {Vue} child
 	   */
-
+	
 	  function callAttach(child) {
 	    if (!child._isAttached && inDoc(child.$el)) {
 	      child._callHook('attached');
 	    }
 	  }
-
+	
 	  /**
 	   * Callback to recursively call detached hook on children
 	   */
-
+	
 	  function onDetached() {
 	    if (this._isAttached) {
 	      this._isAttached = false;
 	      this.$children.forEach(callDetach);
 	    }
 	  }
-
+	
 	  /**
 	   * Iterator to call detached hook
 	   *
 	   * @param {Vue} child
 	   */
-
+	
 	  function callDetach(child) {
 	    if (child._isAttached && !inDoc(child.$el)) {
 	      child._callHook('detached');
 	    }
 	  }
-
+	
 	  /**
 	   * Trigger all handlers for a hook
 	   *
 	   * @param {String} hook
 	   */
-
+	
 	  Vue.prototype._callHook = function (hook) {
 	    this.$emit('pre-hook:' + hook);
 	    var handlers = this.$options[hook];
@@ -8329,9 +8523,9 @@ webpackJsonp([0,1],[
 	    this.$emit('hook:' + hook);
 	  };
 	}
-
-	function noop() {}
-
+	
+	function noop$1() {}
+	
 	/**
 	 * A directive links a DOM element with a piece of data,
 	 * which is the result of evaluating an expression.
@@ -8383,23 +8577,23 @@ webpackJsonp([0,1],[
 	    this.el._vue_directives.push(this);
 	  }
 	}
-
+	
 	/**
 	 * Initialize the directive, mixin definition properties,
 	 * setup the watcher, call definition bind() and update()
 	 * if present.
 	 */
-
+	
 	Directive.prototype._bind = function () {
 	  var name = this.name;
 	  var descriptor = this.descriptor;
-
+	
 	  // remove attribute
 	  if ((name !== 'cloak' || this.vm._isCompiled) && this.el && this.el.removeAttribute) {
 	    var attr = descriptor.attr || 'v-' + name;
 	    this.el.removeAttribute(attr);
 	  }
-
+	
 	  // copy def properties
 	  var def = descriptor.def;
 	  if (typeof def === 'function') {
@@ -8407,16 +8601,16 @@ webpackJsonp([0,1],[
 	  } else {
 	    extend(this, def);
 	  }
-
+	
 	  // setup directive params
 	  this._setupParams();
-
+	
 	  // initial bind
 	  if (this.bind) {
 	    this.bind();
 	  }
 	  this._bound = true;
-
+	
 	  if (this.literal) {
 	    this.update && this.update(descriptor.raw);
 	  } else if ((this.expression || this.modifiers) && (this.update || this.twoWay) && !this._checkStatement()) {
@@ -8429,7 +8623,7 @@ webpackJsonp([0,1],[
 	        }
 	      };
 	    } else {
-	      this._update = noop;
+	      this._update = noop$1;
 	    }
 	    var preProcess = this._preProcess ? bind(this._preProcess, this) : null;
 	    var postProcess = this._postProcess ? bind(this._postProcess, this) : null;
@@ -8452,12 +8646,12 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	};
-
+	
 	/**
 	 * Setup all param attributes, e.g. track-by,
 	 * transition-mode, etc...
 	 */
-
+	
 	Directive.prototype._setupParams = function () {
 	  if (!this.params) {
 	    return;
@@ -8483,14 +8677,14 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	};
-
+	
 	/**
 	 * Setup a watcher for a dynamic param.
 	 *
 	 * @param {String} key
 	 * @param {String} expression
 	 */
-
+	
 	Directive.prototype._setupParamWatcher = function (key, expression) {
 	  var self = this;
 	  var called = false;
@@ -8511,7 +8705,7 @@ webpackJsonp([0,1],[
 	    user: false
 	  });(this._paramUnwatchFns || (this._paramUnwatchFns = [])).push(unwatch);
 	};
-
+	
 	/**
 	 * Check if the directive is a function caller
 	 * and if the expression is a callable one. If both true,
@@ -8522,11 +8716,11 @@ webpackJsonp([0,1],[
 	 *
 	 * @return {Boolean}
 	 */
-
+	
 	Directive.prototype._checkStatement = function () {
 	  var expression = this.expression;
 	  if (expression && this.acceptStatement && !isSimplePath(expression)) {
-	    var fn = parseExpression(expression).get;
+	    var fn = parseExpression$1(expression).get;
 	    var scope = this._scope || this.vm;
 	    var handler = function handler(e) {
 	      scope.$event = e;
@@ -8540,7 +8734,7 @@ webpackJsonp([0,1],[
 	    return true;
 	  }
 	};
-
+	
 	/**
 	 * Set the corresponding value with the setter.
 	 * This should only be used in two-way directives
@@ -8549,7 +8743,7 @@ webpackJsonp([0,1],[
 	 * @param {*} value
 	 * @public
 	 */
-
+	
 	Directive.prototype.set = function (value) {
 	  /* istanbul ignore else */
 	  if (this.twoWay) {
@@ -8560,14 +8754,14 @@ webpackJsonp([0,1],[
 	    warn('Directive.set() can only be used inside twoWay' + 'directives.');
 	  }
 	};
-
+	
 	/**
 	 * Execute a function while preventing that function from
 	 * triggering updates on this directive instance.
 	 *
 	 * @param {Function} fn
 	 */
-
+	
 	Directive.prototype._withLock = function (fn) {
 	  var self = this;
 	  self._locked = true;
@@ -8576,7 +8770,7 @@ webpackJsonp([0,1],[
 	    self._locked = false;
 	  });
 	};
-
+	
 	/**
 	 * Convenience method that attaches a DOM event listener
 	 * to the directive element and autometically tears it down
@@ -8586,15 +8780,15 @@ webpackJsonp([0,1],[
 	 * @param {Function} handler
 	 * @param {Boolean} [useCapture]
 	 */
-
+	
 	Directive.prototype.on = function (event, handler, useCapture) {
 	  on(this.el, event, handler, useCapture);(this._listeners || (this._listeners = [])).push([event, handler]);
 	};
-
+	
 	/**
 	 * Teardown the watcher and call unbind.
 	 */
-
+	
 	Directive.prototype._teardown = function () {
 	  if (this._bound) {
 	    this._bound = false;
@@ -8625,14 +8819,14 @@ webpackJsonp([0,1],[
 	    this.vm = this.el = this._watcher = this._listeners = null;
 	  }
 	};
-
+	
 	function lifecycleMixin (Vue) {
 	  /**
 	   * Update v-ref for component.
 	   *
 	   * @param {Boolean} remove
 	   */
-
+	
 	  Vue.prototype._updateRef = function (remove) {
 	    var ref = this.$options._ref;
 	    if (ref) {
@@ -8646,7 +8840,7 @@ webpackJsonp([0,1],[
 	      }
 	    }
 	  };
-
+	
 	  /**
 	   * Transclude, compile and link element.
 	   *
@@ -8658,10 +8852,10 @@ webpackJsonp([0,1],[
 	   *
 	   * @param {Element} el
 	   */
-
+	
 	  Vue.prototype._compile = function (el) {
 	    var options = this.$options;
-
+	
 	    // transclude and init element
 	    // transclude can potentially replace original
 	    // so we need to keep reference; this step also injects
@@ -8670,20 +8864,20 @@ webpackJsonp([0,1],[
 	    var original = el;
 	    el = transclude(el, options);
 	    this._initElement(el);
-
+	
 	    // handle v-pre on root node (#2026)
 	    if (el.nodeType === 1 && getAttr(el, 'v-pre') !== null) {
 	      return;
 	    }
-
+	
 	    // root is always compiled per-instance, because
 	    // container attrs and props can be different every time.
 	    var contextOptions = this._context && this._context.$options;
 	    var rootLinker = compileRoot(el, options, contextOptions);
-
+	
 	    // resolve slot distribution
 	    resolveSlots(this, options._content);
-
+	
 	    // compile and link the rest
 	    var contentLinkFn;
 	    var ctor = this.constructor;
@@ -8695,12 +8889,12 @@ webpackJsonp([0,1],[
 	        contentLinkFn = ctor.linker = compile(el, options);
 	      }
 	    }
-
+	
 	    // link phase
 	    // make sure to link root with prop scope!
 	    var rootUnlinkFn = rootLinker(this, el, this._scope);
 	    var contentUnlinkFn = contentLinkFn ? contentLinkFn(this, el) : compile(el, options)(this, el);
-
+	
 	    // register composite unlink function
 	    // to be called during instance destruction
 	    this._unlinkFn = function () {
@@ -8709,23 +8903,23 @@ webpackJsonp([0,1],[
 	      // splicing the directives
 	      contentUnlinkFn(true);
 	    };
-
+	
 	    // finally replace original
 	    if (options.replace) {
 	      replace(original, el);
 	    }
-
+	
 	    this._isCompiled = true;
 	    this._callHook('compiled');
 	  };
-
+	
 	  /**
 	   * Initialize instance element. Called in the public
 	   * $mount() method.
 	   *
 	   * @param {Element} el
 	   */
-
+	
 	  Vue.prototype._initElement = function (el) {
 	    if (isFragment(el)) {
 	      this._isFragment = true;
@@ -8742,7 +8936,7 @@ webpackJsonp([0,1],[
 	    this.$el.__vue__ = this;
 	    this._callHook('beforeCompile');
 	  };
-
+	
 	  /**
 	   * Create and bind a directive to an element.
 	   *
@@ -8752,11 +8946,11 @@ webpackJsonp([0,1],[
 	   * @param {Object} [scope] - v-for scope
 	   * @param {Fragment} [frag] - owner fragment
 	   */
-
+	
 	  Vue.prototype._bindDir = function (descriptor, node, host, scope, frag) {
 	    this._directives.push(new Directive(descriptor, this, node, host, scope, frag));
 	  };
-
+	
 	  /**
 	   * Teardown an instance, unobserves the data, unbind all the
 	   * directives, turn off all the event listeners, etc.
@@ -8765,7 +8959,7 @@ webpackJsonp([0,1],[
 	   * @param {Boolean} deferCleanup - if true, defer cleanup to
 	   *                                 be called later
 	   */
-
+	
 	  Vue.prototype._destroy = function (remove, deferCleanup) {
 	    if (this._isBeingDestroyed) {
 	      if (!deferCleanup) {
@@ -8773,10 +8967,10 @@ webpackJsonp([0,1],[
 	      }
 	      return;
 	    }
-
+	
 	    var destroyReady;
 	    var pendingRemoval;
-
+	
 	    var self = this;
 	    // Cleanup should be called either synchronously or asynchronoysly as
 	    // callback of this.$remove(), or if remove and deferCleanup are false.
@@ -8787,7 +8981,7 @@ webpackJsonp([0,1],[
 	        self._cleanup();
 	      }
 	    };
-
+	
 	    // remove DOM element
 	    if (remove && this.$el) {
 	      pendingRemoval = true;
@@ -8796,7 +8990,7 @@ webpackJsonp([0,1],[
 	        cleanupIfPossible();
 	      });
 	    }
-
+	
 	    this._callHook('beforeDestroy');
 	    this._isBeingDestroyed = true;
 	    var i;
@@ -8830,17 +9024,17 @@ webpackJsonp([0,1],[
 	    if (this.$el) {
 	      this.$el.__vue__ = null;
 	    }
-
+	
 	    destroyReady = true;
 	    cleanupIfPossible();
 	  };
-
+	
 	  /**
 	   * Clean up to ensure garbage collection.
 	   * This is called after the leave transition if there
 	   * is any.
 	   */
-
+	
 	  Vue.prototype._cleanup = function () {
 	    if (this._isDestroyed) {
 	      return;
@@ -8872,7 +9066,7 @@ webpackJsonp([0,1],[
 	    this.$off();
 	  };
 	}
-
+	
 	function miscMixin (Vue) {
 	  /**
 	   * Apply a list of filter (descriptors) to a value.
@@ -8886,7 +9080,7 @@ webpackJsonp([0,1],[
 	   * @param {Boolean} write
 	   * @return {*}
 	   */
-
+	
 	  Vue.prototype._applyFilters = function (value, oldValue, filters, write) {
 	    var filter, fn, args, arg, offset, i, l, j, k;
 	    for (i = 0, l = filters.length; i < l; i++) {
@@ -8907,7 +9101,7 @@ webpackJsonp([0,1],[
 	    }
 	    return value;
 	  };
-
+	
 	  /**
 	   * Resolve a component, depending on whether the component
 	   * is defined normally or using an async factory function.
@@ -8918,7 +9112,7 @@ webpackJsonp([0,1],[
 	   * @param {String|Function} value
 	   * @param {Function} cb
 	   */
-
+	
 	  Vue.prototype._resolveComponent = function (value, cb) {
 	    var factory;
 	    if (typeof value === 'function') {
@@ -8961,9 +9155,9 @@ webpackJsonp([0,1],[
 	    }
 	  };
 	}
-
+	
 	var filterRE$1 = /[^|]\|[^|]/;
-
+	
 	function dataAPI (Vue) {
 	  /**
 	   * Get the value from an expression on this vm.
@@ -8972,9 +9166,9 @@ webpackJsonp([0,1],[
 	   * @param {Boolean} [asStatement]
 	   * @return {*}
 	   */
-
+	
 	  Vue.prototype.$get = function (exp, asStatement) {
-	    var res = parseExpression(exp);
+	    var res = parseExpression$1(exp);
 	    if (res) {
 	      if (asStatement) {
 	        var self = this;
@@ -8991,7 +9185,7 @@ webpackJsonp([0,1],[
 	      }
 	    }
 	  };
-
+	
 	  /**
 	   * Set the value from an expression on this vm.
 	   * The expression must be a valid left-hand
@@ -9000,24 +9194,24 @@ webpackJsonp([0,1],[
 	   * @param {String} exp
 	   * @param {*} val
 	   */
-
+	
 	  Vue.prototype.$set = function (exp, val) {
-	    var res = parseExpression(exp, true);
+	    var res = parseExpression$1(exp, true);
 	    if (res && res.set) {
 	      res.set.call(this, this, val);
 	    }
 	  };
-
+	
 	  /**
 	   * Delete a property on the VM
 	   *
 	   * @param {String} key
 	   */
-
+	
 	  Vue.prototype.$delete = function (key) {
 	    del(this._data, key);
 	  };
-
+	
 	  /**
 	   * Watch an expression, trigger callback when its
 	   * value changes.
@@ -9029,7 +9223,7 @@ webpackJsonp([0,1],[
 	   *                 - {Boolean} immediate
 	   * @return {Function} - unwatchFn
 	   */
-
+	
 	  Vue.prototype.$watch = function (expOrFn, cb, options) {
 	    var vm = this;
 	    var parsed;
@@ -9050,7 +9244,7 @@ webpackJsonp([0,1],[
 	      watcher.teardown();
 	    };
 	  };
-
+	
 	  /**
 	   * Evaluate a text directive, including filters.
 	   *
@@ -9058,7 +9252,7 @@ webpackJsonp([0,1],[
 	   * @param {Boolean} [asStatement]
 	   * @return {String}
 	   */
-
+	
 	  Vue.prototype.$eval = function (text, asStatement) {
 	    // check for filters.
 	    if (filterRE$1.test(text)) {
@@ -9073,14 +9267,14 @@ webpackJsonp([0,1],[
 	      return this.$get(text, asStatement);
 	    }
 	  };
-
+	
 	  /**
 	   * Interpolate a piece of template text.
 	   *
 	   * @param {String} text
 	   * @return {String}
 	   */
-
+	
 	  Vue.prototype.$interpolate = function (text) {
 	    var tokens = parseText(text);
 	    var vm = this;
@@ -9096,7 +9290,7 @@ webpackJsonp([0,1],[
 	      return text;
 	    }
 	  };
-
+	
 	  /**
 	   * Log instance data as a plain JS object
 	   * so that it is easier to inspect in console.
@@ -9104,7 +9298,7 @@ webpackJsonp([0,1],[
 	   *
 	   * @param {String} [path]
 	   */
-
+	
 	  Vue.prototype.$log = function (path) {
 	    var data = path ? getPath(this._data, path) : this._data;
 	    if (data) {
@@ -9124,7 +9318,7 @@ webpackJsonp([0,1],[
 	    }
 	    console.log(data);
 	  };
-
+	
 	  /**
 	   * "clean" a getter/setter converted object into a plain
 	   * object copy.
@@ -9132,12 +9326,12 @@ webpackJsonp([0,1],[
 	   * @param {Object} - obj
 	   * @return {Object}
 	   */
-
+	
 	  function clean(obj) {
 	    return JSON.parse(JSON.stringify(obj));
 	  }
 	}
-
+	
 	function domAPI (Vue) {
 	  /**
 	   * Convenience on-instance nextTick. The callback is
@@ -9146,11 +9340,11 @@ webpackJsonp([0,1],[
 	   *
 	   * @param {Function} fn
 	   */
-
+	
 	  Vue.prototype.$nextTick = function (fn) {
 	    nextTick(fn, this);
 	  };
-
+	
 	  /**
 	   * Append instance to target
 	   *
@@ -9158,11 +9352,11 @@ webpackJsonp([0,1],[
 	   * @param {Function} [cb]
 	   * @param {Boolean} [withTransition] - defaults to true
 	   */
-
+	
 	  Vue.prototype.$appendTo = function (target, cb, withTransition) {
 	    return insert(this, target, cb, withTransition, append, appendWithTransition);
 	  };
-
+	
 	  /**
 	   * Prepend instance to target
 	   *
@@ -9170,7 +9364,7 @@ webpackJsonp([0,1],[
 	   * @param {Function} [cb]
 	   * @param {Boolean} [withTransition] - defaults to true
 	   */
-
+	
 	  Vue.prototype.$prependTo = function (target, cb, withTransition) {
 	    target = query(target);
 	    if (target.hasChildNodes()) {
@@ -9180,7 +9374,7 @@ webpackJsonp([0,1],[
 	    }
 	    return this;
 	  };
-
+	
 	  /**
 	   * Insert instance before target
 	   *
@@ -9188,11 +9382,11 @@ webpackJsonp([0,1],[
 	   * @param {Function} [cb]
 	   * @param {Boolean} [withTransition] - defaults to true
 	   */
-
+	
 	  Vue.prototype.$before = function (target, cb, withTransition) {
 	    return insert(this, target, cb, withTransition, beforeWithCb, beforeWithTransition);
 	  };
-
+	
 	  /**
 	   * Insert instance after target
 	   *
@@ -9200,7 +9394,7 @@ webpackJsonp([0,1],[
 	   * @param {Function} [cb]
 	   * @param {Boolean} [withTransition] - defaults to true
 	   */
-
+	
 	  Vue.prototype.$after = function (target, cb, withTransition) {
 	    target = query(target);
 	    if (target.nextSibling) {
@@ -9210,14 +9404,14 @@ webpackJsonp([0,1],[
 	    }
 	    return this;
 	  };
-
+	
 	  /**
 	   * Remove instance from DOM
 	   *
 	   * @param {Function} [cb]
 	   * @param {Boolean} [withTransition] - defaults to true
 	   */
-
+	
 	  Vue.prototype.$remove = function (cb, withTransition) {
 	    if (!this.$el.parentNode) {
 	      return cb && cb();
@@ -9239,7 +9433,7 @@ webpackJsonp([0,1],[
 	    }
 	    return this;
 	  };
-
+	
 	  /**
 	   * Shared DOM insertion function.
 	   *
@@ -9251,7 +9445,7 @@ webpackJsonp([0,1],[
 	   * @param {Function} op2 - op for transition insert
 	   * @return vm
 	   */
-
+	
 	  function insert(vm, target, cb, withTransition, op1, op2) {
 	    target = query(target);
 	    var targetIsDetached = !inDoc(target);
@@ -9270,17 +9464,17 @@ webpackJsonp([0,1],[
 	    }
 	    return vm;
 	  }
-
+	
 	  /**
 	   * Check for selectors
 	   *
 	   * @param {String|Element} el
 	   */
-
+	
 	  function query(el) {
 	    return typeof el === 'string' ? document.querySelector(el) : el;
 	  }
-
+	
 	  /**
 	   * Append operation that takes a callback.
 	   *
@@ -9289,12 +9483,12 @@ webpackJsonp([0,1],[
 	   * @param {Vue} vm - unused
 	   * @param {Function} [cb]
 	   */
-
+	
 	  function append(el, target, vm, cb) {
 	    target.appendChild(el);
 	    if (cb) cb();
 	  }
-
+	
 	  /**
 	   * InsertBefore operation that takes a callback.
 	   *
@@ -9303,12 +9497,12 @@ webpackJsonp([0,1],[
 	   * @param {Vue} vm - unused
 	   * @param {Function} [cb]
 	   */
-
+	
 	  function beforeWithCb(el, target, vm, cb) {
 	    before(el, target);
 	    if (cb) cb();
 	  }
-
+	
 	  /**
 	   * Remove operation that takes a callback.
 	   *
@@ -9316,13 +9510,13 @@ webpackJsonp([0,1],[
 	   * @param {Vue} vm - unused
 	   * @param {Function} [cb]
 	   */
-
+	
 	  function removeWithCb(el, vm, cb) {
 	    remove(el);
 	    if (cb) cb();
 	  }
 	}
-
+	
 	function eventsAPI (Vue) {
 	  /**
 	   * Listen on the given `event` with `fn`.
@@ -9330,13 +9524,13 @@ webpackJsonp([0,1],[
 	   * @param {String} event
 	   * @param {Function} fn
 	   */
-
+	
 	  Vue.prototype.$on = function (event, fn) {
 	    (this._events[event] || (this._events[event] = [])).push(fn);
 	    modifyListenerCount(this, event, 1);
 	    return this;
 	  };
-
+	
 	  /**
 	   * Adds an `event` listener that will be invoked a single
 	   * time then automatically removed.
@@ -9344,7 +9538,7 @@ webpackJsonp([0,1],[
 	   * @param {String} event
 	   * @param {Function} fn
 	   */
-
+	
 	  Vue.prototype.$once = function (event, fn) {
 	    var self = this;
 	    function on() {
@@ -9355,7 +9549,7 @@ webpackJsonp([0,1],[
 	    this.$on(event, on);
 	    return this;
 	  };
-
+	
 	  /**
 	   * Remove the given callback for `event` or all
 	   * registered callbacks.
@@ -9363,7 +9557,7 @@ webpackJsonp([0,1],[
 	   * @param {String} event
 	   * @param {Function} fn
 	   */
-
+	
 	  Vue.prototype.$off = function (event, fn) {
 	    var cbs;
 	    // all
@@ -9402,14 +9596,14 @@ webpackJsonp([0,1],[
 	    }
 	    return this;
 	  };
-
+	
 	  /**
 	   * Trigger an event on self.
 	   *
 	   * @param {String|Object} event
 	   * @return {Boolean} shouldPropagate
 	   */
-
+	
 	  Vue.prototype.$emit = function (event) {
 	    var isSource = typeof event === 'string';
 	    event = isSource ? event : event.name;
@@ -9438,14 +9632,14 @@ webpackJsonp([0,1],[
 	    }
 	    return shouldPropagate;
 	  };
-
+	
 	  /**
 	   * Recursively broadcast an event to all children instances.
 	   *
 	   * @param {String|Object} event
 	   * @param {...*} additional arguments
 	   */
-
+	
 	  Vue.prototype.$broadcast = function (event) {
 	    var isSource = typeof event === 'string';
 	    event = isSource ? event : event.name;
@@ -9468,14 +9662,14 @@ webpackJsonp([0,1],[
 	    }
 	    return this;
 	  };
-
+	
 	  /**
 	   * Recursively propagate an event up the parent chain.
 	   *
 	   * @param {String} event
 	   * @param {...*} additional arguments
 	   */
-
+	
 	  Vue.prototype.$dispatch = function (event) {
 	    var shouldPropagate = this.$emit.apply(this, arguments);
 	    if (!shouldPropagate) return;
@@ -9490,7 +9684,7 @@ webpackJsonp([0,1],[
 	    }
 	    return this;
 	  };
-
+	
 	  /**
 	   * Modify the listener counts on all parents.
 	   * This bookkeeping allows $broadcast to return early when
@@ -9500,7 +9694,7 @@ webpackJsonp([0,1],[
 	   * @param {String} event
 	   * @param {Number} count
 	   */
-
+	
 	  var hookRE = /^hook:/;
 	  function modifyListenerCount(vm, event, count) {
 	    var parent = vm.$parent;
@@ -9513,7 +9707,7 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	}
-
+	
 	function lifecycleAPI (Vue) {
 	  /**
 	   * Set instance target element and kick off the compilation
@@ -9524,7 +9718,7 @@ webpackJsonp([0,1],[
 	   * @param {Element|DocumentFragment|string} el
 	   * @public
 	   */
-
+	
 	  Vue.prototype.$mount = function (el) {
 	    if (this._isCompiled) {
 	      process.env.NODE_ENV !== 'production' && warn('$mount() should be called only once.', this);
@@ -9544,17 +9738,17 @@ webpackJsonp([0,1],[
 	    }
 	    return this;
 	  };
-
+	
 	  /**
 	   * Mark an instance as ready.
 	   */
-
+	
 	  function ready() {
 	    this._isAttached = true;
 	    this._isReady = true;
 	    this._callHook('ready');
 	  }
-
+	
 	  /**
 	   * Teardown the instance, simply delegate to the internal
 	   * _destroy.
@@ -9562,11 +9756,11 @@ webpackJsonp([0,1],[
 	   * @param {Boolean} remove
 	   * @param {Boolean} deferCleanup
 	   */
-
+	
 	  Vue.prototype.$destroy = function (remove, deferCleanup) {
 	    this._destroy(remove, deferCleanup);
 	  };
-
+	
 	  /**
 	   * Partially compile a piece of DOM and return a
 	   * decompile function.
@@ -9577,12 +9771,12 @@ webpackJsonp([0,1],[
 	   * @param {Fragment} [frag]
 	   * @return {Function}
 	   */
-
+	
 	  Vue.prototype.$compile = function (el, host, scope, frag) {
 	    return compile(el, this.$options, true)(this, el, host, scope, frag);
 	  };
 	}
-
+	
 	/**
 	 * The exposed Vue constructor.
 	 *
@@ -9596,29 +9790,29 @@ webpackJsonp([0,1],[
 	 * @param {Object} [options]
 	 * @public
 	 */
-
+	
 	function Vue(options) {
 	  this._init(options);
 	}
-
+	
 	// install internals
 	initMixin(Vue);
 	stateMixin(Vue);
 	eventsMixin(Vue);
 	lifecycleMixin(Vue);
 	miscMixin(Vue);
-
+	
 	// install instance APIs
 	dataAPI(Vue);
 	domAPI(Vue);
 	eventsAPI(Vue);
 	lifecycleAPI(Vue);
-
+	
 	var slot = {
-
+	
 	  priority: SLOT,
 	  params: ['name'],
-
+	
 	  bind: function bind() {
 	    // this was resolved during component transclusion
 	    var name = this.params.name || 'default';
@@ -9629,7 +9823,7 @@ webpackJsonp([0,1],[
 	      this.compile(content.cloneNode(true), this.vm._context, this.vm);
 	    }
 	  },
-
+	
 	  compile: function compile(content, context, host) {
 	    if (content && context) {
 	      if (this.el.hasChildNodes() && content.childNodes.length === 1 && content.childNodes[0].nodeType === 1 && content.childNodes[0].hasAttribute('v-if')) {
@@ -9651,24 +9845,24 @@ webpackJsonp([0,1],[
 	      remove(this.el);
 	    }
 	  },
-
+	
 	  fallback: function fallback() {
 	    this.compile(extractContent(this.el, true), this.vm);
 	  },
-
+	
 	  unbind: function unbind() {
 	    if (this.unlink) {
 	      this.unlink();
 	    }
 	  }
 	};
-
+	
 	var partial = {
-
+	
 	  priority: PARTIAL,
-
+	
 	  params: ['name'],
-
+	
 	  // watch changes to name for dynamic partials
 	  paramWatchers: {
 	    name: function name(value) {
@@ -9678,13 +9872,13 @@ webpackJsonp([0,1],[
 	      }
 	    }
 	  },
-
+	
 	  bind: function bind() {
 	    this.anchor = createAnchor('v-partial');
 	    replace(this.el, this.anchor);
 	    this.insert(this.params.name);
 	  },
-
+	
 	  insert: function insert(id) {
 	    var partial = resolveAsset(this.vm.$options, 'partials', id, true);
 	    if (partial) {
@@ -9692,34 +9886,34 @@ webpackJsonp([0,1],[
 	      vIf.insert.call(this);
 	    }
 	  },
-
+	
 	  unbind: function unbind() {
 	    if (this.frag) {
 	      this.frag.destroy();
 	    }
 	  }
 	};
-
+	
 	var elementDirectives = {
 	  slot: slot,
 	  partial: partial
 	};
-
+	
 	var convertArray = vFor._postProcess;
-
+	
 	/**
 	 * Limit filter for arrays
 	 *
 	 * @param {Number} n
 	 * @param {Number} offset (Decimal expected)
 	 */
-
+	
 	function limitBy(arr, n, offset) {
 	  offset = offset ? parseInt(offset, 10) : 0;
 	  n = toNumber(n);
 	  return typeof n === 'number' ? arr.slice(offset, offset + n) : arr;
 	}
-
+	
 	/**
 	 * Filter filter for arrays
 	 *
@@ -9727,7 +9921,7 @@ webpackJsonp([0,1],[
 	 * @param {String} [delimiter]
 	 * @param {String} ...dataKeys
 	 */
-
+	
 	function filterBy(arr, search, delimiter) {
 	  arr = convertArray(arr);
 	  if (search == null) {
@@ -9763,19 +9957,19 @@ webpackJsonp([0,1],[
 	  }
 	  return res;
 	}
-
+	
 	/**
-	 * Filter filter for arrays
+	 * Order filter for arrays
 	 *
 	 * @param {String|Array<String>|Function} ...sortKeys
 	 * @param {Number} [order]
 	 */
-
+	
 	function orderBy(arr) {
 	  var comparator = null;
 	  var sortKeys = undefined;
 	  arr = convertArray(arr);
-
+	
 	  // determine order (last argument)
 	  var args = toArray(arguments, 1);
 	  var order = args[args.length - 1];
@@ -9785,7 +9979,7 @@ webpackJsonp([0,1],[
 	  } else {
 	    order = 1;
 	  }
-
+	
 	  // determine sortKeys & comparator
 	  var firstArg = args[0];
 	  if (!firstArg) {
@@ -9803,7 +9997,7 @@ webpackJsonp([0,1],[
 	      return i >= sortKeys.length - 1 ? baseCompare(a, b, i) : baseCompare(a, b, i) || comparator(a, b, i + 1);
 	    };
 	  }
-
+	
 	  function baseCompare(a, b, sortKeyIndex) {
 	    var sortKey = sortKeys[sortKeyIndex];
 	    if (sortKey) {
@@ -9816,18 +10010,18 @@ webpackJsonp([0,1],[
 	    }
 	    return a === b ? 0 : a > b ? order : -order;
 	  }
-
+	
 	  // sort on a copy to avoid mutating original array
 	  return arr.slice().sort(comparator);
 	}
-
+	
 	/**
 	 * String contain helper
 	 *
 	 * @param {*} val
 	 * @param {String} search
 	 */
-
+	
 	function contains(val, search) {
 	  var i;
 	  if (isPlainObject(val)) {
@@ -9849,25 +10043,25 @@ webpackJsonp([0,1],[
 	    return val.toString().toLowerCase().indexOf(search) > -1;
 	  }
 	}
-
+	
 	var digitsRE = /(\d{3})(?=\d)/g;
-
+	
 	// asset collections must be a plain object.
 	var filters = {
-
+	
 	  orderBy: orderBy,
 	  filterBy: filterBy,
 	  limitBy: limitBy,
-
+	
 	  /**
 	   * Stringify value.
 	   *
 	   * @param {Number} indent
 	   */
-
+	
 	  json: {
 	    read: function read(value, indent) {
-	      return typeof value === 'string' ? value : JSON.stringify(value, null, Number(indent) || 2);
+	      return typeof value === 'string' ? value : JSON.stringify(value, null, arguments.length > 1 ? indent : 2);
 	    },
 	    write: function write(value) {
 	      try {
@@ -9877,40 +10071,40 @@ webpackJsonp([0,1],[
 	      }
 	    }
 	  },
-
+	
 	  /**
 	   * 'abc' => 'Abc'
 	   */
-
+	
 	  capitalize: function capitalize(value) {
 	    if (!value && value !== 0) return '';
 	    value = value.toString();
 	    return value.charAt(0).toUpperCase() + value.slice(1);
 	  },
-
+	
 	  /**
 	   * 'abc' => 'ABC'
 	   */
-
+	
 	  uppercase: function uppercase(value) {
 	    return value || value === 0 ? value.toString().toUpperCase() : '';
 	  },
-
+	
 	  /**
 	   * 'AbC' => 'abc'
 	   */
-
+	
 	  lowercase: function lowercase(value) {
 	    return value || value === 0 ? value.toString().toLowerCase() : '';
 	  },
-
+	
 	  /**
 	   * 12345 => $12,345.00
 	   *
 	   * @param {String} sign
 	   * @param {Number} decimals Decimal places
 	   */
-
+	
 	  currency: function currency(value, _currency, decimals) {
 	    value = parseFloat(value);
 	    if (!isFinite(value) || !value && value !== 0) return '';
@@ -9924,7 +10118,7 @@ webpackJsonp([0,1],[
 	    var sign = value < 0 ? '-' : '';
 	    return sign + _currency + head + _int.slice(i).replace(digitsRE, '$1,') + _float;
 	  },
-
+	
 	  /**
 	   * 'item' => 'items'
 	   *
@@ -9937,12 +10131,18 @@ webpackJsonp([0,1],[
 	   *
 	   *  e.g. ['single', 'double', 'triple', 'multiple']
 	   */
-
+	
 	  pluralize: function pluralize(value) {
 	    var args = toArray(arguments, 1);
-	    return args.length > 1 ? args[value % 10 - 1] || args[args.length - 1] : args[0] + (value === 1 ? '' : 's');
+	    var length = args.length;
+	    if (length > 1) {
+	      var index = value % 10 - 1;
+	      return index in args ? args[index] : args[length - 1];
+	    } else {
+	      return args[0] + (value === 1 ? '' : 's');
+	    }
 	  },
-
+	
 	  /**
 	   * Debounce a handler function.
 	   *
@@ -9950,7 +10150,7 @@ webpackJsonp([0,1],[
 	   * @param {Number} delay = 300
 	   * @return {Function}
 	   */
-
+	
 	  debounce: function debounce(handler, delay) {
 	    if (!handler) return;
 	    if (!delay) {
@@ -9959,7 +10159,7 @@ webpackJsonp([0,1],[
 	    return _debounce(handler, delay);
 	  }
 	};
-
+	
 	function installGlobalAPI (Vue) {
 	  /**
 	   * Vue and every constructor that extends Vue has an
@@ -9969,7 +10169,7 @@ webpackJsonp([0,1],[
 	   * These can be seen as the default options of every
 	   * Vue instance.
 	   */
-
+	
 	  Vue.options = {
 	    directives: directives,
 	    elementDirectives: elementDirectives,
@@ -9979,21 +10179,21 @@ webpackJsonp([0,1],[
 	    partials: {},
 	    replace: true
 	  };
-
+	
 	  /**
 	   * Expose useful internals
 	   */
-
+	
 	  Vue.util = util;
 	  Vue.config = config;
 	  Vue.set = set;
 	  Vue['delete'] = del;
 	  Vue.nextTick = nextTick;
-
+	
 	  /**
 	   * The following are exposed for advanced usage / plugins
 	   */
-
+	
 	  Vue.compiler = compiler;
 	  Vue.FragmentFactory = FragmentFactory;
 	  Vue.internalDirectives = internalDirectives;
@@ -10004,22 +10204,22 @@ webpackJsonp([0,1],[
 	    directive: directive,
 	    expression: expression
 	  };
-
+	
 	  /**
 	   * Each instance constructor, including Vue, has a unique
 	   * cid. This enables us to create wrapped "child
 	   * constructors" for prototypal inheritance and cache them.
 	   */
-
+	
 	  Vue.cid = 0;
 	  var cid = 1;
-
+	
 	  /**
 	   * Class inheritance
 	   *
 	   * @param {Object} extendOptions
 	   */
-
+	
 	  Vue.extend = function (extendOptions) {
 	    extendOptions = extendOptions || {};
 	    var Super = this;
@@ -10057,7 +10257,7 @@ webpackJsonp([0,1],[
 	    }
 	    return Sub;
 	  };
-
+	
 	  /**
 	   * A function that returns a sub-class constructor with the
 	   * given name. This gives us much nicer output when
@@ -10066,19 +10266,19 @@ webpackJsonp([0,1],[
 	   * @param {String} name
 	   * @return {Function}
 	   */
-
+	
 	  function createClass(name) {
 	    /* eslint-disable no-new-func */
 	    return new Function('return function ' + classify(name) + ' (options) { this._init(options) }')();
 	    /* eslint-enable no-new-func */
 	  }
-
+	
 	  /**
 	   * Plugin system
 	   *
 	   * @param {Object} plugin
 	   */
-
+	
 	  Vue.use = function (plugin) {
 	    /* istanbul ignore if */
 	    if (plugin.installed) {
@@ -10095,16 +10295,16 @@ webpackJsonp([0,1],[
 	    plugin.installed = true;
 	    return this;
 	  };
-
+	
 	  /**
 	   * Apply a global mixin by merging it into the default
 	   * options.
 	   */
-
+	
 	  Vue.mixin = function (mixin) {
 	    Vue.options = mergeOptions(Vue.options, mixin);
 	  };
-
+	
 	  /**
 	   * Create asset registration methods with the following
 	   * signature:
@@ -10112,7 +10312,7 @@ webpackJsonp([0,1],[
 	   * @param {String} id
 	   * @param {*} definition
 	   */
-
+	
 	  config._assetTypes.forEach(function (type) {
 	    Vue[type] = function (id, definition) {
 	      if (!definition) {
@@ -10125,7 +10325,9 @@ webpackJsonp([0,1],[
 	          }
 	        }
 	        if (type === 'component' && isPlainObject(definition)) {
-	          definition.name = id;
+	          if (!definition.name) {
+	            definition.name = id;
+	          }
 	          definition = Vue.extend(definition);
 	        }
 	        this.options[type + 's'][id] = definition;
@@ -10133,15 +10335,15 @@ webpackJsonp([0,1],[
 	      }
 	    };
 	  });
-
+	
 	  // expose internal transition API
 	  extend(Vue.transition, transition);
 	}
-
+	
 	installGlobalAPI(Vue);
-
-	Vue.version = '1.0.24';
-
+	
+	Vue.version = '1.0.28';
+	
 	// devtools global hook
 	/* istanbul ignore next */
 	setTimeout(function () {
@@ -10153,9 +10355,9 @@ webpackJsonp([0,1],[
 	    }
 	  }
 	}, 0);
-
+	
 	module.exports = Vue;
-	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
 /* 3 */
@@ -10163,15 +10365,15 @@ webpackJsonp([0,1],[
 
 	// shim for using process in browser
 	var process = module.exports = {};
-
+	
 	// cached from whatever global is present so that test runners that stub it
 	// don't break things.  But we need to wrap it in a try catch in case it is
 	// wrapped in strict mode code which doesn't define any globals.  It's inside a
 	// function because try/catches deoptimize in certain engines.
-
+	
 	var cachedSetTimeout;
 	var cachedClearTimeout;
-
+	
 	function defaultSetTimout() {
 	    throw new Error('setTimeout has not been defined');
 	}
@@ -10220,8 +10422,8 @@ webpackJsonp([0,1],[
 	            return cachedSetTimeout.call(this, fun, 0);
 	        }
 	    }
-
-
+	
+	
 	}
 	function runClearTimeout(marker) {
 	    if (cachedClearTimeout === clearTimeout) {
@@ -10246,15 +10448,15 @@ webpackJsonp([0,1],[
 	            return cachedClearTimeout.call(this, marker);
 	        }
 	    }
-
-
-
+	
+	
+	
 	}
 	var queue = [];
 	var draining = false;
 	var currentQueue;
 	var queueIndex = -1;
-
+	
 	function cleanUpNextTick() {
 	    if (!draining || !currentQueue) {
 	        return;
@@ -10269,14 +10471,14 @@ webpackJsonp([0,1],[
 	        drainQueue();
 	    }
 	}
-
+	
 	function drainQueue() {
 	    if (draining) {
 	        return;
 	    }
 	    var timeout = runTimeout(cleanUpNextTick);
 	    draining = true;
-
+	
 	    var len = queue.length;
 	    while(len) {
 	        currentQueue = queue;
@@ -10293,7 +10495,7 @@ webpackJsonp([0,1],[
 	    draining = false;
 	    runClearTimeout(timeout);
 	}
-
+	
 	process.nextTick = function (fun) {
 	    var args = new Array(arguments.length - 1);
 	    if (arguments.length > 1) {
@@ -10306,7 +10508,7 @@ webpackJsonp([0,1],[
 	        runTimeout(drainQueue);
 	    }
 	};
-
+	
 	// v8 likes predictible objects
 	function Item(fun, array) {
 	    this.fun = fun;
@@ -10321,9 +10523,9 @@ webpackJsonp([0,1],[
 	process.argv = [];
 	process.version = ''; // empty string to avoid regexp issues
 	process.versions = {};
-
+	
 	function noop() {}
-
+	
 	process.on = noop;
 	process.addListener = noop;
 	process.once = noop;
@@ -10331,11 +10533,11 @@ webpackJsonp([0,1],[
 	process.removeListener = noop;
 	process.removeAllListeners = noop;
 	process.emit = noop;
-
+	
 	process.binding = function (name) {
 	    throw new Error('process.binding is not supported');
 	};
-
+	
 	process.cwd = function () { return '/' };
 	process.chdir = function (dir) {
 	    throw new Error('process.chdir is not supported');
@@ -10357,9 +10559,9 @@ webpackJsonp([0,1],[
 	  typeof define === 'function' && define.amd ? define(factory) :
 	  global.VueRouter = factory();
 	}(this, function () { 'use strict';
-
+	
 	  var babelHelpers = {};
-
+	
 	  babelHelpers.classCallCheck = function (instance, Constructor) {
 	    if (!(instance instanceof Constructor)) {
 	      throw new TypeError("Cannot call a class as a function");
@@ -10370,17 +10572,17 @@ webpackJsonp([0,1],[
 	    this.matcher = matcher;
 	    this.delegate = delegate;
 	  }
-
+	
 	  Target.prototype = {
 	    to: function to(target, callback) {
 	      var delegate = this.delegate;
-
+	
 	      if (delegate && delegate.willAddRoute) {
 	        target = delegate.willAddRoute(this.matcher.target, target);
 	      }
-
+	
 	      this.matcher.add(this.path, target);
-
+	
 	      if (callback) {
 	        if (callback.length === 0) {
 	          throw new Error("You must have an argument in the function passed to `to`");
@@ -10390,36 +10592,36 @@ webpackJsonp([0,1],[
 	      return this;
 	    }
 	  };
-
+	
 	  function Matcher(target) {
 	    this.routes = {};
 	    this.children = {};
 	    this.target = target;
 	  }
-
+	
 	  Matcher.prototype = {
 	    add: function add(path, handler) {
 	      this.routes[path] = handler;
 	    },
-
+	
 	    addChild: function addChild(path, target, callback, delegate) {
 	      var matcher = new Matcher(target);
 	      this.children[path] = matcher;
-
+	
 	      var match = generateMatch(path, matcher, delegate);
-
+	
 	      if (delegate && delegate.contextEntered) {
 	        delegate.contextEntered(target, match);
 	      }
-
+	
 	      callback(match);
 	    }
 	  };
-
+	
 	  function generateMatch(startingPath, matcher, delegate) {
 	    return function (path, nestedCallback) {
 	      var fullPath = startingPath + path;
-
+	
 	      if (nestedCallback) {
 	        nestedCallback(generateMatch(fullPath, matcher, delegate));
 	      } else {
@@ -10427,26 +10629,26 @@ webpackJsonp([0,1],[
 	      }
 	    };
 	  }
-
+	
 	  function addRoute(routeArray, path, handler) {
 	    var len = 0;
 	    for (var i = 0, l = routeArray.length; i < l; i++) {
 	      len += routeArray[i].path.length;
 	    }
-
+	
 	    path = path.substr(len);
 	    var route = { path: path, handler: handler };
 	    routeArray.push(route);
 	  }
-
+	
 	  function eachRoute(baseRoute, matcher, callback, binding) {
 	    var routes = matcher.routes;
-
+	
 	    for (var path in routes) {
 	      if (routes.hasOwnProperty(path)) {
 	        var routeArray = baseRoute.slice();
 	        addRoute(routeArray, path, routes[path]);
-
+	
 	        if (matcher.children[path]) {
 	          eachRoute(routeArray, matcher.children[path], callback, binding);
 	        } else {
@@ -10455,12 +10657,12 @@ webpackJsonp([0,1],[
 	      }
 	    }
 	  }
-
+	
 	  function map (callback, addRouteCallback) {
 	    var matcher = new Matcher();
-
+	
 	    callback(generateMatch("", matcher, this.delegate));
-
+	
 	    eachRoute([], matcher, function (route) {
 	      if (addRouteCallback) {
 	        addRouteCallback(this, route);
@@ -10469,18 +10671,18 @@ webpackJsonp([0,1],[
 	      }
 	    }, this);
 	  }
-
+	
 	  var specials = ['/', '.', '*', '+', '?', '|', '(', ')', '[', ']', '{', '}', '\\'];
-
+	
 	  var escapeRegex = new RegExp('(\\' + specials.join('|\\') + ')', 'g');
-
+	
 	  var noWarning = false;
 	  function warn(msg) {
 	    if (!noWarning && typeof console !== 'undefined') {
 	      console.error('[vue-router] ' + msg);
 	    }
 	  }
-
+	
 	  function tryDecode(uri, asComponent) {
 	    try {
 	      return asComponent ? decodeURIComponent(uri) : decodeURI(uri);
@@ -10488,11 +10690,11 @@ webpackJsonp([0,1],[
 	      warn('malformed URI' + (asComponent ? ' component: ' : ': ') + uri);
 	    }
 	  }
-
+	
 	  function isArray(test) {
 	    return Object.prototype.toString.call(test) === "[object Array]";
 	  }
-
+	
 	  // A Segment represents a segment in the original route description.
 	  // Each Segment type provides an `eachChar` and `regex` method.
 	  //
@@ -10509,7 +10711,7 @@ webpackJsonp([0,1],[
 	  // * `validChars`: a String with a list of all valid characters, or
 	  // * `invalidChars`: a String with a list of all invalid characters
 	  // * `repeat`: true if the character specification can repeat
-
+	
 	  function StaticSegment(string) {
 	    this.string = string;
 	  }
@@ -10517,22 +10719,22 @@ webpackJsonp([0,1],[
 	    eachChar: function eachChar(callback) {
 	      var string = this.string,
 	          ch;
-
+	
 	      for (var i = 0, l = string.length; i < l; i++) {
 	        ch = string.charAt(i);
 	        callback({ validChars: ch });
 	      }
 	    },
-
+	
 	    regex: function regex() {
 	      return this.string.replace(escapeRegex, '\\$1');
 	    },
-
+	
 	    generate: function generate() {
 	      return this.string;
 	    }
 	  };
-
+	
 	  function DynamicSegment(name) {
 	    this.name = name;
 	  }
@@ -10540,17 +10742,17 @@ webpackJsonp([0,1],[
 	    eachChar: function eachChar(callback) {
 	      callback({ invalidChars: "/", repeat: true });
 	    },
-
+	
 	    regex: function regex() {
 	      return "([^/]+)";
 	    },
-
+	
 	    generate: function generate(params) {
 	      var val = params[this.name];
 	      return val == null ? ":" + this.name : val;
 	    }
 	  };
-
+	
 	  function StarSegment(name) {
 	    this.name = name;
 	  }
@@ -10558,17 +10760,17 @@ webpackJsonp([0,1],[
 	    eachChar: function eachChar(callback) {
 	      callback({ invalidChars: "", repeat: true });
 	    },
-
+	
 	    regex: function regex() {
 	      return "(.+)";
 	    },
-
+	
 	    generate: function generate(params) {
 	      var val = params[this.name];
 	      return val == null ? ":" + this.name : val;
 	    }
 	  };
-
+	
 	  function EpsilonSegment() {}
 	  EpsilonSegment.prototype = {
 	    eachChar: function eachChar() {},
@@ -10579,17 +10781,17 @@ webpackJsonp([0,1],[
 	      return "";
 	    }
 	  };
-
+	
 	  function parse(route, names, specificity) {
 	    // normalize route as not starting with a "/". Recognition will
 	    // also normalize.
 	    if (route.charAt(0) === "/") {
 	      route = route.substr(1);
 	    }
-
+	
 	    var segments = route.split("/"),
 	        results = [];
-
+	
 	    // A routes has specificity determined by the order that its different segments
 	    // appear in. This system mirrors how the magnitude of numbers written as strings
 	    // works.
@@ -10610,11 +10812,11 @@ webpackJsonp([0,1],[
 	    // together, from left to right. After we have looped through all of the segments,
 	    // we convert the string to a number.
 	    specificity.val = '';
-
+	
 	    for (var i = 0, l = segments.length; i < l; i++) {
 	      var segment = segments[i],
 	          match;
-
+	
 	      if (match = segment.match(/^:([^\/]+)$/)) {
 	        results.push(new DynamicSegment(match[1]));
 	        names.push(match[1]);
@@ -10631,12 +10833,12 @@ webpackJsonp([0,1],[
 	        specificity.val += '4';
 	      }
 	    }
-
+	
 	    specificity.val = +specificity.val;
-
+	
 	    return results;
 	  }
-
+	
 	  // A State has a character specification and (`charSpec`) and a list of possible
 	  // subsequent states (`nextStates`).
 	  //
@@ -10653,54 +10855,54 @@ webpackJsonp([0,1],[
 	  // Currently, State is implemented naively by looping over `nextStates` and
 	  // comparing a character specification against a character. A more efficient
 	  // implementation would use a hash of keys pointing at one or more next states.
-
+	
 	  function State(charSpec) {
 	    this.charSpec = charSpec;
 	    this.nextStates = [];
 	  }
-
+	
 	  State.prototype = {
 	    get: function get(charSpec) {
 	      var nextStates = this.nextStates;
-
+	
 	      for (var i = 0, l = nextStates.length; i < l; i++) {
 	        var child = nextStates[i];
-
+	
 	        var isEqual = child.charSpec.validChars === charSpec.validChars;
 	        isEqual = isEqual && child.charSpec.invalidChars === charSpec.invalidChars;
-
+	
 	        if (isEqual) {
 	          return child;
 	        }
 	      }
 	    },
-
+	
 	    put: function put(charSpec) {
 	      var state;
-
+	
 	      // If the character specification already exists in a child of the current
 	      // state, just return that state.
 	      if (state = this.get(charSpec)) {
 	        return state;
 	      }
-
+	
 	      // Make a new state for the character spec
 	      state = new State(charSpec);
-
+	
 	      // Insert the new state as a child of the current state
 	      this.nextStates.push(state);
-
+	
 	      // If this character specification repeats, insert the new state as a child
 	      // of itself. Note that this will not trigger an infinite loop because each
 	      // transition during recognition consumes a character.
 	      if (charSpec.repeat) {
 	        state.nextStates.push(state);
 	      }
-
+	
 	      // Return the new state
 	      return state;
 	    },
-
+	
 	    // Find a list of child states matching the next character
 	    match: function match(ch) {
 	      // DEBUG "Processing `" + ch + "`:"
@@ -10708,15 +10910,15 @@ webpackJsonp([0,1],[
 	          child,
 	          charSpec,
 	          chars;
-
+	
 	      // DEBUG "  " + debugState(this)
 	      var returned = [];
-
+	
 	      for (var i = 0, l = nextStates.length; i < l; i++) {
 	        child = nextStates[i];
-
+	
 	        charSpec = child.charSpec;
-
+	
 	        if (typeof (chars = charSpec.validChars) !== 'undefined') {
 	          if (chars.indexOf(ch) !== -1) {
 	            returned.push(child);
@@ -10727,10 +10929,10 @@ webpackJsonp([0,1],[
 	          }
 	        }
 	      }
-
+	
 	      return returned;
 	    }
-
+	
 	    /** IF DEBUG
 	    , debug: function() {
 	      var charSpec = this.charSpec,
@@ -10744,12 +10946,12 @@ webpackJsonp([0,1],[
 	    }
 	    END IF **/
 	  };
-
+	
 	  /** IF DEBUG
 	  function debug(log) {
 	    console.log(log);
 	  }
-
+	
 	  function debugState(state) {
 	    return state.nextStates.map(function(n) {
 	      if (n.nextStates.length === 0) { return "( " + n.debug() + " [accepting] )"; }
@@ -10757,32 +10959,32 @@ webpackJsonp([0,1],[
 	    }).join(", ")
 	  }
 	  END IF **/
-
+	
 	  // Sort the routes by specificity
 	  function sortSolutions(states) {
 	    return states.sort(function (a, b) {
 	      return b.specificity.val - a.specificity.val;
 	    });
 	  }
-
+	
 	  function recognizeChar(states, ch) {
 	    var nextStates = [];
-
+	
 	    for (var i = 0, l = states.length; i < l; i++) {
 	      var state = states[i];
-
+	
 	      nextStates = nextStates.concat(state.match(ch));
 	    }
-
+	
 	    return nextStates;
 	  }
-
+	
 	  var oCreate = Object.create || function (proto) {
 	    function F() {}
 	    F.prototype = proto;
 	    return new F();
 	  };
-
+	
 	  function RecognizeResults(queryParams) {
 	    this.queryParams = queryParams || {};
 	  }
@@ -10793,52 +10995,52 @@ webpackJsonp([0,1],[
 	    length: 0,
 	    queryParams: null
 	  });
-
+	
 	  function findHandler(state, path, queryParams) {
 	    var handlers = state.handlers,
 	        regex = state.regex;
 	    var captures = path.match(regex),
 	        currentCapture = 1;
 	    var result = new RecognizeResults(queryParams);
-
+	
 	    for (var i = 0, l = handlers.length; i < l; i++) {
 	      var handler = handlers[i],
 	          names = handler.names,
 	          params = {};
-
+	
 	      for (var j = 0, m = names.length; j < m; j++) {
 	        params[names[j]] = captures[currentCapture++];
 	      }
-
+	
 	      result.push({ handler: handler.handler, params: params, isDynamic: !!names.length });
 	    }
-
+	
 	    return result;
 	  }
-
+	
 	  function addSegment(currentState, segment) {
 	    segment.eachChar(function (ch) {
 	      var state;
-
+	
 	      currentState = currentState.put(ch);
 	    });
-
+	
 	    return currentState;
 	  }
-
+	
 	  function decodeQueryParamPart(part) {
 	    // http://www.w3.org/TR/html401/interact/forms.html#h-17.13.4.1
 	    part = part.replace(/\+/gm, '%20');
 	    return tryDecode(part, true);
 	  }
-
+	
 	  // The main interface
-
+	
 	  var RouteRecognizer = function RouteRecognizer() {
 	    this.rootState = new State();
 	    this.names = {};
 	  };
-
+	
 	  RouteRecognizer.prototype = {
 	    add: function add(routes, options) {
 	      var currentState = this.rootState,
@@ -10847,48 +11049,48 @@ webpackJsonp([0,1],[
 	          handlers = [],
 	          allSegments = [],
 	          name;
-
+	
 	      var isEmpty = true;
-
+	
 	      for (var i = 0, l = routes.length; i < l; i++) {
 	        var route = routes[i],
 	            names = [];
-
+	
 	        var segments = parse(route.path, names, specificity);
-
+	
 	        allSegments = allSegments.concat(segments);
-
+	
 	        for (var j = 0, m = segments.length; j < m; j++) {
 	          var segment = segments[j];
-
+	
 	          if (segment instanceof EpsilonSegment) {
 	            continue;
 	          }
-
+	
 	          isEmpty = false;
-
+	
 	          // Add a "/" for the new segment
 	          currentState = currentState.put({ validChars: "/" });
 	          regex += "/";
-
+	
 	          // Add a representation of the segment to the NFA and regex
 	          currentState = addSegment(currentState, segment);
 	          regex += segment.regex();
 	        }
-
+	
 	        var handler = { handler: route.handler, names: names };
 	        handlers.push(handler);
 	      }
-
+	
 	      if (isEmpty) {
 	        currentState = currentState.put({ validChars: "/" });
 	        regex += "/";
 	      }
-
+	
 	      currentState.handlers = handlers;
 	      currentState.regex = new RegExp(regex + "$");
 	      currentState.specificity = specificity;
-
+	
 	      if (name = options && options.as) {
 	        this.names[name] = {
 	          segments: allSegments,
@@ -10896,56 +11098,56 @@ webpackJsonp([0,1],[
 	        };
 	      }
 	    },
-
+	
 	    handlersFor: function handlersFor(name) {
 	      var route = this.names[name],
 	          result = [];
 	      if (!route) {
 	        throw new Error("There is no route named " + name);
 	      }
-
+	
 	      for (var i = 0, l = route.handlers.length; i < l; i++) {
 	        result.push(route.handlers[i]);
 	      }
-
+	
 	      return result;
 	    },
-
+	
 	    hasRoute: function hasRoute(name) {
 	      return !!this.names[name];
 	    },
-
+	
 	    generate: function generate(name, params) {
 	      var route = this.names[name],
 	          output = "";
 	      if (!route) {
 	        throw new Error("There is no route named " + name);
 	      }
-
+	
 	      var segments = route.segments;
-
+	
 	      for (var i = 0, l = segments.length; i < l; i++) {
 	        var segment = segments[i];
-
+	
 	        if (segment instanceof EpsilonSegment) {
 	          continue;
 	        }
-
+	
 	        output += "/";
 	        output += segment.generate(params);
 	      }
-
+	
 	      if (output.charAt(0) !== '/') {
 	        output = '/' + output;
 	      }
-
+	
 	      if (params && params.queryParams) {
 	        output += this.generateQueryString(params.queryParams);
 	      }
-
+	
 	      return output;
 	    },
-
+	
 	    generateQueryString: function generateQueryString(params) {
 	      var pairs = [];
 	      var keys = [];
@@ -10972,14 +11174,14 @@ webpackJsonp([0,1],[
 	          pairs.push(pair);
 	        }
 	      }
-
+	
 	      if (pairs.length === 0) {
 	        return '';
 	      }
-
+	
 	      return "?" + pairs.join("&");
 	    },
-
+	
 	    parseQueryString: function parseQueryString(queryString) {
 	      var pairs = queryString.split("&"),
 	          queryParams = {};
@@ -11010,7 +11212,7 @@ webpackJsonp([0,1],[
 	      }
 	      return queryParams;
 	    },
-
+	
 	    recognize: function recognize(path, silent) {
 	      noWarning = silent;
 	      var states = [this.rootState],
@@ -11020,7 +11222,7 @@ webpackJsonp([0,1],[
 	          queryStart,
 	          queryParams = {},
 	          isSlashDropped = false;
-
+	
 	      queryStart = path.indexOf('?');
 	      if (queryStart !== -1) {
 	        var queryString = path.substr(queryStart + 1, path.length);
@@ -11029,42 +11231,42 @@ webpackJsonp([0,1],[
 	          queryParams = this.parseQueryString(queryString);
 	        }
 	      }
-
+	
 	      path = tryDecode(path);
 	      if (!path) return;
-
+	
 	      // DEBUG GROUP path
-
+	
 	      if (path.charAt(0) !== "/") {
 	        path = "/" + path;
 	      }
-
+	
 	      pathLen = path.length;
 	      if (pathLen > 1 && path.charAt(pathLen - 1) === "/") {
 	        path = path.substr(0, pathLen - 1);
 	        isSlashDropped = true;
 	      }
-
+	
 	      for (i = 0, l = path.length; i < l; i++) {
 	        states = recognizeChar(states, path.charAt(i));
 	        if (!states.length) {
 	          break;
 	        }
 	      }
-
+	
 	      // END DEBUG GROUP
-
+	
 	      var solutions = [];
 	      for (i = 0, l = states.length; i < l; i++) {
 	        if (states[i].handlers) {
 	          solutions.push(states[i]);
 	        }
 	      }
-
+	
 	      states = sortSolutions(solutions);
-
+	
 	      var state = solutions[0];
-
+	
 	      if (state && state.handlers) {
 	        // if a trailing slash was dropped and a star segment is the last segment
 	        // specified, put the trailing slash back
@@ -11075,11 +11277,11 @@ webpackJsonp([0,1],[
 	      }
 	    }
 	  };
-
+	
 	  RouteRecognizer.prototype.map = map;
-
+	
 	  var genQuery = RouteRecognizer.prototype.generateQueryString;
-
+	
 	  // export default for holding the Vue reference
 	  var exports$1 = {};
 	  /**
@@ -11087,14 +11289,14 @@ webpackJsonp([0,1],[
 	   *
 	   * @param {String} msg
 	   */
-
+	
 	  function warn$1(msg) {
 	    /* istanbul ignore next */
 	    if (typeof console !== 'undefined') {
 	      console.error('[vue-router] ' + msg);
 	    }
 	  }
-
+	
 	  /**
 	   * Resolve a relative path.
 	   *
@@ -11103,7 +11305,7 @@ webpackJsonp([0,1],[
 	   * @param {Boolean} append
 	   * @return {String}
 	   */
-
+	
 	  function resolvePath(base, relative, append) {
 	    var query = base.match(/(\?.*)$/);
 	    if (query) {
@@ -11139,18 +11341,18 @@ webpackJsonp([0,1],[
 	    }
 	    return stack.join('/');
 	  }
-
+	
 	  /**
 	   * Forgiving check for a promise
 	   *
 	   * @param {Object} p
 	   * @return {Boolean}
 	   */
-
+	
 	  function isPromise(p) {
 	    return p && typeof p.then === 'function';
 	  }
-
+	
 	  /**
 	   * Retrive a route config field from a component instance
 	   * OR a component contructor.
@@ -11159,12 +11361,12 @@ webpackJsonp([0,1],[
 	   * @param {String} name
 	   * @return {*}
 	   */
-
+	
 	  function getRouteConfig(component, name) {
 	    var options = component && (component.$options || component.options);
 	    return options && options.route && options.route[name];
 	  }
-
+	
 	  /**
 	   * Resolve an async component factory. Have to do a dirty
 	   * mock here because of Vue core's internal API depends on
@@ -11173,9 +11375,9 @@ webpackJsonp([0,1],[
 	   * @param {Object} handler
 	   * @param {Function} cb
 	   */
-
+	
 	  var resolver = undefined;
-
+	
 	  function resolveAsyncComponent(handler, cb) {
 	    if (!resolver) {
 	      resolver = {
@@ -11194,7 +11396,7 @@ webpackJsonp([0,1],[
 	      cb(Component);
 	    });
 	  }
-
+	
 	  /**
 	   * Map the dynamic segments in a path to params.
 	   *
@@ -11202,10 +11404,10 @@ webpackJsonp([0,1],[
 	   * @param {Object} params
 	   * @param {Object} query
 	   */
-
+	
 	  function mapParams(path, params, query) {
 	    if (params === undefined) params = {};
-
+	
 	    path = path.replace(/:([^\/]+)/g, function (_, key) {
 	      var val = params[key];
 	      /* istanbul ignore if */
@@ -11219,15 +11421,15 @@ webpackJsonp([0,1],[
 	    }
 	    return path;
 	  }
-
+	
 	  var hashRE = /#.*$/;
-
+	
 	  var HTML5History = (function () {
 	    function HTML5History(_ref) {
 	      var root = _ref.root;
 	      var onChange = _ref.onChange;
 	      babelHelpers.classCallCheck(this, HTML5History);
-
+	
 	      if (root && root !== '/') {
 	        // make sure there's the starting slash
 	        if (root.charAt(0) !== '/') {
@@ -11244,10 +11446,10 @@ webpackJsonp([0,1],[
 	      var baseEl = document.querySelector('base');
 	      this.base = baseEl && baseEl.getAttribute('href');
 	    }
-
+	
 	    HTML5History.prototype.start = function start() {
 	      var _this = this;
-
+	
 	      this.listener = function (e) {
 	        var url = location.pathname + location.search;
 	        if (_this.root) {
@@ -11258,11 +11460,11 @@ webpackJsonp([0,1],[
 	      window.addEventListener('popstate', this.listener);
 	      this.listener();
 	    };
-
+	
 	    HTML5History.prototype.stop = function stop() {
 	      window.removeEventListener('popstate', this.listener);
 	    };
-
+	
 	    HTML5History.prototype.go = function go(path, replace, append) {
 	      var url = this.formatPath(path, append);
 	      if (replace) {
@@ -11287,26 +11489,26 @@ webpackJsonp([0,1],[
 	      .replace(this.rootRE, '');
 	      this.onChange(path, null, hash);
 	    };
-
+	
 	    HTML5History.prototype.formatPath = function formatPath(path, append) {
 	      return path.charAt(0) === '/'
 	      // absolute path
 	      ? this.root ? this.root + '/' + path.replace(/^\//, '') : path : resolvePath(this.base || location.pathname, path, append);
 	    };
-
+	
 	    return HTML5History;
 	  })();
-
+	
 	  var HashHistory = (function () {
 	    function HashHistory(_ref) {
 	      var hashbang = _ref.hashbang;
 	      var onChange = _ref.onChange;
 	      babelHelpers.classCallCheck(this, HashHistory);
-
+	
 	      this.hashbang = hashbang;
 	      this.onChange = onChange;
 	    }
-
+	
 	    HashHistory.prototype.start = function start() {
 	      var self = this;
 	      this.listener = function () {
@@ -11330,11 +11532,11 @@ webpackJsonp([0,1],[
 	      window.addEventListener('hashchange', this.listener);
 	      this.listener();
 	    };
-
+	
 	    HashHistory.prototype.stop = function stop() {
 	      window.removeEventListener('hashchange', this.listener);
 	    };
-
+	
 	    HashHistory.prototype.go = function go(path, replace, append) {
 	      path = this.formatPath(path, append);
 	      if (replace) {
@@ -11343,45 +11545,45 @@ webpackJsonp([0,1],[
 	        location.hash = path;
 	      }
 	    };
-
+	
 	    HashHistory.prototype.formatPath = function formatPath(path, append) {
 	      var isAbsoloute = path.charAt(0) === '/';
 	      var prefix = '#' + (this.hashbang ? '!' : '');
 	      return isAbsoloute ? prefix + path : prefix + resolvePath(location.hash.replace(/^#!?/, ''), path, append);
 	    };
-
+	
 	    return HashHistory;
 	  })();
-
+	
 	  var AbstractHistory = (function () {
 	    function AbstractHistory(_ref) {
 	      var onChange = _ref.onChange;
 	      babelHelpers.classCallCheck(this, AbstractHistory);
-
+	
 	      this.onChange = onChange;
 	      this.currentPath = '/';
 	    }
-
+	
 	    AbstractHistory.prototype.start = function start() {
 	      this.onChange('/');
 	    };
-
+	
 	    AbstractHistory.prototype.stop = function stop() {
 	      // noop
 	    };
-
+	
 	    AbstractHistory.prototype.go = function go(path, replace, append) {
 	      path = this.currentPath = this.formatPath(path, append);
 	      this.onChange(path);
 	    };
-
+	
 	    AbstractHistory.prototype.formatPath = function formatPath(path, append) {
 	      return path.charAt(0) === '/' ? path : resolvePath(this.currentPath, path, append);
 	    };
-
+	
 	    return AbstractHistory;
 	  })();
-
+	
 	  /**
 	   * Determine the reusability of an existing router view.
 	   *
@@ -11389,7 +11591,7 @@ webpackJsonp([0,1],[
 	   * @param {Object} handler
 	   * @param {Transition} transition
 	   */
-
+	
 	  function canReuse(view, handler, transition) {
 	    var component = view.childVM;
 	    if (!component || !handler) {
@@ -11406,7 +11608,7 @@ webpackJsonp([0,1],[
 	      from: transition.from
 	    }) : true; // defaults to true
 	  }
-
+	
 	  /**
 	   * Check if a component can deactivate.
 	   *
@@ -11414,7 +11616,7 @@ webpackJsonp([0,1],[
 	   * @param {Transition} transition
 	   * @param {Function} next
 	   */
-
+	
 	  function canDeactivate(view, transition, next) {
 	    var fromComponent = view.childVM;
 	    var hook = getRouteConfig(fromComponent, 'canDeactivate');
@@ -11426,7 +11628,7 @@ webpackJsonp([0,1],[
 	      });
 	    }
 	  }
-
+	
 	  /**
 	   * Check if a component can activate.
 	   *
@@ -11434,7 +11636,7 @@ webpackJsonp([0,1],[
 	   * @param {Transition} transition
 	   * @param {Function} next
 	   */
-
+	
 	  function canActivate(handler, transition, next) {
 	    resolveAsyncComponent(handler, function (Component) {
 	      // have to check due to async-ness
@@ -11452,7 +11654,7 @@ webpackJsonp([0,1],[
 	      }
 	    });
 	  }
-
+	
 	  /**
 	   * Call deactivate hooks for existing router-views.
 	   *
@@ -11460,7 +11662,7 @@ webpackJsonp([0,1],[
 	   * @param {Transition} transition
 	   * @param {Function} next
 	   */
-
+	
 	  function deactivate(view, transition, next) {
 	    var component = view.childVM;
 	    var hook = getRouteConfig(component, 'deactivate');
@@ -11470,7 +11672,7 @@ webpackJsonp([0,1],[
 	      transition.callHooks(hook, component, next);
 	    }
 	  }
-
+	
 	  /**
 	   * Activate / switch component for a router-view.
 	   *
@@ -11479,7 +11681,7 @@ webpackJsonp([0,1],[
 	   * @param {Number} depth
 	   * @param {Function} [cb]
 	   */
-
+	
 	  function activate(view, transition, depth, cb, reuse) {
 	    var handler = transition.activateQueue[depth];
 	    if (!handler) {
@@ -11490,35 +11692,35 @@ webpackJsonp([0,1],[
 	      cb && cb();
 	      return;
 	    }
-
+	
 	    var Component = view.Component = handler.component;
 	    var activateHook = getRouteConfig(Component, 'activate');
 	    var dataHook = getRouteConfig(Component, 'data');
 	    var waitForData = getRouteConfig(Component, 'waitForData');
-
+	
 	    view.depth = depth;
 	    view.activated = false;
-
+	
 	    var component = undefined;
 	    var loading = !!(dataHook && !waitForData);
-
+	
 	    // "reuse" is a flag passed down when the parent view is
 	    // either reused via keep-alive or as a child of a kept-alive view.
 	    // of course we can only reuse if the current kept-alive instance
 	    // is of the correct type.
 	    reuse = reuse && view.childVM && view.childVM.constructor === Component;
-
+	
 	    if (reuse) {
 	      // just reuse
 	      component = view.childVM;
 	      component.$loadingRouteData = loading;
 	    } else {
 	      saveChildView(view);
-
+	
 	      // unbuild current component. this step also destroys
 	      // and removes all nested child views.
 	      view.unbuild(true);
-
+	
 	      // build the new component. this will also create the
 	      // direct child view of the current one. it will register
 	      // itself as view.childView.
@@ -11530,7 +11732,7 @@ webpackJsonp([0,1],[
 	          this._routerView = view;
 	        }
 	      });
-
+	
 	      // handle keep-alive.
 	      // when a kept-alive child vm is restored, we need to
 	      // add its cached child views into the router's view list,
@@ -11544,13 +11746,13 @@ webpackJsonp([0,1],[
 	        }
 	      }
 	    }
-
+	
 	    // cleanup the component in case the transition is aborted
 	    // before the component is ever inserted.
 	    var cleanup = function cleanup() {
 	      component.$destroy();
 	    };
-
+	
 	    // actually insert the component and trigger transition
 	    var insert = function insert() {
 	      if (reuse) {
@@ -11574,7 +11776,7 @@ webpackJsonp([0,1],[
 	      }
 	      cb && cb();
 	    };
-
+	
 	    var afterData = function afterData() {
 	      // activate the child view
 	      if (view.childView) {
@@ -11582,7 +11784,7 @@ webpackJsonp([0,1],[
 	      }
 	      insert();
 	    };
-
+	
 	    // called after activation hook is resolved
 	    var afterActivate = function afterActivate() {
 	      view.activated = true;
@@ -11597,7 +11799,7 @@ webpackJsonp([0,1],[
 	        afterData();
 	      }
 	    };
-
+	
 	    if (activateHook) {
 	      transition.callHooks(activateHook, component, afterActivate, {
 	        cleanup: cleanup,
@@ -11607,14 +11809,14 @@ webpackJsonp([0,1],[
 	      afterActivate();
 	    }
 	  }
-
+	
 	  /**
 	   * Reuse a view, just reload data if necessary.
 	   *
 	   * @param {Directive} view
 	   * @param {Transition} transition
 	   */
-
+	
 	  function reuse(view, transition) {
 	    var component = view.childVM;
 	    var dataHook = getRouteConfig(component, 'data');
@@ -11622,7 +11824,7 @@ webpackJsonp([0,1],[
 	      loadData(component, transition, dataHook);
 	    }
 	  }
-
+	
 	  /**
 	   * Asynchronously load and apply data to component.
 	   *
@@ -11632,7 +11834,7 @@ webpackJsonp([0,1],[
 	   * @param {Function} cb
 	   * @param {Function} cleanup
 	   */
-
+	
 	  function loadData(component, transition, hook, cb, cleanup) {
 	    component.$loadingRouteData = true;
 	    transition.callHooks(hook, component, function () {
@@ -11663,31 +11865,31 @@ webpackJsonp([0,1],[
 	      }
 	    });
 	  }
-
+	
 	  /**
 	   * Save the child view for a kept-alive view so that
 	   * we can restore it when it is switched back to.
 	   *
 	   * @param {Directive} view
 	   */
-
+	
 	  function saveChildView(view) {
 	    if (view.keepAlive && view.childVM && view.childView) {
 	      view.childVM._keepAliveRouterView = view.childView;
 	    }
 	    view.childView = null;
 	  }
-
+	
 	  /**
 	   * Check plain object.
 	   *
 	   * @param {*} val
 	   */
-
+	
 	  function isPlainObject(val) {
 	    return Object.prototype.toString.call(val) === '[object Object]';
 	  }
-
+	
 	  /**
 	   * A RouteTransition object manages the pipeline of a
 	   * router-view switching process. This is also the object
@@ -11697,11 +11899,11 @@ webpackJsonp([0,1],[
 	   * @param {Route} to
 	   * @param {Route} from
 	   */
-
+	
 	  var RouteTransition = (function () {
 	    function RouteTransition(router, to, from) {
 	      babelHelpers.classCallCheck(this, RouteTransition);
-
+	
 	      this.router = router;
 	      this.to = to;
 	      this.from = from;
@@ -11709,11 +11911,11 @@ webpackJsonp([0,1],[
 	      this.aborted = false;
 	      this.done = false;
 	    }
-
+	
 	    /**
 	     * Abort current transition and return to previous location.
 	     */
-
+	
 	    RouteTransition.prototype.abort = function abort() {
 	      if (!this.aborted) {
 	        this.aborted = true;
@@ -11725,13 +11927,13 @@ webpackJsonp([0,1],[
 	        }
 	      }
 	    };
-
+	
 	    /**
 	     * Abort current transition and redirect to a new location.
 	     *
 	     * @param {String} path
 	     */
-
+	
 	    RouteTransition.prototype.redirect = function redirect(path) {
 	      if (!this.aborted) {
 	        this.aborted = true;
@@ -11744,7 +11946,7 @@ webpackJsonp([0,1],[
 	        this.router.replace(path);
 	      }
 	    };
-
+	
 	    /**
 	     * A router view transition's pipeline can be described as
 	     * follows, assuming we are transitioning from an existing
@@ -11775,10 +11977,10 @@ webpackJsonp([0,1],[
 	     *
 	     * @param {Function} cb
 	     */
-
+	
 	    RouteTransition.prototype.start = function start(cb) {
 	      var transition = this;
-
+	
 	      // determine the queue of views to deactivate
 	      var deactivateQueue = [];
 	      var view = this.router._rootView;
@@ -11787,12 +11989,12 @@ webpackJsonp([0,1],[
 	        view = view.childView;
 	      }
 	      var reverseDeactivateQueue = deactivateQueue.slice().reverse();
-
+	
 	      // determine the queue of route handlers to activate
 	      var activateQueue = this.activateQueue = toArray(this.to.matched).map(function (match) {
 	        return match.handler;
 	      });
-
+	
 	      // 1. Reusability phase
 	      var i = undefined,
 	          reuseQueue = undefined;
@@ -11806,21 +12008,21 @@ webpackJsonp([0,1],[
 	        deactivateQueue = reverseDeactivateQueue.slice(i).reverse();
 	        activateQueue = activateQueue.slice(i);
 	      }
-
+	
 	      // 2. Validation phase
 	      transition.runQueue(deactivateQueue, canDeactivate, function () {
 	        transition.runQueue(activateQueue, canActivate, function () {
 	          transition.runQueue(deactivateQueue, deactivate, function () {
 	            // 3. Activation phase
-
+	
 	            // Update router current route
 	            transition.router._onTransitionValidated(transition);
-
+	
 	            // trigger reuse for all reused views
 	            reuseQueue && reuseQueue.forEach(function (view) {
 	              return reuse(view, transition);
 	            });
-
+	
 	            // the root of the chain that needs to be replaced
 	            // is the top-most non-reusable view.
 	            if (deactivateQueue.length) {
@@ -11834,7 +12036,7 @@ webpackJsonp([0,1],[
 	        });
 	      });
 	    };
-
+	
 	    /**
 	     * Asynchronously and sequentially apply a function to a
 	     * queue.
@@ -11843,7 +12045,7 @@ webpackJsonp([0,1],[
 	     * @param {Function} fn
 	     * @param {Function} cb
 	     */
-
+	
 	    RouteTransition.prototype.runQueue = function runQueue(queue, fn, cb) {
 	      var transition = this;
 	      step(0);
@@ -11857,7 +12059,7 @@ webpackJsonp([0,1],[
 	        }
 	      }
 	    };
-
+	
 	    /**
 	     * Call a user provided route transition hook and handle
 	     * the response (e.g. if the user returns a promise).
@@ -11874,26 +12076,26 @@ webpackJsonp([0,1],[
 	     *                 - {Function} processData
 	     *                 - {Function} cleanup
 	     */
-
+	
 	    RouteTransition.prototype.callHook = function callHook(hook, context, cb) {
 	      var _ref = arguments.length <= 3 || arguments[3] === undefined ? {} : arguments[3];
-
+	
 	      var _ref$expectBoolean = _ref.expectBoolean;
 	      var expectBoolean = _ref$expectBoolean === undefined ? false : _ref$expectBoolean;
 	      var _ref$postActivate = _ref.postActivate;
 	      var postActivate = _ref$postActivate === undefined ? false : _ref$postActivate;
 	      var processData = _ref.processData;
 	      var cleanup = _ref.cleanup;
-
+	
 	      var transition = this;
 	      var nextCalled = false;
-
+	
 	      // abort the transition
 	      var abort = function abort() {
 	        cleanup && cleanup();
 	        transition.abort();
 	      };
-
+	
 	      // handle errors
 	      var onError = function onError(err) {
 	        postActivate ? next() : abort();
@@ -11902,7 +12104,7 @@ webpackJsonp([0,1],[
 	          throw err instanceof Error ? err : new Error(err);
 	        }
 	      };
-
+	
 	      // since promise swallows errors, we have to
 	      // throw it in the next tick...
 	      var onPromiseError = function onPromiseError(err) {
@@ -11914,7 +12116,7 @@ webpackJsonp([0,1],[
 	          }, 0);
 	        }
 	      };
-
+	
 	      // advance the transition to the next step
 	      var next = function next() {
 	        if (nextCalled) {
@@ -11928,7 +12130,7 @@ webpackJsonp([0,1],[
 	        }
 	        cb && cb();
 	      };
-
+	
 	      var nextWithBoolean = function nextWithBoolean(res) {
 	        if (typeof res === 'boolean') {
 	          res ? next() : abort();
@@ -11940,7 +12142,7 @@ webpackJsonp([0,1],[
 	          next();
 	        }
 	      };
-
+	
 	      var nextWithData = function nextWithData(data) {
 	        var res = undefined;
 	        try {
@@ -11954,7 +12156,7 @@ webpackJsonp([0,1],[
 	          next();
 	        }
 	      };
-
+	
 	      // expose a clone of the transition object, so that each
 	      // hook gets a clean copy and prevent the user from
 	      // messing with the internals.
@@ -11967,7 +12169,7 @@ webpackJsonp([0,1],[
 	          transition.redirect.apply(transition, arguments);
 	        }
 	      };
-
+	
 	      // actually call the hook
 	      var res = undefined;
 	      try {
@@ -11975,7 +12177,7 @@ webpackJsonp([0,1],[
 	      } catch (err) {
 	        return onError(err);
 	      }
-
+	
 	      if (expectBoolean) {
 	        // boolean hooks
 	        nextWithBoolean(res);
@@ -11993,7 +12195,7 @@ webpackJsonp([0,1],[
 	        next();
 	      }
 	    };
-
+	
 	    /**
 	     * Call a single hook or an array of async hooks in series.
 	     *
@@ -12002,10 +12204,10 @@ webpackJsonp([0,1],[
 	     * @param {Function} cb
 	     * @param {Object} [options]
 	     */
-
+	
 	    RouteTransition.prototype.callHooks = function callHooks(hooks, context, cb, options) {
 	      var _this = this;
-
+	
 	      if (Array.isArray(hooks)) {
 	        this.runQueue(hooks, function (hook, _, next) {
 	          if (!_this.aborted) {
@@ -12016,32 +12218,32 @@ webpackJsonp([0,1],[
 	        this.callHook(hooks, context, cb, options);
 	      }
 	    };
-
+	
 	    return RouteTransition;
 	  })();
-
+	
 	  function isPlainOjbect(val) {
 	    return Object.prototype.toString.call(val) === '[object Object]';
 	  }
-
+	
 	  function toArray(val) {
 	    return val ? Array.prototype.slice.call(val) : [];
 	  }
-
+	
 	  var internalKeysRE = /^(component|subRoutes|fullPath)$/;
-
+	
 	  /**
 	   * Route Context Object
 	   *
 	   * @param {String} path
 	   * @param {Router} router
 	   */
-
+	
 	  var Route = function Route(path, router) {
 	    var _this = this;
-
+	
 	    babelHelpers.classCallCheck(this, Route);
-
+	
 	    var matched = router._recognizer.recognize(path);
 	    if (matched) {
 	      // copy all custom fields from route configs
@@ -12075,13 +12277,13 @@ webpackJsonp([0,1],[
 	    // Important: freeze self to prevent observation
 	    Object.freeze(this);
 	  };
-
+	
 	  function applyOverride (Vue) {
 	    var _Vue$util = Vue.util;
 	    var extend = _Vue$util.extend;
 	    var isArray = _Vue$util.isArray;
 	    var defineReactive = _Vue$util.defineReactive;
-
+	
 	    // override Vue's init and destroy process to keep track of router instances
 	    var init = Vue.prototype._init;
 	    Vue.prototype._init = function (options) {
@@ -12104,7 +12306,7 @@ webpackJsonp([0,1],[
 	      }
 	      init.call(this, options);
 	    };
-
+	
 	    var destroy = Vue.prototype._destroy;
 	    Vue.prototype._destroy = function () {
 	      if (!this._isBeingDestroyed && this.$router) {
@@ -12112,11 +12314,11 @@ webpackJsonp([0,1],[
 	      }
 	      destroy.apply(this, arguments);
 	    };
-
+	
 	    // 1.0 only: enable route mixins
 	    var strats = Vue.config.optionMergeStrategies;
 	    var hooksToMergeRE = /^(data|activate|deactivate)$/;
-
+	
 	    if (strats) {
 	      strats.route = function (parentVal, childVal) {
 	        if (!childVal) return parentVal;
@@ -12138,9 +12340,9 @@ webpackJsonp([0,1],[
 	      };
 	    }
 	  }
-
+	
 	  function View (Vue) {
-
+	
 	    var _ = Vue.util;
 	    var componentDef =
 	    // 0.12
@@ -12149,12 +12351,12 @@ webpackJsonp([0,1],[
 	    Vue.internalDirectives.component;
 	    // <router-view> extends the internal component directive
 	    var viewDef = _.extend({}, componentDef);
-
+	
 	    // with some overrides
 	    _.extend(viewDef, {
-
+	
 	      _isRouterView: true,
-
+	
 	      bind: function bind() {
 	        var route = this.vm.$route;
 	        /* istanbul ignore if */
@@ -12167,7 +12369,7 @@ webpackJsonp([0,1],[
 	        this._isDynamicLiteral = true;
 	        // finally, init by delegating to v-component
 	        componentDef.bind.call(this);
-
+	
 	        // locate the parent view
 	        var parentView = undefined;
 	        var parent = this.vm;
@@ -12190,7 +12392,7 @@ webpackJsonp([0,1],[
 	          var router = route.router;
 	          router._rootView = this;
 	        }
-
+	
 	        // handle late-rendered view
 	        // two possibilities:
 	        // 1. root view rendered after transition has been
@@ -12203,7 +12405,7 @@ webpackJsonp([0,1],[
 	          activate(this, transition, depth);
 	        }
 	      },
-
+	
 	      unbind: function unbind() {
 	        if (this.parentView) {
 	          this.parentView.childView = null;
@@ -12211,14 +12413,14 @@ webpackJsonp([0,1],[
 	        componentDef.unbind.call(this);
 	      }
 	    });
-
+	
 	    Vue.elementDirective('router-view', viewDef);
 	  }
-
+	
 	  var trailingSlashRE = /\/$/;
 	  var regexEscapeRE = /[-.*+?^${}()|[\]\/\\]/g;
 	  var queryStringRE = /\?.*$/;
-
+	
 	  // install v-link, which provides navigation support for
 	  // HTML5 history mode
 	  function Link (Vue) {
@@ -12227,17 +12429,17 @@ webpackJsonp([0,1],[
 	    var isObject = _Vue$util.isObject;
 	    var addClass = _Vue$util.addClass;
 	    var removeClass = _Vue$util.removeClass;
-
+	
 	    var onPriority = Vue.directive('on').priority;
 	    var LINK_UPDATE = '__vue-router-link-update__';
-
+	
 	    var activeId = 0;
-
+	
 	    Vue.directive('link-active', {
 	      priority: 9999,
 	      bind: function bind() {
 	        var _this = this;
-
+	
 	        var id = String(activeId++);
 	        // collect v-links contained within this element.
 	        // we need do this here before the parent-child relationship
@@ -12261,10 +12463,10 @@ webpackJsonp([0,1],[
 	        this.vm.$off(LINK_UPDATE, this.cb);
 	      }
 	    });
-
+	
 	    Vue.directive('link', {
 	      priority: onPriority - 2,
-
+	
 	      bind: function bind() {
 	        var vm = this.vm;
 	        /* istanbul ignore if */
@@ -12291,7 +12493,7 @@ webpackJsonp([0,1],[
 	        this.handler = _bind(this.onClick, this);
 	        this.el.addEventListener('click', this.handler);
 	      },
-
+	
 	      update: function update(target) {
 	        this.target = target;
 	        if (isObject(target)) {
@@ -12302,7 +12504,7 @@ webpackJsonp([0,1],[
 	        }
 	        this.onRouteUpdate(this.vm.$route);
 	      },
-
+	
 	      onClick: function onClick(e) {
 	        // don't redirect with control keys
 	        /* istanbul ignore if */
@@ -12313,7 +12515,7 @@ webpackJsonp([0,1],[
 	        // don't redirect on right click
 	        /* istanbul ignore if */
 	        if (e.button !== 0) return;
-
+	
 	        var target = this.target;
 	        if (target) {
 	          // v-link with expression, just go
@@ -12339,7 +12541,7 @@ webpackJsonp([0,1],[
 	          }
 	        }
 	      },
-
+	
 	      onRouteUpdate: function onRouteUpdate(route) {
 	        // router.stringifyPath is dependent on current route
 	        // and needs to be called again whenver route changes.
@@ -12355,11 +12557,11 @@ webpackJsonp([0,1],[
 	          this.updateClasses(route.path, this.el);
 	        }
 	      },
-
+	
 	      updateActiveMatch: function updateActiveMatch() {
 	        this.activeRE = this.path && !this.exact ? new RegExp('^' + this.path.replace(/\/$/, '').replace(queryStringRE, '').replace(regexEscapeRE, '\\$&') + '(\\/|$)') : null;
 	      },
-
+	
 	      updateHref: function updateHref() {
 	        if (this.el.tagName !== 'A') {
 	          return;
@@ -12375,7 +12577,7 @@ webpackJsonp([0,1],[
 	          this.el.removeAttribute('href');
 	        }
 	      },
-
+	
 	      updateClasses: function updateClasses(path, el) {
 	        var activeClass = this.activeClass || this.router._linkActiveClass;
 	        // clear old class
@@ -12402,17 +12604,17 @@ webpackJsonp([0,1],[
 	          }
 	        }
 	      },
-
+	
 	      unbind: function unbind() {
 	        this.el.removeEventListener('click', this.handler);
 	        this.unwatch && this.unwatch();
 	      }
 	    });
-
+	
 	    function sameOrigin(link) {
 	      return link.protocol === location.protocol && link.hostname === location.hostname && link.port === location.port;
 	    }
-
+	
 	    // this function is copied from v-bind:class implementation until
 	    // we properly expose it...
 	    function toggleClasses(el, key, fn) {
@@ -12427,28 +12629,28 @@ webpackJsonp([0,1],[
 	      }
 	    }
 	  }
-
+	
 	  var historyBackends = {
 	    abstract: AbstractHistory,
 	    hash: HashHistory,
 	    html5: HTML5History
 	  };
-
+	
 	  // late bind during install
 	  var Vue = undefined;
-
+	
 	  /**
 	   * Router constructor
 	   *
 	   * @param {Object} [options]
 	   */
-
+	
 	  var Router = (function () {
 	    function Router() {
 	      var _this = this;
-
+	
 	      var _ref = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-
+	
 	      var _ref$hashbang = _ref.hashbang;
 	      var hashbang = _ref$hashbang === undefined ? true : _ref$hashbang;
 	      var _ref$abstract = _ref.abstract;
@@ -12466,20 +12668,20 @@ webpackJsonp([0,1],[
 	      var _ref$linkActiveClass = _ref.linkActiveClass;
 	      var linkActiveClass = _ref$linkActiveClass === undefined ? 'v-link-active' : _ref$linkActiveClass;
 	      babelHelpers.classCallCheck(this, Router);
-
+	
 	      /* istanbul ignore if */
 	      if (!Router.installed) {
 	        throw new Error('Please install the Router with Vue.use() before ' + 'creating an instance.');
 	      }
-
+	
 	      // Vue instances
 	      this.app = null;
 	      this._children = [];
-
+	
 	      // route recognizer
 	      this._recognizer = new RouteRecognizer();
 	      this._guardRecognizer = new RouteRecognizer();
-
+	
 	      // state
 	      this._started = false;
 	      this._startCb = null;
@@ -12490,25 +12692,25 @@ webpackJsonp([0,1],[
 	      this._notFoundRedirect = null;
 	      this._beforeEachHooks = [];
 	      this._afterEachHooks = [];
-
+	
 	      // trigger transition on initial render?
 	      this._rendered = false;
 	      this._transitionOnLoad = transitionOnLoad;
-
+	
 	      // history mode
 	      this._root = root;
 	      this._abstract = abstract;
 	      this._hashbang = hashbang;
-
+	
 	      // check if HTML5 history is available
 	      var hasPushState = typeof window !== 'undefined' && window.history && window.history.pushState;
 	      this._history = history && hasPushState;
 	      this._historyFallback = history && !hasPushState;
-
+	
 	      // create history object
 	      var inBrowser = Vue.util.inBrowser;
 	      this.mode = !inBrowser || this._abstract ? 'abstract' : this._history ? 'html5' : 'hash';
-
+	
 	      var History = historyBackends[this.mode];
 	      this.history = new History({
 	        root: root,
@@ -12517,13 +12719,13 @@ webpackJsonp([0,1],[
 	          _this._match(path, state, anchor);
 	        }
 	      });
-
+	
 	      // other options
 	      this._saveScrollPosition = saveScrollPosition;
 	      this._linkActiveClass = linkActiveClass;
 	      this._suppress = suppressTransitionError;
 	    }
-
+	
 	    /**
 	     * Allow directly passing components to a route
 	     * definition.
@@ -12531,22 +12733,22 @@ webpackJsonp([0,1],[
 	     * @param {String} path
 	     * @param {Object} handler
 	     */
-
+	
 	    // API ===================================================
-
+	
 	    /**
 	    * Register a map of top-level paths.
 	    *
 	    * @param {Object} map
 	    */
-
+	
 	    Router.prototype.map = function map(_map) {
 	      for (var route in _map) {
 	        this.on(route, _map[route]);
 	      }
 	      return this;
 	    };
-
+	
 	    /**
 	     * Register a single root-level path
 	     *
@@ -12558,7 +12760,7 @@ webpackJsonp([0,1],[
 	     *                 - {Function} [before]
 	     *                 - {Function} [after]
 	     */
-
+	
 	    Router.prototype.on = function on(rootPath, handler) {
 	      if (rootPath === '*') {
 	        this._notFound(handler);
@@ -12567,55 +12769,55 @@ webpackJsonp([0,1],[
 	      }
 	      return this;
 	    };
-
+	
 	    /**
 	     * Set redirects.
 	     *
 	     * @param {Object} map
 	     */
-
+	
 	    Router.prototype.redirect = function redirect(map) {
 	      for (var path in map) {
 	        this._addRedirect(path, map[path]);
 	      }
 	      return this;
 	    };
-
+	
 	    /**
 	     * Set aliases.
 	     *
 	     * @param {Object} map
 	     */
-
+	
 	    Router.prototype.alias = function alias(map) {
 	      for (var path in map) {
 	        this._addAlias(path, map[path]);
 	      }
 	      return this;
 	    };
-
+	
 	    /**
 	     * Set global before hook.
 	     *
 	     * @param {Function} fn
 	     */
-
+	
 	    Router.prototype.beforeEach = function beforeEach(fn) {
 	      this._beforeEachHooks.push(fn);
 	      return this;
 	    };
-
+	
 	    /**
 	     * Set global after hook.
 	     *
 	     * @param {Function} fn
 	     */
-
+	
 	    Router.prototype.afterEach = function afterEach(fn) {
 	      this._afterEachHooks.push(fn);
 	      return this;
 	    };
-
+	
 	    /**
 	     * Navigate to a given path.
 	     * The path can be an object describing a named path in
@@ -12626,7 +12828,7 @@ webpackJsonp([0,1],[
 	     * @param {String|Object} path
 	     * @param {Boolean} [replace]
 	     */
-
+	
 	    Router.prototype.go = function go(path) {
 	      var replace = false;
 	      var append = false;
@@ -12639,13 +12841,13 @@ webpackJsonp([0,1],[
 	        this.history.go(path, replace, append);
 	      }
 	    };
-
+	
 	    /**
 	     * Short hand for replacing current path
 	     *
 	     * @param {String} path
 	     */
-
+	
 	    Router.prototype.replace = function replace(path) {
 	      if (typeof path === 'string') {
 	        path = { path: path };
@@ -12653,7 +12855,7 @@ webpackJsonp([0,1],[
 	      path.replace = true;
 	      this.go(path);
 	    };
-
+	
 	    /**
 	     * Start the router.
 	     *
@@ -12661,7 +12863,7 @@ webpackJsonp([0,1],[
 	     * @param {String|Element} container
 	     * @param {Function} [cb]
 	     */
-
+	
 	    Router.prototype.start = function start(App, container, cb) {
 	      /* istanbul ignore if */
 	      if (this._started) {
@@ -12684,7 +12886,7 @@ webpackJsonp([0,1],[
 	        // give it a name for better debugging
 	        Ctor.options.name = Ctor.options.name || 'RouterApp';
 	      }
-
+	
 	      // handle history fallback in browsers that do not
 	      // support HTML5 history API
 	      if (this._historyFallback) {
@@ -12696,19 +12898,19 @@ webpackJsonp([0,1],[
 	          return;
 	        }
 	      }
-
+	
 	      this.history.start();
 	    };
-
+	
 	    /**
 	     * Stop listening to route changes.
 	     */
-
+	
 	    Router.prototype.stop = function stop() {
 	      this.history.stop();
 	      this._started = false;
 	    };
-
+	
 	    /**
 	     * Normalize named route object / string paths into
 	     * a string.
@@ -12716,7 +12918,7 @@ webpackJsonp([0,1],[
 	     * @param {Object|String|Number} path
 	     * @return {String}
 	     */
-
+	
 	    Router.prototype.stringifyPath = function stringifyPath(path) {
 	      var generatedPath = '';
 	      if (path && typeof path === 'object') {
@@ -12743,9 +12945,9 @@ webpackJsonp([0,1],[
 	      }
 	      return generatedPath;
 	    };
-
+	
 	    // Internal methods ======================================
-
+	
 	    /**
 	    * Add a route containing a list of segments to the internal
 	    * route recognizer. Will be called recursively to add all
@@ -12755,7 +12957,7 @@ webpackJsonp([0,1],[
 	    * @param {Object} handler
 	    * @param {Array} segments
 	    */
-
+	
 	    Router.prototype._addRoute = function _addRoute(path, handler, segments) {
 	      guardComponent(path, handler);
 	      handler.path = path;
@@ -12780,25 +12982,25 @@ webpackJsonp([0,1],[
 	        }
 	      }
 	    };
-
+	
 	    /**
 	     * Set the notFound route handler.
 	     *
 	     * @param {Object} handler
 	     */
-
+	
 	    Router.prototype._notFound = function _notFound(handler) {
 	      guardComponent('*', handler);
 	      this._notFoundHandler = [{ handler: handler }];
 	    };
-
+	
 	    /**
 	     * Add a redirect record.
 	     *
 	     * @param {String} path
 	     * @param {String} redirectPath
 	     */
-
+	
 	    Router.prototype._addRedirect = function _addRedirect(path, redirectPath) {
 	      if (path === '*') {
 	        this._notFoundRedirect = redirectPath;
@@ -12806,18 +13008,18 @@ webpackJsonp([0,1],[
 	        this._addGuard(path, redirectPath, this.replace);
 	      }
 	    };
-
+	
 	    /**
 	     * Add an alias record.
 	     *
 	     * @param {String} path
 	     * @param {String} aliasPath
 	     */
-
+	
 	    Router.prototype._addAlias = function _addAlias(path, aliasPath) {
 	      this._addGuard(path, aliasPath, this._match);
 	    };
-
+	
 	    /**
 	     * Add a path guard.
 	     *
@@ -12825,10 +13027,10 @@ webpackJsonp([0,1],[
 	     * @param {String} mappedPath
 	     * @param {Function} handler
 	     */
-
+	
 	    Router.prototype._addGuard = function _addGuard(path, mappedPath, _handler) {
 	      var _this2 = this;
-
+	
 	      this._guardRecognizer.add([{
 	        path: path,
 	        handler: function handler(match, query) {
@@ -12837,14 +13039,14 @@ webpackJsonp([0,1],[
 	        }
 	      }]);
 	    };
-
+	
 	    /**
 	     * Check if a path matches any redirect records.
 	     *
 	     * @param {String} path
 	     * @return {Boolean} - if true, will skip normal match.
 	     */
-
+	
 	    Router.prototype._checkGuard = function _checkGuard(path) {
 	      var matched = this._guardRecognizer.recognize(path, true);
 	      if (matched) {
@@ -12858,7 +13060,7 @@ webpackJsonp([0,1],[
 	        }
 	      }
 	    };
-
+	
 	    /**
 	     * Match a URL path and set the route context on vm,
 	     * triggering view updates.
@@ -12867,17 +13069,17 @@ webpackJsonp([0,1],[
 	     * @param {Object} [state]
 	     * @param {String} [anchor]
 	     */
-
+	
 	    Router.prototype._match = function _match(path, state, anchor) {
 	      var _this3 = this;
-
+	
 	      if (this._checkGuard(path)) {
 	        return;
 	      }
-
+	
 	      var currentRoute = this._currentRoute;
 	      var currentTransition = this._currentTransition;
-
+	
 	      if (currentTransition) {
 	        if (currentTransition.to.path === path) {
 	          // do nothing if we have an active transition going to the same path
@@ -12894,17 +13096,17 @@ webpackJsonp([0,1],[
 	          currentTransition.aborted = true;
 	        }
 	      }
-
+	
 	      // construct new route and transition context
 	      var route = new Route(path, this);
 	      var transition = new RouteTransition(this, route, currentRoute);
-
+	
 	      // current transition is updated right now.
 	      // however, current route will only be updated after the transition has
 	      // been validated.
 	      this._prevTransition = currentTransition;
 	      this._currentTransition = transition;
-
+	
 	      if (!this.app) {
 	        (function () {
 	          // initial render
@@ -12920,7 +13122,7 @@ webpackJsonp([0,1],[
 	          });
 	        })();
 	      }
-
+	
 	      // check global before hook
 	      var beforeHooks = this._beforeEachHooks;
 	      var startTransition = function startTransition() {
@@ -12928,7 +13130,7 @@ webpackJsonp([0,1],[
 	          _this3._postTransition(route, state, anchor);
 	        });
 	      };
-
+	
 	      if (beforeHooks.length) {
 	        transition.runQueue(beforeHooks, function (hook, _, next) {
 	          if (transition === _this3._currentTransition) {
@@ -12940,18 +13142,18 @@ webpackJsonp([0,1],[
 	      } else {
 	        startTransition();
 	      }
-
+	
 	      if (!this._rendered && this._startCb) {
 	        this._startCb.call(null);
 	      }
-
+	
 	      // HACK:
 	      // set rendered to true after the transition start, so
 	      // that components that are acitvated synchronously know
 	      // whether it is the initial render.
 	      this._rendered = true;
 	    };
-
+	
 	    /**
 	     * Set current to the new transition.
 	     * This is called by the transition object when the
@@ -12959,7 +13161,7 @@ webpackJsonp([0,1],[
 	     *
 	     * @param {Transition} transition
 	     */
-
+	
 	    Router.prototype._onTransitionValidated = function _onTransitionValidated(transition) {
 	      // set current route
 	      var route = this._currentRoute = transition.to;
@@ -12981,7 +13183,7 @@ webpackJsonp([0,1],[
 	      }
 	      this._currentTransition.done = true;
 	    };
-
+	
 	    /**
 	     * Handle stuff after the transition.
 	     *
@@ -12989,7 +13191,7 @@ webpackJsonp([0,1],[
 	     * @param {Object} [state]
 	     * @param {String} [anchor]
 	     */
-
+	
 	    Router.prototype._postTransition = function _postTransition(route, state, anchor) {
 	      // handle scroll positions
 	      // saved scroll positions take priority
@@ -13008,10 +13210,10 @@ webpackJsonp([0,1],[
 	        });
 	      }
 	    };
-
+	
 	    return Router;
 	  })();
-
+	
 	  function guardComponent(path, handler) {
 	    var comp = handler.component;
 	    if (Vue.util.isPlainObject(comp)) {
@@ -13023,16 +13225,16 @@ webpackJsonp([0,1],[
 	      warn$1('invalid component for route "' + path + '".');
 	    }
 	  }
-
+	
 	  /* Installation */
-
+	
 	  Router.installed = false;
-
+	
 	  /**
 	   * Installation interface.
 	   * Install the necessary directives.
 	   */
-
+	
 	  Router.install = function (externalVue) {
 	    /* istanbul ignore if */
 	    if (Router.installed) {
@@ -13046,15 +13248,15 @@ webpackJsonp([0,1],[
 	    exports$1.Vue = Vue;
 	    Router.installed = true;
 	  };
-
+	
 	  // auto install
 	  /* istanbul ignore if */
 	  if (typeof window !== 'undefined' && window.Vue) {
 	    window.Vue.use(Router);
 	  }
-
+	
 	  return Router;
-
+	
 	}));
 
 /***/ },
@@ -13066,25 +13268,25 @@ webpackJsonp([0,1],[
 	 * https://github.com/vuejs/vue-resource
 	 * Released under the MIT License.
 	 */
-
+	
 	'use strict';
-
+	
 	/**
 	 * Promises/A+ polyfill v1.1.4 (https://github.com/bramstein/promis)
 	 */
-
+	
 	var RESOLVED = 0;
 	var REJECTED = 1;
 	var PENDING = 2;
-
+	
 	function Promise$1(executor) {
-
+	
 	    this.state = PENDING;
 	    this.value = undefined;
 	    this.deferred = [];
-
+	
 	    var promise = this;
-
+	
 	    try {
 	        executor(function (x) {
 	            promise.resolve(x);
@@ -13095,45 +13297,45 @@ webpackJsonp([0,1],[
 	        promise.reject(e);
 	    }
 	}
-
+	
 	Promise$1.reject = function (r) {
 	    return new Promise$1(function (resolve, reject) {
 	        reject(r);
 	    });
 	};
-
+	
 	Promise$1.resolve = function (x) {
 	    return new Promise$1(function (resolve, reject) {
 	        resolve(x);
 	    });
 	};
-
+	
 	Promise$1.all = function all(iterable) {
 	    return new Promise$1(function (resolve, reject) {
 	        var count = 0,
 	            result = [];
-
+	
 	        if (iterable.length === 0) {
 	            resolve(result);
 	        }
-
+	
 	        function resolver(i) {
 	            return function (x) {
 	                result[i] = x;
 	                count += 1;
-
+	
 	                if (count === iterable.length) {
 	                    resolve(result);
 	                }
 	            };
 	        }
-
+	
 	        for (var i = 0; i < iterable.length; i += 1) {
 	            Promise$1.resolve(iterable[i]).then(resolver(i), reject);
 	        }
 	    });
 	};
-
+	
 	Promise$1.race = function race(iterable) {
 	    return new Promise$1(function (resolve, reject) {
 	        for (var i = 0; i < iterable.length; i += 1) {
@@ -13141,22 +13343,22 @@ webpackJsonp([0,1],[
 	        }
 	    });
 	};
-
+	
 	var p$1 = Promise$1.prototype;
-
+	
 	p$1.resolve = function resolve(x) {
 	    var promise = this;
-
+	
 	    if (promise.state === PENDING) {
 	        if (x === promise) {
 	            throw new TypeError('Promise settled with itself.');
 	        }
-
+	
 	        var called = false;
-
+	
 	        try {
 	            var then = x && x['then'];
-
+	
 	            if (x !== null && typeof x === 'object' && typeof then === 'function') {
 	                then.call(x, function (x) {
 	                    if (!called) {
@@ -13177,30 +13379,30 @@ webpackJsonp([0,1],[
 	            }
 	            return;
 	        }
-
+	
 	        promise.state = RESOLVED;
 	        promise.value = x;
 	        promise.notify();
 	    }
 	};
-
+	
 	p$1.reject = function reject(reason) {
 	    var promise = this;
-
+	
 	    if (promise.state === PENDING) {
 	        if (reason === promise) {
 	            throw new TypeError('Promise settled with itself.');
 	        }
-
+	
 	        promise.state = REJECTED;
 	        promise.value = reason;
 	        promise.notify();
 	    }
 	};
-
+	
 	p$1.notify = function notify() {
 	    var promise = this;
-
+	
 	    nextTick(function () {
 	        if (promise.state !== PENDING) {
 	            while (promise.deferred.length) {
@@ -13209,7 +13411,7 @@ webpackJsonp([0,1],[
 	                    onRejected = deferred[1],
 	                    resolve = deferred[2],
 	                    reject = deferred[3];
-
+	
 	                try {
 	                    if (promise.state === RESOLVED) {
 	                        if (typeof onResolved === 'function') {
@@ -13231,86 +13433,86 @@ webpackJsonp([0,1],[
 	        }
 	    });
 	};
-
+	
 	p$1.then = function then(onResolved, onRejected) {
 	    var promise = this;
-
+	
 	    return new Promise$1(function (resolve, reject) {
 	        promise.deferred.push([onResolved, onRejected, resolve, reject]);
 	        promise.notify();
 	    });
 	};
-
+	
 	p$1.catch = function (onRejected) {
 	    return this.then(undefined, onRejected);
 	};
-
+	
 	/**
 	 * Promise adapter.
 	 */
-
+	
 	if (typeof Promise === 'undefined') {
 	    window.Promise = Promise$1;
 	}
-
+	
 	function PromiseObj(executor, context) {
-
+	
 	    if (executor instanceof Promise) {
 	        this.promise = executor;
 	    } else {
 	        this.promise = new Promise(executor.bind(context));
 	    }
-
+	
 	    this.context = context;
 	}
-
+	
 	PromiseObj.all = function (iterable, context) {
 	    return new PromiseObj(Promise.all(iterable), context);
 	};
-
+	
 	PromiseObj.resolve = function (value, context) {
 	    return new PromiseObj(Promise.resolve(value), context);
 	};
-
+	
 	PromiseObj.reject = function (reason, context) {
 	    return new PromiseObj(Promise.reject(reason), context);
 	};
-
+	
 	PromiseObj.race = function (iterable, context) {
 	    return new PromiseObj(Promise.race(iterable), context);
 	};
-
+	
 	var p = PromiseObj.prototype;
-
+	
 	p.bind = function (context) {
 	    this.context = context;
 	    return this;
 	};
-
+	
 	p.then = function (fulfilled, rejected) {
-
+	
 	    if (fulfilled && fulfilled.bind && this.context) {
 	        fulfilled = fulfilled.bind(this.context);
 	    }
-
+	
 	    if (rejected && rejected.bind && this.context) {
 	        rejected = rejected.bind(this.context);
 	    }
-
+	
 	    return new PromiseObj(this.promise.then(fulfilled, rejected), this.context);
 	};
-
+	
 	p.catch = function (rejected) {
-
+	
 	    if (rejected && rejected.bind && this.context) {
 	        rejected = rejected.bind(this.context);
 	    }
-
+	
 	    return new PromiseObj(this.promise.catch(rejected), this.context);
 	};
-
+	
 	p.finally = function (callback) {
-
+	
 	    return this.then(function (value) {
 	        callback.call(this);
 	        return value;
@@ -13319,103 +13521,103 @@ webpackJsonp([0,1],[
 	        return Promise.reject(reason);
 	    });
 	};
-
+	
 	/**
 	 * Utility functions.
 	 */
-
+	
 	var debug = false;var util = {};var slice = [].slice;
-
-
+	
+	
 	function Util (Vue) {
 	    util = Vue.util;
 	    debug = Vue.config.debug || !Vue.config.silent;
 	}
-
+	
 	function warn(msg) {
 	    if (typeof console !== 'undefined' && debug) {
 	        console.warn('[VueResource warn]: ' + msg);
 	    }
 	}
-
+	
 	function error(msg) {
 	    if (typeof console !== 'undefined') {
 	        console.error(msg);
 	    }
 	}
-
+	
 	function nextTick(cb, ctx) {
 	    return util.nextTick(cb, ctx);
 	}
-
+	
 	function trim(str) {
 	    return str.replace(/^\s*|\s*$/g, '');
 	}
-
+	
 	function toLower(str) {
 	    return str ? str.toLowerCase() : '';
 	}
-
+	
 	function toUpper(str) {
 	    return str ? str.toUpperCase() : '';
 	}
-
+	
 	var isArray = Array.isArray;
-
+	
 	function isString(val) {
 	    return typeof val === 'string';
 	}
-
+	
 	function isBoolean(val) {
 	    return val === true || val === false;
 	}
-
+	
 	function isFunction(val) {
 	    return typeof val === 'function';
 	}
-
+	
 	function isObject(obj) {
 	    return obj !== null && typeof obj === 'object';
 	}
-
+	
 	function isPlainObject(obj) {
 	    return isObject(obj) && Object.getPrototypeOf(obj) == Object.prototype;
 	}
-
+	
 	function isBlob(obj) {
 	    return typeof Blob !== 'undefined' && obj instanceof Blob;
 	}
-
+	
 	function isFormData(obj) {
 	    return typeof FormData !== 'undefined' && obj instanceof FormData;
 	}
-
+	
 	function when(value, fulfilled, rejected) {
-
+	
 	    var promise = PromiseObj.resolve(value);
-
+	
 	    if (arguments.length < 2) {
 	        return promise;
 	    }
-
+	
 	    return promise.then(fulfilled, rejected);
 	}
-
+	
 	function options(fn, obj, opts) {
-
+	
 	    opts = opts || {};
-
+	
 	    if (isFunction(opts)) {
 	        opts = opts.call(obj);
 	    }
-
+	
 	    return merge(fn.bind({ $vm: obj, $options: opts }), fn, { $options: opts });
 	}
-
+	
 	function each(obj, iterator) {
-
+	
 	    var i, key;
-
+	
 	    if (obj && typeof obj.length == 'number') {
 	        for (i = 0; i < obj.length; i++) {
 	            iterator.call(obj[i], obj[i], i);
@@ -13427,50 +13629,50 @@ webpackJsonp([0,1],[
 	            }
 	        }
 	    }
-
+	
 	    return obj;
 	}
-
+	
 	var assign = Object.assign || _assign;
-
+	
 	function merge(target) {
-
+	
 	    var args = slice.call(arguments, 1);
-
+	
 	    args.forEach(function (source) {
 	        _merge(target, source, true);
 	    });
-
+	
 	    return target;
 	}
-
+	
 	function defaults(target) {
-
+	
 	    var args = slice.call(arguments, 1);
-
+	
 	    args.forEach(function (source) {
-
+	
 	        for (var key in source) {
 	            if (target[key] === undefined) {
 	                target[key] = source[key];
 	            }
 	        }
 	    });
-
+	
 	    return target;
 	}
-
+	
 	function _assign(target) {
-
+	
 	    var args = slice.call(arguments, 1);
-
+	
 	    args.forEach(function (source) {
 	        _merge(target, source);
 	    });
-
+	
 	    return target;
 	}
-
+	
 	function _merge(target, source, deep) {
 	    for (var key in source) {
 	        if (deep && (isPlainObject(source[key]) || isArray(source[key]))) {
@@ -13486,98 +13688,98 @@ webpackJsonp([0,1],[
 	        }
 	    }
 	}
-
+	
 	/**
 	 * Root Prefix Transform.
 	 */
-
+	
 	function root (options, next) {
-
+	
 	    var url = next(options);
-
+	
 	    if (isString(options.root) && !url.match(/^(https?:)?\//)) {
 	        url = options.root + '/' + url;
 	    }
-
+	
 	    return url;
 	}
-
+	
 	/**
 	 * Query Parameter Transform.
 	 */
-
+	
 	function query (options, next) {
-
+	
 	    var urlParams = Object.keys(Url.options.params),
 	        query = {},
 	        url = next(options);
-
+	
 	    each(options.params, function (value, key) {
 	        if (urlParams.indexOf(key) === -1) {
 	            query[key] = value;
 	        }
 	    });
-
+	
 	    query = Url.params(query);
-
+	
 	    if (query) {
 	        url += (url.indexOf('?') == -1 ? '?' : '&') + query;
 	    }
-
+	
 	    return url;
 	}
-
+	
 	/**
 	 * URL Template v2.0.6 (https://github.com/bramstein/url-template)
 	 */
-
+	
 	function expand(url, params, variables) {
-
+	
 	    var tmpl = parse(url),
 	        expanded = tmpl.expand(params);
-
+	
 	    if (variables) {
 	        variables.push.apply(variables, tmpl.vars);
 	    }
-
+	
 	    return expanded;
 	}
-
+	
 	function parse(template) {
-
+	
 	    var operators = ['+', '#', '.', '/', ';', '?', '&'],
 	        variables = [];
-
+	
 	    return {
 	        vars: variables,
 	        expand: function (context) {
 	            return template.replace(/\{([^\{\}]+)\}|([^\{\}]+)/g, function (_, expression, literal) {
 	                if (expression) {
-
+	
 	                    var operator = null,
 	                        values = [];
-
+	
 	                    if (operators.indexOf(expression.charAt(0)) !== -1) {
 	                        operator = expression.charAt(0);
 	                        expression = expression.substr(1);
 	                    }
-
+	
 	                    expression.split(/,/g).forEach(function (variable) {
 	                        var tmp = /([^:\*]*)(?::(\d+)|(\*))?/.exec(variable);
 	                        values.push.apply(values, getValues(context, operator, tmp[1], tmp[2] || tmp[3]));
 	                        variables.push(tmp[1]);
 	                    });
-
+	
 	                    if (operator && operator !== '+') {
-
+	
 	                        var separator = ',';
-
+	
 	                        if (operator === '?') {
 	                            separator = '&';
 	                        } else if (operator !== '#') {
 	                            separator = operator;
 	                        }
-
+	
 	                        return (values.length !== 0 ? operator : '') + values.join(separator);
 	                    } else {
 	                        return values.join(',');
@@ -13589,20 +13791,20 @@ webpackJsonp([0,1],[
 	        }
 	    };
 	}
-
+	
 	function getValues(context, operator, key, modifier) {
-
+	
 	    var value = context[key],
 	        result = [];
-
+	
 	    if (isDefined(value) && value !== '') {
 	        if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
 	            value = value.toString();
-
+	
 	            if (modifier && modifier !== '*') {
 	                value = value.substring(0, parseInt(modifier, 10));
 	            }
-
+	
 	            result.push(encodeValue(operator, value, isKeyOperator(operator) ? key : null));
 	        } else {
 	            if (modifier === '*') {
@@ -13619,7 +13821,7 @@ webpackJsonp([0,1],[
 	                }
 	            } else {
 	                var tmp = [];
-
+	
 	                if (Array.isArray(value)) {
 	                    value.filter(isDefined).forEach(function (value) {
 	                        tmp.push(encodeValue(operator, value));
@@ -13632,7 +13834,7 @@ webpackJsonp([0,1],[
 	                        }
 	                    });
 	                }
-
+	
 	                if (isKeyOperator(operator)) {
 	                    result.push(encodeURIComponent(key) + '=' + tmp.join(','));
 	                } else if (tmp.length !== 0) {
@@ -13649,29 +13851,29 @@ webpackJsonp([0,1],[
 	            result.push('');
 	        }
 	    }
-
+	
 	    return result;
 	}
-
+	
 	function isDefined(value) {
 	    return value !== undefined && value !== null;
 	}
-
+	
 	function isKeyOperator(operator) {
 	    return operator === ';' || operator === '&' || operator === '?';
 	}
-
+	
 	function encodeValue(operator, value, key) {
-
+	
 	    value = operator === '+' || operator === '#' ? encodeReserved(value) : encodeURIComponent(value);
-
+	
 	    if (key) {
 	        return encodeURIComponent(key) + '=' + value;
 	    } else {
 	        return value;
 	    }
 	}
-
+	
 	function encodeReserved(str) {
 	    return str.split(/(%[0-9A-Fa-f]{2})/g).map(function (part) {
 	        if (!/%[0-9A-Fa-f]/.test(part)) {
@@ -13680,109 +13882,109 @@ webpackJsonp([0,1],[
 	        return part;
 	    }).join('');
 	}
-
+	
 	/**
 	 * URL Template (RFC 6570) Transform.
 	 */
-
+	
 	function template (options) {
-
+	
 	    var variables = [],
 	        url = expand(options.url, options.params, variables);
-
+	
 	    variables.forEach(function (key) {
 	        delete options.params[key];
 	    });
-
+	
 	    return url;
 	}
-
+	
 	/**
 	 * Service for URL templating.
 	 */
-
+	
 	var ie = document.documentMode;
 	var el = document.createElement('a');
-
+	
 	function Url(url, params) {
-
+	
 	    var self = this || {},
 	        options = url,
 	        transform;
-
+	
 	    if (isString(url)) {
 	        options = { url: url, params: params };
 	    }
-
+	
 	    options = merge({}, Url.options, self.$options, options);
-
+	
 	    Url.transforms.forEach(function (handler) {
 	        transform = factory(handler, transform, self.$vm);
 	    });
-
+	
 	    return transform(options);
 	}
-
+	
 	/**
 	 * Url options.
 	 */
-
+	
 	Url.options = {
 	    url: '',
 	    root: null,
 	    params: {}
 	};
-
+	
 	/**
 	 * Url transforms.
 	 */
-
+	
 	Url.transforms = [template, query, root];
-
+	
 	/**
 	 * Encodes a Url parameter string.
 	 *
 	 * @param {Object} obj
 	 */
-
+	
 	Url.params = function (obj) {
-
+	
 	    var params = [],
 	        escape = encodeURIComponent;
-
+	
 	    params.add = function (key, value) {
-
+	
 	        if (isFunction(value)) {
 	            value = value();
 	        }
-
+	
 	        if (value === null) {
 	            value = '';
 	        }
-
+	
 	        this.push(escape(key) + '=' + escape(value));
 	    };
-
+	
 	    serialize(params, obj);
-
+	
 	    return params.join('&').replace(/%20/g, '+');
 	};
-
+	
 	/**
 	 * Parse a URL and return its components.
 	 *
 	 * @param {String} url
 	 */
-
+	
 	Url.parse = function (url) {
-
+	
 	    if (ie) {
 	        el.href = url;
 	        url = el.href;
 	    }
-
+	
 	    el.href = url;
-
+	
 	    return {
 	        href: el.href,
 	        protocol: el.protocol ? el.protocol.replace(/:$/, '') : '',
@@ -13794,27 +13996,27 @@ webpackJsonp([0,1],[
 	        hash: el.hash ? el.hash.replace(/^#/, '') : ''
 	    };
 	};
-
+	
 	function factory(handler, next, vm) {
 	    return function (options) {
 	        return handler.call(vm, options, next);
 	    };
 	}
-
+	
 	function serialize(params, obj, scope) {
-
+	
 	    var array = isArray(obj),
 	        plain = isPlainObject(obj),
 	        hash;
-
+	
 	    each(obj, function (value, key) {
-
+	
 	        hash = isObject(value) || isArray(value);
-
+	
 	        if (scope) {
 	            key = scope + '[' + (plain || hash ? key : '') + ']';
 	        }
-
+	
 	        if (!scope && array) {
 	            params.add(value.name, value.value);
 	        } else if (hash) {
@@ -13824,34 +14026,34 @@ webpackJsonp([0,1],[
 	        }
 	    });
 	}
-
+	
 	/**
 	 * XDomain client (Internet Explorer).
 	 */
-
+	
 	function xdrClient (request) {
 	    return new PromiseObj(function (resolve) {
-
+	
 	        var xdr = new XDomainRequest(),
 	            handler = function (_ref) {
 	            var type = _ref.type;
-
-
+	
+	
 	            var status = 0;
-
+	
 	            if (type === 'load') {
 	                status = 200;
 	            } else if (type === 'error') {
 	                status = 500;
 	            }
-
+	
 	            resolve(request.respondWith(xdr.responseText, { status: status }));
 	        };
-
+	
 	        request.abort = function () {
 	            return xdr.abort();
 	        };
-
+	
 	        xdr.open(request.method, request.getUrl());
 	        xdr.timeout = 0;
 	        xdr.onload = handler;
@@ -13861,50 +14063,50 @@ webpackJsonp([0,1],[
 	        xdr.send(request.getBody());
 	    });
 	}
-
+	
 	/**
 	 * CORS Interceptor.
 	 */
-
+	
 	var ORIGIN_URL = Url.parse(location.href);
 	var SUPPORTS_CORS = 'withCredentials' in new XMLHttpRequest();
-
+	
 	function cors (request, next) {
-
+	
 	    if (!isBoolean(request.crossOrigin) && crossOrigin(request)) {
 	        request.crossOrigin = true;
 	    }
-
+	
 	    if (request.crossOrigin) {
-
+	
 	        if (!SUPPORTS_CORS) {
 	            request.client = xdrClient;
 	        }
-
+	
 	        delete request.emulateHTTP;
 	    }
-
+	
 	    next();
 	}
-
+	
 	function crossOrigin(request) {
-
+	
 	    var requestUrl = Url.parse(Url(request));
-
+	
 	    return requestUrl.protocol !== ORIGIN_URL.protocol || requestUrl.host !== ORIGIN_URL.host;
 	}
-
+	
 	/**
 	 * Body Interceptor.
 	 */
-
+	
 	function body (request, next) {
-
+	
 	    if (isFormData(request.body)) {
-
+	
 	        request.headers.delete('Content-Type');
 	    } else if (isObject(request.body) || isArray(request.body)) {
-
+	
 	        if (request.emulateJSON) {
 	            request.body = Url.params(request.body);
 	            request.headers.set('Content-Type', 'application/x-www-form-urlencoded');
@@ -13912,9 +14114,9 @@ webpackJsonp([0,1],[
 	            request.body = JSON.stringify(request.body);
 	        }
 	    }
-
+	
 	    next(function (response) {
-
+	
 	        Object.defineProperty(response, 'data', {
 	            get: function () {
 	                return this.body;
@@ -13923,13 +14125,13 @@ webpackJsonp([0,1],[
 	                this.body = body;
 	            }
 	        });
-
+	
 	        return response.bodyText ? when(response.text(), function (text) {
-
+	
 	            var type = response.headers.get('Content-Type');
-
+	
 	            if (isString(type) && type.indexOf('application/json') === 0) {
-
+	
 	                try {
 	                    response.body = JSON.parse(text);
 	                } catch (e) {
@@ -13938,174 +14140,174 @@ webpackJsonp([0,1],[
 	            } else {
 	                response.body = text;
 	            }
-
+	
 	            return response;
 	        }) : response;
 	    });
 	}
-
+	
 	/**
 	 * JSONP client.
 	 */
-
+	
 	function jsonpClient (request) {
 	    return new PromiseObj(function (resolve) {
-
+	
 	        var name = request.jsonp || 'callback',
 	            callback = '_jsonp' + Math.random().toString(36).substr(2),
 	            body = null,
 	            handler,
 	            script;
-
+	
 	        handler = function (_ref) {
 	            var type = _ref.type;
-
-
+	
+	
 	            var status = 0;
-
+	
 	            if (type === 'load' && body !== null) {
 	                status = 200;
 	            } else if (type === 'error') {
 	                status = 500;
 	            }
-
+	
 	            resolve(request.respondWith(body, { status: status }));
-
+	
 	            delete window[callback];
 	            document.body.removeChild(script);
 	        };
-
+	
 	        request.params[name] = callback;
-
+	
 	        window[callback] = function (result) {
 	            body = JSON.stringify(result);
 	        };
-
+	
 	        script = document.createElement('script');
 	        script.src = request.getUrl();
 	        script.type = 'text/javascript';
 	        script.async = true;
 	        script.onload = handler;
 	        script.onerror = handler;
-
+	
 	        document.body.appendChild(script);
 	    });
 	}
-
+	
 	/**
 	 * JSONP Interceptor.
 	 */
-
+	
 	function jsonp (request, next) {
-
+	
 	    if (request.method == 'JSONP') {
 	        request.client = jsonpClient;
 	    }
-
+	
 	    next(function (response) {
-
+	
 	        if (request.method == 'JSONP') {
-
+	
 	            return when(response.json(), function (json) {
-
+	
 	                response.body = json;
-
+	
 	                return response;
 	            });
 	        }
 	    });
 	}
-
+	
 	/**
 	 * Before Interceptor.
 	 */
-
+	
 	function before (request, next) {
-
+	
 	    if (isFunction(request.before)) {
 	        request.before.call(this, request);
 	    }
-
+	
 	    next();
 	}
-
+	
 	/**
 	 * HTTP method override Interceptor.
 	 */
-
+	
 	function method (request, next) {
-
+	
 	    if (request.emulateHTTP && /^(PUT|PATCH|DELETE)$/i.test(request.method)) {
 	        request.headers.set('X-HTTP-Method-Override', request.method);
 	        request.method = 'POST';
 	    }
-
+	
 	    next();
 	}
-
+	
 	/**
 	 * Header Interceptor.
 	 */
-
+	
 	function header (request, next) {
-
+	
 	    var headers = assign({}, Http.headers.common, !request.crossOrigin ? Http.headers.custom : {}, Http.headers[toLower(request.method)]);
-
+	
 	    each(headers, function (value, name) {
 	        if (!request.headers.has(name)) {
 	            request.headers.set(name, value);
 	        }
 	    });
-
+	
 	    next();
 	}
-
+	
 	/**
 	 * Timeout Interceptor.
 	 */
-
+	
 	function timeout (request, next) {
-
+	
 	    var timeout;
-
+	
 	    if (request.timeout) {
 	        timeout = setTimeout(function () {
 	            request.abort();
 	        }, request.timeout);
 	    }
-
+	
 	    next(function (response) {
-
+	
 	        clearTimeout(timeout);
 	    });
 	}
-
+	
 	/**
 	 * XMLHttp client.
 	 */
-
+	
 	function xhrClient (request) {
 	    return new PromiseObj(function (resolve) {
-
+	
 	        var xhr = new XMLHttpRequest(),
 	            handler = function (event) {
-
+	
 	            var response = request.respondWith('response' in xhr ? xhr.response : xhr.responseText, {
 	                status: xhr.status === 1223 ? 204 : xhr.status, // IE9 status bug
 	                statusText: xhr.status === 1223 ? 'No Content' : trim(xhr.statusText)
 	            });
-
+	
 	            each(trim(xhr.getAllResponseHeaders()).split('\n'), function (row) {
 	                response.headers.append(row.slice(0, row.indexOf(':')), row.slice(row.indexOf(':') + 1));
 	            });
-
+	
 	            resolve(response);
 	        };
-
+	
 	        request.abort = function () {
 	            return xhr.abort();
 	        };
-
+	
 	        if (request.progress) {
 	            if (request.method === 'GET') {
 	                xhr.addEventListener('progress', request.progress);
@@ -14113,49 +14315,49 @@ webpackJsonp([0,1],[
 	                xhr.upload.addEventListener('progress', request.progress);
 	            }
 	        }
-
+	
 	        xhr.open(request.method, request.getUrl(), true);
-
+	
 	        if ('responseType' in xhr) {
 	            xhr.responseType = 'blob';
 	        }
-
+	
 	        if (request.credentials === true) {
 	            xhr.withCredentials = true;
 	        }
-
+	
 	        request.headers.forEach(function (value, name) {
 	            xhr.setRequestHeader(name, value);
 	        });
-
+	
 	        xhr.timeout = 0;
 	        xhr.onload = handler;
 	        xhr.onerror = handler;
 	        xhr.send(request.getBody());
 	    });
 	}
-
+	
 	/**
 	 * Base client.
 	 */
-
+	
 	function Client (context) {
-
+	
 	    var reqHandlers = [sendRequest],
 	        resHandlers = [],
 	        handler;
-
+	
 	    if (!isObject(context)) {
 	        context = null;
 	    }
-
+	
 	    function Client(request) {
 	        return new PromiseObj(function (resolve) {
-
+	
 	            function exec() {
-
+	
 	                handler = reqHandlers.pop();
-
+	
 	                if (isFunction(handler)) {
 	                    handler.call(context, request, next);
 	                } else {
@@ -14163,136 +14365,136 @@ webpackJsonp([0,1],[
 	                    next();
 	                }
 	            }
-
+	
 	            function next(response) {
-
+	
 	                if (isFunction(response)) {
-
+	
 	                    resHandlers.unshift(response);
 	                } else if (isObject(response)) {
-
+	
 	                    resHandlers.forEach(function (handler) {
 	                        response = when(response, function (response) {
 	                            return handler.call(context, response) || response;
 	                        });
 	                    });
-
+	
 	                    when(response, resolve);
-
+	
 	                    return;
 	                }
-
+	
 	                exec();
 	            }
-
+	
 	            exec();
 	        }, context);
 	    }
-
+	
 	    Client.use = function (handler) {
 	        reqHandlers.push(handler);
 	    };
-
+	
 	    return Client;
 	}
-
+	
 	function sendRequest(request, resolve) {
-
+	
 	    var client = request.client || xhrClient;
-
+	
 	    resolve(client(request));
 	}
-
+	
 	var classCallCheck = function (instance, Constructor) {
 	  if (!(instance instanceof Constructor)) {
 	    throw new TypeError("Cannot call a class as a function");
 	  }
 	};
-
+	
 	/**
 	 * HTTP Headers.
 	 */
-
+	
 	var Headers = function () {
 	    function Headers(headers) {
 	        var _this = this;
-
+	
 	        classCallCheck(this, Headers);
-
-
+	
+	
 	        this.map = {};
-
+	
 	        each(headers, function (value, name) {
 	            return _this.append(name, value);
 	        });
 	    }
-
+	
 	    Headers.prototype.has = function has(name) {
 	        return getName(this.map, name) !== null;
 	    };
-
+	
 	    Headers.prototype.get = function get(name) {
-
+	
 	        var list = this.map[getName(this.map, name)];
-
+	
 	        return list ? list[0] : null;
 	    };
-
+	
 	    Headers.prototype.getAll = function getAll(name) {
 	        return this.map[getName(this.map, name)] || [];
 	    };
-
+	
 	    Headers.prototype.set = function set(name, value) {
 	        this.map[normalizeName(getName(this.map, name) || name)] = [trim(value)];
 	    };
-
+	
 	    Headers.prototype.append = function append(name, value) {
-
+	
 	        var list = this.getAll(name);
-
+	
 	        if (list.length) {
 	            list.push(trim(value));
 	        } else {
 	            this.set(name, value);
 	        }
 	    };
-
+	
 	    Headers.prototype.delete = function _delete(name) {
 	        delete this.map[getName(this.map, name)];
 	    };
-
+	
 	    Headers.prototype.forEach = function forEach(callback, thisArg) {
 	        var _this2 = this;
-
+	
 	        each(this.map, function (list, name) {
 	            each(list, function (value) {
 	                return callback.call(thisArg, value, name, _this2);
 	            });
 	        });
 	    };
-
+	
 	    return Headers;
 	}();
-
+	
 	function getName(map, name) {
 	    return Object.keys(map).reduce(function (prev, curr) {
 	        return toLower(name) === toLower(curr) ? curr : prev;
 	    }, null);
 	}
-
+	
 	function normalizeName(name) {
-
+	
 	    if (/[^a-z0-9\-#$%&'*+.\^_`|~]/i.test(name)) {
 	        throw new TypeError('Invalid character in header field name');
 	    }
-
+	
 	    return trim(name);
 	}
-
+	
 	/**
 	 * HTTP Response.
 	 */
-
+	
 	var Response = function () {
 	    function Response(body, _ref) {
 	        var url = _ref.url;
@@ -14300,131 +14502,131 @@ webpackJsonp([0,1],[
 	        var status = _ref.status;
 	        var statusText = _ref.statusText;
 	        classCallCheck(this, Response);
-
-
+	
+	
 	        this.url = url;
 	        this.ok = status >= 200 && status < 300;
 	        this.status = status || 0;
 	        this.statusText = statusText || '';
 	        this.headers = new Headers(headers);
 	        this.body = body;
-
+	
 	        if (isString(body)) {
-
+	
 	            this.bodyText = body;
 	        } else if (isBlob(body)) {
-
+	
 	            this.bodyBlob = body;
-
+	
 	            if (isBlobText(body)) {
 	                this.bodyText = blobText(body);
 	            }
 	        }
 	    }
-
+	
 	    Response.prototype.blob = function blob() {
 	        return when(this.bodyBlob);
 	    };
-
+	
 	    Response.prototype.text = function text() {
 	        return when(this.bodyText);
 	    };
-
+	
 	    Response.prototype.json = function json() {
 	        return when(this.text(), function (text) {
 	            return JSON.parse(text);
 	        });
 	    };
-
+	
 	    return Response;
 	}();
-
+	
 	function blobText(body) {
 	    return new PromiseObj(function (resolve) {
-
+	
 	        var reader = new FileReader();
-
+	
 	        reader.readAsText(body);
 	        reader.onload = function () {
 	            resolve(reader.result);
 	        };
 	    });
 	}
-
+	
 	function isBlobText(body) {
 	    return body.type.indexOf('text') === 0 || body.type.indexOf('json') !== -1;
 	}
-
+	
 	/**
 	 * HTTP Request.
 	 */
-
+	
 	var Request = function () {
 	    function Request(options) {
 	        classCallCheck(this, Request);
-
-
+	
+	
 	        this.body = null;
 	        this.params = {};
-
+	
 	        assign(this, options, {
 	            method: toUpper(options.method || 'GET')
 	        });
-
+	
 	        if (!(this.headers instanceof Headers)) {
 	            this.headers = new Headers(this.headers);
 	        }
 	    }
-
+	
 	    Request.prototype.getUrl = function getUrl() {
 	        return Url(this);
 	    };
-
+	
 	    Request.prototype.getBody = function getBody() {
 	        return this.body;
 	    };
-
+	
 	    Request.prototype.respondWith = function respondWith(body, options) {
 	        return new Response(body, assign(options || {}, { url: this.getUrl() }));
 	    };
-
+	
 	    return Request;
 	}();
-
+	
 	/**
 	 * Service for sending network requests.
 	 */
-
+	
 	var CUSTOM_HEADERS = { 'X-Requested-With': 'XMLHttpRequest' };
 	var COMMON_HEADERS = { 'Accept': 'application/json, text/plain, */*' };
 	var JSON_CONTENT_TYPE = { 'Content-Type': 'application/json;charset=utf-8' };
-
+	
 	function Http(options) {
-
+	
 	    var self = this || {},
 	        client = Client(self.$vm);
-
+	
 	    defaults(options || {}, self.$options, Http.options);
-
+	
 	    Http.interceptors.forEach(function (handler) {
 	        client.use(handler);
 	    });
-
+	
 	    return client(new Request(options)).then(function (response) {
-
+	
 	        return response.ok ? response : PromiseObj.reject(response);
 	    }, function (response) {
-
+	
 	        if (response instanceof Error) {
 	            error(response);
 	        }
-
+	
 	        return PromiseObj.reject(response);
 	    });
 	}
-
+	
 	Http.options = {};
-
+	
 	Http.headers = {
 	    put: JSON_CONTENT_TYPE,
 	    post: JSON_CONTENT_TYPE,
@@ -14433,151 +14635,151 @@ webpackJsonp([0,1],[
 	    custom: CUSTOM_HEADERS,
 	    common: COMMON_HEADERS
 	};
-
+	
 	Http.interceptors = [before, timeout, method, body, jsonp, header, cors];
-
+	
 	['get', 'delete', 'head', 'jsonp'].forEach(function (method) {
-
+	
 	    Http[method] = function (url, options) {
 	        return this(assign(options || {}, { url: url, method: method }));
 	    };
 	});
-
+	
 	['post', 'put', 'patch'].forEach(function (method) {
-
+	
 	    Http[method] = function (url, body, options) {
 	        return this(assign(options || {}, { url: url, method: method, body: body }));
 	    };
 	});
-
+	
 	/**
 	 * Service for interacting with RESTful services.
 	 */
-
+	
 	function Resource(url, params, actions, options) {
-
+	
 	    var self = this || {},
 	        resource = {};
-
+	
 	    actions = assign({}, Resource.actions, actions);
-
+	
 	    each(actions, function (action, name) {
-
+	
 	        action = merge({ url: url, params: assign({}, params) }, options, action);
-
+	
 	        resource[name] = function () {
 	            return (self.$http || Http)(opts(action, arguments));
 	        };
 	    });
-
+	
 	    return resource;
 	}
-
+	
 	function opts(action, args) {
-
+	
 	    var options = assign({}, action),
 	        params = {},
 	        body;
-
+	
 	    switch (args.length) {
-
+	
 	        case 2:
-
+	
 	            params = args[0];
 	            body = args[1];
-
+	
 	            break;
-
+	
 	        case 1:
-
+	
 	            if (/^(POST|PUT|PATCH)$/i.test(options.method)) {
 	                body = args[0];
 	            } else {
 	                params = args[0];
 	            }
-
+	
 	            break;
-
+	
 	        case 0:
-
+	
 	            break;
-
+	
 	        default:
-
+	
 	            throw 'Expected up to 4 arguments [params, body], got ' + args.length + ' arguments';
 	    }
-
+	
 	    options.body = body;
 	    options.params = assign({}, options.params, params);
-
+	
 	    return options;
 	}
-
+	
 	Resource.actions = {
-
+	
 	    get: { method: 'GET' },
 	    save: { method: 'POST' },
 	    query: { method: 'GET' },
 	    update: { method: 'PUT' },
 	    remove: { method: 'DELETE' },
 	    delete: { method: 'DELETE' }
-
+	
 	};
-
+	
 	/**
 	 * Install plugin.
 	 */
-
+	
 	function plugin(Vue) {
-
+	
 	    if (plugin.installed) {
 	        return;
 	    }
-
+	
 	    Util(Vue);
-
+	
 	    Vue.url = Url;
 	    Vue.http = Http;
 	    Vue.resource = Resource;
 	    Vue.Promise = PromiseObj;
-
+	
 	    Object.defineProperties(Vue.prototype, {
-
+	
 	        $url: {
 	            get: function () {
 	                return options(Vue.url, this, this.$options.url);
 	            }
 	        },
-
+	
 	        $http: {
 	            get: function () {
 	                return options(Vue.http, this, this.$options.http);
 	            }
 	        },
-
+	
 	        $resource: {
 	            get: function () {
 	                return Vue.resource.bind(this);
 	            }
 	        },
-
+	
 	        $promise: {
 	            get: function () {
 	                var _this = this;
-
+	
 	                return function (executor) {
 	                    return new Vue.Promise(executor, _this);
 	                };
 	            }
 	        }
-
+	
 	    });
 	}
-
+	
 	if (typeof window !== 'undefined' && window.Vue) {
 	    window.Vue.use(plugin);
 	}
-
+	
 	module.exports = plugin;
 
 /***/ },
@@ -14608,7 +14810,7 @@ webpackJsonp([0,1],[
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "_v-64ebf024/home.vue"
+	  var id = "_v-47e1046c/home.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -14627,39 +14829,39 @@ webpackJsonp([0,1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-
+	
 	var _defineProperty2 = __webpack_require__(9);
-
+	
 	var _defineProperty3 = _interopRequireDefault(_defineProperty2);
-
+	
 	var _data = __webpack_require__(28);
-
+	
 	var _data2 = _interopRequireDefault(_data);
-
+	
 	var _server = __webpack_require__(30);
-
+	
 	var _search = __webpack_require__(32);
-
+	
 	var _search2 = _interopRequireDefault(_search);
-
+	
 	var _detail = __webpack_require__(106);
-
+	
 	var _detail2 = _interopRequireDefault(_detail);
-
+	
 	var _pagging = __webpack_require__(110);
-
+	
 	var _pagging2 = _interopRequireDefault(_pagging);
-
+	
 	var _load = __webpack_require__(114);
-
+	
 	var _load2 = _interopRequireDefault(_load);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	// <template>
 	// 	<div class="data-body">
 	// 		<div class="data-row">
@@ -14679,12 +14881,12 @@ webpackJsonp([0,1],[
 	//js
 	exports.default = {
 		name: 'home',
-
+	
 		components: { search: _search2.default, detail: _detail2.default, page: _pagging2.default, tableData: _data2.default, load: _load2.default },
-
+	
 		data: function data() {
 			var _ref;
-
+	
 			return _ref = {
 				name: 'home',
 				list: '',
@@ -14697,7 +14899,7 @@ webpackJsonp([0,1],[
 		created: function created() {
 			this.all = "";
 		},
-
+	
 		watch: {
 			'current': function current(newValue) {
 				this.list = this.all.slice((newValue - 1) * 10, newValue * 10);
@@ -14759,21 +14961,22 @@ webpackJsonp([0,1],[
 	// 	overflow: hidden;
 	// }
 	// </style>
+	/* generated by vue-loader */
 
 /***/ },
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-
+	
 	exports.__esModule = true;
-
+	
 	var _defineProperty = __webpack_require__(10);
-
+	
 	var _defineProperty2 = _interopRequireDefault(_defineProperty);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	exports.default = function (obj, key, value) {
 	  if (key in obj) {
 	    (0, _defineProperty2.default)(obj, key, {
@@ -14785,7 +14988,7 @@ webpackJsonp([0,1],[
 	  } else {
 	    obj[key] = value;
 	  }
-
+	
 	  return obj;
 	};
 
@@ -14822,7 +15025,7 @@ webpackJsonp([0,1],[
 	  , ctx       = __webpack_require__(16)
 	  , hide      = __webpack_require__(18)
 	  , PROTOTYPE = 'prototype';
-
+	
 	var $export = function(type, name, source){
 	  var IS_FORCED = type & $export.F
 	    , IS_GLOBAL = type & $export.G
@@ -14950,7 +15153,7 @@ webpackJsonp([0,1],[
 	  , IE8_DOM_DEFINE = __webpack_require__(22)
 	  , toPrimitive    = __webpack_require__(26)
 	  , dP             = Object.defineProperty;
-
+	
 	exports.f = __webpack_require__(23) ? Object.defineProperty : function defineProperty(O, P, Attributes){
 	  anObject(O);
 	  P = toPrimitive(P, true);
@@ -15079,7 +15282,7 @@ webpackJsonp([0,1],[
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "_v-231b021e/data.vue"
+	  var id = "_v-6a9567b3/data.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -15092,70 +15295,47 @@ webpackJsonp([0,1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-
+	
 	var _server = __webpack_require__(30);
-
+	
 	exports.default = {
-
+	
 		name: 'tableData',
-
+	
 		props: ['list', 'detailData', 'detail'],
-
-		data: function data() {
-			return {
-				time: ''
-			};
+	
+		events: {
+			'deleteId': function deleteId(id) {
+				this.list.$remove(id);
+			}
 		},
-
-
+	
 		methods: {
 			disDetail: function disDetail(data) {
 				this.detailData = data;
 				this.detail = false;
 			},
-			getMy: function getMy(id) {
-				var _this = this;
-
-				var admin = sessionStorage.getItem('admin');
-				(0, _server.post)('/update', 'admin=' + admin + '&_id=' + id).then(function (res) {
-					if (res.body.status === 0) {
-						var l = res.body.msg;
-					} else {
-						_this.$root.$emit('dropFn', '接单失败');
-					}
-				});
-			},
 			del: function del(value) {
-				var _this2 = this;
-
-				clearTimeout(this.time);
-				var con = '_id=' + value._id + '&no=' + value.no + '&tel=' + value.tel + '&name=' + value.name;
-				(0, _server.post)('/del', con).then(function (res) {
-					if (res.body.status === 0) {
-						(function () {
-							_this2.$root.$emit('dropFn', '删除成功了');
-							var self = _this2;
-							_this2.time = setTimeout(function () {
-								self.list.$remove(value);
-							}, 800);
-						})();
-					} else {
-						_this2.$root.$emit('dropFn', '可能失败了');
-						return;
-					}
-				});
+				this.$root.$emit('alertFn', '确定删除吗？');
+				this.$dispatch('child', ['delete', value]);
 			},
 			my: function my(id) {
-				console.log("this");
-				this.$root.$emit('alertFn', '你确定要处理这个订单吗？', this.getMy(id));
+				this.$root.$emit('alertFn', '你确定要接受这个订单吗？');
+				this.$dispatch('child', ['getMy', id]);
+			},
+			finish: function finish(id) {
+				this.$root.$emit('alertFn', '你处理好这个订单了吗？');
+				this.$dispatch('child', ['getMy', id]);
 			}
 		}
 	};
 	// </script>
+
+	/* generated by vue-loader */
 	// <template>
 	// 	<div class="data">
 	// 		<table class="table"> 
@@ -15188,7 +15368,7 @@ webpackJsonp([0,1],[
 	// 						<a href="javascript:void(0)" v-if="l.status == 0 && l.admin == 0">指派</a>
 	// 						<a href="javascript:void(0)" @click="del(l)">删除</a>
 	// 						<a href="javascript:void(0)" v-if="l.status == 1" @click="my(l._id)">我来处理</a>
-	// 						<a href="javascript:void(0)" v-if="l.status == 2 ">完成处理</a>
+	// 						<a href="javascript:void(0)" v-if="l.status == 2" @click="finish(l._id)">完成处理</a>
 	// 						<a href="javascript:void(0)" @click="disDetail(l)">
 	// 							详情
 	// 						</a>
@@ -15209,22 +15389,22 @@ webpackJsonp([0,1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
 	exports.login = login;
 	exports.post = post;
-
+	
 	var _vue = __webpack_require__(2);
-
+	
 	var _vue2 = _interopRequireDefault(_vue);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	var t = 'http://localhost:8080';
 	// let t = '';
-
+	
 	function login(accout, password) {
 		return _vue2.default.http.post(t + '/login', 'u=' + accout + '&p=' + password, {
 			credentials: true,
@@ -15233,7 +15413,7 @@ webpackJsonp([0,1],[
 			}
 		});
 	}
-
+	
 	function post(u, value) {
 		return _vue2.default.http.post(t + u, value, {
 			credentials: true,
@@ -15247,7 +15427,7 @@ webpackJsonp([0,1],[
 /* 31 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"data\">\n\t<table class=\"table\"> \n\t\t<thead>\n\t\t\t<tr>\n\t\t\t\t<th>序号</th>\n\t\t\t\t<th>学号</th>\n\t\t\t\t<th>姓名</th>\n\t\t\t\t<th>手机号码</th>\n\t\t\t\t<th>问题类型</th>\n\t\t\t\t<th>宿舍</th>\n\t\t\t\t<th>预约时间</th>\n\t\t\t\t<th>问题详情</th>\n\t\t\t\t<th>状态</th>\n\t\t\t\t<th>操作</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody v-if=\"list\" class=\"data-tbody\">\n\t\t\t<tr v-for=\"l in list \">\n\t\t\t\t<td>{{ $index + 1 }}</td>\n\t\t\t\t<td>{{ l.no }}</td>\n\t\t\t\t<td>{{ l.name }}</td>\n\t\t\t\t<td>{{ l.tel }}</td>\n\t\t\t\t<td>{{ l.type | problem }}</td>\n\t\t\t\t<td>{{ l.room }}</td>\n\t\t\t\t<td>{{ l.date | timeReturn }}</td>\n\t\t\t\t<td class=\"td-spe\"> {{ l.exp }}</td>\n\t\t\t\t<td>{{ l.status | numstatus }}</td>\n\t\t\t\t<td>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 0 && l.admin == 0\">指派</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" @click=\"del(l)\">删除</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 1\" @click=\"my(l._id)\">我来处理</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 2 \">完成处理</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" @click=\"disDetail(l)\">\n\t\t\t\t\t\t详情\n\t\t\t\t\t</a>\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n\t<div class=\"txc\" v-show=\"list.length == 0\">\n\t\t无数据\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"data\">\n\t<table class=\"table\"> \n\t\t<thead>\n\t\t\t<tr>\n\t\t\t\t<th>序号</th>\n\t\t\t\t<th>学号</th>\n\t\t\t\t<th>姓名</th>\n\t\t\t\t<th>手机号码</th>\n\t\t\t\t<th>问题类型</th>\n\t\t\t\t<th>宿舍</th>\n\t\t\t\t<th>预约时间</th>\n\t\t\t\t<th>问题详情</th>\n\t\t\t\t<th>状态</th>\n\t\t\t\t<th>操作</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody v-if=\"list\" class=\"data-tbody\">\n\t\t\t<tr v-for=\"l in list \">\n\t\t\t\t<td>{{ $index + 1 }}</td>\n\t\t\t\t<td>{{ l.no }}</td>\n\t\t\t\t<td>{{ l.name }}</td>\n\t\t\t\t<td>{{ l.tel }}</td>\n\t\t\t\t<td>{{ l.type | problem }}</td>\n\t\t\t\t<td>{{ l.room }}</td>\n\t\t\t\t<td>{{ l.date | timeReturn }}</td>\n\t\t\t\t<td class=\"td-spe\"> {{ l.exp }}</td>\n\t\t\t\t<td>{{ l.status | numstatus }}</td>\n\t\t\t\t<td>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 0 && l.admin == 0\">指派</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" @click=\"del(l)\">删除</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 1\" @click=\"my(l._id)\">我来处理</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 2\" @click=\"finish(l._id)\">完成处理</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" @click=\"disDetail(l)\">\n\t\t\t\t\t\t详情\n\t\t\t\t\t</a>\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n\t<div class=\"txc\" v-show=\"list.length == 0\">\n\t\t无数据\n\t</div>\n</div>\n";
 
 /***/ },
 /* 32 */
@@ -15277,7 +15457,7 @@ webpackJsonp([0,1],[
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "_v-7251ca77/search.vue"
+	  var id = "_v-9a48c116/search.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -15296,27 +15476,27 @@ webpackJsonp([0,1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
+	
 	var _select = __webpack_require__(35);
-
+	
 	var _select2 = _interopRequireDefault(_select);
-
+	
 	var _room = __webpack_require__(43);
-
+	
 	var _room2 = _interopRequireDefault(_room);
-
+	
 	var _flatpickr = __webpack_require__(44);
-
+	
 	var _flatpickr2 = _interopRequireDefault(_flatpickr);
-
+	
 	var _server = __webpack_require__(30);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	// <template>
 	// 	<div class="search-body">
 	// 		<div class="line">
@@ -15384,10 +15564,10 @@ webpackJsonp([0,1],[
 	// </template>
 	//
 	// <script>
-
+	
 	exports.default = {
 	  name: 'search',
-
+	
 	  data: function data() {
 	    return {
 	      name: 'search',
@@ -15412,15 +15592,15 @@ webpackJsonp([0,1],[
 	      }
 	    };
 	  },
-
-
+	
+	
 	  components: {
 	    sel: _select2.default,
 	    flatpickr: _flatpickr2.default
 	  },
-
+	
 	  props: ['list'],
-
+	
 	  methods: {
 	    getTime: getTime,
 	    searchData: function searchData() {
@@ -15457,7 +15637,7 @@ webpackJsonp([0,1],[
 	    },
 	    getData: function getData(data) {
 	      var _this = this;
-
+	
 	      if (!data) data = null;
 	      (0, _server.post)('/data', data).then(function (res) {
 	        _this.list = "";
@@ -15465,14 +15645,12 @@ webpackJsonp([0,1],[
 	          case 0:
 	            _this.list = res.body.msg;
 	            break;
-	          case 4:
-	            _this.$root.$emit('dropFn', '权限不够，你干了什么？');
-	            break;
 	          case 3:
 	            _this.$root.$emit('dropFn', '连接服务器失败？？');
 	            break;
+	          case 4:
 	          case 5:
-	            _this.$root.$emit('backLogin', res.body);
+	            _this.$root.$emit('backLogin');
 	            _this.list = [];
 	            break;
 	        }
@@ -15481,11 +15659,11 @@ webpackJsonp([0,1],[
 	    }
 	  },
 	  created: function created() {
-	    this.getData();
+	    this.getData('grade=' + sessionStorage.getItem('user'));
 	  }
 	};
-
-
+	
+	
 	function getTime(value) {
 	  var time = new Date(value);
 	  return time.getTime();
@@ -15513,6 +15691,7 @@ webpackJsonp([0,1],[
 	//
 	// }
 	// </style>
+	/* generated by vue-loader */
 
 /***/ },
 /* 35 */
@@ -15542,7 +15721,7 @@ webpackJsonp([0,1],[
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "_v-a81bc8fa/select.vue"
+	  var id = "_v-aa044876/select.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -15561,26 +15740,26 @@ webpackJsonp([0,1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-
+	
 	var _mask = __webpack_require__(38);
-
+	
 	var _mask2 = _interopRequireDefault(_mask);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	exports.default = {
 		name: '',
-
+	
 		props: ['selectdata', 'pla', 'currentData', 'currentValue', 'ulClass', 'show'],
-
+	
 		components: {
 			mask: _mask2.default
 		},
-
+	
 		methods: {
 			getData: function getData(index) {
 				var i = index;
@@ -15613,6 +15792,7 @@ webpackJsonp([0,1],[
 	// 	}
 	// }
 	// </style>
+	/* generated by vue-loader */
 	// <template>
 	// 	<input type="text" class="input-input large-input" placeholder="{{ pla }}" readonly="readonly" v-model="currentValue" @click="display">
 	// 	<ul class="select-list txc large-input" v-show='show' :class="{ scroll : selectdata.length > 20}">
@@ -15654,7 +15834,7 @@ webpackJsonp([0,1],[
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "_v-d795b59a/mask.vue"
+	  var id = "_v-10580df5/mask.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -15673,7 +15853,7 @@ webpackJsonp([0,1],[
 /***/ function(module, exports) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
@@ -15682,12 +15862,12 @@ webpackJsonp([0,1],[
 	// </template>
 	//
 	// <script>
-
+	
 	exports.default = {
 		name: 'vue',
-
+	
 		props: ['show'],
-
+	
 		methods: {}
 	};
 	// </script>
@@ -15703,6 +15883,7 @@ webpackJsonp([0,1],[
 	// 	z-index: 99;
 	// }
 	// </style>
+	/* generated by vue-loader */
 
 /***/ },
 /* 41 */
@@ -15882,7 +16063,7 @@ webpackJsonp([0,1],[
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "_v-4ddd6999/flatpickr.vue"
+	  var id = "_v-94f2e84a/flatpickr.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -15895,17 +16076,17 @@ webpackJsonp([0,1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
+	
 	var _flatpickrZh = __webpack_require__(46);
-
+	
 	var _flatpickrZh2 = _interopRequireDefault(_flatpickrZh);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	exports.default = {
 	  props: {
 	    options: {
@@ -15917,7 +16098,7 @@ webpackJsonp([0,1],[
 	      handler: function handler() {
 	        this.newFlatpickr();
 	      },
-
+	
 	      deep: true
 	    }
 	  },
@@ -15929,6 +16110,8 @@ webpackJsonp([0,1],[
 	  }
 	};
 	// </script>
+
+	/* generated by vue-loader */
 	// <template>
 	//   <input type="text">
 	// </template>
@@ -15940,47 +16123,47 @@ webpackJsonp([0,1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-
+	
 	var _defineProperty = __webpack_require__(10);
-
+	
 	var _defineProperty2 = _interopRequireDefault(_defineProperty);
-
+	
 	var _keys = __webpack_require__(47);
-
+	
 	var _keys2 = _interopRequireDefault(_keys);
-
+	
 	var _iterator = __webpack_require__(67);
-
+	
 	var _iterator2 = _interopRequireDefault(_iterator);
-
+	
 	var _typeof3 = __webpack_require__(87);
-
+	
 	var _typeof4 = _interopRequireDefault(_typeof3);
-
+	
 	var _symbol = __webpack_require__(88);
-
+	
 	var _symbol2 = _interopRequireDefault(_symbol);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	var _typeof = typeof _symbol2.default === "function" && (0, _typeof4.default)(_iterator2.default) === "symbol" ? function (obj) {
 		return typeof obj === "undefined" ? "undefined" : (0, _typeof4.default)(obj);
 	} : function (obj) {
 		return obj && typeof _symbol2.default === "function" && obj.constructor === _symbol2.default ? "symbol" : typeof obj === "undefined" ? "undefined" : (0, _typeof4.default)(obj);
 	};
-
+	
 	var flatpickr = function flatpickr(selector, config) {
 		var elements = void 0;
-
+	
 		var createInstance = function createInstance(element) {
 			if (element._flatpickr) {
 				element._flatpickr.destroy();
 			}
-
+	
 			element._flatpickr = new flatpickr.init(element, config);
 			return element._flatpickr;
 		};
-
+	
 		if (selector.nodeName) {
 			return createInstance(selector);
 		}
@@ -15996,17 +16179,17 @@ webpackJsonp([0,1],[
 			} else {
 				elements = document.querySelectorAll(selector);
 			}
-
+	
 		var instances = [];
-
+	
 		for (var i = 0; i < elements.length; i++) {
 			instances.push(createInstance(elements[i]));
 		}
-
+	
 		if (instances.length === 1) {
 			return instances[0];
 		}
-
+	
 		return {
 			calendars: instances,
 			byID: function byID(id) {
@@ -16014,41 +16197,41 @@ webpackJsonp([0,1],[
 			}
 		};
 	};
-
+	
 	/**
 	 * @constructor
 	 */
 	flatpickr.init = function (element, instanceConfig) {
 		function createElement(tag, className, content) {
 			var newElement = document.createElement(tag);
-
+	
 			if (content) {
 				newElement.textContent = content;
 			}
-
+	
 			if (className) {
 				newElement.className = className;
 			}
-
+	
 			return newElement;
 		}
-
+	
 		var debounce = function debounce(func, wait, immediate) {
 			var timeout = void 0;
 			return function () {
 				for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
 					args[_key] = arguments[_key];
 				}
-
+	
 				var context = this;
-
+	
 				var later = function later() {
 					timeout = null;
 					if (!immediate) {
 						func.apply(context, args);
 					}
 				};
-
+	
 				clearTimeout(timeout);
 				timeout = setTimeout(later, wait);
 				if (immediate && !timeout) {
@@ -16056,7 +16239,7 @@ webpackJsonp([0,1],[
 				}
 			};
 		};
-
+	
 		// functions
 		var self = this;
 		var parseConfig = void 0,
@@ -16088,7 +16271,7 @@ webpackJsonp([0,1],[
 		    getRandomCalendarIdStr = void 0,
 		    bind = void 0,
 		    triggerChange = void 0;
-
+	
 		// elements & variables
 		var calendarContainer = void 0,
 		    weekdayContainer = void 0,
@@ -16104,229 +16287,229 @@ webpackJsonp([0,1],[
 		    now = new Date(),
 		    wrapperElement = void 0,
 		    clickEvt = void 0;
-
+	
 		self.formats = {
 			// weekday name, short, e.g. Thu
 			D: function D() {
 				return self.l10n.weekdays.shorthand[self.formats.w()];
 			},
-
+	
 			// full month name e.g. January
 			F: function F() {
 				return monthToStr(self.formats.n() - 1, false);
 			},
-
+	
 			// hours with leading zero e.g. 03
 			H: function H() {
 				return pad(self.selectedDateObj.getHours());
 			},
-
+	
 			// day (1-30) with ordinal suffix e.g. 1st, 2nd
 			J: function J() {
 				return self.formats.j() + self.l10n.ordinal(self.formats.j());
 			},
-
+	
 			// AM/PM
 			K: function K() {
 				return self.selectedDateObj.getHours() > 11 ? "PM" : "AM";
 			},
-
+	
 			// shorthand month e.g. Jan, Sep, Oct, etc
 			M: function M() {
 				return monthToStr(self.formats.n() - 1, true);
 			},
-
+	
 			// seconds 00-59
 			S: function S() {
 				return pad(self.selectedDateObj.getSeconds());
 			},
-
+	
 			// unix timestamp
 			U: function U() {
 				return self.selectedDateObj.getTime() / 1000;
 			},
-
+	
 			// full year e.g. 2016
 			Y: function Y() {
 				return self.selectedDateObj.getFullYear();
 			},
-
+	
 			// day in month, padded (01-30)
 			d: function d() {
 				return pad(self.formats.j());
 			},
-
+	
 			// hour from 1-12 (am/pm)
 			h: function h() {
 				return self.selectedDateObj.getHours() % 12 ? self.selectedDateObj.getHours() % 12 : 12;
 			},
-
+	
 			// minutes, padded with leading zero e.g. 09
 			i: function i() {
 				return pad(self.selectedDateObj.getMinutes());
 			},
-
+	
 			// day in month (1-30)
 			j: function j() {
 				return self.selectedDateObj.getDate();
 			},
-
+	
 			// weekday name, full, e.g. Thursday
 			l: function l() {
 				return self.l10n.weekdays.longhand[self.formats.w()];
 			},
-
+	
 			// padded month number (01-12)
 			m: function m() {
 				return pad(self.formats.n());
 			},
-
+	
 			// the month number (1-12)
 			n: function n() {
 				return self.selectedDateObj.getMonth() + 1;
 			},
-
+	
 			// seconds 0-59
 			s: function s() {
 				return self.selectedDateObj.getSeconds();
 			},
-
+	
 			// number of the day of the week
 			w: function w() {
 				return self.selectedDateObj.getDay();
 			},
-
+	
 			// last two digits of year e.g. 16 for 2016
 			y: function y() {
 				return String(self.formats.Y()).substring(2);
 			}
 		};
-
+	
 		self.defaultConfig = {
 			/* if true, dates will be parsed, formatted, and displayed in UTC.
 	  preloading date strings w/ timezones is recommended but not necessary */
 			utc: false,
-
+	
 			// wrap: see https://chmln.github.io/flatpickr/#strap
 			wrap: false,
-
+	
 			// enables week numbers
 			weekNumbers: false,
-
+	
 			allowInput: false,
-
+	
 			/*
 	  	clicking on input opens the date(time)picker.
 	  	disable if you wish to open the calendar manually with .open()
 	  */
 			clickOpens: true,
-
+	
 			// display time picker in 24 hour mode
 			time_24hr: false,
-
+	
 			// enables the time picker functionality
 			enableTime: false,
-
+	
 			// noCalendar: true will hide the calendar. use for a time picker along w/ enableTime
 			noCalendar: false,
-
+	
 			// more date format chars at https://chmln.github.io/flatpickr/#dateformat
 			dateFormat: "Y-m-d",
-
+	
 			// altInput - see https://chmln.github.io/flatpickr/#altinput
 			altInput: false,
-
+	
 			// the created altInput element will have this class.
 			altInputClass: "",
-
+	
 			// same as dateFormat, but for altInput
 			altFormat: "F j, Y", // defaults to e.g. June 10, 2016
-
+	
 			// defaultDate - either a datestring or a date object. used for datetimepicker"s initial value
 			defaultDate: null,
-
+	
 			// the minimum date that user can pick (inclusive)
 			minDate: null,
-
+	
 			// the maximum date that user can pick (inclusive)
 			maxDate: null,
-
+	
 			// dateparser that transforms a given string to a date object
 			parseDate: null,
-
+	
 			// see https://chmln.github.io/flatpickr/#disable
 			enable: [],
-
+	
 			// see https://chmln.github.io/flatpickr/#disable
 			disable: [],
-
+	
 			// display the short version of month names - e.g. Sep instead of September
 			shorthandCurrentMonth: false,
-
+	
 			// displays calendar inline. see https://chmln.github.io/flatpickr/#inline-calendar
 			inline: false,
-
+	
 			// position calendar inside wrapper and next to the input element
 			// leave at false unless you know what you"re doing
 			static: false,
-
+	
 			// code for previous/next icons. this is where you put your custom icon code e.g. fontawesome
 			prevArrow: "&lt;",
 			nextArrow: "&gt;",
-
+	
 			// enables seconds in the time picker
 			enableSeconds: false,
-
+	
 			// step size used when scrolling/incrementing the hour element
 			hourIncrement: 1,
-
+	
 			// step size used when scrolling/incrementing the minute element
 			minuteIncrement: 5,
-
+	
 			// onChange callback when user selects a date or time
 			onChange: null, // function (dateObj, dateStr) {}
-
+	
 			// called every time calendar is opened
 			onOpen: null, // function (dateObj, dateStr) {}
-
+	
 			// called every time calendar is closed
 			onClose: null, // function (dateObj, dateStr) {}
-
+	
 			onValueUpdate: null,
-
+	
 			lang: 'en'
 		};
-
+	
 		init = function init() {
 			instanceConfig = instanceConfig || {};
-
+	
 			self.element = element;
-
+	
 			parseConfig();
-
+	
 			self.input = self.config.wrap ? element.querySelector("[data-input]") : element;
 			self.input.classList.add("flatpickr-input");
-
+	
 			if (self.config.defaultDate) {
 				self.config.defaultDate = uDate(self.config.defaultDate);
 			}
-
+	
 			if (self.input.value || self.config.defaultDate) {
 				self.selectedDateObj = uDate(self.config.defaultDate || self.input.value);
 			}
-
+	
 			wrap();
 			buildCalendar();
 			bind();
-
+	
 			self.uDate = uDate;
 			self.jumpToDate();
 			updateValue();
 		};
-
+	
 		parseConfig = function parseConfig() {
 			self.config = {};
-
+	
 			(0, _keys2.default)(self.defaultConfig).forEach(function (key) {
 				if (instanceConfig.hasOwnProperty(key)) {
 					self.config[key] = instanceConfig[key];
@@ -16337,11 +16520,11 @@ webpackJsonp([0,1],[
 				} else {
 					self.config[key] = flatpickr.init.prototype.defaultConfig[key] || self.defaultConfig[key];
 				}
-
+	
 				if (typeof self.defaultConfig[key] === "boolean") {
 					self.config[key] = self.config[key] === true || self.config[key] === "" || self.config[key] === "true";
 				}
-
+	
 				if (key === "enableTime" && self.config[key]) {
 					self.defaultConfig.dateFormat = !self.config.time_24hr ? "Y-m-d h:i K" : "Y-m-d H:i";
 					self.defaultConfig.altFormat = !self.config.time_24hr ? "F j Y, h:i K" : "F j, Y H:i";
@@ -16351,7 +16534,7 @@ webpackJsonp([0,1],[
 				}
 			});
 		};
-
+	
 		getRandomCalendarIdStr = function getRandomCalendarIdStr() {
 			var randNum = void 0,
 			    idStr = void 0;
@@ -16359,19 +16542,19 @@ webpackJsonp([0,1],[
 				randNum = Math.round(Math.random() * Math.pow(10, 10));
 				idStr = "flatpickr-" + randNum;
 			} while (document.getElementById(idStr) !== null);
-
+	
 			return idStr;
 		};
-
+	
 		uDate = function uDate(date, timeless) {
 			timeless = timeless || false;
-
+	
 			if (date === "today") {
 				date = new Date();
 				timeless = true;
 			} else if (typeof date === "string") {
 				date = date.trim();
-
+	
 				if (self.config.parseDate) {
 					date = self.config.parseDate(date);
 				} else if (/^\d\d\d\d\-\d{1,2}\-\d\d$/.test(date)) {
@@ -16386,7 +16569,7 @@ webpackJsonp([0,1],[
 					// time-only picker
 					var matches = date.match(/^(\d?\d):(\d\d)(:(\d\d))?/),
 					    seconds = matches[4] !== undefined ? matches[4] : 0;
-
+	
 					date = new Date();
 					date.setHours(matches[1], matches[2], seconds, 0);
 				} else {
@@ -16394,34 +16577,34 @@ webpackJsonp([0,1],[
 					console.info(self.element);
 				}
 			}
-
+	
 			if (!(date instanceof Date) || !date.getTime()) {
 				return null;
 			}
-
+	
 			if (self.config.utc && !date.fp_isUTC) {
 				date = date.fp_toUTC();
 			}
-
+	
 			if (timeless) {
 				date.setHours(0, 0, 0, 0);
 			}
-
+	
 			return date;
 		};
-
+	
 		equalDates = function equalDates(date1, date2) {
 			return date1.getDate() === date2.getDate() && date1.getMonth() === date2.getMonth() && date1.getFullYear() === date2.getFullYear();
 		};
-
+	
 		wrap = function wrap() {
 			wrapperElement = createElement("div", "flatpickr-wrapper");
-
+	
 			if (self.config.inline || self.config.static) {
 				// Wrap input and place calendar underneath
 				self.element.parentNode.insertBefore(wrapperElement, self.element);
 				wrapperElement.appendChild(self.element);
-
+	
 				wrapperElement.classList.add(self.config.inline ? "inline" : "static");
 			} else {
 				// Insert at bottom of BODY tag to display outside
@@ -16429,30 +16612,30 @@ webpackJsonp([0,1],[
 				// property set.
 				document.body.appendChild(wrapperElement);
 			}
-
+	
 			if (self.config.altInput) {
 				// replicate self.element
 				self.altInput = createElement(self.input.nodeName, self.config.altInputClass + " flatpickr-input");
 				self.altInput.placeholder = self.input.placeholder;
 				self.altInput.type = "text";
-
+	
 				self.input.type = "hidden";
 				self.input.parentNode.insertBefore(self.altInput, self.input.nextSibling);
 			}
 		};
-
+	
 		getDaysinMonth = function getDaysinMonth() {
 			var month = arguments.length <= 0 || arguments[0] === undefined ? self.currentMonth : arguments[0];
-
+	
 			var yr = self.currentYear;
-
+	
 			if (month === 1 && (yr % 4 === 0 && yr % 100 !== 0 || yr % 400 === 0)) {
 				return 29;
 			}
-
+	
 			return self.l10n.daysInMonth[month];
 		};
-
+	
 		updateValue = function updateValue(e) {
 			if (self.config.noCalendar && !self.selectedDateObj) {
 				// picking time only and method triggered from picker
@@ -16460,68 +16643,68 @@ webpackJsonp([0,1],[
 			} else if (!self.selectedDateObj) {
 				return;
 			}
-
+	
 			if (e) {
 				e.target.blur();
 			}
-
+	
 			var timeHasChanged = void 0;
-
+	
 			if (self.config.enableTime) {
 				var previousTimestamp = self.selectedDateObj.getTime();
-
+	
 				// update time
 				var hours = parseInt(self.hourElement.value, 10) || 0,
 				    seconds = void 0;
-
+	
 				var minutes = (60 + (parseInt(self.minuteElement.value, 10) || 0)) % 60;
-
+	
 				if (self.config.enableSeconds) {
 					seconds = (60 + parseInt(self.secondElement.value, 10) || 0) % 60;
 				}
-
+	
 				if (!self.config.time_24hr) {
 					// the real number of hours for the date object
 					hours = hours % 12 + 12 * (self.amPM.innerHTML === "PM");
 				}
-
+	
 				self.selectedDateObj.setHours(hours, minutes, seconds === undefined ? self.selectedDateObj.getSeconds() : seconds);
-
+	
 				self.hourElement.value = pad(!self.config.time_24hr ? (12 + hours) % 12 + 12 * (hours % 12 === 0) : hours);
 				self.minuteElement.value = pad(minutes);
-
+	
 				if (seconds !== undefined) {
 					self.secondElement.value = pad(seconds);
 				}
-
+	
 				timeHasChanged = self.selectedDateObj.getTime() !== previousTimestamp;
 			}
-
+	
 			self.input.value = self.formatDate(self.config.dateFormat); // change value
 			self.input.focus();
 			self.input.blur();
-
+	
 			if (self.altInput) {
 				self.altInput.value = self.formatDate(self.config.altFormat);
 			}
-
+	
 			if (e && (timeHasChanged || e.target.classList.contains("flatpickr-day"))) {
 				triggerChange();
 			}
-
+	
 			if (self.config.onValueUpdate) {
 				self.config.onValueUpdate(self.selectedDateObj, self.input.value, self);
 			}
 		};
-
+	
 		pad = function pad(num) {
 			return ("0" + num).slice(-2);
 		};
-
+	
 		self.formatDate = function (dateFormat) {
 			var formattedDate = "";
 			var formatPieces = dateFormat.split("");
-
+	
 			for (var i = 0; i < formatPieces.length; i++) {
 				var c = formatPieces[i];
 				if (self.formats.hasOwnProperty(c) && formatPieces[i - 1] !== "\\") {
@@ -16530,33 +16713,33 @@ webpackJsonp([0,1],[
 					formattedDate += c;
 				}
 			}
-
+	
 			return formattedDate;
 		};
-
+	
 		monthToStr = function monthToStr(date, shorthand) {
 			if (shorthand || self.config.shorthandCurrentMonth) {
 				return self.l10n.months.shorthand[date];
 			}
-
+	
 			return self.l10n.months.longhand[date];
 		};
-
+	
 		isEnabled = function isEnabled(dateToCheck) {
 			if (self.config.minDate && dateToCheck < self.config.minDate || self.config.maxDate && dateToCheck > self.config.maxDate) {
 				return false;
 			}
-
+	
 			dateToCheck = uDate(dateToCheck, true); // timeless
-
+	
 			var bool = self.config.enable.length > 0,
 			    array = bool ? self.config.enable : self.config.disable;
-
+	
 			var d = void 0;
-
+	
 			for (var i = 0; i < array.length; i++) {
 				d = array[i];
-
+	
 				if (d instanceof Function && d(dateToCheck)) {
 					// disabled by function
 					return bool;
@@ -16571,75 +16754,75 @@ webpackJsonp([0,1],[
 					return bool;
 				}
 			}
-
+	
 			return !bool;
 		};
-
+	
 		yearScroll = function yearScroll(event) {
 			event.preventDefault();
-
+	
 			var delta = Math.max(-1, Math.min(1, event.wheelDelta || -event.deltaY));
 			self.currentYear = event.target.value = parseInt(event.target.value, 10) + delta;
 			self.redraw();
 		};
-
+	
 		timeWrapper = function timeWrapper(e) {
 			e.preventDefault();
-
+	
 			var min = parseInt(e.target.min, 10),
 			    max = parseInt(e.target.max, 10),
 			    step = parseInt(e.target.step, 10),
 			    value = parseInt(e.target.value, 10);
-
+	
 			var newValue = value;
-
+	
 			if (e.type === "wheel") {
 				newValue = value + step * Math.max(-1, Math.min(1, e.wheelDelta || -e.deltaY));
 			}
-
+	
 			if (newValue <= min) {
 				newValue = max - step;
 			} else if (newValue >= max) {
 				newValue = min + step;
 			}
-
+	
 			e.target.value = pad(newValue);
 		};
-
+	
 		updateNavigationCurrentMonth = function updateNavigationCurrentMonth() {
 			currentMonthElement.textContent = monthToStr(self.currentMonth) + " ";
 			currentYearElement.value = self.currentYear;
 		};
-
+	
 		handleYearChange = function handleYearChange() {
 			if (self.currentMonth < 0 || self.currentMonth > 11) {
 				self.currentYear += self.currentMonth % 11;
 				self.currentMonth = (self.currentMonth + 12) % 12;
 			}
 		};
-
+	
 		documentClick = function documentClick(e) {
 			var isCalendarElement = wrapperElement.contains(e.relatedTarget || e.target),
 			    isInput = self.element.contains(e.relatedTarget || e.target) || e.relatedTarget || e.target === self.altInput;
-
+	
 			if (self.isOpen && !isCalendarElement && !isInput) {
 				self.close();
 			}
 		};
-
+	
 		changeMonth = function changeMonth(offset) {
 			self.currentMonth += offset;
-
+	
 			handleYearChange();
 			updateNavigationCurrentMonth();
 			buildDays();
 			(self.config.noCalendar ? timeContainer : calendar).focus();
 		};
-
+	
 		selectDate = function selectDate(e) {
 			e.preventDefault();
 			e.stopPropagation();
-
+	
 			if (self.config.allowInput && e.target === (self.altInput || self.input) && e.which === 13) {
 				self.setDate((self.altInput || self.input).value);
 				self.redraw();
@@ -16647,226 +16830,226 @@ webpackJsonp([0,1],[
 				var isPrevMonthDay = e.target.classList.contains("prevMonthDay"),
 				    isNextMonthDay = e.target.classList.contains("nextMonthDay"),
 				    monthNum = self.currentMonth - isPrevMonthDay + isNextMonthDay;
-
+	
 				if (isPrevMonthDay || isNextMonthDay) {
 					changeMonth(+isNextMonthDay - isPrevMonthDay);
 				}
-
+	
 				self.selectedDateObj = new Date(self.currentYear, monthNum, e.target.innerHTML);
-
+	
 				updateValue(e);
 				buildDays();
-
+	
 				if (!self.config.enableTime) {
 					self.close();
 				}
 			}
 		};
-
+	
 		buildCalendar = function buildCalendar() {
 			calendarContainer = createElement("div", "flatpickr-calendar");
 			calendarContainer.id = getRandomCalendarIdStr();
-
+	
 			calendar = createElement("div", "flatpickr-days");
 			calendar.tabIndex = -1;
-
+	
 			if (!self.config.noCalendar) {
 				buildMonthNavigation();
 				buildWeekdays();
-
+	
 				if (self.config.weekNumbers) {
 					buildWeeks();
 				}
-
+	
 				buildDays();
-
+	
 				calendarContainer.appendChild(calendar);
 			}
-
+	
 			wrapperElement.appendChild(calendarContainer);
-
+	
 			if (self.config.enableTime) {
 				buildTime();
 			}
 		};
-
+	
 		buildMonthNavigation = function buildMonthNavigation() {
 			monthsNav = createElement("div", "flatpickr-month");
-
+	
 			prevMonthNav = createElement("span", "flatpickr-prev-month");
 			prevMonthNav.innerHTML = self.config.prevArrow;
-
+	
 			currentMonthElement = createElement("span", "cur_month");
-
+	
 			currentYearElement = createElement("input", "cur_year");
 			currentYearElement.type = "number";
 			currentYearElement.title = self.l10n.scrollTitle;
-
+	
 			nextMonthNav = createElement("span", "flatpickr-next-month");
 			nextMonthNav.innerHTML = self.config.nextArrow;
-
+	
 			navigationCurrentMonth = createElement("span", "flatpickr-current-month");
 			navigationCurrentMonth.appendChild(currentMonthElement);
 			navigationCurrentMonth.appendChild(currentYearElement);
-
+	
 			monthsNav.appendChild(prevMonthNav);
 			monthsNav.appendChild(navigationCurrentMonth);
 			monthsNav.appendChild(nextMonthNav);
-
+	
 			calendarContainer.appendChild(monthsNav);
 			updateNavigationCurrentMonth();
 		};
-
+	
 		buildWeekdays = function buildWeekdays() {
 			weekdayContainer = createElement("div", "flatpickr-weekdays");
 			var firstDayOfWeek = self.l10n.firstDayOfWeek;
-
+	
 			var weekdays = self.l10n.weekdays.shorthand.slice();
-
+	
 			if (firstDayOfWeek > 0 && firstDayOfWeek < weekdays.length) {
 				weekdays = [].concat(weekdays.splice(firstDayOfWeek, weekdays.length), weekdays.splice(0, firstDayOfWeek));
 			}
-
+	
 			if (self.config.weekNumbers) {
 				weekdayContainer.innerHTML = "<span>" + self.l10n.weekAbbreviation + "</span>";
 			}
-
+	
 			weekdayContainer.innerHTML += "<span>" + weekdays.join("</span><span>") + "</span>";
-
+	
 			calendarContainer.appendChild(weekdayContainer);
 		};
-
+	
 		buildWeeks = function buildWeeks() {
 			calendarContainer.classList.add("hasWeeks");
-
+	
 			weekNumbers = createElement("div", "flatpickr-weeks");
 			calendarContainer.appendChild(weekNumbers);
 		};
-
+	
 		buildDays = function buildDays() {
 			var firstOfMonth = (new Date(self.currentYear, self.currentMonth, 1).getDay() - self.l10n.firstDayOfWeek + 7) % 7,
 			    daysInMonth = getDaysinMonth(),
 			    prevMonthDays = getDaysinMonth((self.currentMonth - 1 + 12) % 12),
 			    days = document.createDocumentFragment();
-
+	
 			var dayNumber = prevMonthDays + 1 - firstOfMonth,
 			    currentDate = void 0,
 			    dateIsDisabled = void 0;
-
+	
 			if (self.config.weekNumbers) {
 				weekNumbers.innerHTML = "";
 			}
-
+	
 			calendar.innerHTML = "";
-
+	
 			self.config.minDate = uDate(self.config.minDate, true);
 			self.config.maxDate = uDate(self.config.maxDate, true);
-
+	
 			// prepend days from the ending of previous month
 			for (; dayNumber <= prevMonthDays; dayNumber++) {
 				var curDate = new Date(self.currentYear, self.currentMonth - 1, dayNumber, 0, 0, 0, 0, 0),
 				    dateIsEnabled = isEnabled(curDate),
 				    dayElem = createElement("span", dateIsEnabled ? "flatpickr-day prevMonthDay" : "disabled", dayNumber);
-
+	
 				if (dateIsEnabled) {
 					dayElem.tabIndex = 0;
 				}
-
+	
 				days.appendChild(dayElem);
 			}
-
+	
 			// Start at 1 since there is no 0th day
 			for (dayNumber = 1; dayNumber <= daysInMonth; dayNumber++) {
 				currentDate = new Date(self.currentYear, self.currentMonth, dayNumber, 0, 0, 0, 0, 0);
-
+	
 				if (self.config.weekNumbers && dayNumber % 7 === 1) {
 					weekNumbers.appendChild(createElement("span", "disabled flatpickr-day", currentDate.fp_getWeek()));
 				}
-
+	
 				dateIsDisabled = !isEnabled(currentDate);
-
+	
 				var dayElement = createElement("span", dateIsDisabled ? "disabled" : "flatpickr-day", dayNumber);
-
+	
 				if (!dateIsDisabled) {
 					dayElement.tabIndex = 0;
-
+	
 					if (equalDates(currentDate, now)) {
 						dayElement.classList.add("today");
 					}
-
+	
 					if (self.selectedDateObj && equalDates(currentDate, self.selectedDateObj)) {
 						dayElement.classList.add("selected");
 					}
 				}
-
+	
 				days.appendChild(dayElement);
 			}
-
+	
 			// append days from the next month
 			for (var dayNum = daysInMonth + 1; dayNum <= 42 - firstOfMonth; dayNum++) {
 				var _curDate = new Date(self.currentYear, self.currentMonth + 1, dayNum % daysInMonth, 0, 0, 0, 0, 0),
 				    _dateIsEnabled = isEnabled(_curDate),
 				    _dayElement = createElement("span", _dateIsEnabled ? "nextMonthDay flatpickr-day" : "disabled", dayNum % daysInMonth);
-
+	
 				if (self.config.weekNumbers && dayNum % 7 === 1) {
 					weekNumbers.appendChild(createElement("span", "disabled", _curDate.fp_getWeek()));
 				}
-
+	
 				if (_dateIsEnabled) {
 					_dayElement.tabIndex = 0;
 				}
-
+	
 				days.appendChild(_dayElement);
 			}
-
+	
 			calendar.appendChild(days);
 		};
-
+	
 		buildTime = function buildTime() {
 			timeContainer = createElement("div", "flatpickr-time");
 			timeContainer.tabIndex = -1;
 			var separator = createElement("span", "flatpickr-time-separator", ":");
-
+	
 			self.hourElement = createElement("input", "flatpickr-hour");
 			self.minuteElement = createElement("input", "flatpickr-minute");
-
+	
 			self.hourElement.tabIndex = self.minuteElement.tabIndex = 0;
 			self.hourElement.type = self.minuteElement.type = "number";
-
+	
 			self.hourElement.value = self.selectedDateObj ? pad(self.selectedDateObj.getHours()) : 12;
-
+	
 			self.minuteElement.value = self.selectedDateObj ? pad(self.selectedDateObj.getMinutes()) : "00";
-
+	
 			self.hourElement.step = self.config.hourIncrement;
 			self.minuteElement.step = self.config.minuteIncrement;
-
+	
 			self.hourElement.min = -self.config.time_24hr;
 			self.hourElement.max = self.config.time_24hr ? 24 : 13;
-
+	
 			self.minuteElement.min = -self.minuteElement.step;
 			self.minuteElement.max = 60;
-
+	
 			self.hourElement.title = self.minuteElement.title = self.l10n.scrollTitle;
-
+	
 			timeContainer.appendChild(self.hourElement);
 			timeContainer.appendChild(separator);
 			timeContainer.appendChild(self.minuteElement);
-
+	
 			if (self.config.enableSeconds) {
 				timeContainer.classList.add("has-seconds");
-
+	
 				self.secondElement = createElement("input", "flatpickr-second");
 				self.secondElement.type = "number";
 				self.secondElement.value = self.selectedDateObj ? pad(self.selectedDateObj.getSeconds()) : "00";
-
+	
 				self.secondElement.step = self.minuteElement.step;
 				self.secondElement.min = self.minuteElement.min;
 				self.secondElement.max = self.minuteElement.max;
-
+	
 				timeContainer.appendChild(createElement("span", "flatpickr-time-separator", ":"));
 				timeContainer.appendChild(self.secondElement);
 			}
-
+	
 			if (!self.config.time_24hr) {
 				// add self.amPM if appropriate
 				self.amPM = createElement("span", "flatpickr-am-pm", ["AM", "PM"][self.hourElement.value > 11 | 0]);
@@ -16874,74 +17057,74 @@ webpackJsonp([0,1],[
 				self.amPM.tabIndex = 0;
 				timeContainer.appendChild(self.amPM);
 			}
-
+	
 			calendarContainer.appendChild(timeContainer);
 		};
-
+	
 		bind = function bind() {
 			document.addEventListener("keydown", onKeyDown);
 			window.addEventListener("resize", onResize);
-
+	
 			if (self.config.clickOpens) {
 				(self.altInput || self.input).addEventListener("click", self.open);
 				(self.altInput || self.input).addEventListener("focus", self.open);
 			}
-
+	
 			if (self.config.wrap && self.element.querySelector("[data-open]")) {
 				self.element.querySelector("[data-open]").addEventListener("click", self.open);
 			}
-
+	
 			if (self.config.wrap && self.element.querySelector("[data-close]")) {
 				self.element.querySelector("[data-close]").addEventListener("click", self.close);
 			}
-
+	
 			if (self.config.wrap && self.element.querySelector("[data-toggle]")) {
 				self.element.querySelector("[data-toggle]").addEventListener("click", self.toggle);
 			}
-
+	
 			if (self.config.wrap && self.element.querySelector("[data-clear]")) {
 				self.element.querySelector("[data-clear]").addEventListener("click", self.clear);
 			}
-
+	
 			if (!self.config.noCalendar) {
 				prevMonthNav.addEventListener("click", function () {
 					changeMonth(-1);
 				});
-
+	
 				nextMonthNav.addEventListener("click", function () {
 					changeMonth(1);
 				});
-
+	
 				currentYearElement.addEventListener("wheel", yearScroll);
 				currentYearElement.addEventListener("focus", currentYearElement.select);
-
+	
 				currentYearElement.addEventListener("input", function (event) {
 					self.currentYear = parseInt(event.target.value, 10);
 					self.redraw();
 				});
-
+	
 				calendar.addEventListener("click", selectDate);
 			}
-
+	
 			document.addEventListener("click", documentClick, true);
 			document.addEventListener("focus", documentClick, true);
-
+	
 			if (self.config.enableTime) {
 				self.hourElement.addEventListener("wheel", timeWrapper);
 				self.minuteElement.addEventListener("wheel", timeWrapper);
-
+	
 				self.hourElement.addEventListener("input", timeWrapper);
 				self.minuteElement.addEventListener("input", timeWrapper);
-
+	
 				self.hourElement.addEventListener("mouseout", updateValue);
 				self.minuteElement.addEventListener("mouseout", updateValue);
-
+	
 				self.hourElement.addEventListener("change", updateValue);
 				self.minuteElement.addEventListener("change", updateValue);
-
+	
 				self.hourElement.addEventListener("focus", self.hourElement.select);
 				self.minuteElement.addEventListener("focus", self.minuteElement.select);
-
+	
 				if (self.config.enableSeconds) {
 					self.secondElement.addEventListener("wheel", timeWrapper);
 					self.secondElement.addEventListener("input", timeWrapper);
@@ -16949,13 +17132,13 @@ webpackJsonp([0,1],[
 					self.secondElement.addEventListener("change", updateValue);
 					self.secondElement.addEventListener("focus", self.secondElement.select);
 				}
-
+	
 				if (!self.config.time_24hr) {
 					self.amPM.addEventListener("click", amPMToggle);
-
+	
 					self.amPM.addEventListener("wheel", amPMToggle);
 					self.amPM.addEventListener("mouseout", updateValue);
-
+	
 					self.amPM.addEventListener("keydown", function (e) {
 						if (e.which === 38 || e.which === 40) {
 							amPMToggle(e);
@@ -16963,7 +17146,7 @@ webpackJsonp([0,1],[
 					});
 				}
 			}
-
+	
 			if (document.createEvent) {
 				clickEvt = document.createEvent("MouseEvent");
 				// without all these args ms edge spergs out
@@ -16976,30 +17159,30 @@ webpackJsonp([0,1],[
 				});
 			}
 		};
-
+	
 		self.open = function () {
 			if (self.isOpen || (self.altInput || self.input).disabled || self.config.inline) {
 				return;
 			} else if (!self.config.static) {
 				self.positionCalendar();
 			}
-
+	
 			self.isOpen = true;
-
+	
 			wrapperElement.classList.add("open");
-
+	
 			if (!self.config.allowInput) {
 				(self.altInput || self.input).blur();
 				(self.config.noCalendar ? timeContainer : calendar).focus();
 			}
-
+	
 			(self.altInput || self.input).classList.add("active");
-
+	
 			if (self.config.onOpen) {
 				self.config.onOpen(self.selectedDateObj, self.input.value, self);
 			}
 		};
-
+	
 		// For calendars inserted in BODY (as opposed to inline wrapper)
 		// it"s necessary to properly calculate top/left position.
 		self.positionCalendar = function () {
@@ -17007,10 +17190,10 @@ webpackJsonp([0,1],[
 			    input = self.altInput || self.input,
 			    inputBounds = input.getBoundingClientRect(),
 			    distanceFromBottom = window.innerHeight - inputBounds.bottom + input.offsetHeight;
-
+	
 			var top = void 0,
 			    left = window.pageXOffset + inputBounds.left;
-
+	
 			if (distanceFromBottom < calendarHeight) {
 				top = window.pageYOffset - calendarHeight + inputBounds.top - 2;
 				calendarContainer.classList.remove("arrowTop");
@@ -17020,11 +17203,11 @@ webpackJsonp([0,1],[
 				calendarContainer.classList.remove("arrowBottom");
 				calendarContainer.classList.add("arrowTop");
 			}
-
+	
 			wrapperElement.style.top = top + "px";
 			wrapperElement.style.left = left + "px";
 		};
-
+	
 		self.toggle = function () {
 			if (self.isOpen) {
 				self.close();
@@ -17032,163 +17215,163 @@ webpackJsonp([0,1],[
 				self.open();
 			}
 		};
-
+	
 		self.close = function () {
 			self.isOpen = false;
 			wrapperElement.classList.remove("open");
 			(self.altInput || self.input).classList.remove("active");
-
+	
 			if (self.config.onClose) {
 				self.config.onClose(self.selectedDateObj, self.input.value, self);
 			}
 		};
-
+	
 		self.clear = function () {
 			self.input.value = "";
-
+	
 			if (self.altInput) {
 				self.altInput.value = "";
 			}
-
+	
 			self.selectedDateObj = null;
-
+	
 			triggerChange();
 			self.jumpToDate();
 		};
-
+	
 		triggerChange = function triggerChange() {
 			self.input.dispatchEvent(clickEvt);
-
+	
 			if (self.config.onChange) {
 				self.config.onChange(self.selectedDateObj, self.input.value, self);
 			}
 		};
-
+	
 		self.destroy = function () {
 			document.removeEventListener("click", documentClick, false);
-
+	
 			if (self.altInput) {
 				self.altInput.parentNode.removeChild(self.altInput);
 			}
-
+	
 			if (self.config.inline) {
 				var parent = self.element.parentNode,
 				    removedElement = parent.removeChild(self.element);
-
+	
 				parent.removeChild(calendarContainer);
 				parent.parentNode.replaceChild(removedElement, parent);
 			} else {
 				document.getElementsByTagName("body")[0].removeChild(wrapperElement);
 			}
 		};
-
+	
 		self.redraw = function () {
 			if (self.config.noCalendar) {
 				return;
 			}
-
+	
 			updateNavigationCurrentMonth();
 			buildDays();
 		};
-
+	
 		self.jumpToDate = function (jumpDate) {
 			jumpDate = uDate(jumpDate || self.selectedDateObj || self.config.defaultDate || self.config.minDate || now);
-
+	
 			self.currentYear = jumpDate.getFullYear();
 			self.currentMonth = jumpDate.getMonth();
 			self.redraw();
 		};
-
+	
 		self.setDate = function (date, triggerChangeEvent) {
 			date = uDate(date);
-
+	
 			if (date instanceof Date && date.getTime()) {
 				self.selectedDateObj = uDate(date);
 				self.jumpToDate(self.selectedDateObj);
 				updateValue();
-
+	
 				if (triggerChangeEvent) {
 					triggerChange();
 				}
 			}
 		};
-
+	
 		self.setTime = function (hour, minute, triggerChangeEvent) {
 			if (!self.selectedDateObj) {
 				return;
 			}
-
+	
 			self.hourElement.value = parseInt(hour, 10) % 24;
 			self.minuteElement.value = parseInt(minute || 0, 10) % 60;
-
+	
 			if (!self.config.time_24hr) {
 				self.amPM.innerHTML = hour > 11 ? "PM" : "AM";
 			}
-
+	
 			updateValue();
-
+	
 			if (triggerChangeEvent) {
 				triggerChange();
 			}
 		};
-
+	
 		self.set = function (key, value) {
 			if (key in self.config) {
 				self.config[key] = value;
 				self.jumpToDate();
 			}
 		};
-
+	
 		amPMToggle = function amPMToggle(e) {
 			e.preventDefault();
 			self.amPM.textContent = ["AM", "PM"][self.amPM.innerHTML === "AM" | 0];
 		};
-
+	
 		onKeyDown = function onKeyDown(e) {
 			if (!self.isOpen || self.config.enableTime && timeContainer.contains(e.target)) {
 				return;
 			}
-
+	
 			switch (e.which) {
 				case 13:
 					selectDate(e);
 					break;
-
+	
 				case 27:
 					self.close();
 					break;
-
+	
 				case 37:
 					changeMonth(-1);
 					break;
-
+	
 				case 38:
 					e.preventDefault();
 					self.currentYear++;
 					self.redraw();
 					break;
-
+	
 				case 39:
 					changeMonth(1);
 					break;
-
+	
 				case 40:
 					e.preventDefault();
 					self.currentYear--;
 					self.redraw();
 					break;
-
+	
 				default:
 					break;
 			}
 		};
-
+	
 		onResize = debounce(function () {
 			if (self.isOpen && !self.config.inline && !self.config.static) {
 				self.positionCalendar();
 			}
 		}, 300);
-
+	
 		try {
 			init();
 		} catch (error) {
@@ -17196,14 +17379,14 @@ webpackJsonp([0,1],[
 			console.error(error);
 			console.info(self.element);
 		}
-
+	
 		return self;
 	};
-
+	
 	flatpickr.init.prototype = {
-
+	
 		defaultConfig: {},
-
+	
 		l10n: {
 			weekdays: {
 				shorthand: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
@@ -17233,25 +17416,25 @@ webpackJsonp([0,1],[
 			scrollTitle: "Scroll to increment",
 			toggleTitle: "Click to toggle"
 		}
-
+	
 	};
-
+	
 	Date.prototype.fp_incr = function (days) {
 		return new Date(this.getFullYear(), this.getMonth(), this.getDate() + parseInt(days, 10));
 	};
-
+	
 	Date.prototype.fp_isUTC = false;
 	Date.prototype.fp_toUTC = function () {
 		var newDate = new Date(this.getTime() + this.getTimezoneOffset() * 60000);
 		newDate.fp_isUTC = true;
-
+	
 		return newDate;
 	};
-
+	
 	Date.prototype.fp_getWeek = function () {
 		var date = new Date(this.getTime());
 		date.setHours(0, 0, 0, 0);
-
+	
 		// Thursday in current week decides the year.
 		date.setDate(date.getDate() + 3 - (date.getDay() + 6) % 7);
 		// January 4 is always in week 1.
@@ -17259,7 +17442,7 @@ webpackJsonp([0,1],[
 		// Adjust to Thursday in week 1 and count number of weeks from date to week1.
 		return 1 + Math.round(((date.getTime() - week1.getTime()) / 86400000 - 3 + (week1.getDay() + 6) % 7) / 7);
 	};
-
+	
 	// classList polyfill
 	if (!("classList" in document.documentElement) && _defineProperty2.default && typeof HTMLElement !== "undefined") {
 		Object.defineProperty(HTMLElement.prototype, "classList", {
@@ -17269,12 +17452,12 @@ webpackJsonp([0,1],[
 					return function (value) {
 						var classes = selfElements.className.split(/\s+/);
 						var index = classes.indexOf(value);
-
+	
 						fn(classes, index, value);
 						selfElements.className = classes.join(" ");
 					};
 				}
-
+	
 				var ret = {
 					add: update(function (classes, index, value) {
 						return ~index || classes.push(value);
@@ -17293,12 +17476,12 @@ webpackJsonp([0,1],[
 						return !!~selfElements.className.split(/\s+/).indexOf(value);
 					}
 				};
-
+	
 				return ret;
 			}
 		});
 	}
-
+	
 	if (true) {
 		module.exports = flatpickr;
 	}
@@ -17323,7 +17506,7 @@ webpackJsonp([0,1],[
 	// 19.1.2.14 Object.keys(O)
 	var toObject = __webpack_require__(50)
 	  , $keys    = __webpack_require__(52);
-
+	
 	__webpack_require__(66)('keys', function(){
 	  return function keys(it){
 	    return $keys(toObject(it));
@@ -17357,7 +17540,7 @@ webpackJsonp([0,1],[
 	// 19.1.2.14 / 15.2.3.14 Object.keys(O)
 	var $keys       = __webpack_require__(53)
 	  , enumBugKeys = __webpack_require__(65);
-
+	
 	module.exports = Object.keys || function keys(O){
 	  return $keys(O, enumBugKeys);
 	};
@@ -17370,7 +17553,7 @@ webpackJsonp([0,1],[
 	  , toIObject    = __webpack_require__(55)
 	  , arrayIndexOf = __webpack_require__(58)(false)
 	  , IE_PROTO     = __webpack_require__(62)('IE_PROTO');
-
+	
 	module.exports = function(object, names){
 	  var O      = toIObject(object)
 	    , i      = 0
@@ -17419,7 +17602,7 @@ webpackJsonp([0,1],[
 /***/ function(module, exports) {
 
 	var toString = {}.toString;
-
+	
 	module.exports = function(it){
 	  return toString.call(it).slice(8, -1);
 	};
@@ -17559,7 +17742,7 @@ webpackJsonp([0,1],[
 
 	'use strict';
 	var $at  = __webpack_require__(70)(true);
-
+	
 	// 21.1.3.27 String.prototype[@@iterator]()
 	__webpack_require__(71)(String, 'String', function(iterated){
 	  this._t = String(iterated); // target
@@ -17616,9 +17799,9 @@ webpackJsonp([0,1],[
 	  , FF_ITERATOR    = '@@iterator'
 	  , KEYS           = 'keys'
 	  , VALUES         = 'values';
-
+	
 	var returnThis = function(){ return this; };
-
+	
 	module.exports = function(Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCED){
 	  $iterCreate(Constructor, NAME, next);
 	  var getMethod = function(kind){
@@ -17699,10 +17882,10 @@ webpackJsonp([0,1],[
 	  , descriptor     = __webpack_require__(27)
 	  , setToStringTag = __webpack_require__(79)
 	  , IteratorPrototype = {};
-
+	
 	// 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
 	__webpack_require__(18)(IteratorPrototype, __webpack_require__(80)('iterator'), function(){ return this; });
-
+	
 	module.exports = function(Constructor, NAME, next){
 	  Constructor.prototype = create(IteratorPrototype, {next: descriptor(1, next)});
 	  setToStringTag(Constructor, NAME + ' Iterator');
@@ -17719,7 +17902,7 @@ webpackJsonp([0,1],[
 	  , IE_PROTO    = __webpack_require__(62)('IE_PROTO')
 	  , Empty       = function(){ /* empty */ }
 	  , PROTOTYPE   = 'prototype';
-
+	
 	// Create object with fake `null` prototype: use iframe Object with cleared prototype
 	var createDict = function(){
 	  // Thrash, waste and sodomy: IE GC bug
@@ -17741,7 +17924,7 @@ webpackJsonp([0,1],[
 	  while(i--)delete createDict[PROTOTYPE][enumBugKeys[i]];
 	  return createDict();
 	};
-
+	
 	module.exports = Object.create || function create(O, Properties){
 	  var result;
 	  if(O !== null){
@@ -17762,7 +17945,7 @@ webpackJsonp([0,1],[
 	var dP       = __webpack_require__(19)
 	  , anObject = __webpack_require__(20)
 	  , getKeys  = __webpack_require__(52);
-
+	
 	module.exports = __webpack_require__(23) ? Object.defineProperties : function defineProperties(O, Properties){
 	  anObject(O);
 	  var keys   = getKeys(Properties)
@@ -17786,7 +17969,7 @@ webpackJsonp([0,1],[
 	var def = __webpack_require__(19).f
 	  , has = __webpack_require__(54)
 	  , TAG = __webpack_require__(80)('toStringTag');
-
+	
 	module.exports = function(it, tag, stat){
 	  if(it && !has(it = stat ? it : it.prototype, TAG))def(it, TAG, {configurable: true, value: tag});
 	};
@@ -17799,12 +17982,12 @@ webpackJsonp([0,1],[
 	  , uid        = __webpack_require__(64)
 	  , Symbol     = __webpack_require__(14).Symbol
 	  , USE_SYMBOL = typeof Symbol == 'function';
-
+	
 	var $exports = module.exports = function(name){
 	  return store[name] || (store[name] =
 	    USE_SYMBOL && Symbol[name] || (USE_SYMBOL ? Symbol : uid)('Symbol.' + name));
 	};
-
+	
 	$exports.store = store;
 
 /***/ },
@@ -17816,7 +17999,7 @@ webpackJsonp([0,1],[
 	  , toObject    = __webpack_require__(50)
 	  , IE_PROTO    = __webpack_require__(62)('IE_PROTO')
 	  , ObjectProto = Object.prototype;
-
+	
 	module.exports = Object.getPrototypeOf || function(O){
 	  O = toObject(O);
 	  if(has(O, IE_PROTO))return O[IE_PROTO];
@@ -17834,7 +18017,7 @@ webpackJsonp([0,1],[
 	  , hide          = __webpack_require__(18)
 	  , Iterators     = __webpack_require__(74)
 	  , TO_STRING_TAG = __webpack_require__(80)('toStringTag');
-
+	
 	for(var collections = ['NodeList', 'DOMTokenList', 'MediaList', 'StyleSheetList', 'CSSRuleList'], i = 0; i < 5; i++){
 	  var NAME       = collections[i]
 	    , Collection = global[NAME]
@@ -17852,7 +18035,7 @@ webpackJsonp([0,1],[
 	  , step             = __webpack_require__(85)
 	  , Iterators        = __webpack_require__(74)
 	  , toIObject        = __webpack_require__(55);
-
+	
 	// 22.1.3.4 Array.prototype.entries()
 	// 22.1.3.13 Array.prototype.keys()
 	// 22.1.3.29 Array.prototype.values()
@@ -17874,10 +18057,10 @@ webpackJsonp([0,1],[
 	  if(kind == 'values')return step(0, O[index]);
 	  return step(0, [index, O[index]]);
 	}, 'values');
-
+	
 	// argumentsList[@@iterator] is %ArrayProto_values% (9.4.4.6, 9.4.4.7)
 	Iterators.Arguments = Iterators.Array;
-
+	
 	addToUnscopables('keys');
 	addToUnscopables('values');
 	addToUnscopables('entries');
@@ -17907,21 +18090,21 @@ webpackJsonp([0,1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-
+	
 	exports.__esModule = true;
-
+	
 	var _iterator = __webpack_require__(67);
-
+	
 	var _iterator2 = _interopRequireDefault(_iterator);
-
+	
 	var _symbol = __webpack_require__(88);
-
+	
 	var _symbol2 = _interopRequireDefault(_symbol);
-
+	
 	var _typeof = typeof _symbol2.default === "function" && typeof _iterator2.default === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof _symbol2.default === "function" && obj.constructor === _symbol2.default && obj !== _symbol2.default.prototype ? "symbol" : typeof obj; };
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.default) === "symbol" ? function (obj) {
 	  return typeof obj === "undefined" ? "undefined" : _typeof(obj);
 	} : function (obj) {
@@ -17993,7 +18176,7 @@ webpackJsonp([0,1],[
 	  , QObject        = global.QObject;
 	// Don't use setters in Qt Script, https://github.com/zloirock/core-js/issues/173
 	var setter = !QObject || !QObject[PROTOTYPE] || !QObject[PROTOTYPE].findChild;
-
+	
 	// fallback for old Android, https://code.google.com/p/v8/issues/detail?id=687
 	var setSymbolDesc = DESCRIPTORS && $fails(function(){
 	  return _create(dP({}, 'a', {
@@ -18005,19 +18188,19 @@ webpackJsonp([0,1],[
 	  dP(it, key, D);
 	  if(protoDesc && it !== ObjectProto)dP(ObjectProto, key, protoDesc);
 	} : dP;
-
+	
 	var wrap = function(tag){
 	  var sym = AllSymbols[tag] = _create($Symbol[PROTOTYPE]);
 	  sym._k = tag;
 	  return sym;
 	};
-
+	
 	var isSymbol = USE_NATIVE && typeof $Symbol.iterator == 'symbol' ? function(it){
 	  return typeof it == 'symbol';
 	} : function(it){
 	  return it instanceof $Symbol;
 	};
-
+	
 	var $defineProperty = function defineProperty(it, key, D){
 	  if(it === ObjectProto)$defineProperty(OPSymbols, key, D);
 	  anObject(it);
@@ -18077,7 +18260,7 @@ webpackJsonp([0,1],[
 	    if(has(AllSymbols, key = names[i++]) && (IS_OP ? has(ObjectProto, key) : true))result.push(AllSymbols[key]);
 	  } return result;
 	};
-
+	
 	// 19.4.1.1 Symbol([description])
 	if(!USE_NATIVE){
 	  $Symbol = function Symbol(){
@@ -18094,31 +18277,31 @@ webpackJsonp([0,1],[
 	  redefine($Symbol[PROTOTYPE], 'toString', function toString(){
 	    return this._k;
 	  });
-
+	
 	  $GOPD.f = $getOwnPropertyDescriptor;
 	  $DP.f   = $defineProperty;
 	  __webpack_require__(99).f = gOPNExt.f = $getOwnPropertyNames;
 	  __webpack_require__(96).f  = $propertyIsEnumerable;
 	  __webpack_require__(95).f = $getOwnPropertySymbols;
-
+	
 	  if(DESCRIPTORS && !__webpack_require__(72)){
 	    redefine(ObjectProto, 'propertyIsEnumerable', $propertyIsEnumerable, true);
 	  }
-
+	
 	  wksExt.f = function(name){
 	    return wrap(wks(name));
 	  }
 	}
-
+	
 	$export($export.G + $export.W + $export.F * !USE_NATIVE, {Symbol: $Symbol});
-
+	
 	for(var symbols = (
 	  // 19.4.2.2, 19.4.2.3, 19.4.2.4, 19.4.2.6, 19.4.2.8, 19.4.2.9, 19.4.2.10, 19.4.2.11, 19.4.2.12, 19.4.2.13, 19.4.2.14
 	  'hasInstance,isConcatSpreadable,iterator,match,replace,search,species,split,toPrimitive,toStringTag,unscopables'
 	).split(','), i = 0; symbols.length > i; )wks(symbols[i++]);
-
+	
 	for(var symbols = $keys(wks.store), i = 0; symbols.length > i; )wksDefine(symbols[i++]);
-
+	
 	$export($export.S + $export.F * !USE_NATIVE, 'Symbol', {
 	  // 19.4.2.1 Symbol.for(key)
 	  'for': function(key){
@@ -18134,7 +18317,7 @@ webpackJsonp([0,1],[
 	  useSetter: function(){ setter = true; },
 	  useSimple: function(){ setter = false; }
 	});
-
+	
 	$export($export.S + $export.F * !USE_NATIVE, 'Object', {
 	  // 19.1.2.2 Object.create(O [, Properties])
 	  create: $create,
@@ -18149,7 +18332,7 @@ webpackJsonp([0,1],[
 	  // 19.1.2.8 Object.getOwnPropertySymbols(O)
 	  getOwnPropertySymbols: $getOwnPropertySymbols
 	});
-
+	
 	// 24.3.2 JSON.stringify(value [, replacer [, space]])
 	$JSON && $export($export.S + $export.F * (!USE_NATIVE || $fails(function(){
 	  var S = $Symbol();
@@ -18174,7 +18357,7 @@ webpackJsonp([0,1],[
 	    return _stringify.apply($JSON, args);
 	  }
 	});
-
+	
 	// 19.4.3.4 Symbol.prototype[@@toPrimitive](hint)
 	$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(18)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
 	// 19.4.3.5 Symbol.prototype[@@toStringTag]
@@ -18321,10 +18504,10 @@ webpackJsonp([0,1],[
 	var toIObject = __webpack_require__(55)
 	  , gOPN      = __webpack_require__(99).f
 	  , toString  = {}.toString;
-
+	
 	var windowNames = typeof window == 'object' && window && Object.getOwnPropertyNames
 	  ? Object.getOwnPropertyNames(window) : [];
-
+	
 	var getWindowNames = function(it){
 	  try {
 	    return gOPN(it);
@@ -18332,7 +18515,7 @@ webpackJsonp([0,1],[
 	    return windowNames.slice();
 	  }
 	};
-
+	
 	module.exports.f = function getOwnPropertyNames(it){
 	  return windowNames && toString.call(it) == '[object Window]' ? getWindowNames(it) : gOPN(toIObject(it));
 	};
@@ -18345,7 +18528,7 @@ webpackJsonp([0,1],[
 	// 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
 	var $keys      = __webpack_require__(53)
 	  , hiddenKeys = __webpack_require__(65).concat('length', 'prototype');
-
+	
 	exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O){
 	  return $keys(O, hiddenKeys);
 	};
@@ -18361,7 +18544,7 @@ webpackJsonp([0,1],[
 	  , has            = __webpack_require__(54)
 	  , IE8_DOM_DEFINE = __webpack_require__(22)
 	  , gOPD           = Object.getOwnPropertyDescriptor;
-
+	
 	exports.f = __webpack_require__(23) ? gOPD : function getOwnPropertyDescriptor(O, P){
 	  O = toIObject(O);
 	  P = toPrimitive(P, true);
@@ -18375,7 +18558,7 @@ webpackJsonp([0,1],[
 /* 101 */
 /***/ function(module, exports) {
 
-	
+
 
 /***/ },
 /* 102 */
@@ -18429,7 +18612,7 @@ webpackJsonp([0,1],[
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "_v-5ee600a0/detail.vue"
+	  var id = "_v-c12054c4/detail.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -18445,13 +18628,110 @@ webpackJsonp([0,1],[
 
 /***/ },
 /* 108 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+	
+	var _flatpickr = __webpack_require__(44);
+	
+	var _flatpickr2 = _interopRequireDefault(_flatpickr);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = {
+	
+		name: 'detail',
+	
+		props: ['msg', 'show'],
+	
+		components: {
+			flatpickr: _flatpickr2.default
+		},
+	
+		data: function data() {
+			return {
+				edit: true,
+				options: {
+					enableTime: true,
+					time_24hr: true
+				},
+				newTime: ''
+			};
+		},
+	
+		methods: {
+			back: function back() {
+				this.show = true;
+			},
+			editData: function editData() {
+				this.edit = false;
+			},
+			finish: function finish() {
+				this.edit = true;
+			}
+		},
+		watch: {
+			newTime: function newTime(newValue) {
+				var date = new Date(newValue);
+				var time = date.getTime();
+				this.msg.date = time;
+			}
+		}
+	};
+	// </script>
+	//
+	// <style>
+	// .detail{
+	// 	width: 50rem;
+	// 	border-collapse: collapse;
+	// }
+	// .detail tr{
+	// 	border-top: .0625rem solid #f0f0f1;
+	// 	border-right: .0625rem solid #f0f0f1;
+	// 	border-left: .0625rem solid #f0f0f1;
+	// 	&:last-child{
+	// 		border-bottom: .0625rem solid #f0f0f1;
+	// 	}
+	// 	input{
+	// 		&:focus{
+	// 			outline: 0;
+	// 			border: 0;
+	// 		}
+	// 	}
+	// 	.flatpickr-input{
+	// 		text-indent: 0;
+	// 		opacity: 0;
+	// 		position: absolute;
+	// 		top: 0;
+	// 		left: 0;
+	// 		height: 100%;
+	// 	}
+	// 	td{
+	// 		padding: .625rem 0;
+	// 		width: 80%;
+	// 		position: relative;
+	// 		&:first-child {
+	// 			width: 20%;
+	// 			text-align: center;
+	// 			border-right: 0.0625rem solid #f0f0f1;
+	// 		}
+	// 		&:last-child{
+	// 			text-indent: 0.9375rem;
+	// 		}
+	// 	}
+	// }
+	// .detail-input{
+	// 	border: 0;
+	// 	background-color: #fafafa;
+	// 	font-size: .8125rem;
+	// 	color: #4d6076;
+	// }
+	// </style>
+	/* generated by vue-loader */
 	// <template>
 	// 	<div class="detail-body" v-show='!show'>
 	// 		<div class="line" style="line-height:2.8175rem;">
@@ -18468,7 +18748,7 @@ webpackJsonp([0,1],[
 	// 				<tr>
 	// 					<td>手机号码</td>
 	// 					<td>
-	// 						<input type="text" class="large-input" v-model="msg.tel" :readonly="edit">
+	// 						<input type="text" class="large-input detail-input" v-model="msg.tel" :readonly="edit" :class="{warm:!edit}">
 	// 					</td>
 	// 				</tr>
 	// 				<tr>
@@ -18481,7 +18761,10 @@ webpackJsonp([0,1],[
 	// 				</tr>
 	// 				<tr>
 	// 					<td>预约时间</td>
-	// 					<td>{{ msg.date | timeReturn }}</td>
+	// 					<td>
+	// 					<span type="text" class="large-input" :class="{warm:!edit}">{{ msg.date | timeReturn }}</span>
+	// 					<flatpickr :options="options" v-model="newTime" v-show="!edit" :class="{warm:!edit}"></flatpickr>
+	// 					</td>
 	// 				</tr>
 	// 				<tr>
 	// 					<td>报修时间</td>
@@ -18505,75 +18788,12 @@ webpackJsonp([0,1],[
 	// </template>
 	//
 	// <script>
-	exports.default = {
-
-		name: 'detail',
-
-		props: ['msg', 'show'],
-
-		data: function data() {
-			return {
-				edit: true
-			};
-		},
-
-		methods: {
-			back: function back() {
-				this.show = true;
-			},
-			editData: function editData() {
-				this.edit = false;
-			},
-			finish: function finish() {
-				this.edit = true;
-			}
-		},
-		created: function created() {}
-	};
-	// </script>
-	//
-	// <style>
-	// .detail{
-	// 	width: 50rem;
-	// 	border-collapse: collapse;
-	// }
-	// .detail tr{
-	// 	border-top: .0625rem solid #f0f0f1;
-	// 	border-right: .0625rem solid #f0f0f1;
-	// 	border-left: .0625rem solid #f0f0f1;
-	// 	&:last-child{
-	// 		border-bottom: .0625rem solid #f0f0f1;
-	// 	}
-	// 	input{
-	// 		border: 0;
-	// 		background-color: #fafafa;
-	// 		font-size: .8125rem;
-	// 		color: #4d6076;
-	// 		&:focus{
-	// 			outline: 0;
-	// 			border: 0;
-	// 		}
-	// 	}
-	// 	td{
-	// 		padding: .625rem 0;
-	// 		width: 80%;
-	// 		&:first-child {
-	// 			width: 20%;
-	// 			text-align: center;
-	// 			border-right: 0.0625rem solid #f0f0f1;
-	// 		}
-	// 		&:last-child{
-	// 			text-indent: 0.9375rem;
-	// 		}
-	// 	}
-	// }
-	// </style>
 
 /***/ },
 /* 109 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"detail-body\" v-show='!show'>\n\t<div class=\"line\" style=\"line-height:2.8175rem;\">\n\t\t<a href=\"javascript:void(0)\" class=\"fl btn-ng\" @click=\"back\">返回</a>\n\t\t<a href=\"javascript:void(0)\" class=\"fr btn-ng\" @click=\"editData\" v-show=\"edit\">编辑</a>\n\t\t<a href=\"javascript:void(0)\" class=\"fr btn-ng\" @click=\"finish\" v-show=\"!edit\">完成</a>\n\t</div>\n\t<table class=\"detail\">\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td>学号</td>\n\t\t\t\t<td>{{ msg.no }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>手机号码</td>\n\t\t\t\t<td>\n\t\t\t\t\t<input type=\"text\" class=\"large-input\" v-model=\"msg.tel\" :readonly=\"edit\">\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>问题类型</td>\n\t\t\t\t<td>{{ msg.type | problem }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>宿舍</td>\n\t\t\t\t<td>{{ msg.room }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>预约时间</td>\n\t\t\t\t<td>{{ msg.date | timeReturn }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>报修时间</td>\n\t\t\t\t<td>2016-20-21 08：00</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>接单人</td>\n\t\t\t\t<td>飞机</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>状态</td>\n\t\t\t\t<td>{{ msg.status | numstatus }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>问题详情</td>\n\t\t\t\t<td>{{ msg.exp }}</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>\n";
+	module.exports = "\n<div class=\"detail-body\" v-show='!show'>\n\t<div class=\"line\" style=\"line-height:2.8175rem;\">\n\t\t<a href=\"javascript:void(0)\" class=\"fl btn-ng\" @click=\"back\">返回</a>\n\t\t<a href=\"javascript:void(0)\" class=\"fr btn-ng\" @click=\"editData\" v-show=\"edit\">编辑</a>\n\t\t<a href=\"javascript:void(0)\" class=\"fr btn-ng\" @click=\"finish\" v-show=\"!edit\">完成</a>\n\t</div>\n\t<table class=\"detail\">\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td>学号</td>\n\t\t\t\t<td>{{ msg.no }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>手机号码</td>\n\t\t\t\t<td>\n\t\t\t\t\t<input type=\"text\" class=\"large-input detail-input\" v-model=\"msg.tel\" :readonly=\"edit\" :class=\"{warm:!edit}\">\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>问题类型</td>\n\t\t\t\t<td>{{ msg.type | problem }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>宿舍</td>\n\t\t\t\t<td>{{ msg.room }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>预约时间</td>\n\t\t\t\t<td>\n\t\t\t\t<span type=\"text\" class=\"large-input\" :class=\"{warm:!edit}\">{{ msg.date | timeReturn }}</span>\n\t\t\t\t<flatpickr :options=\"options\" v-model=\"newTime\" v-show=\"!edit\" :class=\"{warm:!edit}\"></flatpickr>\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>报修时间</td>\n\t\t\t\t<td>2016-20-21 08：00</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>接单人</td>\n\t\t\t\t<td>飞机</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>状态</td>\n\t\t\t\t<td>{{ msg.status | numstatus }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>问题详情</td>\n\t\t\t\t<td>{{ msg.exp }}</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>\n";
 
 /***/ },
 /* 110 */
@@ -18603,7 +18823,7 @@ webpackJsonp([0,1],[
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "_v-63147dba/pagging.vue"
+	  var id = "_v-4580c5b8/pagging.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -18622,7 +18842,7 @@ webpackJsonp([0,1],[
 /***/ function(module, exports) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
@@ -18645,12 +18865,12 @@ webpackJsonp([0,1],[
 	// </template>
 	//
 	// <script>
-
+	
 	exports.default = {
 		name: 'page',
-
+	
 		props: ['current', 'total', 'list'],
-
+	
 		watch: {
 			'current': function current(newValue) {
 				if (newValue <= 1) this.current = 1;
@@ -18688,6 +18908,7 @@ webpackJsonp([0,1],[
 	// 	}
 	// }
 	// </style>
+	/* generated by vue-loader */
 
 /***/ },
 /* 113 */
@@ -18723,7 +18944,7 @@ webpackJsonp([0,1],[
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "_v-1c5d53a6/load.vue"
+	  var id = "_v-6df43eef/load.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -18742,7 +18963,7 @@ webpackJsonp([0,1],[
 /***/ function(module, exports) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
@@ -18753,17 +18974,17 @@ webpackJsonp([0,1],[
 	// </template>
 	//
 	// <script>
-
+	
 	exports.default = {
-
+	
 		name: 'load',
-
+	
 		data: function data() {
 			return {};
 		},
 		method: function method() {}
 	};
-
+	
 	// </script>
 	//
 	// <style>
@@ -18786,6 +19007,7 @@ webpackJsonp([0,1],[
 	// }
 	//
 	// </style>
+	/* generated by vue-loader */
 
 /***/ },
 /* 117 */
@@ -18827,7 +19049,7 @@ webpackJsonp([0,1],[
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "_v-1a3df162/app.vue"
+	  var id = "_v-36f66d24/app.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -18846,71 +19068,54 @@ webpackJsonp([0,1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-
+	
 	var _nav = __webpack_require__(122);
-
+	
 	var _nav2 = _interopRequireDefault(_nav);
-
+	
 	var _alert = __webpack_require__(126);
-
+	
 	var _alert2 = _interopRequireDefault(_alert);
-
+	
 	var _drop = __webpack_require__(130);
-
+	
 	var _drop2 = _interopRequireDefault(_drop);
-
+	
 	var _secondary = __webpack_require__(134);
-
+	
 	var _secondary2 = _interopRequireDefault(_secondary);
-
+	
+	var _server = __webpack_require__(30);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	// <template>
-	// 	<div class="app">
-	// 		<router-view
-	// 		transition="route"
-	// 		transition-mode="out-in"
-	// 		>
-	// 		</router-view>
-	// 		<nav-bar></nav-bar>
-	// 		<tip :show.sync="tipText" :text="tipText" :fn.sync="alertFnTip"></tip>
-	// 		<drop :show.sync="dropTip"></drop>
-	// 	</div>
-	// </template>
-	//
-	//
-	// <script>
-	//js
+	
 	exports.default = {
 		name: 'app',
-
+	
 		data: function data() {
 			return {
 				name: 'app',
-				curUser: {},
 				tipText: '',
 				dropTip: '',
 				timeOut: '',
 				loading: false,
 				secondTip: '',
-				alertFnTip: ''
+				tipFn: '',
+				time: ''
 			};
 		},
-
-
+	
+	
 		components: { navBar: _nav2.default, tip: _alert2.default, drop: _drop2.default, secondary: _secondary2.default },
-
+	
 		events: {
-			backLogin: function backLogin(res) {
-				if (res.status == 5) {
-					this.$root.$emit('alertFn', '你可能需要重新登陆，才能继续操作', this.logout());
-				} else if (res.status == 3) {
-					this.$root.$emit('alertFn', '请求错误，我建议你重新登陆', this.logout());
-				}
+			backLogin: function backLogin() {
+				this.$root.$emit('alertFn', '你可能需要重新登陆，才能继续操作');
+				this.$dispatch('child', 'logout');
 			},
 			dropFn: function dropFn(text) {
 				var self = this;
@@ -18920,18 +19125,52 @@ webpackJsonp([0,1],[
 					self.dropTip = '';
 				}, 2500);
 			},
-			alertFn: function alertFn(value, fn) {
-				this.tipText = value;
-				eval(fn);
-			}
-		},
-		methods: {
+			delete: function _delete(value) {
+				var _this = this;
+	
+				clearTimeout(this.time);
+				var con = '_id=' + value._id + '&no=' + value.no + '&tel=' + value.tel + '&name=' + value.name;
+				(0, _server.post)('/del', con).then(function (res) {
+					if (res.body.status === 0) {
+						(function () {
+							_this.$root.$emit('dropFn', '删除成功了');
+							var self = _this;
+							_this.time = setTimeout(function () {
+								self.$broadcast('deleteId', value);
+							}, 800);
+						})();
+					} else {
+						_this.$root.$emit('dropFn', '可能失败了');
+						return;
+					}
+				});
+			},
+			getMy: function getMy(id) {
+				var _this2 = this;
+	
+				var admin = sessionStorage.getItem('admin');
+				(0, _server.post)('/update', 'admin=' + admin + '&_id=' + id).then(function (res) {
+					if (res.body.status === 0) {
+						var l = res.body.msg;
+					} else {
+						_this2.$root.$emit('dropFn', '接单失败');
+					}
+				});
+			},
 			logout: function logout() {
 				sessionStorage.removeItem('user');
+				sessionStorage.removeItem('admin');
+				sessionStorage.removeItem('id');
 				this.$router.go({ path: '/login' });
+			},
+			child: function child(msg) {
+				this.tipFn = msg;
+			},
+			alertFn: function alertFn(value) {
+				this.tipText = value;
 			}
 		}
-
+	
 	};
 	// </script>
 	//
@@ -18947,6 +19186,24 @@ webpackJsonp([0,1],[
 	//     opacity: 0;
 	// }
 	// </style>
+
+	/* generated by vue-loader */
+	// <template>
+	// 	<div class="app">
+	// 		<router-view
+	// 		transition="route"
+	// 		transition-mode="out-in"
+	// 		>
+	// 		</router-view>
+	// 		<nav-bar></nav-bar>
+	// 		<tip :show.sync="tipText" :text.sync="tipText" :method="tipFn"></tip>
+	// 		<drop :show.sync="dropTip"></drop>
+	// 	</div>
+	// </template>
+	//
+	//
+	// <script>
+	//js
 
 /***/ },
 /* 122 */
@@ -18976,7 +19233,7 @@ webpackJsonp([0,1],[
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "_v-4a41deac/nav.vue"
+	  var id = "_v-8cc454ac/nav.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -18995,7 +19252,7 @@ webpackJsonp([0,1],[
 /***/ function(module, exports) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
@@ -19009,14 +19266,14 @@ webpackJsonp([0,1],[
 	// <script>
 	exports.default = {
 		name: 'nav',
-
+	
 		data: function data() {
 			return {};
 		},
-
+	
 		methods: {
 			logout: function logout() {
-				this.$root.$emit('alertFn', '', 'this.logout()');
+				this.$root.$emit('logout');
 			}
 		},
 		created: function created() {}
@@ -19066,6 +19323,7 @@ webpackJsonp([0,1],[
 	//
 	// }
 	// </style>
+	/* generated by vue-loader */
 
 /***/ },
 /* 125 */
@@ -19101,7 +19359,7 @@ webpackJsonp([0,1],[
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "_v-be08bbb6/alert.vue"
+	  var id = "_v-ad945cba/alert.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -19117,44 +19375,57 @@ webpackJsonp([0,1],[
 
 /***/ },
 /* 128 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+	
+	var _typeof2 = __webpack_require__(87);
+	
+	var _typeof3 = _interopRequireDefault(_typeof2);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
 	// <template>	
-	// 	<div class="alert gray-op" v-show="show">
+	// 	<div class="alert gray-op" v-if="show">
 	// 		<div class="alert-content txc">
 	// 			<p>{{ text }}</p>
-	// 			<a href="javascript:void(0)" class="btn btn-primary pdtr" @click="comeBack">继续操作</a>
+	// 			<a href="javascript:void(0)" class="btn btn-primary pdtr" @click="fn">继续操作</a>
 	// 		</div>
 	// 	</div>
 	// </template>
 	//
 	// <script>
-
+	
 	exports.default = {
 		name: 'alert',
-
+	
 		data: function data() {
 			return {
 				name: 'alert'
 			};
 		},
-
-
-		props: ['text', 'show', 'fn'],
-
+	
+	
+		props: ['text', 'show', 'method'],
+	
 		methods: {
-			comeBack: function comeBack() {
-				this.$root.$emit(this.fn);
-				this.show = false;
+			fn: function fn() {
+				console.log(this.method, (0, _typeof3.default)(this.method));
+				if (typeof this.method !== 'string') {
+					this.$root.$emit(this.method[0], this.method[1]);
+				} else {
+					this.$root.$emit(this.method);
+				}
+				this.text = '';
 			}
 		}
+	
 	};
-
+	
 	// </script>
 	//
 	// <style>
@@ -19184,12 +19455,13 @@ webpackJsonp([0,1],[
 	// }
 	//
 	// </style>
+	/* generated by vue-loader */
 
 /***/ },
 /* 129 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"alert gray-op\" v-show=\"show\">\n\t<div class=\"alert-content txc\">\n\t\t<p>{{ text }}</p>\n\t\t<a href=\"javascript:void(0)\" class=\"btn btn-primary pdtr\" @click=\"comeBack\">继续操作</a>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"alert gray-op\" v-if=\"show\">\n\t<div class=\"alert-content txc\">\n\t\t<p>{{ text }}</p>\n\t\t<a href=\"javascript:void(0)\" class=\"btn btn-primary pdtr\" @click=\"fn\">继续操作</a>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 130 */
@@ -19219,7 +19491,7 @@ webpackJsonp([0,1],[
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "_v-6a0793b6/drop.vue"
+	  var id = "_v-33ab0710/drop.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -19238,7 +19510,7 @@ webpackJsonp([0,1],[
 /***/ function(module, exports) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
@@ -19251,10 +19523,10 @@ webpackJsonp([0,1],[
 	// </template>
 	//
 	// <script>
-
+	
 	exports.default = {
 		name: 'drop',
-
+	
 		props: ['show']
 	};
 	// </script>
@@ -19277,6 +19549,7 @@ webpackJsonp([0,1],[
 	// 	transform: translateY(0);
 	// }
 	// </style>
+	/* generated by vue-loader */
 
 /***/ },
 /* 133 */
@@ -19312,7 +19585,7 @@ webpackJsonp([0,1],[
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "_v-362d3dbd/secondary.vue"
+	  var id = "_v-2ea77e3b/secondary.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -19331,7 +19604,7 @@ webpackJsonp([0,1],[
 /***/ function(module, exports) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
@@ -19347,10 +19620,10 @@ webpackJsonp([0,1],[
 	// </template>
 	//
 	// <script>
-
+	
 	exports.default = {
 		name: 'secondary',
-
+	
 		props: ['tip', 'next']
 	};
 	// </script>
@@ -19366,6 +19639,7 @@ webpackJsonp([0,1],[
 	// 	}
 	// }
 	// </style>
+	/* generated by vue-loader */
 
 /***/ },
 /* 137 */
@@ -19377,7 +19651,7 @@ webpackJsonp([0,1],[
 /* 138 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"app\">\n\t<router-view\n\ttransition=\"route\"\n\ttransition-mode=\"out-in\"\n\t>\n\t</router-view>\n\t<nav-bar></nav-bar>\n\t<tip :show.sync=\"tipText\" :text=\"tipText\" :fn.sync=\"alertFnTip\"></tip>\n\t<drop :show.sync=\"dropTip\"></drop>\n</div>\n";
+	module.exports = "\n<div class=\"app\">\n\t<router-view\n\ttransition=\"route\"\n\ttransition-mode=\"out-in\"\n\t>\n\t</router-view>\n\t<nav-bar></nav-bar>\n\t<tip :show.sync=\"tipText\" :text.sync=\"tipText\" :method=\"tipFn\"></tip>\n\t<drop :show.sync=\"dropTip\"></drop>\n</div>\n";
 
 /***/ },
 /* 139 */
@@ -19407,7 +19681,7 @@ webpackJsonp([0,1],[
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "_v-019bdc6a/login.vue"
+	  var id = "_v-5bb720a8/login.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -19426,16 +19700,16 @@ webpackJsonp([0,1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-
+	
 	var _server = __webpack_require__(30);
-
+	
 	exports.default = {
 		name: 'login',
-
+	
 		data: function data() {
 			return {
 				title: '登陆',
@@ -19446,11 +19720,11 @@ webpackJsonp([0,1],[
 				warm: false
 			};
 		},
-
+	
 		methods: {
 			login: function login() {
 				var _this = this;
-
+	
 				this.warm = true;
 				if (!this.admin || !this.password) {
 					this.title = '你当前无法登陆，检查登陆信息';
@@ -19534,6 +19808,7 @@ webpackJsonp([0,1],[
 	// 	}
 	// }
 	// </style>
+	/* generated by vue-loader */
 	// <template>
 	// 	<div class="login-body fix">
 	// 		<div class="login-data">
@@ -19601,7 +19876,7 @@ webpackJsonp([0,1],[
 	  var hotAPI = require("vue-hot-reload-api")
 	  hotAPI.install(require("vue"), false)
 	  if (!hotAPI.compatible) return
-	  var id = "_v-11f0279c/register.vue"
+	  var id = "_v-3c7079b0/register.vue"
 	  if (!module.hot.data) {
 	    hotAPI.createRecord(id, module.exports)
 	  } else {
@@ -19614,22 +19889,22 @@ webpackJsonp([0,1],[
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-
+	
 	var _typeof2 = __webpack_require__(87);
-
+	
 	var _typeof3 = _interopRequireDefault(_typeof2);
-
+	
 	var _server = __webpack_require__(30);
-
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+	
 	exports.default = {
 		name: 'register',
-
+	
 		data: function data() {
 			return {
 				title: '注册',
@@ -19643,12 +19918,12 @@ webpackJsonp([0,1],[
 				warm: false
 			};
 		},
-
-
+	
+	
 		methods: {
 			submit: function submit() {
 				var _this = this;
-
+	
 				var a = vail(this.passagain);
 				var s = this.super ? 2 : 1;
 				var arr = {
@@ -19730,7 +20005,7 @@ webpackJsonp([0,1],[
 	//
 	// <script>
 	//js
-
+	
 	function vail(val) {
 		var v = '';
 		if ((typeof val === 'undefined' ? 'undefined' : (0, _typeof3.default)(val)) === 'object') {
@@ -19753,6 +20028,8 @@ webpackJsonp([0,1],[
 	}
 	// </script>
 
+	/* generated by vue-loader */
+
 /***/ },
 /* 145 */
 /***/ function(module, exports) {
@@ -19763,27 +20040,8 @@ webpackJsonp([0,1],[
 /* 146 */
 /***/ function(module, exports) {
 
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.default = {
-		bind: function bind() {
-			console.log(this);
-		},
-		update: function update() {
-			console.log(this);
-		},
-		unbind: function unbind() {}
-	};
-
-/***/ },
-/* 147 */
-/***/ function(module, exports) {
-
 	'use strict';
-
+	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
@@ -19842,10 +20100,11 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 148 */
+/* 147 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ }
 ]);
+//# sourceMappingURL=build.js.map

@@ -153,14 +153,12 @@ export default{
     				case 0:
     					this.list = res.body.msg;
     				break;
-    				case 4:
-    					this.$root.$emit('dropFn','权限不够，你干了什么？');
-    				break;
     				case 3:
     					this.$root.$emit('dropFn','连接服务器失败？？');
     				break;
+    				case 4:
     				case 5:
-    					this.$root.$emit(`backLogin`,res.body);
+    					this.$root.$emit(`backLogin`);
 						this.list = [];
 					break;
     			}
@@ -169,7 +167,7 @@ export default{
     	}
     },
     created(){
-    	this.getData();
+    	this.getData(`grade=${sessionStorage.getItem('user')}`);
     }
 }
 

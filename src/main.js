@@ -12,7 +12,6 @@ import login from './vue/login.vue'
 import reg from './vue/register.vue'
 
 /**directive**/
-import vaildate from './script/vaildate'
 
 /**filter**/
 import filters from './script/filter'
@@ -22,7 +21,6 @@ vue.use(router);
 vue.use(resource);
 
 /**directive**/
-vue.directive('vaildate',vaildate)
 
 /**filter**/
 vue.filter('numstatus',filters.numstatus)

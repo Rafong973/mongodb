@@ -1,8 +1,8 @@
 <template>	
-	<div class="alert gray-op" v-show="show">
+	<div class="alert gray-op" v-if="show">
 		<div class="alert-content txc">
 			<p>{{ text }}</p>
-			<a href="javascript:void(0)" class="btn btn-primary pdtr" @click="comeBack">继续操作</a>
+			<a href="javascript:void(0)" class="btn btn-primary pdtr" @click="fn">继续操作</a>
 		</div>
 	</div>
 </template>
@@ -18,14 +18,20 @@ export default{
 		}
 	},
 
-	props:['text','show','fn'],
+	props:['text','show','method'],
 
 	methods:{
-		comeBack(){
-			this.$root.$emit(this.fn);
-			this.show = false;
+		fn(){
+			console.log(this.method,typeof this.method);
+			if(typeof this.method !== 'string'){
+				this.$root.$emit(this.method[0],this.method[1]);
+			}else{
+				this.$root.$emit(this.method)
+			}
+			this.text = '';
 		}
-	}
+	},
+
 }
 
 </script>

@@ -30,7 +30,7 @@
 						<a href="javascript:void(0)" v-if="l.status == 0 && l.admin == 0">指派</a>
 						<a href="javascript:void(0)" @click="del(l)">删除</a>
 						<a href="javascript:void(0)" v-if="l.status == 1" @click="my(l._id)">我来处理</a>
-						<a href="javascript:void(0)" v-if="l.status == 2 ">完成处理</a>
+						<a href="javascript:void(0)" v-if="l.status == 2" @click="finish(l._id)">完成处理</a>
 						<a href="javascript:void(0)" @click="disDetail(l)">
 							详情
 						</a>
@@ -54,9 +54,9 @@ export default{
 
 	props:['list','detailData','detail'],
 
-	data(){
-		return{
-			time:''
+	events:{
+		'deleteId':function(id){
+			this.list.$remove(id);
 		}
 	},
 
@@ -65,37 +65,17 @@ export default{
 			this.detailData = data;
 			this.detail = false
 		},
-		getMy(id){
-			let admin = sessionStorage.getItem('admin');
-			post('/update','admin=' + admin + '&_id=' + id)
-			.then((res) => {
-				if(res.body.status===0){
-					let l = res.body.msg;
-				}else{
-					this.$root.$emit('dropFn','接单失败');
-				}	
-			})
-		},
 		del(value){
-			clearTimeout(this.time);
-			const con = '_id='+ value._id +'&no=' + value.no + '&tel='+ value.tel + '&name=' + value.name;
-			post('/del',con )
-			.then( (res) => {
-				if(res.body.status === 0){
-					this.$root.$emit('dropFn','删除成功了');
-					let self = this;
-					this.time = setTimeout(() =>{
-						self.list.$remove(value);
-					},800)
-				}else{
-					this.$root.$emit('dropFn','可能失败了');
-					return;
-				}
-			})
+			this.$root.$emit('alertFn','确定删除吗？');
+			this.$dispatch('child',['delete',value])
 		},
 		my(id){
-			console.log("this");
-			this.$root.$emit('alertFn','你确定要处理这个订单吗？',this.getMy(id));
+			this.$root.$emit('alertFn','你确定要接受这个订单吗？');
+			this.$dispatch('child',['getMy',id])
+		},
+		finish(id){
+			this.$root.$emit('alertFn','你处理好这个订单了吗？');
+			this.$dispatch('child',['getMy',id])
 		}
 	}
 }

@@ -50,6 +50,7 @@ export default function server(app,body){
 				}
 				
 			}
+			console.log(req.session);
 			res.send(msg);
 		});
 	})
@@ -57,7 +58,7 @@ export default function server(app,body){
 	app.post('/sign',body.urlencoded(),function(req,res,next){
 		const data = req.body;
 		let msg = '';
-		if (!data) return xres.sendStatus(400);
+		if (!data) return res.sendStatus(400);
 		if(data.validation != vail) return res.send({status:4,msg:'the admin is error'})
 		db.find({admin:data.admin},function(error,docs){
 			if(error) res.send({status:3,msg:'sever is error'});
@@ -84,10 +85,13 @@ export default function server(app,body){
 		if(data.grade){
 			if(data.grade != req.session.grade){
 				res.send(op);
-				return;
+				return false;
 			}else{
 				delete data.grade;
 			}
+		}else{
+			res.send(op);
+			return false;
 		}
 		if(startTime && endTime){
 			data.date = { $gte:parseInt(data.date),$lte:parseInt(data.endTime) };
@@ -143,19 +147,9 @@ export default function server(app,body){
 		const data = req.body;
 		const id = data._id;
 		delete data.id;
-		// re.update({'_id':id},{'admin':data.admin,'status':2},function(err,docs){
-		// 	console.log(err,docs);
-		// 	if(err){
-		// 		res.send(err('update failed'));
-		// 	}else{
-		// 		re.findOne({'_id':id},function(err,docs){
-		// 			res.send(success(docs));
-		// 		});
-		// 	}
-		// });
 		re.findOne({'_id':id},function(err,doc){
 			if(doc.status > 1){
-				res.send('can not use');
+				res.send({status:3,msg:'can not use'});
 				return;
 			}else{
 				doc.admin = data.admin;
