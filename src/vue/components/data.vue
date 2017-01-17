@@ -30,7 +30,7 @@
 						<a href="javascript:void(0)" v-if="l.status == 0 && l.admin == 0">指派</a>
 						<a href="javascript:void(0)" @click="del(l)">删除</a>
 						<a href="javascript:void(0)" v-if="l.status == 1" @click="my(l._id)">我来处理</a>
-						<a href="javascript:void(0)" v-if="l.status == 2 " @click="my(l._id)">完成处理</a>
+						<a href="javascript:void(0)" v-if="l.status == 2 ">完成处理</a>
 						<a href="javascript:void(0)" @click="disDetail(l)">
 							详情
 						</a>
@@ -65,6 +65,17 @@ export default{
 			this.detailData = data;
 			this.detail = false
 		},
+		getMy(id){
+			let admin = sessionStorage.getItem('admin');
+			post('/update','admin=' + admin + '&_id=' + id)
+			.then((res) => {
+				if(res.body.status===0){
+					let l = res.body.msg;
+				}else{
+					this.$root.$emit('dropFn','接单失败');
+				}	
+			})
+		},
 		del(value){
 			clearTimeout(this.time);
 			const con = '_id='+ value._id +'&no=' + value.no + '&tel='+ value.tel + '&name=' + value.name;
@@ -82,20 +93,9 @@ export default{
 				}
 			})
 		},
-		getMy(id){
-			let admin = sessionStorage.getItem('admin');
-			console.log(admin);
-			post('/update','admin=' + admin + '&_id=' + id)
-			.then((res) => {
-				if(res.body.status===0){
-					let l = res.body.msg;
-				}else{
-					this.$root.$emit('dropFn','接单失败');
-				}	
-			})
-		},
 		my(id){
-				
+			console.log("this");
+			this.$root.$emit('alertFn','你确定要处理这个订单吗？',this.getMy(id));
 		}
 	}
 }

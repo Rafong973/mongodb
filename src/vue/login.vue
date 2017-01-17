@@ -60,6 +60,7 @@ export default{
 							this.title = '正在登陆...';
 							sessionStorage.setItem('user',res.body.msg.grade);
 							sessionStorage.setItem('admin',res.body.msg.admin);
+							sessionStorage.setItem('id',res.body.msg._id);
 							this.$router.go({path:'/home'})
 						}else{
 							this.title = '登陆信息可能存在错误...';

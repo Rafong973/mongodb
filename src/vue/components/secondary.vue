@@ -1,11 +1,10 @@
 <template>
-	<div class="alert gray-op" v-if="tip">
-		<div class="alert-content secondary">
-			<div class="txc over-hidden">{{ tip }}</div>
-			<div class="txc over-hidden">
-				<a href="javascript:void(0)" class="btn btn-primary pdtr" @click="next">确定</a>
-				<a href="javascript:void(0)" class="pdtr" @click="tip=''">关闭</a>
-			</div>
+	<div class="alert" v-if="tip"></div>
+	<div class="alert-content secondary">
+		<div class="txc over-hidden">{{ tip }}</div>
+		<div class="txc over-hidden">
+			<a href="javascript:void(0)" class="btn b`tn-primary pdtr" @click="next">确定</a>
+			<a href="javascript:void(0)" class="pdtr" @click="tip=''">关闭</a>
 		</div>
 	</div>
 </template>

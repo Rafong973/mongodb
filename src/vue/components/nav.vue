@@ -16,9 +16,8 @@ export default{
 	},
 	methods:{
 		logout(){
-			this.$root.$emit("logout");
-		}
-		
+			this.$root.$emit('alertFn','','this.logout()');
+		}	
 	},
 	created(){
 

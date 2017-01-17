@@ -2,7 +2,7 @@
 	<div class="alert gray-op" v-show="show">
 		<div class="alert-content txc">
 			<p>{{ text }}</p>
-			<a href="javascript:void(0)" class="btn btn-primary pdtr" @click="comeBack" v-show="count">继续操作</a>
+			<a href="javascript:void(0)" class="btn btn-primary pdtr" @click="comeBack">继续操作</a>
 		</div>
 	</div>
 </template>
@@ -18,11 +18,11 @@ export default{
 		}
 	},
 
-	props:['text','show','count'],
+	props:['text','show','fn'],
 
 	methods:{
 		comeBack(){
-			this.$root.$emit("logout");
+			this.$root.$emit(this.fn);
 			this.show = false;
 		}
 	}

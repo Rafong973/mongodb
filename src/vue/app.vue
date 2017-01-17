@@ -6,9 +6,8 @@
 		>
 		</router-view>
 		<nav-bar></nav-bar>
-		<tip :show.sync="ale" :text="tipText" :count.sync="opera"></tip>
+		<tip :show.sync="tipText" :text="tipText" :fn.sync="alertFnTip"></tip>
 		<drop :show.sync="dropTip"></drop>
-		<secondary></secondary>
 	</div>
 </template>
 
@@ -27,13 +26,12 @@ export default{
 		return{
 			name : 'app',
 			curUser:{},
-			ale:false,
 			tipText:'',
-			opera:true,
 			dropTip:'',
 			timeOut:'',
 			loading:false,
-			secondTip:''
+			secondTip:'',
+			alertFnTip:''
 		}
 	},
 
@@ -42,16 +40,10 @@ export default{
 	events:{
 		backLogin(res){
 			if(res.status == 5){
-				this.tipText = '你可能需要重新登陆，才能继续操作';
-				this.ale = true;
+				this.$root.$emit('alertFn','你可能需要重新登陆，才能继续操作',this.logout());
 			}else if(res.status == 3){
-				this.ale = true;
-				this.tipText = '请求错误，我建议你重新登陆'
+				this.$root.$emit('alertFn','请求错误，我建议你重新登陆',this.logout());
 			}
-		},
-		logout(){
-			sessionStorage.removeItem('user');
-			this.$router.go({path:'/login'});
 		},
 		dropFn(text){
 			let self = this;
@@ -60,8 +52,18 @@ export default{
 			this.timeOut = setTimeout(function(){
 				self.dropTip = '';
 			},2500)
+		},
+		alertFn(value,fn){
+			this.tipText = value;
+			eval(fn);
 		}
 	},
+	methods:{
+		logout(){	
+			sessionStorage.removeItem('user');
+			this.$router.go({path:'/login'});
+		},
+	}
 
 }
 </script>
