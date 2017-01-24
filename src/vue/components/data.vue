@@ -22,7 +22,7 @@
 					<td>{{ l.name }}</td>
 					<td>{{ l.tel }}</td>
 					<td>{{ l.type | problem }}</td>
-					<td>{{ l.room }}</td>
+					<td>{{ l.room }}{{ l.house }}</td>
 					<td>{{ l.date | timeReturn }}</td>
 					<td class="td-spe"> {{ l.exp }}</td>
 					<td>{{ l.status | numstatus }}</td>

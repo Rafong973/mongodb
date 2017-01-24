@@ -23,7 +23,7 @@
 				</tr>
 				<tr>
 					<td>宿舍</td>
-					<td>{{ msg.room }}</td>
+					<td>{{ msg.room}}{{ msg.house }}</td>
 				</tr>
 				<tr>
 					<td>预约时间</td>

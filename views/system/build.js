@@ -15155,7 +15155,7 @@ webpackJsonp([0,1],[
 	// 					<td>{{ l.name }}</td>
 	// 					<td>{{ l.tel }}</td>
 	// 					<td>{{ l.type | problem }}</td>
-	// 					<td>{{ l.room }}</td>
+	// 					<td>{{ l.room }}{{ l.house }}</td>
 	// 					<td>{{ l.date | timeReturn }}</td>
 	// 					<td class="td-spe"> {{ l.exp }}</td>
 	// 					<td>{{ l.status | numstatus }}</td>
@@ -15222,7 +15222,7 @@ webpackJsonp([0,1],[
 /* 31 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"data\">\n\t<table class=\"table\"> \n\t\t<thead>\n\t\t\t<tr>\n\t\t\t\t<th>序号</th>\n\t\t\t\t<th>学号</th>\n\t\t\t\t<th>姓名</th>\n\t\t\t\t<th>手机号码</th>\n\t\t\t\t<th>问题类型</th>\n\t\t\t\t<th>宿舍</th>\n\t\t\t\t<th>预约时间</th>\n\t\t\t\t<th>问题详情</th>\n\t\t\t\t<th>状态</th>\n\t\t\t\t<th>操作</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody v-if=\"list\" class=\"data-tbody\">\n\t\t\t<tr v-for=\"l in list \">\n\t\t\t\t<td>{{ $index + 1 }}</td>\n\t\t\t\t<td>{{ l.no }}</td>\n\t\t\t\t<td>{{ l.name }}</td>\n\t\t\t\t<td>{{ l.tel }}</td>\n\t\t\t\t<td>{{ l.type | problem }}</td>\n\t\t\t\t<td>{{ l.room }}</td>\n\t\t\t\t<td>{{ l.date | timeReturn }}</td>\n\t\t\t\t<td class=\"td-spe\"> {{ l.exp }}</td>\n\t\t\t\t<td>{{ l.status | numstatus }}</td>\n\t\t\t\t<td>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 0 && l.admin == 0\">指派</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" @click=\"del(l)\">删除</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 1\" @click=\"order(l._id,'my')\">我来处理</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 2\" @click=\"order(l._id,'finish')\">完成处理</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" @click=\"disDetail(l)\">\n\t\t\t\t\t\t详情\n\t\t\t\t\t</a>\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n\t<div class=\"txc\" v-show=\"list.length == 0\">\n\t\t无数据\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"data\">\n\t<table class=\"table\"> \n\t\t<thead>\n\t\t\t<tr>\n\t\t\t\t<th>序号</th>\n\t\t\t\t<th>学号</th>\n\t\t\t\t<th>姓名</th>\n\t\t\t\t<th>手机号码</th>\n\t\t\t\t<th>问题类型</th>\n\t\t\t\t<th>宿舍</th>\n\t\t\t\t<th>预约时间</th>\n\t\t\t\t<th>问题详情</th>\n\t\t\t\t<th>状态</th>\n\t\t\t\t<th>操作</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody v-if=\"list\" class=\"data-tbody\">\n\t\t\t<tr v-for=\"l in list \">\n\t\t\t\t<td>{{ $index + 1 }}</td>\n\t\t\t\t<td>{{ l.no }}</td>\n\t\t\t\t<td>{{ l.name }}</td>\n\t\t\t\t<td>{{ l.tel }}</td>\n\t\t\t\t<td>{{ l.type | problem }}</td>\n\t\t\t\t<td>{{ l.room }}{{ l.house }}</td>\n\t\t\t\t<td>{{ l.date | timeReturn }}</td>\n\t\t\t\t<td class=\"td-spe\"> {{ l.exp }}</td>\n\t\t\t\t<td>{{ l.status | numstatus }}</td>\n\t\t\t\t<td>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 0 && l.admin == 0\">指派</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" @click=\"del(l)\">删除</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 1\" @click=\"order(l._id,'my')\">我来处理</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 2\" @click=\"order(l._id,'finish')\">完成处理</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" @click=\"disDetail(l)\">\n\t\t\t\t\t\t详情\n\t\t\t\t\t</a>\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n\t<div class=\"txc\" v-show=\"list.length == 0\">\n\t\t无数据\n\t</div>\n</div>\n";
 
 /***/ },
 /* 32 */
@@ -18553,7 +18553,7 @@ webpackJsonp([0,1],[
 	// 				</tr>
 	// 				<tr>
 	// 					<td>宿舍</td>
-	// 					<td>{{ msg.room }}</td>
+	// 					<td>{{ msg.room}}{{ msg.house }}</td>
 	// 				</tr>
 	// 				<tr>
 	// 					<td>预约时间</td>
@@ -18589,7 +18589,7 @@ webpackJsonp([0,1],[
 /* 109 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"detail-body\" v-show='!show'>\n\t<div class=\"line\" style=\"line-height:2.8175rem;\">\n\t\t<a href=\"javascript:void(0)\" class=\"fl btn-ng\" @click=\"back\">返回</a>\n\t\t<a href=\"javascript:void(0)\" class=\"fr btn-ng\" @click=\"editData\" v-show=\"edit\">编辑</a>\n\t\t<a href=\"javascript:void(0)\" class=\"fr btn-ng\" @click=\"finish\" v-show=\"!edit\">完成</a>\n\t</div>\n\t<table class=\"detail\">\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td>学号</td>\n\t\t\t\t<td>{{ msg.no }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>手机号码</td>\n\t\t\t\t<td>\n\t\t\t\t\t<input type=\"text\" class=\"large-input detail-input\" v-model=\"msg.tel\" :readonly=\"edit\" :class=\"{warm:!edit}\">\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>问题类型</td>\n\t\t\t\t<td>{{ msg.type | problem }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>宿舍</td>\n\t\t\t\t<td>{{ msg.room }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>预约时间</td>\n\t\t\t\t<td>\n\t\t\t\t<span type=\"text\" class=\"large-input\" :class=\"{warm:!edit}\">{{ msg.date | timeReturn }}</span>\n\t\t\t\t<flatpickr :options=\"options\" v-model=\"newTime\" v-show=\"!edit\" :class=\"{warm:!edit}\"></flatpickr>\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>报修时间</td>\n\t\t\t\t<td>{{ msg.create | timeReturn '1' }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>接单人</td>\n\t\t\t\t<td>飞机</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>状态</td>\n\t\t\t\t<td>{{ msg.status | numstatus }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>问题详情</td>\n\t\t\t\t<td>{{ msg.exp }}</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>\n";
+	module.exports = "\n<div class=\"detail-body\" v-show='!show'>\n\t<div class=\"line\" style=\"line-height:2.8175rem;\">\n\t\t<a href=\"javascript:void(0)\" class=\"fl btn-ng\" @click=\"back\">返回</a>\n\t\t<a href=\"javascript:void(0)\" class=\"fr btn-ng\" @click=\"editData\" v-show=\"edit\">编辑</a>\n\t\t<a href=\"javascript:void(0)\" class=\"fr btn-ng\" @click=\"finish\" v-show=\"!edit\">完成</a>\n\t</div>\n\t<table class=\"detail\">\n\t\t<tbody>\n\t\t\t<tr>\n\t\t\t\t<td>学号</td>\n\t\t\t\t<td>{{ msg.no }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>手机号码</td>\n\t\t\t\t<td>\n\t\t\t\t\t<input type=\"text\" class=\"large-input detail-input\" v-model=\"msg.tel\" :readonly=\"edit\" :class=\"{warm:!edit}\">\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>问题类型</td>\n\t\t\t\t<td>{{ msg.type | problem }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>宿舍</td>\n\t\t\t\t<td>{{ msg.room}}{{ msg.house }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>预约时间</td>\n\t\t\t\t<td>\n\t\t\t\t<span type=\"text\" class=\"large-input\" :class=\"{warm:!edit}\">{{ msg.date | timeReturn }}</span>\n\t\t\t\t<flatpickr :options=\"options\" v-model=\"newTime\" v-show=\"!edit\" :class=\"{warm:!edit}\"></flatpickr>\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>报修时间</td>\n\t\t\t\t<td>{{ msg.create | timeReturn '1' }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>接单人</td>\n\t\t\t\t<td>飞机</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>状态</td>\n\t\t\t\t<td>{{ msg.status | numstatus }}</td>\n\t\t\t</tr>\n\t\t\t<tr>\n\t\t\t\t<td>问题详情</td>\n\t\t\t\t<td>{{ msg.exp }}</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n</div>\n";
 
 /***/ },
 /* 110 */
