@@ -41,6 +41,7 @@ export default{
 	position: absolute;
 	margin:0;
 	padding:0;
+	cursor: pointer;
 	right: 0;
 	background-color: #fff;top:2rem;
 	border:1px solid #dfdfdf;

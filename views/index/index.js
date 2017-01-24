@@ -87,6 +87,9 @@ function vaildata(value){
 			}
 		}
 	}
+	var time = new Date();
+	time = time.getTime();
+	f += '&create=' + time;
 	if(f) return f.substring(0,f.length-1).replace(/\s+/g,"")
 	else return f
 }

@@ -57,7 +57,7 @@ export default{
 			passagain: '',
 			validation: '',
 			password: '',
-			super: 1,
+			super: '',
 			warm:false
 		}
 	},
@@ -82,9 +82,14 @@ export default{
 					switch(data.status){
 						case 0:
 							this.title = '注册成功';
+							this.$root.$emit('alertFn','注册成功');
+							this.$dispatch('child','logout');
+							
 						break;
-						case 1:
+						case 2:
 							this.title = '此用户已经存在了';
+							this.$root.$emit('dropFn','此用户已经存在了');
+							return false;
 						break;
 						case 4:
 							this.title = '管理员验证不通过，检查验证码';

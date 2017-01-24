@@ -11,7 +11,7 @@
 				</div>
 				<div class="input-group vertical-input">
 					<label class="input-label">Password：</label>
-					<input type="password" class="input-input password" v-model="password" placeholder="这里写的是密码">
+					<input type="password" class="input-input password" v-model="password" placeholder="这里写的是密码" @keyup.enter="login">
 				</div>
 				<div class="input-group vertical-input">
 					<input type="checkbox" id="remeber" class="input-checkbox" v-model="remeber" pla>

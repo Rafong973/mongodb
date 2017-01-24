@@ -56,10 +56,10 @@
 			<button class="btn txc btn-primary pdtr" @click="getData(`status=3`)">所有已完成订单</button>
 		</div>
 		<div class="line order-search">
-			<button class="btn txc btn-primary pdtr" @click="getData(`grade=${this.grade}&admin=${this.user_name}&status=1`)">我的订单</button>
-			<button class="btn txc btn-primary pdtr" @click="getData(`grade=${this.grade}&admin=${this.user_name}&status=1`)">我的未处理订单</button>
-			<button class="btn txc btn-primary pdtr" @click="getData(`grade=${this.grade}&admin=${this.user_name}&status=2`)">我的处理中订单</button>
-			<button class="btn txc btn-primary pdtr" @click="getData(`grade=${this.grade}&admin=${this.user_name}&status=3`)">我的已完成订单</button>
+			<button class="btn txc btn-primary pdtr" @click="getData(`admin=${this.user_name}`)">我的订单</button>
+			<button class="btn txc btn-primary pdtr" @click="getData(`admin=${this.user_name}&status=1`)">我的未处理订单</button>
+			<button class="btn txc btn-primary pdtr" @click="getData(`admin=${this.user_name}&status=2`)">我的处理中订单</button>
+			<button class="btn txc btn-primary pdtr" @click="getData(`admin=${this.user_name}&status=3`)">我的已完成订单</button>
 		</div>
 	</div>
 </template>
@@ -90,6 +90,7 @@ export default{
 			user_name:sessionStorage.getItem('admin'),
 			endTime:'',
 			selType:[
+					{no:4,name:'全部问题'},
 					{no:1,name:'锐捷问题'},
 					{no:2,name:'硬件问题'},
 					{no:3,name:'软件问题'}
@@ -145,7 +146,11 @@ export default{
     		}
     	},
     	getData(data){
-    		if(!data) data = null;
+    		if(!data){
+    			data = 'grade='  + this.grade;
+    		}else{
+    			data += '&grade=' + this.grade;
+    		}
     		post('/data',data)
     		.then((res)=>{
     			this.list = "";
@@ -167,7 +172,7 @@ export default{
     	}
     },
     created(){
-    	this.getData(`grade=${sessionStorage.getItem('user')}`);
+    	this.getData(`status=1`);
     }
 }
 

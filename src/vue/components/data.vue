@@ -29,8 +29,8 @@
 					<td>
 						<a href="javascript:void(0)" v-if="l.status == 0 && l.admin == 0">指派</a>
 						<a href="javascript:void(0)" @click="del(l)">删除</a>
-						<a href="javascript:void(0)" v-if="l.status == 1" @click="my(l._id)">我来处理</a>
-						<a href="javascript:void(0)" v-if="l.status == 2" @click="finish(l._id)">完成处理</a>
+						<a href="javascript:void(0)" v-if="l.status == 1" @click="order(l._id,'my')">我来处理</a>
+						<a href="javascript:void(0)" v-if="l.status == 2" @click="order(l._id,'finish')">完成处理</a>
 						<a href="javascript:void(0)" @click="disDetail(l)">
 							详情
 						</a>
@@ -65,17 +65,24 @@ export default{
 			this.detailData = data;
 			this.detail = false
 		},
-		del(value){
+		del(id){
 			this.$root.$emit('alertFn','确定删除吗？');
-			this.$dispatch('child',['delete',value])
+			this.$dispatch('child',['delete',id]);
 		},
-		my(id){
-			this.$root.$emit('alertFn','你确定要接受这个订单吗？');
-			this.$dispatch('child',['getMy',id])
-		},
-		finish(id){
-			this.$root.$emit('alertFn','你处理好这个订单了吗？');
-			this.$dispatch('child',['getMy',id])
+		order(id,type){
+			let temp,
+			admin = sessionStorage.getItem('admin');
+			switch(type){
+				case 'my':
+					this.$root.$emit('alertFn','你确定要接受这个订单吗？');
+					temp = '_id='+id+'&admin='+admin+'&status=2';
+				break;
+				case 'finish':
+					this.$root.$emit('alertFn','你已经完成了这个订单，是吗？');
+					temp = '_id='+id+'&status=3';
+				break;
+			}
+			this.$dispatch('child',['update',temp]);
 		}
 	}
 }

@@ -41,14 +41,12 @@ export default{
 	},
 	created(){
 		this.all = "";
-		
 	},
 	watch:{
 		'current':function(newValue){
 			this.list = this.all.slice((newValue-1) * 10,newValue*10);
 		},
 		'all':function(newValue,old){
-			console.log(newValue)
 			this.current = 1;
 			this.list = this.all.slice(0,10);
 			this.total = Math.ceil(this.all.length / 10);

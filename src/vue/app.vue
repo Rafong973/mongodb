@@ -70,13 +70,34 @@ export default{
 		},
 		getMy(id){
 			let admin = sessionStorage.getItem('admin');
-			post('/update','admin=' + admin + '&_id=' + id)
+			post('/update','admin=' + admin + '&_id=' + id + '&status=2')
 			.then((res) => {
 				if(res.body.status===0){
 					let l = res.body.msg;
 				}else{
 					this.$root.$emit('dropFn','接单失败');
 				}	
+			})
+		},
+		finish(id){
+			post('/update','_id='+ id + '&status=3')
+			.then((res) => {
+				if(res.body.status == 0){
+					this.$root.$emit('dropFn','完成处理');
+				}else{
+					this.$root.$emit('dropFn','操作失败');
+				}
+			})
+		},
+		update(value){
+			post('/update',value)
+			.then((res)=>{
+				if(res.body.status==0){
+					this.$root.$emit('dropFn','操作成功');
+				}else{
+					this.$root.$emit('dropFn','操纵失败');
+				}
+				return;
 			})
 		},
 		logout(){	

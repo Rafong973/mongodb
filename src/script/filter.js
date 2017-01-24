@@ -36,7 +36,7 @@ export default{
 		}
 		return t;
 	},
-	timeReturn(value){
+	timeReturn(value,judge){
 		if(typeof value != 'number') value = parseInt(value);
 		let d = new Date(value);
 		let	y = d.getFullYear();
@@ -46,7 +46,12 @@ export default{
 		let f = d.getMinutes();
 		if(f < 10) f += '0';
 		if(h < 10) h = '0' + h;
-		if(t !== 31) t -= 1;
+		if(m < 10) m = '0' + m;
+		if(!d){
+			if(t !== 31) t -= 1;
+		}else{
+			t=t;
+		}
 		d = y + '-' + m + '-' + t + '  ' + h + ':' + f; 
 		return d;
 	}

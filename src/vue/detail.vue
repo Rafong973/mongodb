@@ -34,7 +34,7 @@
 				</tr>
 				<tr>
 					<td>报修时间</td>
-					<td>2016-20-21 08：00</td>
+					<td>{{ msg.create | timeReturn '1' }}</td>
 				</tr>
 				<tr>
 					<td>接单人</td>
@@ -80,6 +80,7 @@ export default{
 	methods:{
 		back(){
 			this.show = true;
+			this.edit = false;
 		},
 		editData(){
 			this.edit = false;
@@ -91,6 +92,7 @@ export default{
 	watch:{
 		newTime(newValue){
 			let date = new Date(newValue);
+			date.setDate(date.getDate()+1);
 			let time = date.getTime();
 			this.msg.date = time;
 		}

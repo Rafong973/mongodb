@@ -33,7 +33,7 @@ textarea {
 	font-size:13px;
 	font-size:.8125rem;
 	border-radius:.25rem;
-	z-index:999
+	z-index:999;
 }
 .select-ul li {
 	padding:.25rem 0;

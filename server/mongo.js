@@ -27,7 +27,8 @@ var KittyData = new Schema({
 	date:Number,
 	exp:String,
 	status:Number,
-	admin:String
+	admin:String,
+	create:Number
 })
 var Kitten = mongo.model('Kitten',kittySchema);
 var Data = mongo.model('Data',KittyData);

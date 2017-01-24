@@ -31,7 +31,7 @@ export default function server(app,body){
 		if (!data) return res.sendStatus(400);
 		db.find({admin:data.u},function(err,docs){
 			if(docs.length == 0){
-				msg = err('no this user');
+				msg = {status:3,msg:'no this user'};
 			}else{
 				let pass = cry.createHmac('sha512',data.p)
 							  .update('I am bydqjx')
@@ -58,6 +58,7 @@ export default function server(app,body){
 	app.post('/sign',body.urlencoded(),function(req,res,next){
 		const data = req.body;
 		let msg = '';
+		console.log(data);
 		if (!data) return res.sendStatus(400);
 		if(data.validation != vail) return res.send({status:4,msg:'the admin is error'})
 		db.find({admin:data.admin},function(error,docs){
@@ -93,6 +94,7 @@ export default function server(app,body){
 			res.send(op);
 			return false;
 		}
+		if(data.type > 3) data.type = {$lte:3};
 		if(startTime && endTime){
 			data.date = { $gte:parseInt(data.date),$lte:parseInt(data.endTime) };
 			delete data.endTime;
@@ -147,15 +149,22 @@ export default function server(app,body){
 		const data = req.body;
 		const id = data._id;
 		delete data.id;
-		re.findOne({'_id':id},function(err,doc){
-			if(doc.status > 1){
-				res.send({status:3,msg:'can not use'});
-				return;
+		// re.findOne({'_id':id},function(err,doc){
+		// 	if(doc.status > 1){
+		// 		res.send({status:3,msg:'can not use'});
+		// 		return;
+		// 	}else{
+		// 		doc.admin = data.admin;
+		// 		doc.status = 2;
+		// 		doc.save();
+		// 		res.send(success(doc));
+		// 	}
+		// })
+		re.update({_id:id},{$set:data},function(err,update){
+			if(!err){
+				res.send(success('success'));
 			}else{
-				doc.admin = data.admin;
-				doc.status = 2;
-				doc.save();
-				res.send(success(doc));
+				res.send({msg:'update is error',status:3})
 			}
 		})
 	})
