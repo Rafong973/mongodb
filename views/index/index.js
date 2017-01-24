@@ -47,7 +47,7 @@ function ajax(type,u,data){
 				setTimeout(function(){
 					app.alert("提交成功");
 				},800)
-				// window.sessionStorage.setItem("repair",data);
+				window.sessionStorage.setItem("repair",data);
 				return;
 			}
 		}else{
@@ -118,6 +118,7 @@ function select(dom,value){
 	var w = dom[0].clientWidth,
 		f = dom[0].parentElement,
 	   ul = document.createElement('ul');
+	 body = document.getElementsByTagName('body');
 	f.style.position = 'relative';
 	f.style.overflow = 'inherit';
 	ul.className = 'select-ul';
@@ -130,6 +131,8 @@ function select(dom,value){
 	}
 	ul.addEventListener('click',function(e){
 		var a,b;
+		var c = document.getElementsByClassName('select-mask');
+		console.log(c);
 		if(e.target){
 			a = e.target;
 			b = f.getElementsByClassName('input-input')[0];
@@ -137,9 +140,10 @@ function select(dom,value){
 			b.setAttribute('data',a.getAttribute('value'));
 			ul.style.height = '0';
 			ul.style.border = '0';
+			body[0].removeChild(c[0]);
 			switchDom(dom[0])
 		}
-	})
+	});
 	f.insertBefore(ul,f.getElementsByClassName('warm-label')[0]);
 };
 var selectList = [
@@ -149,16 +153,18 @@ var selectList = [
 ];
 select($('.select'),selectList);
 $('.select')[0].onclick = function(){
-	var i = this.nextElementSibling;   
+	var i = this.nextElementSibling;
 	i.style.border = '.0625rem solid #ccc';
 	// i.style.height = (35+4+2)*3 + 2 + 'px';
 	i.style.height = '110px';
+	closeSelect();
 };
 $('.room')[0].onclick = function(){
-	var i = this.nextElementSibling;   
+	var i = this.nextElementSibling;  
 	i.style.border = '.0625rem solid #ccc';
 	// i.style.height = (35+4+2)*3 + 2 + 'px';
-	i.style.height = '110px';
+	i.style.height = '150px';
+	closeSelect();
 };
 (function(){
 	var t = $('.input-input');
@@ -195,6 +201,7 @@ function switchDom(dom){
 		case 'admin':
 		case 'status':
 		case 'date':
+		case 'house':
 			j = true;	
 		break;
 		case 'tel':
@@ -231,3 +238,18 @@ $("#data-choose").flatpickr({
 	"locale": "zh",
 	time_24hr:true
 });
+
+//关闭下拉列表
+function closeSelect(){
+	var div = document.createElement('div');
+	var select = $('.select-ul');
+	div.className = 'alert select-mask';
+	div.onclick = function(){
+		for(var i=0;i<select.length;i++){
+			select[i].style.height = '0';
+			select[i].style.border = '0';
+			div.style.display = 'none';
+		}
+	}
+	document.getElementsByTagName('body')[0].appendChild(div);
+}

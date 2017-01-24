@@ -41,7 +41,6 @@ function banner(){
 	var b = $('.banner');
 	for(var i = 0;i<b.length;i++){
 		var p = b[i].firstElementChild.clientHeight;
-		console.log(p,window.innerHeight);
 		if(p > window.innerHeight){
 			b[i].style.height = p + 'px';
 		}else {
