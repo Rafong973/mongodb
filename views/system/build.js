@@ -15197,8 +15197,8 @@ webpackJsonp([0,1],[
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var t = 'http://localhost:8080';
-	// let t = '';
+	// let t = 'http://localhost:8080';
+	var t = '';
 
 	function login(accout, password) {
 		return _vue2.default.http.post(t + '/login', 'u=' + accout + '&p=' + password, {
