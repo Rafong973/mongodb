@@ -1,7 +1,7 @@
 import vue from 'vue'
 
-// let t = 'http://localhost:8080';
-let t = '';
+let t = 'http://localhost:8080';
+// let t = '';
 
 export function login(accout,password){
 	return vue.http.post(

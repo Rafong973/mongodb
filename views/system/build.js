@@ -39,14 +39,18 @@ webpackJsonp([0,1],[
 
 	var _register2 = _interopRequireDefault(_register);
 
-	var _filter = __webpack_require__(146);
+	var _set = __webpack_require__(146);
+
+	var _set2 = _interopRequireDefault(_set);
+
+	var _filter = __webpack_require__(150);
 
 	var _filter2 = _interopRequireDefault(_filter);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/**css**/
-	__webpack_require__(147);
+	__webpack_require__(151);
 
 	/**component**/
 
@@ -81,6 +85,9 @@ webpackJsonp([0,1],[
 		},
 		'/reg': {
 			component: _register2.default
+		},
+		'/set': {
+			component: _set2.default
 		}
 	});
 
@@ -98,7 +105,7 @@ webpackJsonp([0,1],[
 		    redirect = _ref.redirect;
 
 		var r = to.path,
-		    user = sessionStorage.getItem('user');
+		    user = sessionStorage.getItem('admin');
 		if (!user || user == '/logout') {
 			if (r === '/login' || r == '/reg') {
 				next();
@@ -15161,7 +15168,7 @@ webpackJsonp([0,1],[
 	// 					<td>{{ l.status | numstatus }}</td>
 	// 					<td>
 	// 						<a href="javascript:void(0)" v-if="l.status == 0 && l.admin == 0">指派</a>
-	// 						<a href="javascript:void(0)" @click="del(l)">删除</a>
+	// 						<a href="javascript:void(0)" @click="del(l)" v-if="sessionStorage.getItem('grade')==2">删除</a>
 	// 						<a href="javascript:void(0)" v-if="l.status == 1" @click="order(l._id,'my')">我来处理</a>
 	// 						<a href="javascript:void(0)" v-if="l.status == 2" @click="order(l._id,'finish')">完成处理</a>
 	// 						<a href="javascript:void(0)" @click="disDetail(l)">
@@ -15197,8 +15204,8 @@ webpackJsonp([0,1],[
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// let t = 'http://localhost:8080';
-	var t = '';
+	var t = 'http://localhost:8080';
+	// let t = '';
 
 	function login(accout, password) {
 		return _vue2.default.http.post(t + '/login', 'u=' + accout + '&p=' + password, {
@@ -15222,7 +15229,7 @@ webpackJsonp([0,1],[
 /* 31 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"data\">\n\t<table class=\"table\"> \n\t\t<thead>\n\t\t\t<tr>\n\t\t\t\t<th>序号</th>\n\t\t\t\t<th>学号</th>\n\t\t\t\t<th>姓名</th>\n\t\t\t\t<th>手机号码</th>\n\t\t\t\t<th>问题类型</th>\n\t\t\t\t<th>宿舍</th>\n\t\t\t\t<th>预约时间</th>\n\t\t\t\t<th>问题详情</th>\n\t\t\t\t<th>状态</th>\n\t\t\t\t<th>操作</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody v-if=\"list\" class=\"data-tbody\">\n\t\t\t<tr v-for=\"l in list \">\n\t\t\t\t<td>{{ $index + 1 }}</td>\n\t\t\t\t<td>{{ l.no }}</td>\n\t\t\t\t<td>{{ l.name }}</td>\n\t\t\t\t<td>{{ l.tel }}</td>\n\t\t\t\t<td>{{ l.type | problem }}</td>\n\t\t\t\t<td>{{ l.room }}{{ l.house }}</td>\n\t\t\t\t<td>{{ l.date | timeReturn }}</td>\n\t\t\t\t<td class=\"td-spe\"> {{ l.exp }}</td>\n\t\t\t\t<td>{{ l.status | numstatus }}</td>\n\t\t\t\t<td>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 0 && l.admin == 0\">指派</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" @click=\"del(l)\">删除</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 1\" @click=\"order(l._id,'my')\">我来处理</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 2\" @click=\"order(l._id,'finish')\">完成处理</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" @click=\"disDetail(l)\">\n\t\t\t\t\t\t详情\n\t\t\t\t\t</a>\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n\t<div class=\"txc\" v-show=\"list.length == 0\">\n\t\t无数据\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"data\">\n\t<table class=\"table\"> \n\t\t<thead>\n\t\t\t<tr>\n\t\t\t\t<th>序号</th>\n\t\t\t\t<th>学号</th>\n\t\t\t\t<th>姓名</th>\n\t\t\t\t<th>手机号码</th>\n\t\t\t\t<th>问题类型</th>\n\t\t\t\t<th>宿舍</th>\n\t\t\t\t<th>预约时间</th>\n\t\t\t\t<th>问题详情</th>\n\t\t\t\t<th>状态</th>\n\t\t\t\t<th>操作</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody v-if=\"list\" class=\"data-tbody\">\n\t\t\t<tr v-for=\"l in list \">\n\t\t\t\t<td>{{ $index + 1 }}</td>\n\t\t\t\t<td>{{ l.no }}</td>\n\t\t\t\t<td>{{ l.name }}</td>\n\t\t\t\t<td>{{ l.tel }}</td>\n\t\t\t\t<td>{{ l.type | problem }}</td>\n\t\t\t\t<td>{{ l.room }}{{ l.house }}</td>\n\t\t\t\t<td>{{ l.date | timeReturn }}</td>\n\t\t\t\t<td class=\"td-spe\"> {{ l.exp }}</td>\n\t\t\t\t<td>{{ l.status | numstatus }}</td>\n\t\t\t\t<td>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 0 && l.admin == 0\">指派</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" @click=\"del(l)\" v-if=\"sessionStorage.getItem('grade')==2\">删除</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 1\" @click=\"order(l._id,'my')\">我来处理</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 2\" @click=\"order(l._id,'finish')\">完成处理</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" @click=\"disDetail(l)\">\n\t\t\t\t\t\t详情\n\t\t\t\t\t</a>\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n\t<div class=\"txc\" v-show=\"list.length == 0\">\n\t\t无数据\n\t</div>\n</div>\n";
 
 /***/ },
 /* 32 */
@@ -15375,7 +15382,7 @@ webpackJsonp([0,1],[
 	      roomShow: false,
 	      tel: '',
 	      startTime: '',
-	      grade: sessionStorage.getItem('user'),
+	      grade: sessionStorage.getItem('grade'),
 	      user_name: sessionStorage.getItem('admin'),
 	      endTime: '',
 	      selType: [{ no: 4, name: '全部问题' }, { no: 1, name: '锐捷问题' }, { no: 2, name: '硬件问题' }, { no: 3, name: '软件问题' }],
@@ -18899,6 +18906,7 @@ webpackJsonp([0,1],[
 				loading: false,
 				secondTip: '',
 				tipFn: '',
+				user: '',
 				time: ''
 			};
 		},
@@ -18923,7 +18931,7 @@ webpackJsonp([0,1],[
 				var _this = this;
 
 				clearTimeout(this.time);
-				var con = '_id=' + value._id + '&no=' + value.no + '&tel=' + value.tel + '&name=' + value.name;
+				var con = '_id=' + value._id + '&no=' + value.no + '&tel=' + value.tel + '&name=' + value.name + '&user=' + sessionStorage.getItem('admin') + '&grade=' + sessionStorage.getItem('grade');
 				(0, _server.post)('/del', con).then(function (res) {
 					if (res.body.status === 0) {
 						(function () {
@@ -18939,43 +18947,21 @@ webpackJsonp([0,1],[
 					}
 				});
 			},
-			getMy: function getMy(id) {
-				var _this2 = this;
-
-				var admin = sessionStorage.getItem('admin');
-				(0, _server.post)('/update', 'admin=' + admin + '&_id=' + id + '&status=2').then(function (res) {
-					if (res.body.status === 0) {
-						var l = res.body.msg;
-					} else {
-						_this2.$root.$emit('dropFn', '接单失败');
-					}
-				});
-			},
-			finish: function finish(id) {
-				var _this3 = this;
-
-				(0, _server.post)('/update', '_id=' + id + '&status=3').then(function (res) {
-					if (res.body.status == 0) {
-						_this3.$root.$emit('dropFn', '完成处理');
-					} else {
-						_this3.$root.$emit('dropFn', '操作失败');
-					}
-				});
-			},
 			update: function update(value) {
-				var _this4 = this;
+				var _this2 = this;
 
 				(0, _server.post)('/update', value).then(function (res) {
 					if (res.body.status == 0) {
-						_this4.$root.$emit('dropFn', '操作成功');
+						_this2.$root.$emit('dropFn', '操作成功');
 					} else {
-						_this4.$root.$emit('dropFn', '操纵失败');
+						_this2.$root.$emit('dropFn', '操纵失败');
 					}
 					return;
 				});
 			},
 			logout: function logout() {
-				sessionStorage.removeItem('user');
+				this.user = '';
+				sessionStorage.removeItem('grade');
 				sessionStorage.removeItem('admin');
 				sessionStorage.removeItem('id');
 				this.$router.go({ path: '/login' });
@@ -18985,6 +18971,9 @@ webpackJsonp([0,1],[
 			},
 			alertFn: function alertFn(value) {
 				this.tipText = value;
+			},
+			loginMsg: function loginMsg(value) {
+				this.user = value;
 			}
 		}
 
@@ -19010,7 +18999,7 @@ webpackJsonp([0,1],[
 	// 		transition-mode="out-in"
 	// 		>
 	// 		</router-view>
-	// 		<nav-bar></nav-bar>
+	// 		<nav-bar :show.sync="user"></nav-bar>
 	// 		<tip :show.sync="tipText" :text.sync="tipText" :method="tipFn"></tip>
 	// 		<drop :show.sync="dropTip"></drop>
 	// 	</div>
@@ -19072,9 +19061,9 @@ webpackJsonp([0,1],[
 		value: true
 	});
 	// <template>
-	// 	<div class="nav">
-	// 		<a href="javascript:void(0)" class="admin-set" alt="用户设置" ></a>
-	// 		<a href="javascript:void(0)" class="logout" alt="退出" @click="logout"></a>
+	// 	<div class="nav" v-show="show">
+	// 		<a href="javascript:void(0)" class="admin-set" alt="用户设置"  v-link="{path:'/set'}">用户管理</a>
+	// 		<a href="javascript:void(0)" class="logout" alt="退出" @click="logout">退出</a>
 	// 	</div>
 	// </template>
 	//
@@ -19082,60 +19071,32 @@ webpackJsonp([0,1],[
 	exports.default = {
 		name: 'nav',
 
-		data: function data() {
-			return {};
-		},
+		props: ['show'],
 
 		methods: {
 			logout: function logout() {
 				this.$root.$emit('logout');
 			}
-		},
-		created: function created() {}
+		}
 	};
 	// </script>
 	//
 	// <style>
 	// .nav{
-	// 	width: 1.5625rem;
 	// 	position: fixed;
-	// 	top: 50%;
+	// 	bottom: 1%;
 	// 	right: 1%;
 	// 	z-index: 99999;
-	// 	transform: translateY(-50%);
 	// 	text-align: center;
 	// 	a{
 	// 		display: block;
-	// 		width: 100%;
-	// 		height: 1.5625rem;
 	// 		margin-bottom: .625rem;
 	// 		position: relative;
+	// 		font-size: 0.875rem;
+	// 		float: left;
+	// 		margin-right: 0.9375rem;
+	// 		color: #428bca;
 	// 	}
-	// 	.logout{
-	// 		border-radius: 50%;
-	// 		border: .1875rem solid #4d6076;
-	// 		&:before,&:after{
-	// 			content: "";
-	// 			position: absolute;
-	// 			left: 50%;
-	// 			transform: translateX(-50%);
-	// 		}
-	// 		&:before{
-	// 			height: .3125rem;
-	// 			width: .625rem;
-	// 			top:-.1875rem;
-	// 			background-color: #fafafa;
-	// 		}
-	// 		&:after{
-	// 			height: 0.625rem;
-	// 			width: 0.1875rem;
-	// 			top: -0.3125rem;
-	// 			background-color: #4d6076;
-	// 		}
-	// 	}
-	// }
-	// .admin-set{
-	//
 	// }
 	// </style>
 
@@ -19143,7 +19104,7 @@ webpackJsonp([0,1],[
 /* 125 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"nav\">\n\t<a href=\"javascript:void(0)\" class=\"admin-set\" alt=\"用户设置\" ></a>\n\t<a href=\"javascript:void(0)\" class=\"logout\" alt=\"退出\" @click=\"logout\"></a>\n</div>\n";
+	module.exports = "\n<div class=\"nav\" v-show=\"show\">\n\t<a href=\"javascript:void(0)\" class=\"admin-set\" alt=\"用户设置\"  v-link=\"{path:'/set'}\">用户管理</a>\n\t<a href=\"javascript:void(0)\" class=\"logout\" alt=\"退出\" @click=\"logout\">退出</a>\n</div>\n";
 
 /***/ },
 /* 126 */
@@ -19462,7 +19423,7 @@ webpackJsonp([0,1],[
 /* 138 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"app\">\n\t<router-view\n\ttransition=\"route\"\n\ttransition-mode=\"out-in\"\n\t>\n\t</router-view>\n\t<nav-bar></nav-bar>\n\t<tip :show.sync=\"tipText\" :text.sync=\"tipText\" :method=\"tipFn\"></tip>\n\t<drop :show.sync=\"dropTip\"></drop>\n</div>\n";
+	module.exports = "\n<div class=\"app\">\n\t<router-view\n\ttransition=\"route\"\n\ttransition-mode=\"out-in\"\n\t>\n\t</router-view>\n\t<nav-bar :show.sync=\"user\"></nav-bar>\n\t<tip :show.sync=\"tipText\" :text.sync=\"tipText\" :method=\"tipFn\"></tip>\n\t<drop :show.sync=\"dropTip\"></drop>\n</div>\n";
 
 /***/ },
 /* 139 */
@@ -19545,8 +19506,9 @@ webpackJsonp([0,1],[
 						if (res.status == 200) {
 							if (res.body.status === 0) {
 								_this.title = '正在登陆...';
-								sessionStorage.setItem('user', res.body.msg.grade);
+								sessionStorage.setItem('grade', res.body.msg.grade);
 								sessionStorage.setItem('admin', res.body.msg.admin);
+								_this.$dispatch('loginMsg', res.body.msg);
 								sessionStorage.setItem('id', res.body.msg._id);
 								_this.$router.go({ path: '/home' });
 							} else {
@@ -19851,6 +19813,83 @@ webpackJsonp([0,1],[
 
 /***/ },
 /* 146 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__webpack_require__(147)
+	__vue_script__ = __webpack_require__(148)
+	if (__vue_script__ &&
+	    __vue_script__.__esModule &&
+	    Object.keys(__vue_script__).length > 1) {
+	  console.warn("[vue-loader] src\\vue\\set.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(149)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-803da9ba/set.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 147 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 148 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	// <template>
+	// 	<div class="set">
+	//
+	// 	</div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+		name: 'set',
+
+		data: function data() {
+			return {};
+		}
+	};
+	// </script>
+	//
+	// <style>
+	//
+	// </style>
+
+/***/ },
+/* 149 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"set\">\n\t\n</div>\n";
+
+/***/ },
+/* 150 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -19918,7 +19957,7 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 147 */
+/* 151 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

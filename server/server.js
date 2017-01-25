@@ -23,8 +23,6 @@ let err = (value) =>{
 let op = {status:4,msg:'admin is error'};
 
 export default function server(app,body){
-	
-
 	app.post('/login',body.urlencoded(),function(req,res){
 		const data = req.body;
 		let msg = '';
@@ -135,31 +133,38 @@ export default function server(app,body){
 	app.post('/del',body.urlencoded(),(req,res) =>{
 		const data = req.body;
 		let msg = '';
-		re.remove(data,function(error){
-			if(error){
-				msg = err('delete is failed');
-			}else{
-				msg = success('deleted');
-			}
-			res.send(msg);
-		})
+		if(!data.user && !data.admin){
+			res.send({status:3,msg:'no user'});
+			return;
+		}else{
+			db.findOne({admin:data.user},function(error,docs){
+				if(data.admin==docs.grade && data.grade==req.session.grade){
+					console.log('true');
+					msg = err('delete is failed');
+				}else{
+					delete data.user;
+					delete data.grade;
+					if(docs.grade>1){
+						re.remove(data,function(error){
+							if(error){
+								msg = op;
+							}else{
+								msg = success('deleted');
+							}
+						})
+					}else{
+						msg = op;
+					}
+				}
+				res.send(msg);
+			})
+		}
 	});
 
 	app.post('/update',body.urlencoded(),(req,res) =>{
 		const data = req.body;
 		const id = data._id;
 		delete data.id;
-		// re.findOne({'_id':id},function(err,doc){
-		// 	if(doc.status > 1){
-		// 		res.send({status:3,msg:'can not use'});
-		// 		return;
-		// 	}else{
-		// 		doc.admin = data.admin;
-		// 		doc.status = 2;
-		// 		doc.save();
-		// 		res.send(success(doc));
-		// 	}
-		// })
 		re.update({_id:id},{$set:data},function(err,update){
 			if(!err){
 				res.send(success('success'));

@@ -5,7 +5,7 @@
 		transition-mode="out-in"
 		>
 		</router-view>
-		<nav-bar></nav-bar>
+		<nav-bar :show.sync="user"></nav-bar>
 		<tip :show.sync="tipText" :text.sync="tipText" :method="tipFn"></tip>
 		<drop :show.sync="dropTip"></drop>
 	</div>
@@ -25,13 +25,14 @@ export default{
 
 	data(){
 		return{
-			name : 'app',
+			name:'app',
 			tipText:'',
 			dropTip:'',
 			timeOut:'',
 			loading:false,
 			secondTip:'',
 			tipFn:'',
+			user:'',
 			time:''
 		}
 	},
@@ -53,7 +54,7 @@ export default{
 		},
 		delete(value){
 			clearTimeout(this.time);
-			const con = '_id='+ value._id +'&no=' + value.no + '&tel='+ value.tel + '&name=' + value.name;
+			const con = '_id='+ value._id + '&no=' + value.no + '&tel='+ value.tel + '&name=' + value.name + '&user=' + sessionStorage.getItem('admin') + '&grade=' + sessionStorage.getItem('grade');
 			post('/del',con)
 			.then( (res) => {
 				if(res.body.status === 0){
@@ -68,27 +69,6 @@ export default{
 				}
 			})
 		},
-		getMy(id){
-			let admin = sessionStorage.getItem('admin');
-			post('/update','admin=' + admin + '&_id=' + id + '&status=2')
-			.then((res) => {
-				if(res.body.status===0){
-					let l = res.body.msg;
-				}else{
-					this.$root.$emit('dropFn','接单失败');
-				}	
-			})
-		},
-		finish(id){
-			post('/update','_id='+ id + '&status=3')
-			.then((res) => {
-				if(res.body.status == 0){
-					this.$root.$emit('dropFn','完成处理');
-				}else{
-					this.$root.$emit('dropFn','操作失败');
-				}
-			})
-		},
 		update(value){
 			post('/update',value)
 			.then((res)=>{
@@ -100,8 +80,9 @@ export default{
 				return;
 			})
 		},
-		logout(){	
-			sessionStorage.removeItem('user');
+		logout(){
+			this.user = '';
+			sessionStorage.removeItem('grade');
 			sessionStorage.removeItem('admin');
 			sessionStorage.removeItem('id');
 			this.$router.go({path:'/login'});
@@ -112,6 +93,9 @@ export default{
 		alertFn(value){
 			this.tipText = value;
 		},
+		loginMsg(value){
+			this.user = value;
+		}
 	}
 
 }

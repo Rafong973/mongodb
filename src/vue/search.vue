@@ -86,7 +86,7 @@ export default{
 			roomShow:false,
 			tel:'',
 			startTime:'',
-			grade:sessionStorage.getItem('user'),
+			grade:sessionStorage.getItem('grade'),
 			user_name:sessionStorage.getItem('admin'),
 			endTime:'',
 			selType:[

@@ -10,6 +10,7 @@ import home  from './vue/home.vue'
 import app from './vue/app.vue'
 import login from './vue/login.vue'
 import reg from './vue/register.vue'
+import set from './vue/set.vue'
 
 /**directive**/
 
@@ -43,6 +44,9 @@ route.map({
 	},
 	'/reg':{
 		component: reg
+	},
+	'/set':{
+		component: set
 	}
 });
 
@@ -55,7 +59,7 @@ route.afterEach(function(transition){
 })
 route.beforeEach(function({to,next,abort,redirect}){
 	const r = to.path,
-	   user = sessionStorage.getItem('user');
+	   user = sessionStorage.getItem('admin');
 	if(!user || user == '/logout'){
 		if(r === '/login' || r == '/reg'){
 			next()

@@ -58,8 +58,9 @@ export default{
 					if(res.status == 200){
 						if(res.body.status === 0){
 							this.title = '正在登陆...';
-							sessionStorage.setItem('user',res.body.msg.grade);
+							sessionStorage.setItem('grade',res.body.msg.grade);
 							sessionStorage.setItem('admin',res.body.msg.admin);
+							this.$dispatch('loginMsg',res.body.msg)
 							sessionStorage.setItem('id',res.body.msg._id);
 							this.$router.go({path:'/home'})
 						}else{
