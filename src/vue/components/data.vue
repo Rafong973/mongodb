@@ -28,7 +28,7 @@
 					<td>{{ l.status | numstatus }}</td>
 					<td>
 						<a href="javascript:void(0)" v-if="l.status == 0 && l.admin == 0">指派</a>
-						<a href="javascript:void(0)" @click="del(l)" v-if="sessionStorage.getItem('grade')==2">删除</a>
+						<a href="javascript:void(0)" @click="del(l)" v-show="user==2">删除</a>
 						<a href="javascript:void(0)" v-if="l.status == 1" @click="order(l._id,'my')">我来处理</a>
 						<a href="javascript:void(0)" v-if="l.status == 2" @click="order(l._id,'finish')">完成处理</a>
 						<a href="javascript:void(0)" @click="disDetail(l)">
@@ -53,6 +53,12 @@ export default{
 	name:'tableData',
 
 	props:['list','detailData','detail'],
+
+	data(){
+		return{
+			user:sessionStorage.getItem('grade'),
+		}
+	},
 
 	events:{
 		'deleteId':function(id){

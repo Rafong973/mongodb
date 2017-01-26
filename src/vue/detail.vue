@@ -80,7 +80,7 @@ export default{
 	methods:{
 		back(){
 			this.show = true;
-			this.edit = false;
+			this.edit = true;
 		},
 		editData(){
 			this.edit = false;

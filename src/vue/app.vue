@@ -32,7 +32,8 @@ export default{
 			loading:false,
 			secondTip:'',
 			tipFn:'',
-			user:'',
+			set:'',
+			user:sessionStorage.getItem('admin'),
 			time:''
 		}
 	},
@@ -54,7 +55,7 @@ export default{
 		},
 		delete(value){
 			clearTimeout(this.time);
-			const con = '_id='+ value._id + '&no=' + value.no + '&tel='+ value.tel + '&name=' + value.name + '&user=' + sessionStorage.getItem('admin') + '&grade=' + sessionStorage.getItem('grade');
+			const con = '_id='+ value._id + '&no=' + value.no + '&tel='+ value.tel + '&name=' + value.name + '&admin=' + sessionStorage.getItem('admin') + '&grade=' + sessionStorage.getItem('grade');
 			post('/del',con)
 			.then( (res) => {
 				if(res.body.status === 0){
@@ -94,7 +95,7 @@ export default{
 			this.tipText = value;
 		},
 		loginMsg(value){
-			this.user = value;
+			this.user = value.grade;
 		}
 	}
 

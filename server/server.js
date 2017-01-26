@@ -14,7 +14,7 @@ let success = (dom) => {
 	return {status:0,msg:dom};
 }
 
-const pderror = {status:2,msg:'password is error'};
+const pderror = {status:2,zmsg:'password is error'};
 
 let err = (value) =>{
 	return {status:3,msg:value};
@@ -133,16 +133,16 @@ export default function server(app,body){
 	app.post('/del',body.urlencoded(),(req,res) =>{
 		const data = req.body;
 		let msg = '';
-		if(!data.user && !data.admin){
+		if(!data.admin && !data.grade){
 			res.send({status:3,msg:'no user'});
 			return;
 		}else{
-			db.findOne({admin:data.user},function(error,docs){
+			db.findOne({admin:data.admin},function(error,docs){
 				if(data.admin==docs.grade && data.grade==req.session.grade){
-					console.log('true');
 					msg = err('delete is failed');
+					res.send(msg);
 				}else{
-					delete data.user;
+					delete data.admin;
 					delete data.grade;
 					if(docs.grade>1){
 						re.remove(data,function(error){
@@ -151,12 +151,14 @@ export default function server(app,body){
 							}else{
 								msg = success('deleted');
 							}
+							res.send(msg);
 						})
 					}else{
 						msg = op;
+						res.send(msg);
 					}
 				}
-				res.send(msg);
+				
 			})
 		}
 	});
@@ -171,6 +173,20 @@ export default function server(app,body){
 			}else{
 				res.send({msg:'update is error',status:3})
 			}
+		})
+	});
+
+	app.post('/user',body.urlencoded(),(req,res) => {
+		const data = req.body;
+		let temp = data.old;
+		delete data.old;
+		db.update({admin:temp},{$set:data},function(err,update,docs){
+			if(!err){
+				res.send({status:0,msg:'ok'})
+			}else{
+				res.send({status:3,msg:'fail'});
+			}
+			return;
 		})
 	})
 }

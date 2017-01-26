@@ -272,27 +272,27 @@ body {
   .data-row {
     max-width: 18.75rem;
     overflow: scroll; } }
+.set[_v-803da9ba] {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%); }
+  .set .set-row[_v-803da9ba] {
+    margin-bottom: 0.625rem; }
+  .set .set-label[_v-803da9ba] {
+    display: inline-block;
+    font-size: 0.875rem;
+    width: 11.25rem;
+    text-align: right; }
+  .set input[_v-803da9ba]:focus {
+    outline: 0; }
+  .set a[_v-803da9ba] {
+    font-size: 0.75rem;
+    color: #428bca; }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.active[_v-803da9ba] {
+  border: 0.0625rem solid #428bca; }
 body{background-color: #fafafa;}
 ul{list-style-type: none;}
 a{text-decoration: none;}

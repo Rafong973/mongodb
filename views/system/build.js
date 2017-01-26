@@ -15105,6 +15105,13 @@ webpackJsonp([0,1],[
 
 		props: ['list', 'detailData', 'detail'],
 
+		data: function data() {
+			return {
+				user: sessionStorage.getItem('grade')
+			};
+		},
+
+
 		events: {
 			'deleteId': function deleteId(id) {
 				this.list.$remove(id);
@@ -15168,7 +15175,7 @@ webpackJsonp([0,1],[
 	// 					<td>{{ l.status | numstatus }}</td>
 	// 					<td>
 	// 						<a href="javascript:void(0)" v-if="l.status == 0 && l.admin == 0">指派</a>
-	// 						<a href="javascript:void(0)" @click="del(l)" v-if="sessionStorage.getItem('grade')==2">删除</a>
+	// 						<a href="javascript:void(0)" @click="del(l)" v-show="user==2">删除</a>
 	// 						<a href="javascript:void(0)" v-if="l.status == 1" @click="order(l._id,'my')">我来处理</a>
 	// 						<a href="javascript:void(0)" v-if="l.status == 2" @click="order(l._id,'finish')">完成处理</a>
 	// 						<a href="javascript:void(0)" @click="disDetail(l)">
@@ -15229,7 +15236,7 @@ webpackJsonp([0,1],[
 /* 31 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"data\">\n\t<table class=\"table\"> \n\t\t<thead>\n\t\t\t<tr>\n\t\t\t\t<th>序号</th>\n\t\t\t\t<th>学号</th>\n\t\t\t\t<th>姓名</th>\n\t\t\t\t<th>手机号码</th>\n\t\t\t\t<th>问题类型</th>\n\t\t\t\t<th>宿舍</th>\n\t\t\t\t<th>预约时间</th>\n\t\t\t\t<th>问题详情</th>\n\t\t\t\t<th>状态</th>\n\t\t\t\t<th>操作</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody v-if=\"list\" class=\"data-tbody\">\n\t\t\t<tr v-for=\"l in list \">\n\t\t\t\t<td>{{ $index + 1 }}</td>\n\t\t\t\t<td>{{ l.no }}</td>\n\t\t\t\t<td>{{ l.name }}</td>\n\t\t\t\t<td>{{ l.tel }}</td>\n\t\t\t\t<td>{{ l.type | problem }}</td>\n\t\t\t\t<td>{{ l.room }}{{ l.house }}</td>\n\t\t\t\t<td>{{ l.date | timeReturn }}</td>\n\t\t\t\t<td class=\"td-spe\"> {{ l.exp }}</td>\n\t\t\t\t<td>{{ l.status | numstatus }}</td>\n\t\t\t\t<td>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 0 && l.admin == 0\">指派</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" @click=\"del(l)\" v-if=\"sessionStorage.getItem('grade')==2\">删除</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 1\" @click=\"order(l._id,'my')\">我来处理</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 2\" @click=\"order(l._id,'finish')\">完成处理</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" @click=\"disDetail(l)\">\n\t\t\t\t\t\t详情\n\t\t\t\t\t</a>\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n\t<div class=\"txc\" v-show=\"list.length == 0\">\n\t\t无数据\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"data\">\n\t<table class=\"table\"> \n\t\t<thead>\n\t\t\t<tr>\n\t\t\t\t<th>序号</th>\n\t\t\t\t<th>学号</th>\n\t\t\t\t<th>姓名</th>\n\t\t\t\t<th>手机号码</th>\n\t\t\t\t<th>问题类型</th>\n\t\t\t\t<th>宿舍</th>\n\t\t\t\t<th>预约时间</th>\n\t\t\t\t<th>问题详情</th>\n\t\t\t\t<th>状态</th>\n\t\t\t\t<th>操作</th>\n\t\t\t</tr>\n\t\t</thead>\n\t\t<tbody v-if=\"list\" class=\"data-tbody\">\n\t\t\t<tr v-for=\"l in list \">\n\t\t\t\t<td>{{ $index + 1 }}</td>\n\t\t\t\t<td>{{ l.no }}</td>\n\t\t\t\t<td>{{ l.name }}</td>\n\t\t\t\t<td>{{ l.tel }}</td>\n\t\t\t\t<td>{{ l.type | problem }}</td>\n\t\t\t\t<td>{{ l.room }}{{ l.house }}</td>\n\t\t\t\t<td>{{ l.date | timeReturn }}</td>\n\t\t\t\t<td class=\"td-spe\"> {{ l.exp }}</td>\n\t\t\t\t<td>{{ l.status | numstatus }}</td>\n\t\t\t\t<td>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 0 && l.admin == 0\">指派</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" @click=\"del(l)\" v-show=\"user==2\">删除</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 1\" @click=\"order(l._id,'my')\">我来处理</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" v-if=\"l.status == 2\" @click=\"order(l._id,'finish')\">完成处理</a>\n\t\t\t\t\t<a href=\"javascript:void(0)\" @click=\"disDetail(l)\">\n\t\t\t\t\t\t详情\n\t\t\t\t\t</a>\n\t\t\t\t</td>\n\t\t\t</tr>\n\t\t</tbody>\n\t</table>\n\t<div class=\"txc\" v-show=\"list.length == 0\">\n\t\t无数据\n\t</div>\n</div>\n";
 
 /***/ },
 /* 32 */
@@ -18468,7 +18475,7 @@ webpackJsonp([0,1],[
 		methods: {
 			back: function back() {
 				this.show = true;
-				this.edit = false;
+				this.edit = true;
 			},
 			editData: function editData() {
 				this.edit = false;
@@ -18906,7 +18913,8 @@ webpackJsonp([0,1],[
 				loading: false,
 				secondTip: '',
 				tipFn: '',
-				user: '',
+				set: '',
+				user: sessionStorage.getItem('admin'),
 				time: ''
 			};
 		},
@@ -18931,7 +18939,7 @@ webpackJsonp([0,1],[
 				var _this = this;
 
 				clearTimeout(this.time);
-				var con = '_id=' + value._id + '&no=' + value.no + '&tel=' + value.tel + '&name=' + value.name + '&user=' + sessionStorage.getItem('admin') + '&grade=' + sessionStorage.getItem('grade');
+				var con = '_id=' + value._id + '&no=' + value.no + '&tel=' + value.tel + '&name=' + value.name + '&admin=' + sessionStorage.getItem('admin') + '&grade=' + sessionStorage.getItem('grade');
 				(0, _server.post)('/del', con).then(function (res) {
 					if (res.body.status === 0) {
 						(function () {
@@ -18973,7 +18981,7 @@ webpackJsonp([0,1],[
 				this.tipText = value;
 			},
 			loginMsg: function loginMsg(value) {
-				this.user = value;
+				this.user = value.grade;
 			}
 		}
 
@@ -19062,21 +19070,46 @@ webpackJsonp([0,1],[
 	});
 	// <template>
 	// 	<div class="nav" v-show="show">
-	// 		<a href="javascript:void(0)" class="admin-set" alt="用户设置"  v-link="{path:'/set'}">用户管理</a>
+	// 		<a href="javascript:void(0)" class="admin-set" alt="用户设置" @click="getSet" v-show="!judge">用户管理</a>
+	// 		<a href="javascript:void(0)" class="admin-set" alt="订单列表" @click="getHome" v-show="judge">订单列表</a>
 	// 		<a href="javascript:void(0)" class="logout" alt="退出" @click="logout">退出</a>
 	// 	</div>
 	// </template>
 	//
 	// <script>
+
 	exports.default = {
 		name: 'nav',
 
 		props: ['show'],
 
+		data: function data() {
+			return {
+				judge: ''
+			};
+		},
+
+
 		methods: {
+			getSet: function getSet() {
+				this.$router.go({ path: '/set' });
+				this.judge = true;
+			},
 			logout: function logout() {
 				this.$root.$emit('logout');
+			},
+			getHome: function getHome() {
+				this.$router.go({ path: '/home' });
+				this.judge = false;
 			}
+		},
+		created: function created() {
+			var self = this;
+			this.$router.afterEach(function (transition) {
+				if (transition.to.path.indexOf('home') > -1) {
+					self.judge = false;
+				}
+			});
 		}
 	};
 	// </script>
@@ -19104,7 +19137,7 @@ webpackJsonp([0,1],[
 /* 125 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"nav\" v-show=\"show\">\n\t<a href=\"javascript:void(0)\" class=\"admin-set\" alt=\"用户设置\"  v-link=\"{path:'/set'}\">用户管理</a>\n\t<a href=\"javascript:void(0)\" class=\"logout\" alt=\"退出\" @click=\"logout\">退出</a>\n</div>\n";
+	module.exports = "\n<div class=\"nav\" v-show=\"show\">\n\t<a href=\"javascript:void(0)\" class=\"admin-set\" alt=\"用户设置\" @click=\"getSet\" v-show=\"!judge\">用户管理</a>\n\t<a href=\"javascript:void(0)\" class=\"admin-set\" alt=\"订单列表\" @click=\"getHome\" v-show=\"judge\">订单列表</a>\n\t<a href=\"javascript:void(0)\" class=\"logout\" alt=\"退出\" @click=\"logout\">退出</a>\n</div>\n";
 
 /***/ },
 /* 126 */
@@ -19855,38 +19888,111 @@ webpackJsonp([0,1],[
 
 /***/ },
 /* 148 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	// <template>
-	// 	<div class="set">
-	//
-	// 	</div>
-	// </template>
-	//
-	// <script>
+
+	var _server = __webpack_require__(30);
+
 	exports.default = {
 		name: 'set',
 
 		data: function data() {
-			return {};
+			return {
+				name: '管理员',
+				pass: 'admin',
+				passagain: '',
+				nickname: true,
+				passedit: true
+			};
+		},
+
+		methods: {
+			update: function update() {
+				var _this = this;
+
+				(0, _server.post)('/user', 'old=' + sessionStorage.getItem('admin') + '&admin=' + this.name).then(function (res) {
+					if (res.body.status == 0) {
+						_this.$root.$emit('dropFn', '修改成功');
+					} else {
+						_this.$root.$emit('dropFn', '修改失败');
+					}
+					_this.nickname = true;
+				});
+			}
+		},
+		created: function created() {
+			this.name = sessionStorage.getItem('admin');
 		}
 	};
 	// </script>
 	//
-	// <style>
+	// <style scoped>
+	// .set{
+	// 	position: absolute;
+	// 	top: 50%;
+	// 	left: 50%;
+	// 	transform: translate(-50%, -50%);
+	// 	-webkit-transform: translate(-50%, -50%);
+	// 	.set-row{
+	// 		margin-bottom: 0.625rem;
+	// 	}
+	// 	.set-label{
+	// 		display: inline-block;
+	// 		font-size: 0.875rem;
+	// 		width: 11.25rem;
+	// 		text-align: right;
+	// 	}
+	// 	input{
+	// 		&:focus{
+	// 			outline: 0;
+	// 		}
+	// 	}
+	// 	a{
+	// 		font-size: 0.75rem;
+	// 		color: #428bca;
+	// 	}
+	// }
+	// .active{
+	// 	border: 0.0625rem solid #428bca;
+	// }
 	//
 	// </style>
+	// <template>
+	// 	<div class="set">
+	// 		<div class="set-row">
+	// 			<label class="set-label">
+	// 				昵称：
+	// 			</label>
+	// 			<input class="detail-input" type="text" v-model="name" :readonly="nickname" @keyup.enter="update":class="{active:nickname==false}">
+	// 			<a href="javascript:void(0)" @click="nickname=false">修改昵称</a>
+	// 		</div>
+	// 		<div class="set-row">
+	// 			<label class="set-label">
+	// 				密码：
+	// 			</label>
+	// 			<input class="detail-input" type="password" v-model="pass" :readonly="passedit">
+	// 			<a href="javascript:void(0)" @click="passedit=false">修改密码</a>
+	// 		</div>
+	// 		<div class="set-row" v-if="!passedit">
+	// 			<label class="set-label">确认密码：</label>
+	// 			<input class="detail-input" type="password" v-model="passagain">
+	// 			<a href="javascript:void(0)">确认修改</a>
+	// 		</div>
+	// 	</div>
+	// </template>
+	//
+	// <script>
 
 /***/ },
 /* 149 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"set\">\n\t\n</div>\n";
+	module.exports = "\n<div class=\"set\" _v-803da9ba=\"\">\n\t<div class=\"set-row\" _v-803da9ba=\"\">\n\t\t<label class=\"set-label\" _v-803da9ba=\"\">\n\t\t\t昵称：\n\t\t</label>\n\t\t<input class=\"detail-input\" type=\"text\" v-model=\"name\" :readonly=\"nickname\" @keyup.enter=\"update\" :class=\"{active:nickname==false}\" _v-803da9ba=\"\">\n\t\t<a href=\"javascript:void(0)\" @click=\"nickname=false\" _v-803da9ba=\"\">修改昵称</a>\n\t</div>\n\t<div class=\"set-row\" _v-803da9ba=\"\">\n\t\t<label class=\"set-label\" _v-803da9ba=\"\">\n\t\t\t密码：\n\t\t</label>\n\t\t<input class=\"detail-input\" type=\"password\" v-model=\"pass\" :readonly=\"passedit\" _v-803da9ba=\"\">\n\t\t<a href=\"javascript:void(0)\" @click=\"passedit=false\" _v-803da9ba=\"\">修改密码</a>\n\t</div>\n\t<div class=\"set-row\" v-if=\"!passedit\" _v-803da9ba=\"\">\n\t\t<label class=\"set-label\" _v-803da9ba=\"\">确认密码：</label>\n\t\t<input class=\"detail-input\" type=\"password\" v-model=\"passagain\" _v-803da9ba=\"\">\n\t\t<a href=\"javascript:void(0)\" _v-803da9ba=\"\">确认修改</a>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 150 */
