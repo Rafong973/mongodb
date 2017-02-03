@@ -13,6 +13,8 @@ import reg from './vue/register.vue'
 import set from './vue/set.vue'
 
 /**directive**/
+import vaildate from './script/vaildate'
+
 
 /**filter**/
 import filters from './script/filter'
@@ -22,6 +24,8 @@ vue.use(router);
 vue.use(resource);
 
 /**directive**/
+vue.directive('autofo',vaildate.autofocus);
+vue.directive('blue',vaildate.blur);
 
 /**filter**/
 vue.filter('numstatus',filters.numstatus)

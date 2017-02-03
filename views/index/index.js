@@ -47,7 +47,7 @@ function ajax(type,u,data){
 				setTimeout(function(){
 					app.alert("提交成功");
 				},800)
-				window.sessionStorage.setItem("repair",data);
+				// window.sessionStorage.setItem("repair",data);
 				return;
 			}
 		}else{
@@ -61,38 +61,6 @@ function ajax(type,u,data){
 }
 ajax('GET','./views/data/room.json',null);
 
-/** 获取表单数据 **/
-function vaildata(value){
-	var f ='';
-	if(value.length > 1){
-		for(var i = 0;i < value.length;i++){
-			var id = value[i].getAttribute("name"),
-				va = value[i].value,
-				da = '';
-			if(!va){
-				f = false;
-				break;
-			}else{
-				if(id == "date"){
-					var k = new Date(va).getTime();
-					value[i].setAttribute("data",k);
-				}
-				da = value[i].getAttribute("data");
-				if(da !== null){
-					f += id + '= ' + da + '&';
-				}else{
-					f += id + '= ' + va + '&';
-				}
-				
-			}
-		}
-	}
-	var time = new Date();
-	time = time.getTime();
-	f += '&create=' + time;
-	if(f) return f.substring(0,f.length-1).replace(/\s+/g,"")
-	else return f
-}
 
 /** 提交数据 **/
 $("#save").onclick = function(){
@@ -174,63 +142,6 @@ $('.room')[0].onclick = function(){
 		}
 	}
 })();
-function vail(dom){
-	var k = false;
-	if(dom.length > 1){
-		for(var i = 0;i < dom.length;i++){
-			var v = dom[i].value;
-			if(v){
-				if(!switchDom(dom[i])){
-					k = false;
-					break;
-				}else{
-					k = true;
-				}
-			}
-		}
-	}
-	return k;
-}
-function switchDom(dom){
-	var a = dom.getAttribute("name"),
-		v = dom.value,
-		j = false,
-		p = dom.parentElement.lastElementChild,
-		s = dom.previousElementSibling.innerText || " ";
-	switch(a){
-		case 'admin':
-		case 'status':
-		case 'date':
-		case 'house':
-			j = true;	
-		break;
-		case 'tel':
-			var reg = /(^[0-9]{3,4}\-[0-9]{7,8}$)|(^[0-9]{7,8}$)|(^\([0-9]{3,4}\)[0-9]{3,8}$)|(^0{0,1}1[3-9][0-9]{9}$)/;
-			if(reg.test(v)){
-				j = true;
-				p.innerText = '';
-			}else{
-				j = false;
-				p.innerText = '手机号码不正确';
-			}
-		break;
-		case 'no':
-		case 'name':
-		case 'type':
-		case 'room':
-		case 'exp':
-			if(v){
-				p.innerText = '';
-				j = true;
-			}else{
-				p.innerText = s.substr(0,s.length-1) + '不能为空，请填写正确';
-				j = false;
-			}
-		break;
-	}
-	return j;
-}
-
 
 /** 日期插件 **/
 $("#data-choose").flatpickr({
@@ -253,3 +164,4 @@ function closeSelect(){
 	}
 	document.getElementsByTagName('body')[0].appendChild(div);
 }
+

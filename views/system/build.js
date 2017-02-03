@@ -43,19 +43,24 @@ webpackJsonp([0,1],[
 
 	var _set2 = _interopRequireDefault(_set);
 
-	var _filter = __webpack_require__(150);
+	var _vaildate = __webpack_require__(150);
+
+	var _vaildate2 = _interopRequireDefault(_vaildate);
+
+	var _filter = __webpack_require__(151);
 
 	var _filter2 = _interopRequireDefault(_filter);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/**css**/
-	__webpack_require__(151);
+	__webpack_require__(152);
 
 	/**component**/
 
 
 	/**directive**/
+
 
 	/**filter**/
 
@@ -64,6 +69,8 @@ webpackJsonp([0,1],[
 	_vue2.default.use(_vueResource2.default);
 
 	/**directive**/
+	_vue2.default.directive('autofo', _vaildate2.default.autofocus);
+	_vue2.default.directive('blue', _vaildate2.default.blur);
 
 	/**filter**/
 	_vue2.default.filter('numstatus', _filter2.default.numstatus);
@@ -15593,7 +15600,7 @@ webpackJsonp([0,1],[
 	// 	padding:0;
 	// 	cursor: pointer;
 	// 	right: 0;
-	// 	background-color: #fff;top:2rem;
+	// 	top:2rem;
 	// 	border:1px solid #dfdfdf;
 	// 	border-radius: 0.25rem;
 	// 	font-size: 0.8125rem;
@@ -15607,7 +15614,7 @@ webpackJsonp([0,1],[
 	// </style>
 	// <template>
 	// 	<input type="text" class="input-input large-input" placeholder="{{ pla }}" readonly="readonly" v-model="currentValue" @click="display">
-	// 	<ul class="select-list txc large-input" v-show='show' :class="{ scroll : selectdata.length > 20}">
+	// 	<ul class="select-list txc fff large-input" v-show='show' :class="{ scroll : selectdata.length > 20}">
 	// 		<li v-for="s in selectdata" @click="getData($index)">
 	// 			{{ s.name }}
 	// 		</li>
@@ -15706,7 +15713,7 @@ webpackJsonp([0,1],[
 /* 42 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<input type=\"text\" class=\"input-input large-input\" placeholder=\"{{ pla }}\" readonly=\"readonly\" v-model=\"currentValue\" @click=\"display\">\n<ul class=\"select-list txc large-input\" v-show='show' :class=\"{ scroll : selectdata.length > 20}\">\n\t<li v-for=\"s in selectdata\" @click=\"getData($index)\">\n\t\t{{ s.name }}\n\t</li>\n</ul>\n\n<mask :show.sync=\"show\"></mask>\n";
+	module.exports = "\n<input type=\"text\" class=\"input-input large-input\" placeholder=\"{{ pla }}\" readonly=\"readonly\" v-model=\"currentValue\" @click=\"display\">\n<ul class=\"select-list txc fff large-input\" v-show='show' :class=\"{ scroll : selectdata.length > 20}\">\n\t<li v-for=\"s in selectdata\" @click=\"getData($index)\">\n\t\t{{ s.name }}\n\t</li>\n</ul>\n\n<mask :show.sync=\"show\"></mask>\n";
 
 /***/ },
 /* 43 */
@@ -19199,7 +19206,7 @@ webpackJsonp([0,1],[
 
 	// <template>	
 	// 	<div class="alert gray-op" v-if="show">
-	// 		<div class="alert-content txc">
+	// 		<div class="alert-content fff txc">
 	// 			<p>{{ text }}</p>
 	// 			<a href="javascript:void(0)" class="btn btn-primary pdtr" @click="fn">继续操作</a>
 	// 		</div>
@@ -19255,7 +19262,6 @@ webpackJsonp([0,1],[
 	// 	left: 50%;
 	// 	border-radius: 0.25rem;	
 	// 	transform: translate(-50%, -50%);
-	// 	background-color: #fff;
 	// 	padding: .625rem;
 	// 	a{
 	// 		display: inline-block;
@@ -19268,7 +19274,7 @@ webpackJsonp([0,1],[
 /* 129 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"alert gray-op\" v-if=\"show\">\n\t<div class=\"alert-content txc\">\n\t\t<p>{{ text }}</p>\n\t\t<a href=\"javascript:void(0)\" class=\"btn btn-primary pdtr\" @click=\"fn\">继续操作</a>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"alert gray-op\" v-if=\"show\">\n\t<div class=\"alert-content fff txc\">\n\t\t<p>{{ text }}</p>\n\t\t<a href=\"javascript:void(0)\" class=\"btn btn-primary pdtr\" @click=\"fn\">继续操作</a>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 130 */
@@ -19623,11 +19629,11 @@ webpackJsonp([0,1],[
 	// 			<form>
 	// 				<div class="input-group vertical-input">
 	// 					<label class="input-label">Admin：</label>
-	// 					<input type="text" class="input-input" v-model="admin" placeholder="输入你的用户名">
+	// 					<input type="text" class="input-input row" v-model="admin" placeholder="输入你的用户名">
 	// 				</div>
 	// 				<div class="input-group vertical-input">
 	// 					<label class="input-label">Password：</label>
-	// 					<input type="password" class="input-input password" v-model="password" placeholder="这里写的是密码" @keyup.enter="login">
+	// 					<input type="password" class="input-input row password" v-model="password" placeholder="这里写的是密码" @keyup.enter="login">
 	// 				</div>
 	// 				<div class="input-group vertical-input">
 	// 					<input type="checkbox" id="remeber" class="input-checkbox" v-model="remeber" pla>
@@ -19652,7 +19658,7 @@ webpackJsonp([0,1],[
 /* 142 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"login-body fix\">\n\t<div class=\"login-data\">\n\t\t<div class=\"login-title txc\">\n\t\t\t<h3 v-bind:class=\"{ warm:warm }\">{{ title }}</h3>\n\t\t</div>\n\t\t<form>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">Admin：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input\" v-model=\"admin\" placeholder=\"输入你的用户名\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">Password：</label>\n\t\t\t\t<input type=\"password\" class=\"input-input password\" v-model=\"password\" placeholder=\"这里写的是密码\" @keyup.enter=\"login\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<input type=\"checkbox\" id=\"remeber\" class=\"input-checkbox\" v-model=\"remeber\" pla>\n\t\t\t\t<label class=\"check-label\" for=\"remeber\">Remeber Me</label>\n\t\t\t</div>\n\t\t\t<div class=\"input-group row\">\n\t\t\t\t<a href=\"javascript:void(0)\" class=\"txc btn btn-primary col-12\" @click=\"login\">Sign In</a>\n\t\t\t</div>\n\t\t\t<div class=\"input-group row\">\n\t\t\t\t<a href=\"javascript:void(0)\" class=\"txc btn btn-danger col-12\" v-link=\"{path:'/reg'}\">Sign up</a>\n\t\t\t</div>\n\t\t</form>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"login-body fix\">\n\t<div class=\"login-data\">\n\t\t<div class=\"login-title txc\">\n\t\t\t<h3 v-bind:class=\"{ warm:warm }\">{{ title }}</h3>\n\t\t</div>\n\t\t<form>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">Admin：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input row\" v-model=\"admin\" placeholder=\"输入你的用户名\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">Password：</label>\n\t\t\t\t<input type=\"password\" class=\"input-input row password\" v-model=\"password\" placeholder=\"这里写的是密码\" @keyup.enter=\"login\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<input type=\"checkbox\" id=\"remeber\" class=\"input-checkbox\" v-model=\"remeber\" pla>\n\t\t\t\t<label class=\"check-label\" for=\"remeber\">Remeber Me</label>\n\t\t\t</div>\n\t\t\t<div class=\"input-group row\">\n\t\t\t\t<a href=\"javascript:void(0)\" class=\"txc btn btn-primary col-12\" @click=\"login\">Sign In</a>\n\t\t\t</div>\n\t\t\t<div class=\"input-group row\">\n\t\t\t\t<a href=\"javascript:void(0)\" class=\"txc btn btn-danger col-12\" v-link=\"{path:'/reg'}\">Sign up</a>\n\t\t\t</div>\n\t\t</form>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 143 */
@@ -19740,6 +19746,16 @@ webpackJsonp([0,1],[
 				};
 				var z = vail(arr);
 				this.warm = true;
+				if (this.password.length < 8) {
+					this.title = '密码太短了';
+					this.$root.$emit('alertFn', '密码太短了');
+					return;
+				}
+				if (this.password.length !== this.passagain) {
+					this.title = '密码不匹配';
+					this.$root.$emit('alertFn', '密码不匹配');
+					return;
+				}
 				if (a && z) {
 					(0, _server.post)('/sign', z).then(function (res) {
 						var data = res.body;
@@ -19779,23 +19795,23 @@ webpackJsonp([0,1],[
 	// 			<form>
 	// 				<div class="input-group vertical-input">
 	// 					<label class="input-label">Admin：</label>
-	// 					<input type="text" class="input-input" v-model="admin" placeholder="用户名，仅用于登陆">
+	// 					<input type="text" class="input-input row" v-model="admin" placeholder="用户名，仅用于登陆" @change="rule(admin)">
 	// 				</div>
 	// 				<div class="input-group vertical-input">
 	// 					<label class="input-label">NickName：</label>
-	// 					<input type="text" class="input-input" v-model="nickname" placeholder="给自己取个好听的名字">
+	// 					<input type="text" class="input-input row" v-model="nickname" placeholder="给自己取个好听的名字">
 	// 				</div>
 	// 				<div class="input-group vertical-input">
 	// 					<label class="input-label">Password：</label>
-	// 					<input type="password" class="input-input password" v-model="password" placeholder="你的登陆密码，至关重要">
+	// 					<input type="password" class="input-input row password" v-model="password" placeholder="你的登陆密码，至关重要">
 	// 				</div>
 	// 				<div class="input-group vertical-input">
 	// 					<label class="input-label">PassAgain：</label>
-	// 					<input type="password" class="input-input" v-model="passagain" placeholder="确认一下你写的密码对不对">
+	// 					<input type="password" class="input-input row" v-model="passagain" placeholder="确认一下你写的密码对不对">
 	// 				</div>
 	// 				<div class="input-group vertical-input">
 	// 					<label class="input-label">Validation：</label>
-	// 					<input type="password" class="input-input" v-model="validation" placeholder="只有够帅的人才能够完成注册">
+	// 					<input type="password" class="input-input row" v-model="validation" placeholder="只有够帅的人才能够完成注册">
 	// 				</div>
 	// 				<div class="input-group vertical-input">
 	// 					<input type="checkbox" id="super" class="input-checkbox" v-model="super">
@@ -19842,7 +19858,7 @@ webpackJsonp([0,1],[
 /* 145 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"login-body\">\n\t<div class=\"login-data\">\n\t\t<div class=\"login-title txc\">\n\t\t\t<h3 v-bind:class=\"{ warm:warm }\">{{ title }}</h3>\n\t\t</div>\n\t\t<form>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">Admin：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input\" v-model=\"admin\" placeholder=\"用户名，仅用于登陆\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">NickName：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input\" v-model=\"nickname\" placeholder=\"给自己取个好听的名字\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">Password：</label>\n\t\t\t\t<input type=\"password\" class=\"input-input password\" v-model=\"password\" placeholder=\"你的登陆密码，至关重要\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">PassAgain：</label>\n\t\t\t\t<input type=\"password\" class=\"input-input\" v-model=\"passagain\" placeholder=\"确认一下你写的密码对不对\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">Validation：</label>\n\t\t\t\t<input type=\"password\" class=\"input-input\" v-model=\"validation\" placeholder=\"只有够帅的人才能够完成注册\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<input type=\"checkbox\" id=\"super\" class=\"input-checkbox\" v-model=\"super\">\n\t\t\t\t<label class=\"check-label\" for=\"super\">Super Admin?</label>\n\t\t\t</div>\n\t\t\t<div class=\"input-group row\">\n\t\t\t\t<a href=\"javascript:void(0)\" class=\"txc btn btn-primary col-12\" @click='submit'>Submit</a>\n\t\t\t</div>\n\t\t\t<div class=\"input-group row\">\n\t\t\t\t<a href=\"javascript:void(0)\" class=\"txc btn btn-danger col-12\"  v-link=\"{path:'/login'}\">Sign in</a>\n\t\t\t</div>\n\t\t</form>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"login-body\">\n\t<div class=\"login-data\">\n\t\t<div class=\"login-title txc\">\n\t\t\t<h3 v-bind:class=\"{ warm:warm }\">{{ title }}</h3>\n\t\t</div>\n\t\t<form>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">Admin：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input row\" v-model=\"admin\" placeholder=\"用户名，仅用于登陆\" @change=\"rule(admin)\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">NickName：</label>\n\t\t\t\t<input type=\"text\" class=\"input-input row\" v-model=\"nickname\" placeholder=\"给自己取个好听的名字\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">Password：</label>\n\t\t\t\t<input type=\"password\" class=\"input-input row password\" v-model=\"password\" placeholder=\"你的登陆密码，至关重要\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">PassAgain：</label>\n\t\t\t\t<input type=\"password\" class=\"input-input row\" v-model=\"passagain\" placeholder=\"确认一下你写的密码对不对\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<label class=\"input-label\">Validation：</label>\n\t\t\t\t<input type=\"password\" class=\"input-input row\" v-model=\"validation\" placeholder=\"只有够帅的人才能够完成注册\">\n\t\t\t</div>\n\t\t\t<div class=\"input-group vertical-input\">\n\t\t\t\t<input type=\"checkbox\" id=\"super\" class=\"input-checkbox\" v-model=\"super\">\n\t\t\t\t<label class=\"check-label\" for=\"super\">Super Admin?</label>\n\t\t\t</div>\n\t\t\t<div class=\"input-group row\">\n\t\t\t\t<a href=\"javascript:void(0)\" class=\"txc btn btn-primary col-12\" @click='submit'>Submit</a>\n\t\t\t</div>\n\t\t\t<div class=\"input-group row\">\n\t\t\t\t<a href=\"javascript:void(0)\" class=\"txc btn btn-danger col-12\"  v-link=\"{path:'/login'}\">Sign in</a>\n\t\t\t</div>\n\t\t</form>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 146 */
@@ -19903,11 +19919,13 @@ webpackJsonp([0,1],[
 
 		data: function data() {
 			return {
-				name: '管理员',
-				pass: 'admin',
+				name: '',
+				password: 'admin',
 				passagain: '',
 				nickname: true,
-				passedit: true
+				passedit: true,
+				temp: '',
+				admin: sessionStorage.getItem('admin')
 			};
 		},
 
@@ -19915,18 +19933,43 @@ webpackJsonp([0,1],[
 			update: function update() {
 				var _this = this;
 
-				(0, _server.post)('/user', 'old=' + sessionStorage.getItem('admin') + '&admin=' + this.name).then(function (res) {
+				(0, _server.post)('/user', 'old=' + this.admin + '&admin=' + this.name).then(function (res) {
 					if (res.body.status == 0) {
 						_this.$root.$emit('dropFn', '修改成功');
+						sessionStorage.setItem('admin', _this.name);
 					} else {
 						_this.$root.$emit('dropFn', '修改失败');
 					}
 					_this.nickname = true;
 				});
+			},
+			pass: function pass() {
+				var _this2 = this;
+
+				if (this.password !== this.passagain) {
+					this.$root.$emit('dropFn', '密码不匹配');
+					return;
+				} else {
+					(0, _server.post)('/pass', 'password=' + this.password + '&admin=' + this.admin).then(function (res) {
+						if (res.body.status == 0) {
+							_this2.$root.$emit('dropFn', '修改成功');
+							_this2.passedit = false;
+						} else {
+							_this2.$root.$emit('dropFn', '修改失败，尝试重新登陆');
+						}
+					});
+				}
+			},
+			judge: function judge(value) {
+				if (!value) value = this.temp;
+			},
+			get: function get(value) {
+				this.temp = value;
 			}
 		},
 		created: function created() {
 			this.name = sessionStorage.getItem('admin');
+			if (!this.name) {}
 		}
 	};
 	// </script>
@@ -19950,6 +19993,7 @@ webpackJsonp([0,1],[
 	// 	input{
 	// 		&:focus{
 	// 			outline: 0;
+	// 			border: 0;
 	// 		}
 	// 	}
 	// 	a{
@@ -19968,20 +20012,20 @@ webpackJsonp([0,1],[
 	// 			<label class="set-label">
 	// 				昵称：
 	// 			</label>
-	// 			<input class="detail-input" type="text" v-model="name" :readonly="nickname" @keyup.enter="update":class="{active:nickname==false}">
-	// 			<a href="javascript:void(0)" @click="nickname=false">修改昵称</a>
+	// 			<input class="detail-input" type="text" v-model="name" :readonly="nickname" @keyup.enter="update" :class="{active:nickname==false}" v-blue @blur="judge(name)" @focus="get(judge)">
+	// 			<a href="javascript:void(0)" v-autofo>修改昵称</a>
 	// 		</div>
 	// 		<div class="set-row">
 	// 			<label class="set-label">
 	// 				密码：
 	// 			</label>
-	// 			<input class="detail-input" type="password" v-model="pass" :readonly="passedit">
-	// 			<a href="javascript:void(0)" @click="passedit=false">修改密码</a>
+	// 			<input class="detail-input" type="password" v-model="password" :readonly="passedit" @focus="passedit=false">
+	// 			<a href="javascript:void(0)" v-autofo="passedit">修改密码</a>
 	// 		</div>
 	// 		<div class="set-row" v-if="!passedit">
 	// 			<label class="set-label">确认密码：</label>
 	// 			<input class="detail-input" type="password" v-model="passagain">
-	// 			<a href="javascript:void(0)">确认修改</a>
+	// 			<a href="javascript:void(0)" @click="pass">确认修改</a>
 	// 		</div>
 	// 	</div>
 	// </template>
@@ -19992,10 +20036,35 @@ webpackJsonp([0,1],[
 /* 149 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"set\" _v-803da9ba=\"\">\n\t<div class=\"set-row\" _v-803da9ba=\"\">\n\t\t<label class=\"set-label\" _v-803da9ba=\"\">\n\t\t\t昵称：\n\t\t</label>\n\t\t<input class=\"detail-input\" type=\"text\" v-model=\"name\" :readonly=\"nickname\" @keyup.enter=\"update\" :class=\"{active:nickname==false}\" _v-803da9ba=\"\">\n\t\t<a href=\"javascript:void(0)\" @click=\"nickname=false\" _v-803da9ba=\"\">修改昵称</a>\n\t</div>\n\t<div class=\"set-row\" _v-803da9ba=\"\">\n\t\t<label class=\"set-label\" _v-803da9ba=\"\">\n\t\t\t密码：\n\t\t</label>\n\t\t<input class=\"detail-input\" type=\"password\" v-model=\"pass\" :readonly=\"passedit\" _v-803da9ba=\"\">\n\t\t<a href=\"javascript:void(0)\" @click=\"passedit=false\" _v-803da9ba=\"\">修改密码</a>\n\t</div>\n\t<div class=\"set-row\" v-if=\"!passedit\" _v-803da9ba=\"\">\n\t\t<label class=\"set-label\" _v-803da9ba=\"\">确认密码：</label>\n\t\t<input class=\"detail-input\" type=\"password\" v-model=\"passagain\" _v-803da9ba=\"\">\n\t\t<a href=\"javascript:void(0)\" _v-803da9ba=\"\">确认修改</a>\n\t</div>\n</div>\n";
+	module.exports = "\n<div class=\"set\" _v-803da9ba=\"\">\n\t<div class=\"set-row\" _v-803da9ba=\"\">\n\t\t<label class=\"set-label\" _v-803da9ba=\"\">\n\t\t\t昵称：\n\t\t</label>\n\t\t<input class=\"detail-input\" type=\"text\" v-model=\"name\" :readonly=\"nickname\" @keyup.enter=\"update\" :class=\"{active:nickname==false}\" v-blue=\"\" @blur=\"judge(name)\" @focus=\"get(judge)\" _v-803da9ba=\"\">\n\t\t<a href=\"javascript:void(0)\" v-autofo=\"\" _v-803da9ba=\"\">修改昵称</a>\n\t</div>\n\t<div class=\"set-row\" _v-803da9ba=\"\">\n\t\t<label class=\"set-label\" _v-803da9ba=\"\">\n\t\t\t密码：\n\t\t</label>\n\t\t<input class=\"detail-input\" type=\"password\" v-model=\"password\" :readonly=\"passedit\" @focus=\"passedit=false\" _v-803da9ba=\"\">\n\t\t<a href=\"javascript:void(0)\" v-autofo=\"passedit\" _v-803da9ba=\"\">修改密码</a>\n\t</div>\n\t<div class=\"set-row\" v-if=\"!passedit\" _v-803da9ba=\"\">\n\t\t<label class=\"set-label\" _v-803da9ba=\"\">确认密码：</label>\n\t\t<input class=\"detail-input\" type=\"password\" v-model=\"passagain\" _v-803da9ba=\"\">\n\t\t<a href=\"javascript:void(0)\" @click=\"pass\" _v-803da9ba=\"\">确认修改</a>\n\t</div>\n</div>\n";
 
 /***/ },
 /* 150 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.default = {
+		autofocus: function autofocus() {
+			var self = this;
+			var t = this.el.previousElementSibling;
+			this.el.onclick = function () {
+				t.removeAttribute('readonly');
+				t.focus();
+			};
+		},
+		blur: function blur() {
+			this.el.onblur = function () {
+				this.setAttribute('readonly', 'readonly');
+			};
+		}
+	};
+
+/***/ },
+/* 151 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -20063,7 +20132,7 @@ webpackJsonp([0,1],[
 	};
 
 /***/ },
-/* 151 */
+/* 152 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

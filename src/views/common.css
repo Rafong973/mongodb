@@ -8,7 +8,7 @@ textarea{padding:0;}
 .line{height:2.1875rem;margin-bottom: .625rem;width: 100%;line-height: 2.1875rem;}
 html{font-family: "Microsoft Yahei";}
 .input-group{position:relative;width: 100%;line-height:2.1875;margin-bottom: .625rem;padding-bottom: 0.9375rem;}
-.vertical-input .input-label,.vertical-input .input-input,.flatpickr-mobile{width: 90%;margin:0 auto;text-align: left;display:block;height: 2.1875rem;}
+.vertical-input .input-label,.vertical-input .input-input,.flatpickr-mobile{text-align: left;display:block;height: 2.1875rem;}
 .hoz-input{position:relative;height: 2.1875rem;float:left;line-height: 2.1875rem;margin-right: .3125rem;}
 .flatpickr-input{border-radius: .25rem;border:.0625rem solid #ccc;text-indent: .5rem;}
 .large-input{width: 12.5rem;}
@@ -23,7 +23,7 @@ input[type="text"]:focus,input[type="number"]:focus,input[type="password"]:focus
 .check-label:before{content:"";position: absolute;height: .9375rem;width: .9375rem;border:.0625rem solid #ccc;top: -.0625rem;left:-1.5625rem;}
 .check-label:after{content:"\221A";position: absolute;top: -.375rem;left:-1.25rem;display: none;}
 .input-checkbox:checked + .check-label:after{display: block;}
-.row{width: 90%;margin-left: auto;margin-right: auto;}
+.row,.vertical-input .input-label, .flatpickr-mobile{width: 90%;margin-left: auto;margin-right: auto;}
 .btn{padding:.3125rem 0;color: #FFF;font-size: .8125rem;}
 .btn-primary{background-color: #428bca;border: .0625rem solid #357ebd;}
 .btn-danger{background-color: #d70941;border: .0625rem solid #d70941;}
@@ -31,5 +31,6 @@ input[type="text"]:focus,input[type="number"]:focus,input[type="password"]:focus
 .col-12{width: 100%;display: block;position: relative;}
 .fr{float: right;}
 .fl{float: left;}
+.fff{background-color: #fff;}
 .over-hidden{overflow:hidden; }
 .mr{margin-right: .625rem;float: left;}

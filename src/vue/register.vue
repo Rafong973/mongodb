@@ -7,23 +7,23 @@
 			<form>
 				<div class="input-group vertical-input">
 					<label class="input-label">Admin：</label>
-					<input type="text" class="input-input" v-model="admin" placeholder="用户名，仅用于登陆">
+					<input type="text" class="input-input row" v-model="admin" placeholder="用户名，仅用于登陆" @change="rule(admin)">
 				</div>
 				<div class="input-group vertical-input">
 					<label class="input-label">NickName：</label>
-					<input type="text" class="input-input" v-model="nickname" placeholder="给自己取个好听的名字">
+					<input type="text" class="input-input row" v-model="nickname" placeholder="给自己取个好听的名字">
 				</div>
 				<div class="input-group vertical-input">
 					<label class="input-label">Password：</label>
-					<input type="password" class="input-input password" v-model="password" placeholder="你的登陆密码，至关重要">
+					<input type="password" class="input-input row password" v-model="password" placeholder="你的登陆密码，至关重要">
 				</div>
 				<div class="input-group vertical-input">
 					<label class="input-label">PassAgain：</label>
-					<input type="password" class="input-input" v-model="passagain" placeholder="确认一下你写的密码对不对">
+					<input type="password" class="input-input row" v-model="passagain" placeholder="确认一下你写的密码对不对">
 				</div>
 				<div class="input-group vertical-input">
 					<label class="input-label">Validation：</label>
-					<input type="password" class="input-input" v-model="validation" placeholder="只有够帅的人才能够完成注册">
+					<input type="password" class="input-input row" v-model="validation" placeholder="只有够帅的人才能够完成注册">
 				</div>
 				<div class="input-group vertical-input">
 					<input type="checkbox" id="super" class="input-checkbox" v-model="super">
@@ -75,6 +75,16 @@ export default{
 			}
 			let z = vail(arr);
 			this.warm = true;
+			if(this.password.length < 8){
+				this.title = '密码太短了';
+				this.$root.$emit('alertFn','密码太短了');
+				return;
+			}
+			if(this.password.length !== this.passagain){
+				this.title = '密码不匹配';
+				this.$root.$emit('alertFn','密码不匹配');
+				return;
+			}
 			if(a && z){	
 				post('/sign',z)
 				.then((res) => {

@@ -41,6 +41,7 @@
 	<link rel="stylesheet" href="https://cdn.staticfile.org/flatpickr/2.2.3/flatpickr.min.css">
 	<link rel="stylesheet" href="../views/index/public.css">
 	<link rel="stylesheet" href="../views/system/style.css">
+	<script src="../views/index/public.js"></script>
 	<script src="../views/index/load.js"></script>
 </head>
 <body class="index">
@@ -126,51 +127,51 @@
 					<form>
 						<div class="input-group vertical-input">
 							<label class="input-label">学号：</label>
-							<input type="text" class="input-input" name="no" placeholder="可能11位数字，或者其它">
+							<input type="text" class="input-input row" name="no" placeholder="可能11位数字，或者其它">
 							<label class="warm-label"></label>
 						</div>
 						<div class="input-group vertical-input">
 							<label class="input-label">名字：</label>
-							<input type="text" class="input-input name" name="name" placeholder="写外号写真名都可以">
+							<input type="text" class="input-input row name" name="name" placeholder="写外号写真名都可以">
 							<label class="warm-label"></label>
 						</div>
 						<div class="input-group vertical-input">
 							<label class="input-label">手机号码：</label>
-							<input type="text" class="input-input" name="tel" placeholder="你的手机号码，是11位">
+							<input type="text" class="input-input row" name="tel" placeholder="你的手机号码，是11位">
 							<label class="warm-label"></label>
 						</div>
 						<div class="input-group vertical-input">
 							<label class="input-label">问题类型：</label>
-							<input type="text" class="input-input select" name="type" readonly="readonly" placeholder="你的电脑怎么了？">
+							<input type="text" class="input-input row select" name="type" readonly="readonly" placeholder="你的电脑怎么了？">
 							<label class="warm-label"></label>
 						</div>
 						<div class="input-group vertical-input">
 							<label class="input-label">楼栋：</label>
-							<input type="text" class="input-input room" name="room" readonly="readonly" placeholder="你住在哪栋楼，写清楚">
+							<input type="text" class="input-input row room" name="room" readonly="readonly" placeholder="你住在哪栋楼，写清楚">
 							<label class="warm-label"></label>
 						</div>
 						<div class="input-group vertical-input">
 							<label class="input-label">楼层以及宿舍号：</label>
-							<input type="text" class="input-input house" name="house" placeholder="写清楚你的楼层和房间号吧">
+							<input type="text" class="input-input row house" name="house" placeholder="写清楚你的楼层和房间号吧">
 							<label class="warm-label"></label>
 						</div>
 						<div class="input-group vertical-input">
 							<label class="input-label">预约时间：</label>
-							<input type="text" class="input-input" id="data-choose" name="date" placeholder="比如你什么时候有空">
+							<input type="text" class="input-input row" id="data-choose" name="date" placeholder="比如你什么时候有空">
 							<label class="warm-label"></label>
 						</div>
 						<div class="input-group vertical-input">
 							<label class="input-label">描述下问题：</label>
-							<textarea class="input-input" name="exp" placeholder="如果你知道你电脑怎么了，简单说下"></textarea>
+							<textarea class="input-input row" name="exp" placeholder="如果你知道你电脑怎么了，简单说下"></textarea>
 							<label class="warm-label"></label>
 						</div>
 						<div class="input-group vertical-input none" hidden="hidden">
 							<label class="warm-label"></label>
-							<input type="hidden" class="input-input" value="1" name="status">
+							<input type="hidden" class="input-input row" value="1" name="status">
 						</div>
 						<div class="input-group vertical-input none">
 							<label class="warm-label"></label>
-							<input type="hidden" class="input-input" value="1" name="admin">
+							<input type="hidden" class="input-input row" value="1" name="admin">
 						</div>
 						<div class="input-group row">
 							<a href="javascript:void(0)" class="txc btn btn-primary col-12" id="save">提交</a>
@@ -193,10 +194,9 @@
 		</div>
 	</div>
 
-	<script src="../views/index/rotary.js"></script>
 	<script src="https://cdn.staticfile.org/flatpickr/2.2.3/flatpickr.min.js"></script>
 	<script src="https://cdn.staticfile.org/flatpickr/2.2.3/l10n/zh.js"></script>
 	<script src="../views/index/index.js"></script>
-	<script src="../views/index/public.js"></script>
+	<script src="../views/index/rotary.js"></script>
 </body>
 </html>

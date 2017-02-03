@@ -1,6 +1,6 @@
 <template>	
 	<div class="alert gray-op" v-if="show">
-		<div class="alert-content txc">
+		<div class="alert-content fff txc">
 			<p>{{ text }}</p>
 			<a href="javascript:void(0)" class="btn btn-primary pdtr" @click="fn">继续操作</a>
 		</div>
@@ -55,7 +55,6 @@ export default{
 	left: 50%;
 	border-radius: 0.25rem;	
 	transform: translate(-50%, -50%);
-	background-color: #fff;
 	padding: .625rem;
 	a{
 		display: inline-block;

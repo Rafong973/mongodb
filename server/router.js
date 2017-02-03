@@ -11,6 +11,10 @@ export default function router(app){
 		if(!req.session.i){
 			req.session.i = 0;
 		}
+	});
+	
+	app.get('/query',(req,res) => {
+		res.render('query');
 	})
 
 }

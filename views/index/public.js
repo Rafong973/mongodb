@@ -1,3 +1,18 @@
+
+var $ = window.$ = function(name){
+    var n = name.substring(1,name.length),
+        t = name.substring(0,1),
+        v;
+    switch(t){
+        case ".":
+            v = document.getElementsByClassName(n);
+        break;
+        case "#":
+            v = document.getElementById(n);
+        break;
+    }
+    return v;
+};
 var app = {
     alert: function(value) {
         if (!value) value = undefined;
@@ -106,5 +121,96 @@ var app = {
         var top = imgWidth > 800 ? "-400px" : "-" + parseInt(imgWidth) / 2 + "px";
         showImg.style.marginLeft = left;
         showImg.style.marginTop = top;
+    }
+}
+
+function vail(dom){
+    var k = false;
+    console.log(dom);
+    if(dom.length > 1){
+        for(var i = 0;i < dom.length;i++){
+            if(!switchDom(dom[i])){
+                k = false;
+                break;
+            }else{
+                k = true;
+            }
+        }
+    }
+    return k;
+}
+function switchDom(dom){
+    var a = dom.getAttribute("name"),
+        v = dom.value,
+        j = false,
+        p = dom.parentElement.lastElementChild,
+        s = dom.previousElementSibling.innerText || " ";
+        console.log(v,j,p,s);
+    switch(a){
+        case 'admin':
+        case 'status':
+        case 'date':
+        case 'house':
+            j = true;   
+        break;
+        case 'tel':
+            var reg = /(^[0-9]{3,4}\-[0-9]{7,8}$)|(^[0-9]{7,8}$)|(^\([0-9]{3,4}\)[0-9]{3,8}$)|(^0{0,1}1[3-9][0-9]{9}$)/;
+            if(reg.test(v)){
+                j = true;
+                p.innerText = '';
+            }else{
+                j = false;
+                p.innerText = '手机号码不正确';
+            }
+        break;
+        case 'no':
+        case 'name':
+        case 'type':
+        case 'room':
+        case 'exp':
+            if(v){
+                p.innerText = '';
+                j = true;
+            }else{
+                p.innerText = s.substr(0,s.length-1) + '不能为空，请填写正确';
+                j = false;
+            }
+        break;
+    }
+    return j;
+}
+
+/** 获取表单数据 **/
+function vaildata(value){
+    var f ='';
+    if(value.length > 1){
+        for(var i = 0;i < value.length;i++){
+            var id = value[i].getAttribute("name"),
+                va = value[i].value,
+                da = '';
+            if(!va){
+                f = false;
+                break;
+            }else{
+                if(id == "date"){
+                    var k = new Date(va).getTime();
+                    value[i].setAttribute("data",k);
+                }
+                da = value[i].getAttribute("data");
+                if(da !== null){
+                    f += id + '= ' + da + '&';
+                }else{
+                    f += id + '= ' + va + '&';
+                }           
+            }
+        }
+    }
+    var time = new Date();
+    time = time.getTime();
+    if(f){
+        f += '&create=' + time;
+        return f.substring(0,f.length-1).replace(/\s+/g,"")
+    }else{
+     return f
     }
 }

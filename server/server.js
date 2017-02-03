@@ -60,7 +60,10 @@ export default function server(app,body){
 		if (!data) return res.sendStatus(400);
 		if(data.validation != vail) return res.send({status:4,msg:'the admin is error'})
 		db.find({admin:data.admin},function(error,docs){
-			if(error) res.send({status:3,msg:'sever is error'});
+			if(error){
+				res.send({status:3,msg:'sever is error'});
+				return;	
+			}
 			if(docs.length <= 0){
 				let pass = cry.createHmac('sha512',data.password)
 							  .update('I am bydqjx')
@@ -187,6 +190,28 @@ export default function server(app,body){
 				res.send({status:3,msg:'fail'});
 			}
 			return;
+		})
+	})
+
+	app.post('/pass',body.urlencoded(),(req,res) => {
+		const data = req.body;
+		let temp = data.admin;
+		delete data.temp;
+		if(!temp) {
+			res.send({status:3,msg:'no user'});
+			return;	
+		}
+		data.password = cry.createHmac('sha512',data.password)
+						   .update('I am bydqjx')
+						   .digest('hex');
+
+		console.log(data.password);
+		db.update({admin:temp},{$set:data},(err)=>{
+			if(!err){
+				res.send({staus:0,msg:'success'})
+			}else{
+				res.send({status:3,msg:'edit failed'});
+			}
 		})
 	})
 }
