@@ -65,7 +65,6 @@ var app = {
     close: function(attr) {
         var body = document.getElementsByTagName("body")[0];
         var mask = document.getElementsByClassName("mask") || "";
-        console.log('长度：' + mask.length)
         if (mask) {
             for (var i = 0; i < mask.length; i++) {
                 body.removeChild(mask[i]);
@@ -126,7 +125,6 @@ var app = {
 
 function vail(dom){
     var k = false;
-    console.log(dom);
     if(dom.length > 1){
         for(var i = 0;i < dom.length;i++){
             if(!switchDom(dom[i])){
@@ -145,7 +143,6 @@ function switchDom(dom){
         j = false,
         p = dom.parentElement.lastElementChild,
         s = dom.previousElementSibling.innerText || " ";
-        console.log(v,j,p,s);
     switch(a){
         case 'admin':
         case 'status':

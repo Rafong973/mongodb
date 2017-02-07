@@ -16,7 +16,7 @@ let success = (dom) => {
 
 const pderror = {status:2,zmsg:'password is error'};
 
-let err = (value) =>{
+let fail = (value) =>{
 	return {status:3,msg:value};
 }
 
@@ -169,7 +169,7 @@ export default function server(app,body){
 	app.post('/update',body.urlencoded(),(req,res) =>{
 		const data = req.body;
 		const id = data._id;
-		delete data.id;
+		delete data._id;
 		re.update({_id:id},{$set:data},function(err,update){
 			if(!err){
 				res.send(success('success'));
@@ -213,5 +213,48 @@ export default function server(app,body){
 				res.send({status:3,msg:'edit failed'});
 			}
 		})
+	});
+
+	app.post('/query',body.urlencoded(),(req,res) => {
+		let data = req.body;
+		if(!data){
+			res.send(fail('no msg'));
+			return;
+		}
+		let Arr = [];
+		let temp = null ;
+		re.find({name:data.name,tel:data.tel},(err,docs)=>{
+			if(!err){
+				if(!docs){
+					res.send(fail('no msg'))
+				}else{
+					if(docs.length > 1){
+						Array.from(docs,(s,q) => {
+							temp = {
+								status:s.status,
+								admin:s.admin,
+								tel:s.tel,
+								name:s.name,
+								id:s._id,
+							}
+							Arr[q] = temp;
+						})
+						temp = Arr;
+					}else{
+						temp = {
+							status:s.status,
+							admin:s.admin,
+							tel:s.tel,
+							name:s.name,
+							id:s._id,
+						}
+					}
+					res.send(success(temp));
+				}
+			}else{
+				res.send(fail('over'))
+			}
+			return;
+		});
 	})
 }

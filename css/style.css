@@ -33,7 +33,7 @@ textarea {
 	font-size:13px;
 	font-size:.8125rem;
 	border-radius:.25rem;
-	z-index:999;
+	z-index:9999999;
 }
 .select-ul li {
 	padding:.25rem 0;
@@ -246,7 +246,19 @@ body .flatpickr-calendar {
 	top:0;
 	left:0
 }
-
+.query-data .table{
+	width: 600px;
+	font-size: 0.75rem;
+}
+.query-data td{
+	position: relative;
+}
+.query-dialog{
+	margin-bottom: 10px;	
+}
+.query-canel{
+	line-height: 2.5rem;
+}
 @keyframes wobble{
 0%{transform:translate3d(0%,0,0)}
 15%{transform:translate3d(-25%,0,0) rotate(-5deg)}
