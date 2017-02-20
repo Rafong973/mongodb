@@ -48,4 +48,13 @@
     from { transform: translate(-50%,-50%) rotate(0deg)  }
     to { transform: translate(-50%,-50%) rotate(360deg) }
 }
+
+@-webkit-keyframes downHide {
+    from { opacity: 1;transform: translate(0,0) }
+    to {  opacity: 0;transform: translate(0,50px)}
+}
+@keyframes downHide {
+    from { opacity: 1;-webkit-transform: translate(0,0) }
+    to {  opacity: 0;-webkit-transform: translate(0,50px)}
+}
 .btn-gray{background-color: #b9b9b9;}
