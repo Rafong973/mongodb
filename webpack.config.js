@@ -44,33 +44,32 @@ module.exports = {
 			},
 			{
 				test: /\.scss$/,
-				loader: ExtractTextPlugin.extract("style-loader",'css-loader','sass-loader')
+				loader: 'style!css!sass'
 			},
 			{
 				test: /\.json$/,
 				loader: 'json-loader'
 			},
 			{
-	            test: /\.js$/,
-	            exclude: /node_modules|vue\/src|vue-router\/|vue-loader\/|vue-hot-reload-api\//,
-	            loader: 'babel'
-	        },
-			{
 				test: /\.css$/,
-				loader: ExtractTextPlugin.extract("style-loader",'css-loader','sass-loader') 
+				loader: ExtractTextPlugin.extract("style-loader",'css-loader','postcss-loader') 
 			},
 			{
 				test:/\.(jpg|png|jpeg)$/,
 				loader: 'url?limit=40000'
-			}
+			},
+			{
+	            test: /\.js$/,
+	            exclude: /node_modules|vue\/src|vue-router\/|vue-loader\/|vue-hot-reload-api\//,
+	            loader: 'babel'
+	        }
 		]
 	},
 	vue:{
-		// css:ExtractTextPlugin.extract("style!css"),
-		// sass: ExtractTextPlugin.extract("style!css!sass-loader"),
-		// autoprefixer:true
 		loaders:{
-			sass: ExtractTextPlugin.extract("vue-style-loader","css!sass"),
+			postcss: () => {
+				return [autoprefixer,cssnext,cssgrade,require('postcss-nested')(), require('postcss-advanced-variables')(), require('postcss-extend')(), require('postcss-base64')({extensions: ['.png', '.jpg']})]
+			},
 			css: ExtractTextPlugin.extract("vue-style-loader","css!sass")
 		}
 	},
@@ -79,13 +78,6 @@ module.exports = {
 		plugins: ['transform-runtime']
 	},
 	plugins: plugins
-
-	// devServer:{
-	// 	proxy:{
-	// 		'*':{
-	// 			traget:'http://localhost:8080',
-	// 			secure:false
-	// 		}
-	// 	}
-	// }
 }
+
+module.exports.devtool = '#source-map'

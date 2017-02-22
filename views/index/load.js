@@ -25,14 +25,20 @@ window.onresize = function(){
 function banner(){
 	var b = $('.banner');
 	for(var i = 0;i<b.length;i++){
+        b[i].index = i;
 		var p = b[i].firstElementChild.clientHeight;
 		if(p > window.innerHeight){
 			b[i].style.height = p + 'px';
 		}else {
 			b[i].style.height = window.innerHeight + 'px';
 		}
+        if(!browser.versions.mobile){
+            if(i<b.length-1){
+                b[i+1].style.top = (i+1) * 950 + 'px';
+            }
+        }
 	}
-}
+};
 var browser = {
     versions: function () {
         var u = navigator.userAgent, app = navigator.appVersion;
@@ -51,6 +57,7 @@ var browser = {
     }(),
     language: (navigator.browserLanguage || navigator.language).toLowerCase()
 }
+
 if (browser.versions.mobile) {//判断是否是移动设备打开。browser代码在下面
     var ua = navigator.userAgent.toLowerCase();//获取判断用的对象
     if (ua.match(/MicroMessenger/i) == "micromessenger") {
@@ -70,4 +77,28 @@ if (browser.versions.mobile) {//判断是否是移动设备打开。browser代�
     }
 } else {
     //否则就是PC浏览器打开
+}
+
+// 添加事件
+var EventUtil = {
+    addHandler:function(element,type,handler){
+        if(element.addEventListener){
+            element.addEventListener(type,handler,false);
+        }else if(element.attachEvent){
+            element('on' +type,handler);
+        }else{
+            element['on'+type] = handler;
+        }
+    },
+    getEvent:function(event){
+        return event ? event : window.event;
+    },
+    stopPropagation:function(event){
+        event = event || window.event;
+        if(event.stopPropagation){
+            event.stopPropagation();
+        }else{
+            event.cancelBubble = true;
+        }
+    }
 }

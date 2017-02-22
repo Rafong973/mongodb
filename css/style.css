@@ -179,6 +179,8 @@ header {
 }
 .body {
 	position:relative;
+	width: 100%;
+	overflow: hidden;
 }
 body .index-mask{
 	background: #fafafa;
@@ -186,14 +188,21 @@ body .index-mask{
 }
 .banner {
 	width:100%;
-	position:relative;
+	position:absolute;
 	background-color: #fafafa;
+	transition: all .4s ease-in-out;
+	transform: translate3d(0, 0, 0);
 }
-.first{
+.banner>div{
 	width: 100%;
 	height: 100%;
+}
+.first{
 	background:url(img/8.jpg) center center no-repeat;
 	background-size:cover;
+}
+.second{
+	background-color: #ededed;
 }
 .banner-exp,.warm-label {
 	position:absolute;
@@ -225,6 +234,7 @@ body .index-mask{
 	right: 2%;
 	width: 15%;
 }
+
 .mediun-font{
 	font-size: 1.375rem;
 }
@@ -254,9 +264,42 @@ body .index-mask{
 	border-bottom: 0.125rem solid #fff;
 	transform: rotate(-45deg);
 }
+/* 第二个模块 */
+.second-row{
+	width: 50%;
+	float: left;
+	height:inherit;
+	position: relative;
+}
+.font-color{
+	color: #4d6076;
+}
+.second-icon{
+	height: 300px;
+	width: 300px;
+	background: url(img/second.png) no-repeat center center;
+	animation-name: rollIn;
+	animation-duration: 1s;
+	animation-timing-function: ease-in-out;
+	animation-fill-mode: both;
+}
+.study-row,.second-icon{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
 .title-in {
 	animation:titleIn 1s .2s ease;
 	-webkit-animation:titleIn 1s .2s ease
+}
+.study{
+	cursor: pointer;
+	text-align: right;
+	animation-name: fadeInRight;
+	animation-duration: 1s;
+	animation-timing-function: ease;
+	animation-fill-mode: both;
 }
 .warm-label {
 	transform:translateX(-50%);
@@ -287,6 +330,7 @@ body .flatpickr-calendar {
 .query-canel{
 	line-height: 2.5rem;
 }
+/* 动画 */
 @keyframes wobble{
 0%{transform:translate3d(0%,0,0)}
 15%{transform:translate3d(-25%,0,0) rotate(-5deg)}
@@ -316,6 +360,32 @@ to {
 	transform:rotate(360deg) translateZ(0);
 }
 }
+@keyframes fadeInRight{
+	0%{opacity:0;
+	-webkit-transform:translateX(20px)}
+	100%{opacity:1;
+	-webkit-transform:translateX(0)}
+	}
+@-webkit-keyframes fadeInRight{
+	0%{opacity:0;
+	-webkit-transform:translateX(20px)}
+	100%{opacity:1;
+	-webkit-transform:translateX(0)}
+}
+@-webkit-keyframes rollIn{
+	0%{opacity:0;
+	-webkit-transform:translate(-100%,-50%) rotate(-120deg)}
+	100%{opacity:1;
+	-webkit-transform:translate(-50%,-50%) rotate(0deg)}
+}
+@keyframes rollIn{
+	0%{opacity:0;
+	-webkit-transform:translate(-100%,-50%) rotate(-120deg)}
+	100%{opacity:1;
+	-webkit-transform:translate(-50%,-50%) rotate(0deg)}
+}
+
+/* 媒体查询 */
 @media only screen and (max-width:447px) {
 	.banner-title {
 		font-size:1.75rem
@@ -328,7 +398,19 @@ to {
 	header {
 		display:block
 	}
-
+	.next-icon{
+		display: none;
+	}
+	.second-row{
+		width: 100%;
+		position: absolute;
+	}
+	.second-right{
+		z-index: 1;
+	}
+	.second-left{
+		opacity: .2;
+	}
 }
 @media only screen and (min-width:768px) {
 	.head-guide {
@@ -357,10 +439,8 @@ to {
 		width: 100%;
 	}
 	.banner{
-		position: absolute;
 		transform-origin:bottom right;
 		transform: rotate(0deg) translateZ(0);
-		z-index: 1;
 		transition: all 1s cubic-bezier(.175, .885, .32, 1.275);
 	}
 	.body{

@@ -30,7 +30,7 @@ function rotate(dom,current){
 
 function cleanRotary(){
 	var banner = $(".banner");
-	var arg = 'rotate(0deg) translateZ(0)'
+	var arg = 'rotate(0deg) translateZ(0)';
 	for(var i=0;i<banner.length;i++){
 		banner[i].style.webkitTransform = arg;
 		banner[i].style.MozTransform = arg;

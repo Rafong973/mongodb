@@ -10,22 +10,7 @@ function closeMenu(){
 	$(".menu-mask")[0].style.WebkitTransform = "scale(0,0) translate3d(100%,-100%,0)";
 	$(".menu-mask")[0].style.opacity = "0";
 };
-(function (){
-	var dom = $(".menu-li");
-	var time = '';
-	for(var i = 0;i < dom.length;i++){
-		clearTimeout(time);
-		dom[i].index = i;
-		dom[i].onclick = function(){
-			closeMenu();
-			clearTimeout(time);
-			var self = this;
-			time = setTimeout(function(){
-				rotate($(".banner"),self.index);
-			},1000);
-		}
-	}
-})();
+
 /** Ajax请求 **/
 function ajax(type,u,data){
 	var xml = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP"),
@@ -59,6 +44,7 @@ function ajax(type,u,data){
 		}
 	}
 }
+
 ajax('GET','./views/data/room.json',null);
 
 
@@ -134,14 +120,6 @@ $('.room')[0].onclick = function(){
 	i.style.height = '150px';
 	closeSelect();
 };
-(function(){
-	var t = $('.input-input');
-	for(var i = 0;i < t.length;i++){
-		t[i].onblur = function(){
-			vail(switchDom(this))
-		}
-	}
-})();
 
 /** 日期插件 **/
 $("#data-choose").flatpickr({
@@ -165,3 +143,113 @@ function closeSelect(){
 	document.getElementsByTagName('body')[0].appendChild(div);
 }
 
+//第二个模块的动画
+function studyAni(){
+	var study = $('.study'),
+		count = 1,
+		delay = 0.1;
+	for(var i=0;i<study.length;i++){
+		study[i].style.animationDelay = count + delay +'s';
+		delay += 0.1;
+	}
+}
+function studyIcon(){
+	$('.second-icon')[0].style.animationDelay = '1.2s';
+}
+studyAni();
+studyIcon();
+
+// 滚动事件
+var handle = {
+	x:true,
+	index:null,
+	MouseWheel:function(event){
+		if(!handle.x) return;
+		var body = $('.body')[0];
+	    var dom = event.path;
+	    var index = null;
+	    var bro = null;
+	    dom.forEach(function(d,i){
+	    	if(d.className=='banner') index = d.index;
+	    })
+	    if(event.deltaY < 0){
+	    	if(index == 0) index=1;
+	    	index--;
+	    	bro = index + 1;
+	    }else{
+	    	index++;
+	    	bro = index - 1;
+	    }
+	    if(index==4) index = 0;
+	    handle.x = false;
+		handle.banner(index,bro);
+	},
+	keyup:function(event){
+		if(!handle.x) return;
+		event = event || window.event;
+		var i = handle.index ? handle.index : null,
+		    j = null;
+		if(event.keyCode == 38){
+			if(!i) return;
+			if(i==0) i=1;
+			i--;
+			j = i + 1;
+		}else if(event.keyCode == 40){
+			i++;
+			j = i - 1;
+		}else{
+			return;
+		}
+		if(i==4) i=0;
+		handle.x = false;
+		handle.banner(i,j);
+	},
+	time:function(){
+		clearInterval(time);
+		var time = setTimeout(function(){
+			handle.x = true;
+		})
+	},
+	banner:function(index,next){
+		var banner = $('.banner');
+		handle.index = index;
+		banner[index].style.top = '0px';
+		banner[next].style.top = next * 950 +'px';
+		handle.time();
+	}
+};
+
+
+
+(function(){
+	// 菜单
+	var dom = $(".menu-li");
+	var time = '';
+	for(var i = 0;i < dom.length;i++){
+		clearTimeout(time);
+		dom[i].index = i;
+		dom[i].onclick = function(){
+			closeMenu();
+			clearTimeout(time);
+			var self = this;
+			time = setTimeout(function(){
+				rotate($(".banner"),self.index);
+			},1000);
+		}
+	}
+	// 验证
+	var t = $('.input-input');
+	for(var i = 0;i < t.length;i++){
+		t[i].onblur = function(){
+			vail(switchDom(this))
+		}
+	}
+	// 切换
+	if(!browser.versions.mobile){
+		var body = $('.body')[0];
+    	body.style.height = window.innerHeight + 'px';
+		EventUtil.addHandler(document, 'mousewheel', handle.MouseWheel);
+        EventUtil.addHandler(document, 'DOMMouseScroll', handle.MouseWheel);
+        EventUtil.addHandler(document, 'keyup', handle.keyup);
+	}
+})();
