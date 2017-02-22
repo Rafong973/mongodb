@@ -19751,7 +19751,7 @@ webpackJsonp([0,1],[
 					this.$root.$emit('alertFn', '密码太短了');
 					return;
 				}
-				if (this.password.length !== this.passagain) {
+				if (this.password !== this.passagain) {
 					this.title = '密码不匹配';
 					this.$root.$emit('alertFn', '密码不匹配');
 					return;
