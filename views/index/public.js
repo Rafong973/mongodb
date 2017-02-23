@@ -14,8 +14,62 @@ var $ = window.$ = function(name){
             v = document.getElementById(n);
         break;
     }
+    
     return v;
 };
+
+function removeClass(dom,name){
+    var r = new RegExp('(\\s|^)' + name + '(\\s|$)');
+    var n = 0;
+    var temp = null;
+    if(dom.className.match(r)){
+        dom.className = dom.className.replace(name,'');
+    }else{
+        return;
+    }
+};
+function addClass(dom,name){
+    var r = new RegExp('(\\s|^)' + name + '(\\s|$)');
+    if(dom.className.match(r)){
+        return;
+    }else{
+        var t = '';
+        for(var i=0;i<dom.classList.length;i++){
+            var c = dom.classList[i] + ' ';
+            console.log(c);
+            if(i==dom.classList.length) c.trim();
+            t += c;
+        }
+        dom.className = t;
+        dom.className += ' ' + name; 
+        console.log(dom.className);
+    }
+    
+};
+// 添加事件
+var EventUtil = {
+    addHandler:function(element,type,handler){
+        if(element.addEventListener){
+            element.addEventListener(type,handler,false);
+        }else if(element.attachEvent){
+            element('on' +type,handler);
+        }else{
+            element['on'+type] = handler;
+        }
+    },
+    getEvent:function(event){
+        return event ? event : window.event;
+    },
+    stopPropagation:function(event){
+        event = event || window.event;
+        if(event.stopPropagation){
+            event.stopPropagation();
+        }else{
+            event.cancelBubble = true;
+        }
+    }
+}
+//弹出
 var app = {
     alert: function(value) {
         if (!value) value = undefined;
@@ -79,10 +133,13 @@ var app = {
     imgClose: function() {
         var body = document.getElementsByTagName("body")[0];
         var mask = document.getElementsByClassName("imgMask") || "";
+        var img = document.getElementsByClassName("mask-img")[0];
         if (mask) {
             for (var i = 0; i < mask.length; i++) {
                 body.removeChild(mask[i])
             }
+            body.removeChild(img);
+            handle.add();
         } else {
             return false;
         }
@@ -113,16 +170,30 @@ var app = {
         } else {
             return false;
         }
-        mask.appendChild(img);
         body.appendChild(mask);
+        body.appendChild(img);
         body.style.overflow = "hidden";
-        var showImg = document.getElementsByClassName("mask-img")[0];
-        var imgHeight = showImg.clientHeight;
-        var imgWidth = showImg.clientWidth;
-        var left = imgHeight > 500 ? "-250px" : "-" + parseInt(imgHeight) / 2 + "px";
-        var top = imgWidth > 800 ? "-400px" : "-" + parseInt(imgWidth) / 2 + "px";
-        showImg.style.marginLeft = left;
-        showImg.style.marginTop = top;
+        app.add();
+    },
+    add:function(){
+        EventUtil.addHandler(document, 'mousewheel', app.mouse);
+        EventUtil.addHandler(document, 'DOMMouseScroll', app.mouse);
+    },
+    remove:function(){
+        document.removeEventListener('mousewheel',app.mouse,false);
+        document.removeEventListener('DOMMouseScroll',app.mouse,false);
+    },
+    x:1,
+    mouse:function(event){
+        var event = event || window.event;
+        var img = document.getElementsByClassName("mask-img")[0];
+        if(event.deltaY < 0){
+            app.x += 0.1;
+        }else{ 
+            if(app.x == 1) return;
+            app.x -= 0.1;
+        }
+        img.style.transform = 'translate(-50%,-50%) scale(' + app.x + ',' + app.x + ')';
     }
 }
 

@@ -21,6 +21,7 @@ window.onresize = function(){
 	}else{
 		cleanRotary();
 	}
+    banner();
 }
 function banner(){
 	var b = $('.banner');
@@ -30,13 +31,15 @@ function banner(){
 		var p = b[i].firstElementChild.clientHeight;
 		if(p > window.innerHeight){
 			b[i].style.height = p + 'px';
-            b[i].style.overflowY = 'scroll';
+            if(!browser.versions.mobile){
+                 b[i].style.overflowY = 'scroll';   
+            }
 		}else {
 			b[i].style.height = window.innerHeight + 'px';
 		}
         if(!browser.versions.mobile){
             if(i<b.length-1){
-                b[i+1].style.top = (i+1) * 950 + 'px';
+                b[i+1].style.top = (i+1) * window.innerHeight + 'px';
             }
         }
 	}
@@ -79,28 +82,4 @@ if (browser.versions.mobile) {//判断是否是移动设备打开。browser代�
     }
 } else {
     //否则就是PC浏览器打开
-}
-
-// 添加事件
-var EventUtil = {
-    addHandler:function(element,type,handler){
-        if(element.addEventListener){
-            element.addEventListener(type,handler,false);
-        }else if(element.attachEvent){
-            element('on' +type,handler);
-        }else{
-            element['on'+type] = handler;
-        }
-    },
-    getEvent:function(event){
-        return event ? event : window.event;
-    },
-    stopPropagation:function(event){
-        event = event || window.event;
-        if(event.stopPropagation){
-            event.stopPropagation();
-        }else{
-            event.cancelBubble = true;
-        }
-    }
 }

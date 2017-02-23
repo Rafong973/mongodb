@@ -13,7 +13,7 @@
 .mask-btn-a{padding:.375rem .625rem;font-size:.75rem;color:#000;display:block;text-align:center;float:right;border:.0625rem solid #ccc;margin-bottom:.9375rem;border-radius: .1875rem;}
 .mask-btn-b{float:left;background-color:#337ab7;border:.0625rem solid #2e6da4; color:#FFF;}
 .load-content{position: absolute;top:50%;left:50%;width:3.125rem;height:3.125rem;margin-left: -1rem;margin-top: -1rem;animation:mymove 1s infinite;-webkit-animation:mymove 1s infinite; }
-.mask-img{height: auto;width: auto;max-height: 31.25rem;max-width: 50rem;position: absolute;top: 50%;left:50%;}
+.mask-img{z-index:9999999999999;height: auto;width: auto;max-height: 80%;max-width: 50%;position: absolute;top: 50%;left:50%;transform: translate(-50%,-50%);}
 .center{text-align: center;}
 .hid{overflow: hidden;}
 .blo{display: block;}
