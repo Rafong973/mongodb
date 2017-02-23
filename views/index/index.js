@@ -208,18 +208,50 @@ var handle = {
 		clearInterval(time);
 		var time = setTimeout(function(){
 			handle.x = true;
-		})
+		},800)
 	},
 	banner:function(index,next){
 		var banner = $('.banner');
 		handle.index = index;
+		handle.scroll(banner[index]);
+		banner[index].scrollTop = '1';
 		banner[index].style.top = '0px';
 		banner[next].style.top = next * 950 +'px';
 		handle.time();
+	},
+	scroll:function(dom){
+		clearInterval(time);
+		var h = window.innerHeight;
+		var time = null;
+		if(dom.clientHeight > h){
+			document.removeEventListener('mousewheel',handle.MouseWheel,false);
+			document.removeEventListener('DOMMouseScroll',handle.MouseWheel,false);
+			document.removeEventListener('keyup', handle.keyup,false);
+		}
+		var t = dom.scrollTop;
+		dom.onscroll = function(e){
+			var top = dom.scrollTop;
+			var b = dom.scrollHeight;
+			var c = dom.clientHeight
+			if(top == b-c || top == 0){
+				time = setTimeout(function(){
+					EventUtil.addHandler(document, 'mousewheel', handle.MouseWheel);
+        			EventUtil.addHandler(document, 'DOMMouseScroll', handle.MouseWheel);
+        			EventUtil.addHandler(document, 'keyup', handle.keyup);
+        		},800)
+			}else{
+				document.removeEventListener('mousewheel',handle.MouseWheel,false);
+				document.removeEventListener('DOMMouseScroll',handle.MouseWheel,false);
+				document.removeEventListener('keyup', handle.keyup,false);
+			}
+		}
 	}
 };
 
-
+window.onscroll = function(e){
+	var t = document.documentElement.scrollTop || document.body.scrollTop;
+	console.log(t);
+};
 
 (function(){
 	// 菜单

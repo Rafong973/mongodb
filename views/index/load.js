@@ -24,11 +24,13 @@ window.onresize = function(){
 }
 function banner(){
 	var b = $('.banner');
+    console.log(b);
 	for(var i = 0;i<b.length;i++){
         b[i].index = i;
 		var p = b[i].firstElementChild.clientHeight;
 		if(p > window.innerHeight){
 			b[i].style.height = p + 'px';
+            b[i].style.overflowY = 'scroll';
 		}else {
 			b[i].style.height = window.innerHeight + 'px';
 		}
