@@ -174,16 +174,15 @@ var app = {
         body.appendChild(img);
         body.style.overflow = "hidden";
         app.add();
+        EventUtil.addHandler(img,'mousedown',function(){
+            app.isDrag = true;
+        });
+        EventUtil.addHandler(img,'mousemove',app.moveTop)
+        EventUtil.addHandler(img,'moveup',function(){
+            app.isDrag = false;
+            console.log('oneonee');
+        });
     },
-    add:function(){
-        EventUtil.addHandler(document, 'mousewheel', app.mouse);
-        EventUtil.addHandler(document, 'DOMMouseScroll', app.mouse);
-    },
-    remove:function(){
-        document.removeEventListener('mousewheel',app.mouse,false);
-        document.removeEventListener('DOMMouseScroll',app.mouse,false);
-    },
-    x:1,
     mouse:function(event){
         var event = event || window.event;
         var img = document.getElementsByClassName("mask-img")[0];
@@ -193,8 +192,26 @@ var app = {
             if(app.x == 1) return;
             app.x -= 0.1;
         }
-        img.style.transform = 'translate(-50%,-50%) scale(' + app.x + ',' + app.x + ')';
-    }
+        img.style.transform = 'translate3d(-50%,-50%,0) scale(' + app.x + ',' + app.x + ')';
+        img.style.webkitTransform = 'translate3d(-50%,-50%,0) scale(' + app.x + ',' + app.x + ')';
+    },
+    y:0,
+    isDrag:false,
+    moveTop:function(event){
+        event = event || window.event;
+        if(app.isDrag){
+            console.log('dfdf');
+        }
+    },
+    add:function(){
+        EventUtil.addHandler(document, 'mousewheel', app.mouse);
+        EventUtil.addHandler(document, 'DOMMouseScroll', app.mouse);
+    },
+    remove:function(){
+        document.removeEventListener('mousewheel',app.mouse,false);
+        document.removeEventListener('DOMMouseScroll',app.mouse,false);
+    },
+    x:1
 }
 
 function vail(dom){
