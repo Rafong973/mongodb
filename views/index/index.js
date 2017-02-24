@@ -197,12 +197,9 @@ var handle = {
 	MouseWheel:function(event){
 		if(!handle.x) return;
 		var body = $('.body')[0];
-	    var dom = event.path;
-	    var index = null;
 	    var bro = null;
-	    dom.forEach(function(d,i){
-	    	if(d.className=='banner') index = d.index;
-	    })
+	    var dom = getParent(event.target,'banner');
+	    var index = dom.index;
 	    if(event.deltaY < 0){
 	    	if(index == 0) index=1;
 	    	index--;
@@ -285,6 +282,18 @@ var handle = {
 	},
 };
 
+// 获取父类
+function getParent(dom,className){
+	var r = new RegExp('(\\s|^)' + className + '(\\s|$)');
+	var t = null;
+	var temp = null;
+	do{
+		if(!temp) temp = dom.parentNode;
+		else temp = temp.parentNode;
+		if(temp.className.match(r)) t = temp
+	}while(!t);
+	return t;
+}
 // 教程
 $('.study-row')[0].onclick = function(e){
 	var a = e.target;
