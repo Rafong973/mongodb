@@ -19,6 +19,8 @@
 .blo{display: block;}
 .time-input{border: .0625rem solid #ddd;height:2.125rem;text-indent: .3125rem;}
 .middle{vertical-align: middle;}
+.text-ie{position:fixed;text-align:center;top:50%;left:50%;height:300px;width:500px;margin-left:-250px;margin-top:-150px;}
+.text-ie h1{font-size: 55px;margin-bottom: 10px;}.text-ie p{font-size: 20px;}
 @keyframes mymove {
     from {
         transform: rotate(0deg);

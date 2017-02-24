@@ -83,3 +83,21 @@ if (browser.versions.mobile) {//判断是否是移动设备打开。browser代�
 } else {
     //否则就是PC浏览器打开
 }
+
+if(browser.versions.trident){
+    var body = document.getElementsByTagName('body')[0];
+    var html = document.getElementsByTagName('html')[0];
+    html.removeChild(body);
+    var h1 = document.createElement('h1');
+    var h2 = document.createElement('h1');
+    var p = document.createElement('p');
+    var div = document.createElement('div');
+    div.className = 'text-ie';
+    h1.innerText = '拒绝IE浏览器';
+    h2.innerText = '共创美好未来';
+    p.innerText = '请使用其它浏览器或者手机访问';
+    div.appendChild(h1);
+    div.appendChild(h2);
+    div.appendChild(p);
+    html.appendChild(div);
+}

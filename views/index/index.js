@@ -199,6 +199,7 @@ var handle = {
 	    var dom = event.path;
 	    var index = null;
 	    var bro = null;
+	    console.log(event);
 	    dom.forEach(function(d,i){
 	    	if(d.className=='banner') index = d.index;
 	    })
