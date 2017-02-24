@@ -150,6 +150,7 @@ function studyAni(judge){
 		for(var i=0;i<study.length;i++){
 			study[i].setAttribute('class','study studyAni');
 			study[i].style.animationDelay = count + delay +'s';
+			study[i].style.webkitAnimationDelay = count + delay +'s';
 			delay += 0.1;
 		}
 		$('.second-icon')[0].setAttribute('class','second-icon iconAni');
@@ -199,7 +200,6 @@ var handle = {
 	    var dom = event.path;
 	    var index = null;
 	    var bro = null;
-	    console.log(event);
 	    dom.forEach(function(d,i){
 	    	if(d.className=='banner') index = d.index;
 	    })
@@ -298,8 +298,8 @@ $('.study-row')[0].onclick = function(e){
 	}
 };
 
+// 菜单
 (function(){
-	// 菜单
 	var dom = $(".menu-li");
 	var time = '';
 	for(var i = 0;i < dom.length;i++){

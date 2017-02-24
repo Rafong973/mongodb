@@ -36,13 +36,11 @@ function addClass(dom,name){
         var t = '';
         for(var i=0;i<dom.classList.length;i++){
             var c = dom.classList[i] + ' ';
-            console.log(c);
             if(i==dom.classList.length) c.trim();
             t += c;
         }
         dom.className = t;
         dom.className += ' ' + name; 
-        console.log(dom.className);
     }
     
 };
@@ -213,6 +211,7 @@ var app = {
             if(app.x == 1) return;
             app.x -= 0.1;
         }
+        if(!img) return;
         img.style.transform = 'translate3d(-50%,-50%,0) scale(' + app.x + ',' + app.x + ')';
         img.style.webkitTransform = 'translate3d(-50%,-50%,0) scale(' + app.x + ',' + app.x + ')';
         imgI.style.transform = 'translate3d(-50%,-50%,0) scale(' + app.x + ',' + app.x + ')';
