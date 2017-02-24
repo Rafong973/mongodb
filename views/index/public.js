@@ -133,12 +133,16 @@ var app = {
     imgClose: function() {
         var body = document.getElementsByTagName("body")[0];
         var mask = document.getElementsByClassName("imgMask") || "";
-        var img = document.getElementsByClassName("mask-img")[0];
+        var img = document.getElementsByClassName("mask-img");
         if (mask) {
-            for (var i = 0; i < mask.length; i++) {
-                body.removeChild(mask[i])
+            var k = mask.length;
+            for (var i = 0; i < k; i++) {
+                body.removeChild(mask[0])
             }
-            body.removeChild(img);
+            var l = img.length;
+            for(var j = 0;j < l;j++){
+                body.removeChild(img[0]);
+            }
             handle.add();
         } else {
             return false;
@@ -160,11 +164,13 @@ var app = {
     imgMask: function(value) {
         var body = document.getElementsByTagName('body')[0];
         var mask = document.createElement("div");
+        var imgI = document.createElement("div");
         mask.setAttribute("onclick","app.imgClose()");
         mask.className = "mask";
         mask.className += " imgMask";
         var img = document.createElement("img");
         img.className = "mask-img";
+        imgI.className = "mask-img";
         if (value) {
             img.setAttribute("src", value);
         } else {
@@ -172,20 +178,35 @@ var app = {
         }
         body.appendChild(mask);
         body.appendChild(img);
+        body.appendChild(imgI);
         body.style.overflow = "hidden";
-        app.add();
-        EventUtil.addHandler(img,'mousedown',function(){
+        img.onload = function(){
+            app.imgLoad(img);
+        }
+    },
+    imgLoad:function(){
+        var dom = document.getElementsByClassName('mask-img')[0];
+        var imgI = document.getElementsByClassName('mask-img')[1];
+        var h = dom.offsetHeight;
+        var w = dom.offsetWidth;
+        imgI.style.height = h + 10 + 'px';
+        imgI.style.width = w + 10 + 'px';
+        EventUtil.addHandler(imgI,'mousedown',function(event){
+        event = event || window.event;
             app.isDrag = true;
+            app.o = event.pageY;
+                app.t = dom.top ? dom.top : dom.offsetTop;
         });
-        EventUtil.addHandler(img,'mousemove',app.moveTop)
-        EventUtil.addHandler(img,'moveup',function(){
+        document.onmousemove = app.moveTop;
+        document.onmouseup = function(event){
             app.isDrag = false;
-            console.log('oneonee');
-        });
+        }
+        app.add();
     },
     mouse:function(event){
         var event = event || window.event;
         var img = document.getElementsByClassName("mask-img")[0];
+        var imgI = document.getElementsByClassName("mask-img")[1]
         if(event.deltaY < 0){
             app.x += 0.1;
         }else{ 
@@ -194,13 +215,30 @@ var app = {
         }
         img.style.transform = 'translate3d(-50%,-50%,0) scale(' + app.x + ',' + app.x + ')';
         img.style.webkitTransform = 'translate3d(-50%,-50%,0) scale(' + app.x + ',' + app.x + ')';
+        imgI.style.transform = 'translate3d(-50%,-50%,0) scale(' + app.x + ',' + app.x + ')';
+        imgI.style.webkitTransform = 'translate3d(-50%,-50%,0) scale(' + app.x + ',' + app.x + ')';
     },
-    y:0,
+    o:0,
     isDrag:false,
+    t:0,
     moveTop:function(event){
-        event = event || window.event;
-        if(app.isDrag){
-            console.log('dfdf');
+        if(app.isDrag==true){
+            event = event || window.event;
+            var t = '';
+            var dom = this.getElementsByClassName('mask-img')[0];
+            if(app.x <= 1){
+                return;
+            }else{
+                if(app.o < event.pageY){
+                    // 向下
+                    t = event.pageY - app.o;
+                    dom.style.top = t + app.t + 'px';
+                }else{ 
+                    // 向上
+                    t = app.o - event.pageY;
+                    dom.style.top = app.t - t + 'px';
+                }
+            }
         }
     },
     add:function(){
