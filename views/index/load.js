@@ -13,7 +13,6 @@ window.onload = function(){
 }
 
 window.onresize = function(){
-	banner();
 	if(window.innerWidth <= 480){
 		if(!browser.versions.mobile){
 			rotary();

@@ -191,6 +191,7 @@ body .index-mask{
 	background-color: #fafafa;
 	transition: all .4s ease-in-out;
 	transform: translate3d(0, 0, 0);
+	overflow-x: hidden;
 }
 .banner>div{
 	width: 100%;
@@ -306,6 +307,15 @@ body .index-mask{
 	animation-timing-function: ease;
 	animation-fill-mode: both;
 }
+/* 第四个 */
+.four{
+	background-color: #428bca;
+}
+.desk{
+	background: url(img/desk.png) no-repeat center center;
+	height: inherit;
+	width: 100%;
+}
 .warm-label {
 	transform:translateX(-50%);
 	-webkit-transform:translateX(-50%);
@@ -313,6 +323,25 @@ body .index-mask{
 	font-size:.75rem;
 	bottom:-.9375rem;
 	color:red
+}
+.lf-name{
+	margin-left: 10px;
+	line-height: 1;
+}	
+.lf-title{
+	font-size: 28px;
+	margin-bottom: 10px;
+}
+.lf-p{
+	margin-top: 20px;
+	line-height: 25px;
+	font-size: 16px;
+	p{
+		white-space: initial;
+		&:not(:last-child){
+			margin-bottom: 20px;
+		}
+	}
 }
 .index .static{
 	transform: rotate(90deg);
