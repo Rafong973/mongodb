@@ -170,12 +170,55 @@ function loadAni(judge){
 		removeClass($('.banner-title')[0],'title-in')
 	}
 }
+// 凌飞
+function clockAni(judge){
+	var time = null;
+	if(judge){
+		clearTimeout(time);
+		addClass($('.clock')[0],'hinge');
+		addClass($('.lf-exp')[0],'rubber');
+		time = setTimeout(function(){
+			$('.clock')[0].style.display = 'none';
+		}, 2450)
+	}else{
+		$('.clock')[0].style.display = 'block'
+		removeClass($('.clock')[0],'hinge');
+		removeClass($('.lf-exp')[0],'rubber');
+	}
+}
+// 部门
+function stationAni(judge){
+	var dom = $('.join-li');
+	var k = 0;
+	if(judge){
+		var time = null;
+		for(var i=0;i<dom.length;i++){
+			(function(){
+				return function(){
+					k += 0.5;
+					addClass(dom[i],'zoomIn');
+					dom[i].style.animationDelay = k + 's';
+					dom[i].style.webkitAnimationDelay = k + 's';
+					setTimeout(function(){
+						dom[i].style.display = 'block';
+					}, 500)
+				}
+			})(i)
+		}
+	}else{
+		for(var i=0;i<dom.length;i++){
+			removeClass(dom[i],'zoomIn');
+			// dom[i].style.display = 'none';
+		}
+	}
+}
 // 切换动画归纳
 function Animation(index){
 	switch (index) {
 		case 0:
 			loadAni(true)
 			studyAni(false);
+			stationAni(false)
 			break;
 		case 1:
 			loadAni(false);
@@ -183,6 +226,15 @@ function Animation(index){
 			break;
 		case 2:
 			studyAni(false);
+			clockAni(false);
+			break;
+		case 3:
+			clockAni(true);
+			stationAni(false)
+			break;
+		case 4:
+			clockAni(false);
+			stationAni(true);
 			break;
 		default:
 			// statements_def
@@ -208,7 +260,7 @@ var handle = {
 	    	index++;
 	    	bro = index - 1;
 	    }
-	    if(index==4) index = 0;
+	    if(index==5) index = 0;
 	    handle.x = false;
 		handle.banner(index,bro);
 	},
@@ -228,7 +280,7 @@ var handle = {
 		}else{
 			return;
 		}
-		if(i==4) i=0;
+		if(i==5) i=0;
 		handle.x = false;
 		handle.banner(i,j);
 	},
