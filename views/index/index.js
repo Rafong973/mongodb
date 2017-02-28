@@ -179,7 +179,7 @@ function clockAni(judge){
 		addClass($('.lf-exp')[0],'rubber');
 		time = setTimeout(function(){
 			$('.clock')[0].style.display = 'none';
-		}, 2450)
+		}, 1950)
 	}else{
 		$('.clock')[0].style.display = 'block'
 		removeClass($('.clock')[0],'hinge');
@@ -193,23 +193,31 @@ function stationAni(judge){
 	if(judge){
 		var time = null;
 		for(var i=0;i<dom.length;i++){
-			(function(){
+			k += 0.5;
+			addClass(dom[i],'zoomIn');
+			dom[i].style.animationDelay = k + 's';
+			dom[i].style.webkitAnimationDelay = k + 's';
+			var a = function(dom){
 				return function(){
-					k += 0.5;
-					addClass(dom[i],'zoomIn');
-					dom[i].style.animationDelay = k + 's';
-					dom[i].style.webkitAnimationDelay = k + 's';
-					setTimeout(function(){
-						dom[i].style.display = 'block';
-					}, 500)
+					dom.style.display = 'inline-block';
 				}
-			})(i)
+			}
+			setTimeout(a(dom[i]),k);
 		}
 	}else{
+		clearTimeout(time);
 		for(var i=0;i<dom.length;i++){
 			removeClass(dom[i],'zoomIn');
-			// dom[i].style.display = 'none';
+			dom[i].style.display = 'none';
 		}
+	}
+}
+// 报修
+function repair(judge){
+	if(judge){
+		addClass($('.repair-data')[0],'bounceIn');
+	}else{
+		removeClass($('.repair-data')[0],'bounceIn');
 	}
 }
 // 切换动画归纳
@@ -223,12 +231,15 @@ function Animation(index){
 		case 1:
 			loadAni(false);
 			studyAni(true);
+			repair(false);
 			break;
 		case 2:
+			repair(true);
 			studyAni(false);
 			clockAni(false);
 			break;
 		case 3:
+			repair(false);
 			clockAni(true);
 			stationAni(false)
 			break;
@@ -237,7 +248,7 @@ function Animation(index){
 			stationAni(true);
 			break;
 		default:
-			// statements_def
+			banner();
 			break;
 	}
 }
@@ -249,20 +260,17 @@ var handle = {
 	MouseWheel:function(event){
 		if(!handle.x) return;
 		var body = $('.body')[0];
-	    var bro = null;
 	    var dom = getParent(event.target,'banner');
 	    var index = dom.index;
 	    if(event.deltaY < 0){
 	    	if(index == 0) index=1;
 	    	index--;
-	    	bro = index + 1;
 	    }else{
 	    	index++;
-	    	bro = index - 1;
 	    }
 	    if(index==5) index = 0;
 	    handle.x = false;
-		handle.banner(index,bro);
+		handle.banner(index);
 	},
 	keyup:function(event){
 		if(!handle.x) return;
@@ -273,16 +281,14 @@ var handle = {
 			if(!i) return;
 			if(i==0) i=1;
 			i--;
-			j = i + 1;
 		}else if(event.keyCode == 40){
 			i++;
-			j = i - 1;
 		}else{
 			return;
 		}
 		if(i==5) i=0;
 		handle.x = false;
-		handle.banner(i,j);
+		handle.banner(i);
 	},
 	time:function(){
 		clearInterval(time);
@@ -290,15 +296,18 @@ var handle = {
 			handle.x = true;
 		},800)
 	},
-	banner:function(index,next){
+	banner:function(index){
 		var banner = $('.banner');
+		for(var k=0;k<banner.length;k++){
+			banner[k].style.top = handle.h +'px';
+		}
 		handle.index = index;
 		handle.scroll(banner[index]);
 		banner[index].scrollTop = '1';
 		banner[index].style.top = '0px';
-		banner[next].style.top = next * handle.h +'px';
-		Animation(index);
+		setStatus(index);
 		handle.time();
+		Animation(index);
 	},
 	scroll:function(dom){
 		clearInterval(time);
@@ -359,9 +368,18 @@ $('.study-row')[0].onclick = function(e){
 	}
 };
 
+// 设置状态
+function setStatus(index){
+	var a = $('.aside-li');
+	for(var i=0;i<a.length;i++){
+		removeClass(a[i],'active');
+	}
+	addClass(a[index],'active');
+}
 // 菜单
 (function(){
 	var dom = $(".menu-li");
+	var aside = $(".aside-li");
 	var time = '';
 	for(var i = 0;i < dom.length;i++){
 		clearTimeout(time);
@@ -375,6 +393,16 @@ $('.study-row')[0].onclick = function(e){
 				Animation(self.index);
 			},1000);
 		}
+	}
+	//点击切换
+	for(var j=0;j<aside.length;j++){
+		aside[j].index = j;
+		aside[j].onclick = (function(j){
+			return function(){
+				var current = $('.current')[0];
+				handle.banner(j);
+			}
+		})(j)
 	}
 	// 验证
 	var t = $('.input-input');

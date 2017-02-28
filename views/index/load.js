@@ -6,14 +6,15 @@ window.onload = function(){
 		$('.banner-title')[0].className += ' title-in';
 	},800);
 	banner();
-	if(window.innerWidth <= 480){
-		document.getElementsByTagName("body")[0].style.width = window.innerWidth;
+    document.getElementsByTagName("body")[0].style.width = window.innerWidth;
+	if(browser.versions.mobile){
 		rotary();
 	}
+    setStatus(0);
 }
 
 window.onresize = function(){
-	if(window.innerWidth <= 480){
+	if(browser.versions.mobile){
 		if(!browser.versions.mobile){
 			rotary();
 		}
@@ -38,7 +39,7 @@ function banner(){
 		}
         if(!browser.versions.mobile){
             if(i<b.length-1){
-                b[i+1].style.top = (i+1) * window.innerHeight + 'px';
+                b[i+1].style.top = window.innerHeight + 'px';
             }
         }
 	}
