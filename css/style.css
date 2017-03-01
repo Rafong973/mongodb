@@ -370,7 +370,7 @@ body .index-mask{
 			margin-bottom: 10px;
 		}
 		&:not(:last-child){
-			margin-right: 25px;
+			margin-right: 5%;
 		}
 	}
 }
@@ -705,6 +705,25 @@ to {
 			font-size: 1.25rem;
 			line-height: 2.5rem;
 		}
+	}
+	.join{
+		width: 100%;
+		overflow-x: scroll;
+		overflow-y: hidden;
+		.join-ul{
+			width: 400%;
+		}
+		.join-li{
+			&:first-child{
+				margin-left: 2.5%;
+			}
+			&:last-child{
+				margin-right: 2.5%;
+			}
+		}
+	}
+	.join-row{
+		overflow-x: scroll;
 	}
 }
 @media only screen and (min-width:768px) {
