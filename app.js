@@ -1,4 +1,4 @@
-import express from 'express'
+﻿import express from 'express'
 import cookie from 'cookie-parser'
 import sta from 'express-static'
 import bodyParser from 'body-parser'
@@ -56,6 +56,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 
 
-app.listen(8080,function (){
+app.listen(80,function (){
 	console.log('app listen on port:8080')
 })
