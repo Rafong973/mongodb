@@ -6,9 +6,10 @@ var $ = window.$ = function(name){
     switch(t){
         case ".":
             v = document.getElementsByClassName(n);
-            for(var i=0;i<v.length;i++){
+            for(var i=0;i<v.length;i++){             
                 v[i].index = i;
             }
+            console.log(v);
         break;
         case "#":
             v = document.getElementById(n);

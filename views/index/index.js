@@ -83,21 +83,41 @@ function select(dom,value){
 		li.setAttribute('value',value[i].type);
 		ul.appendChild(li);
 	}
-	ul.addEventListener('click',function(e){
-		var a,b;
-		var c = document.getElementsByClassName('select-mask');
-		if(e.target){
-			a = e.target;
-			b = f.getElementsByClassName('input-input')[0];
-			console.log(f);
-			b.value = a.innerText;
-			b.setAttribute('data',a.getAttribute('value'));
-			ul.style.height = '0';
-			ul.style.border = '0';
-			// body.removeChild(c[0]);
-			switchDom(dom[0])
+	ul.addEventListener('click',(function(e){
+		return function(e){
+			var a,b;
+			var c = document.getElementsByClassName('select-mask');
+			var d = ul.getElementsByTagName('li');
+			if(e.target){
+				a = e.target;
+				b = f.getElementsByClassName('input-input')[0];
+				b.value = a.innerText;
+				b.setAttribute('data',a.getAttribute('value'));
+				ul.style.height = '0';
+				ul.style.border = '0';
+				// body.removeChild(c[0]);
+				switchDom(dom[0]);
+				Array.prototype.forEach.call(d,function(el,index){
+					el.style.display = 'none';
+				})
+			}
 		}
-	});
+	})());
+	dom[0].addEventListener('click',(function(e){
+		return function(e){
+			var liTemp = ul.getElementsByTagName("li");
+			Array.prototype.forEach.call(liTemp,function(el,index){
+				el.style.display = 'block';
+			});
+			ul.style.border = '.0625rem solid #ccc';
+			if(liTemp.length > 3){
+				ul.style.height = '150px';
+			}else{
+				ul.style.height = '110px';
+			}
+			// closeSelect()
+		}
+	})())
 	f.insertBefore(ul,f.getElementsByClassName('warm-label')[0]);
 };
 var selectList = [
@@ -106,18 +126,18 @@ var selectList = [
 	{type:3,name:'软件问题'}
 ];
 select($('.select'),selectList);
-$('.select')[0].onclick = function(){
-	var i = this.nextElementSibling;
-	i.style.border = '.0625rem solid #ccc';
-	i.style.height = '110px';
-	closeSelect();
-};
-$('.room')[0].onclick = function(){
-	var i = this.nextElementSibling;  
-	i.style.border = '.0625rem solid #ccc';
-	i.style.height = '150px';
-	closeSelect();
-};
+// $('.select')[0].onclick = function(){
+// 	var i = this.nextElementSibling;
+// 	i.style.border = '.0625rem solid #ccc';
+// 	i.style.height = '110px';
+	
+// };
+// $('.room')[0].onclick = function(){
+// 	var i = this.nextElementSibling;  
+// 	i.style.border = '.0625rem solid #ccc';
+// 	i.style.height = '150px';
+	
+// };
 
 /** 日期插件 **/
 $("#data-choose").flatpickr({
@@ -138,7 +158,7 @@ function closeSelect(){
 			div.style.display = 'none';
 		}
 	}
-	
+	document.getElementsByTagName('body')[0].appendChild(div);	
 }
 
 //第二个模块的动画
