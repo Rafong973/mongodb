@@ -8,6 +8,8 @@ const cssgrace = require('cssgrace');
 const cssnext =require('cssnext');
 const sass = require('gulp-sass');
 
+const uglify = require('gulp-uglify');//混淆js
+
 const processors = [
 	autoprefixer(
 		{
@@ -32,6 +34,16 @@ gulp.task('indexCss', function() {                                //- 创建一�
         .pipe(gulp.dest('./views/index/'))                               //- 输出文件本地                                //- 生成一个rev-manifest.json
 });
 
+gulp.task('Js',()=>{
+	gulp.src(['./views/index/*.js'])
+		.pipe(uglify())
+		.pipe(gulp.dest('./dist/js'))
+})
+
 gulp.task('getCss', () => {
 	return gulp.watch('./css/*.css',['indexCss']);	
 });
+
+gulp.task('getJs',()=>{
+	return gulp.watch('./views/index/*.js',['Js']);
+})
