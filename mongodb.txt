@@ -1,0 +1,1 @@
+"C:\Program Files\MongoDB\bin\mongod" -dbpath "E:\DB\data" -logpath "E:\DB\MongoDB.log" -install -serviceName "MongoDB"
