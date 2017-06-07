@@ -9,7 +9,6 @@ var $ = window.$ = function(name){
             for(var i=0;i<v.length;i++){             
                 v[i].index = i;
             }
-            console.log(v);
         break;
         case "#":
             v = document.getElementById(n);
